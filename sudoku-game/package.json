@@ -1,0 +1,30 @@
+{
+  "name": "sudoku-game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d dist"
+  },
+  "comments":{
+    "Note 1":"predeploy runs automatically before deploy",
+    "Note 2":"gh-pages pushes the dist folder to GitHub Pages"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}
