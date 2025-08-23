@@ -17,7 +17,6 @@
   margin:0;
   line-height: 1.1;
   white-space: nowrap;
- 
 }
 
 .wrapper {
@@ -26,8 +25,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  min-height: 100vh;
   gap: 1rem;
-  padding:0;
+  padding: 8px;;
   margin-bottom: 1rem;
   box-sizing: border-box;
 }
@@ -69,6 +69,8 @@ html, body {
   justify-content: center;
   align-items: center;
   padding:0;
+  font-family: Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
   .game-container {
@@ -76,6 +78,7 @@ html, body {
     gap: 26px;
     width: 100%;
     justify-content: center;
+    align-items: center;
     max-width: 700px;
     margin-top: 0.1rem;
   }
@@ -87,16 +90,20 @@ html, body {
   }
   
   .sudoku-board {
-    display: inline-block;
-    margin: 20px 0;
-    
-    border: 2px solid #333;
-    background-color: white;
-  }
-  
-  .board-row {
-    display: flex;
-  }
+  display: grid;
+  grid-template-columns: repeat(9, 1fr); /* 9 columns */
+  grid-template-rows: repeat(9, 1fr);    /* 9 rows */
+  aspect-ratio: 1 / 1;   /* keep square */
+  width: 100%;           /* fill container */
+  max-width: 95vw;       /* cap to screen width */
+  margin: 12px auto;
+  border: 3px solid #333;
+  background: white;
+}
+
+.board-row {
+  display: contents; /* let cells align into the grid correctly */
+}
   
   .cell {
     width: 3rem;
@@ -105,7 +112,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: clamp(14px,3.5vw,20px);
     font-weight: bold;
     cursor: pointer;
     position: relative;
