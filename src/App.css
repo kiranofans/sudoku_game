@@ -2,8 +2,10 @@
 .sudoku-app {
   display: flex;
   flex-direction: column;
-  align-items: center;     /* horizontally center children */
-  justify-content: center; /* vertically center children */
+  align-items: center;
+  /* horizontally center children */
+  justify-content: center;
+  /* vertically center children */
   text-align: center;
   font-family: Arial, sans-serif;
   padding: 0 1rem;
@@ -11,11 +13,11 @@
   box-sizing: border-box;
 }
 
-.game-title{
+.game-title {
   text-align: left;
-  font-size: clamp(14px, 2vw, 16px)m;
-  margin:0;
-  line-height: 1.1;
+  font-size: clamp(1.2rem, 2vw, 2rem)m;
+  margin: 0;
+  line-height: 1;
   white-space: nowrap;
 }
 
@@ -24,11 +26,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: medium;
   width: 100%;
   min-height: 100vh;
-  gap: 1rem;
-  padding: 8px;;
-  margin-bottom: 1rem;
+  gap: 0.1rem;
+  padding: 6px;
+  margin-bottom: 0;
+  color: black;
   box-sizing: border-box;
 }
 
@@ -41,9 +45,9 @@
   height: 6rem;
   margin-bottom: 6%;
   margin-top: 0.5%;
-  overflow:hidden;
+  overflow: hidden;
   margin-left: 0;
-  padding:0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -53,72 +57,82 @@
   max-height: 3.5rem;
   height: auto;
   border-radius: 35%;
-  cursor:pointer;
+  cursor: pointer;
   flex-shrink: 0;
-  transition:transform 0.2s ease, filter 0.2s ease;
-}
-.logo:hover{
-  transform: scale(1);
-  filter:brightness(1);
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-html, body {
+.logo:hover {
+  transform: scale(1);
+  filter: brightness(1);
+}
+
+html,
+body {
   height: 100%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:0;
+  padding: 0;
   font-family: Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 
-  .game-container {
-    display: flex;
-    gap: 26px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    max-width: 700px;
-    margin-top: 0.1rem;
-  }
-  
-  .board-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .sudoku-board {
+.game-container {
+  display: flex;
+  gap: 26px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+  margin-top: 0.1rem;
+}
+
+.board-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sudoku-board {
   display: grid;
-  grid-template-columns: repeat(9, 1fr); /* 9 columns */
-  grid-template-rows: repeat(9, 1fr);    /* 9 rows */
-  aspect-ratio: 1 / 1;   /* keep square */
-  width: 100%;           /* fill container */
-  max-width: 95vw;       /* cap to screen width */
+  grid-template-columns: repeat(9, 1fr);
+  /* 9 columns */
+  grid-template-rows: repeat(9, 1fr);
+  /* 9 rows */
+  aspect-ratio: 1 / 1;
+  /* keep square */
+  width: 100%;
+  /* fill container */
+  max-width: 95vw;
+  /* cap to screen width */
   margin: 12px auto;
-  border: 3px solid #333;
+  border: 2px solid #000000;
+
   background: white;
 }
 
 .board-row {
-  display: contents; /* let cells align into the grid correctly */
+  display: contents;
+  /* let cells align into the grid correctly */
 }
-  
-  .cell {
-    width: 3rem;
-    height: 3rem;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(14px,3.5vw,20px);
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  /* 十字高亮效果 */
+
+.cell {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(14px, 3.5vw, 20px);
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+
+/* 十字高亮效果 */
 .cell.cross-highlight {
   background-color: rgba(173, 216, 230, 0.3);
 }
@@ -148,274 +162,287 @@ html, body {
   background-color: rgba(135, 206, 235, 0.3);
 }
 
-  .cell.initial {
-    background-color: #f0f0f0;
-    color: #000;
-    cursor: default;
-  }
-  
-  .cell.correct {
-    color: #7d7979; /* Dark grey-blue */
-  }
-  
-  .cell.wrong {
-    color: #e74c3c; /* Red */
-  }
-  
+.cell.initial {
+  background-color: #f0f0f0;
+  color: #000;
+  cursor: default;
+}
+
+.cell.correct {
+  color: #7d7979;
+  /* Dark grey-blue */
+}
+
+.cell.wrong {
+  color: #e74c3c;
+  /* Red */
+}
+
 /* 高亮样式 */
 .highlighted-same {
-  background-color: #fff9c4 !important; /* 相同数字浅黄色 */
+  background-color: #fff9c4 !important;
+  /* 相同数字浅黄色 */
 }
 
 .highlighted-row-col {
-  background-color: rgba(200, 230, 255, 0.3) !important; /* 行/列浅蓝色 */
+  background-color: rgba(200, 230, 255, 0.3) !important;
+  /* 行/列浅蓝色 */
 }
 
 .highlighted-box {
-  background-color: rgba(255, 230, 200, 0.3) !important; /* 宫格浅橙色 */
+  background-color: rgba(255, 230, 200, 0.3) !important;
+  /* 宫格浅橙色 */
 }
 
 .highlighted-conflict {
-  background-color: #ffcdd2 !important; /* 冲突红色 */
+  background-color: #ffcdd2 !important;
+  /* 冲突红色 */
 }
 
-  .bottom-border {
-    border-bottom: 2px solid #333 !important;
-  }
-  
-  .right-border {
-    border-right: 2px solid #333 !important;
-  }
-  
-  /* Notes grid */
-  .notes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  .note {
-    font-size: clamp(10px, 2vw, 16px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #666;
-  }
-  
-  .note.visible {
-    visibility: visible;
-  }
-  
-  /* Control panel */
-  .control-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-left: 12px;
-    width: 180px;
-  }
-  
-  .number-pad {
-    margin-top: 74px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-  }
-  
-  .number-pad button {
-    width: 65px;
-    height: 65px;
-    font-size: clamp(14px, 4vw, 16px)m;;
-    border: none;
-    background-color: #3498db;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .number-display {
-    font-weight: bold;
-    font-size: clamp(16px, 4vw, 18px);
-    margin-bottom: 2px;
-    margin-right: 2px;
-  }
-  
-  .count-display {
-    font-size: clamp(10px, 2vw, 16px)m;;
-    color: #666;
-  }
-  
-  .number-pad button.completed {
-    opacity: 0.5;
-    text-decoration: line-through;
-  }
-  
-  .number-pad button:disabled {
-    cursor: not-allowed;
-  }
-  
-  /* Difficulty specific styles */
-  .difficulty-indicator {
-    margin-top: 5px;
-    font-size: 12px;
-    color: #666;
-    text-align: center;
-  }
+.bottom-border {
+  border-bottom: 2px solid #333 !important;
+}
 
-  .number-display.completed {
-    text-decoration: line-through;
-    opacity: 0.5;
-  }
+.right-border {
+  border-right: 2px solid #333 !important;
+}
 
-  .count-text {
-    font-size: 12px;
-    color: #666;
-  }
-  
-  /* Disabled number pad buttons */
-  .number-pad button:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    text-decoration: line-through;
-  }
-  
-  /* Difficulty specific styles */
-  .difficulty-indicator {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #2c3e50;
-  }
+/* Notes grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
- /* 数字面板 - 九宫格样式 */
+.note {
+  font-size: clamp(10px, 2vw, 16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+}
+
+.note.visible {
+  visibility: visible;
+}
+
+/* Control panel */
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 12px;
+  width: 180px;
+}
+
 .number-pad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    margin-bottom: 15px;
-  }
-  
-  .number-pad button {
-    width: 65px;
-    height: 65px;
-    font-size: 20px;
-    border: none;
-    background-color: #2c8fd1;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .number-pad button:hover{
-    background-color: #2980b9;
-    transform: scale(1.05);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
+  margin-top: 74px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
 
-  /* Disabled state */
+.number-pad button {
+  width: 65px;
+  height: 65px;
+  font-size: clamp(14px, 4vw, 16px)m;
+  ;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.number-display {
+  font-weight: bold;
+  font-size: clamp(16px, 4vw, 18px);
+  margin-bottom: 2px;
+  margin-right: 2px;
+}
+
+.count-display {
+  font-size: clamp(10px, 2vw, 16px)m;
+  ;
+  color: #666;
+}
+
+.number-pad button.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
 .number-pad button:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-  }
-  
-  /* 已完成数字的按钮 */
-  .number-pad button.completed {
-    opacity: 0.5;
-    text-decoration: line-through;
-  }
-  
-  /* Hover effect of the numbers used */
-  .number-pad button.completed:hover {
-    background-color: #95a5a6; /* 保持灰色 */
-    transform: none;          /* 禁用缩放 */
-  }
-  
-  
-  .number-pad button.completed {
-    opacity: 0.5;
-    text-decoration: line-through;
-  }
-  
-  /* Count the numbers used - single vertical row */
-  .horizontal-counts {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 0;
-    margin-bottom: 8px;
-    margin-top: 8px;
-    background-color: transparent;
-    border-radius: 5px;
-  }
-  
-  .count-item {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    min-width: 24px;
-  }
-  
-  .count-item .number {
-    font-weight: bold;
-    font-size:25px;
-  }
-  
-  .count-item .number.completed {
-    text-decoration: line-through;
-    opacity: 0.5;
-  }
-  
-  .count-item .remaining {
-    font-size: 16px;
-    color: #666;
-    margin-top: 2px;
-  }
-  
-  .action-buttons {
-    display: flex;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-top: 15px;
-  }
-  
-  .action-buttons button {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 48px;
-    height: 48px;
-    font-size: 14px;
-    justify-content: center;
-    border: solid 1.5px #2980b9;
-    background-color: transparent;
-    color: white;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .action-buttons button:hover {
-    background: #fffefe;
-    transform: translateY(-1px);
-  }
+  cursor: not-allowed;
+}
 
-  .action-buttons button.active {
-    background-color: #2980b9;
-    transform: scale(0.95);   /* slight shrink for "pressed" feel */
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); /* pressed shadow */
-  }
-  
-  .action-buttons button:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
-  }
-  
+/* Difficulty specific styles */
+.difficulty-indicator {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
 
-  /* 铅笔按钮 */
+.number-display.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.count-text {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Disabled number pad buttons */
+.number-pad button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* Difficulty specific styles */
+.difficulty-indicator {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* 数字面板 - 九宫格样式 */
+.number-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.number-pad button {
+  width: 65px;
+  height: 65px;
+  font-size: 20px;
+  border: none;
+  background-color: #2c8fd1;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.number-pad button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled state */
+.number-pad button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 已完成数字的按钮 */
+.number-pad button.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+/* Hover effect of the numbers used */
+.number-pad button.completed:hover {
+  background-color: #95a5a6;
+  /* 保持灰色 */
+  transform: none;
+  /* 禁用缩放 */
+}
+
+
+.number-pad button.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+/* Count the numbers used - single vertical row */
+.horizontal-counts {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.count-item {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  min-width: 24px;
+}
+
+.count-item .number {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.count-item .number.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.count-item .remaining {
+  font-size: 16px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.action-buttons {
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.action-buttons button {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  font-size: 14px;
+  justify-content: center;
+  border: solid 1.5px #2980b9;
+  background-color: transparent;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.action-buttons button:hover {
+  background: #fffefe;
+  transform: translateY(-1px);
+}
+
+.action-buttons button.active {
+  background-color: #2980b9;
+  transform: scale(0.95);
+  /* slight shrink for "pressed" feel */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* pressed shadow */
+}
+
+.action-buttons button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+
+/* 铅笔按钮 */
 .btn-pencil::before {
   content: "✏️";
   font-size: 18px;
@@ -425,7 +452,7 @@ html, body {
   position: absolute;
   width: 24px;
   height: 24px;
-  top:35%;
+  top: 35%;
   left: -15%;
   transform: translate(-50%, -50%);
 }
@@ -442,7 +469,7 @@ html, body {
   top: 4px;
   left: 7px;
   transform: rotate(0deg);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Erasing stroke (vertical) */
@@ -459,7 +486,7 @@ html, body {
   opacity: 0.8;
 }
 
-.btn-hint{
+.btn-hint {
   position: absolute;
   top: 30%;
   left: -70%;
@@ -485,7 +512,8 @@ html, body {
   transform: translateX(-50%);
   width: 16px;
   height: 16px;
-  background: #ffd700; /* Golden color */
+  background: #ffd700;
+  /* Golden color */
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
 }
@@ -494,7 +522,7 @@ html, body {
 .btn-hint::after {
   content: "";
   position: absolute;
-  top:20px;
+  top: 20px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -509,27 +537,29 @@ html, body {
   content: "🔄";
   font-size: 18px;
 }
-  
-.btn-eraser,.btn-hint,
-.btn-pencil,.btn-reset{
+
+.btn-eraser,
+.btn-hint,
+.btn-pencil,
+.btn-reset {
   position: relative;
-  width:24px;
+  width: 24px;
   height: 24px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-  /* Game info */
-  .game-info {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin: 10px 0;
-    font-size: 18px;
-  }
-  
-  /* 图标通用样式 */
+/* Game info -- the timer, mistake and hint attempts */
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+/* 图标通用样式 */
 .info-icon {
   width: 24px;
   height: 24px;
@@ -674,15 +704,15 @@ html, body {
 
 /* 响应式调整 */
 @media (max-width: 480px) {
-  .game-info > div {
+  .game-info>div {
     padding: 6px 10px;
   }
-  
+
   .info-icon {
     width: 30px;
     height: 30px;
   }
-  
+
   .hint-count {
     width: 16px;
     height: 16px;
@@ -690,77 +720,89 @@ html, body {
   }
 }
 
-  .game-controls {
-    margin: 16px 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  /* Game over overlay */
-  .game-over-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-  }
-  
-  .game-over-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: inset;
-    text-align: center;
-    border-width: 100px;
-  }
-  
-  .game-over-message {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    inset:50%;
-    translate: -50px -50% -50%;
-    color: #2c3e50;
-  }
-  
-  .play-again {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .play-again:hover {
-    background-color: #2980b9;
-  }
-  
-  /* Input elements */
-  select, button {
-    padding: 8px 16px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
+.game-controls {
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
-  /* Mobile responsive adjustments for number pad */
+/* Game over overlay */
+.game-over-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.game-over-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: inset;
+  text-align: center;
+  border-width: 100px;
+}
+
+.game-over-message {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  inset: 50%;
+  translate: -50px -50% -50%;
+  color: #2c3e50;
+}
+
+.play-again {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.play-again:hover {
+  background-color: #2980b9;
+}
+
+/* Input elements */
+select,
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Mobile responsive adjustments for number pad */
 @media (max-width: 768px) {
+
   /* Stack board and control panel vertically */
   .game-container {
     flex-direction: column;
     align-items: center;
     gap: 0.1rem;
+    width: 100%;
   }
-  .game-title{
-    visibility:none;
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .game-title {
+    display: none;
+  }
+
+  .logo-title-container {
+    display: none;
   }
 
   .control-panel {
@@ -768,6 +810,9 @@ html, body {
     margin-left: 0;
     align-items: center;
     margin-top: 0.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
   }
 
   /* Sudoku board fills width */
@@ -779,22 +824,25 @@ html, body {
   /* Number pad: 1 row layout */
   .number-pad {
     display: grid;
-    grid-template-columns: repeat(9, 1fr);  /* 9 buttons in one row */
-    gap: 2.5px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    grid-template-columns: repeat(9, 1fr);
+    /* 9 buttons in one row */
+    gap: 0.3rem;
+    margin: 0.25rem 0;
     width: 100%;
     justify-items: center;
   }
 
   .number-pad button {
-    width: 36px;         /* smaller size for mobile */
-    height: 36px;        /* keep square shape */
-    font-size: 14px;     /* slightly smaller font */
+    width: 2.5rem;
+    height: 2.5rem;
+    aspect-ratio: 1 / 1;
+    /* smaller size for mobile */
+    font-size: clamp(14px, 4vw, 18px);
+    /* slightly smaller font */
     padding: 0;
   }
 
-  .action-buttons{
+  .action-buttons {
     display: flex;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
@@ -806,5 +854,3 @@ html, body {
     font-size: clamp(14px, 4vw, 18px);
   }
 }
-
-  
