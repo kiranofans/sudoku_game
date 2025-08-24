@@ -13,7 +13,7 @@
 
 .game-title{
   text-align: left;
-  font-size: 2rem;
+  font-size: clamp(14px, 2vw, 16px)m;
   margin:0;
   line-height: 1.1;
   white-space: nowrap;
@@ -200,7 +200,7 @@ html, body {
   }
   
   .note {
-    font-size: 10px;
+    font-size: clamp(10px, 2vw, 16px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,7 +230,7 @@ html, body {
   .number-pad button {
     width: 65px;
     height: 65px;
-    font-size: 20px;
+    font-size: clamp(14px, 4vw, 16px)m;;
     border: none;
     background-color: #3498db;
     color: white;
@@ -240,22 +240,15 @@ html, body {
   
   .number-display {
     font-weight: bold;
-    font-size: 16px;
+    font-size: clamp(16px, 4vw, 18px);
     margin-bottom: 2px;
     margin-right: 2px;
   }
   
   .count-display {
-    font-size: 10px;
+    font-size: clamp(10px, 2vw, 16px)m;;
     color: #666;
   }
-  
-  /* Number pad styles
-  .number-pad {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 89px;
-  } */
   
   .number-pad button.completed {
     opacity: 0.5;
@@ -323,12 +316,12 @@ html, body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 
-  /* 禁用状态的按钮 */
+  /* Disabled state */
 .number-pad button:disabled {
-    background-color: #95a5a6; 
+    background-color: #95a5a6;
     cursor: not-allowed;
-    transform: none;        
-    box-shadow: none;        
+    transform: none;
+    box-shadow: none;
   }
   
   /* 已完成数字的按钮 */
@@ -337,7 +330,7 @@ html, body {
     text-decoration: line-through;
   }
   
-  /* 已完成数字按钮的悬停效果 */
+  /* Hover effect of the numbers used */
   .number-pad button.completed:hover {
     background-color: #95a5a6; /* 保持灰色 */
     transform: none;          /* 禁用缩放 */
@@ -349,7 +342,7 @@ html, body {
     text-decoration: line-through;
   }
   
-  /* 数字计数 - 水平单行 */
+  /* Count the numbers used - single vertical row */
   .horizontal-counts {
     display: flex;
     justify-content: space-between;
@@ -411,13 +404,16 @@ html, body {
   }
 
   .action-buttons button.active {
-    background-color: #2c3e50;
+    background-color: #2980b9;
+    transform: scale(0.95);   /* slight shrink for "pressed" feel */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); /* pressed shadow */
   }
   
   .action-buttons button:disabled {
     background-color: #95a5a6;
     cursor: not-allowed;
   }
+  
 
   /* 铅笔按钮 */
 .btn-pencil::before {
@@ -755,30 +751,60 @@ html, body {
     border: 1px solid #ccc;
   }
 
-  /* For Responsive Design  */
-  @media (max-width: 768px) {
-    .sudoku-app {
-      padding: 4vw;
-    }
-  
-    .game-container {
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-  
-    .control-panel {
-      width: 100%;
-      margin-left: 0;
-      align-items: center;
-    }
-  
-    .number-pad button {
-      width: 100%;
-      max-width: 60px;
-      height: auto;
-      aspect-ratio: 1 / 1;
-      font-size: clamp(16px, 5vw, 22px);
-    }
+  /* Mobile responsive adjustments for number pad */
+@media (max-width: 768px) {
+  /* Stack board and control panel vertically */
+  .game-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
   }
+  .game-title{
+    visibility:none;
+  }
+
+  .control-panel {
+    width: 100%;
+    margin-left: 0;
+    align-items: center;
+    margin-top: 0.1rem;
+  }
+
+  /* Sudoku board fills width */
+  .sudoku-board {
+    width: 90vw;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Number pad: 1 row layout */
+  .number-pad {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);  /* 9 buttons in one row */
+    gap: 2.5px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    justify-items: center;
+  }
+
+  .number-pad button {
+    width: 36px;         /* smaller size for mobile */
+    height: 36px;        /* keep square shape */
+    font-size: 14px;     /* slightly smaller font */
+    padding: 0;
+  }
+
+  .action-buttons{
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 0.1rem;
+  }
+
+  /* Optional: responsive scaling */
+  .cell {
+    font-size: clamp(14px, 4vw, 18px);
+  }
+}
+
   
