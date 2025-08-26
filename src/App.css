@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+body {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
 .game-title {
   text-align: left;
   font-size: clamp(1.2rem, 2vw, 2rem)m;
@@ -25,7 +29,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: medium;
   width: 100%;
   min-height: 100vh;
@@ -81,12 +85,17 @@ body {
 
 .game-container {
   display: flex;
-  gap: 26px;
-  width: 100%;
-  justify-content: center;
+  flex-direction: row;
+  /* stack vertically on mobile */
   align-items: center;
-  max-width: 700px;
-  margin-top: 0.1rem;
+  /* center horizontally */
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+  /* optional, caps size on desktop */
+  margin: 0 auto;
+  /* center horizontally */
 }
 
 .board-section {
@@ -105,11 +114,10 @@ body {
   /* keep square */
   width: 100%;
   /* fill container */
-  max-width: 95vw;
+  max-width: 90vw;
   /* cap to screen width */
-  margin: 12px auto;
+  margin: 10px auto;
   border: 2px solid #000000;
-
   background: white;
 }
 
@@ -235,14 +243,15 @@ body {
 .control-panel {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   margin-left: 12px;
   width: 180px;
 }
 
 .number-pad {
-  margin-top: 74px;
+  margin-top: 2rem;
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
 }
@@ -383,6 +392,7 @@ body {
   flex-direction: column;
   align-items: left;
   min-width: 24px;
+
 }
 
 .count-item .number {
@@ -405,7 +415,8 @@ body {
   display: flex;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
-  margin-top: 15px;
+  align-items: center;
+  margin-top: 4px;
 }
 
 .action-buttons button {
@@ -789,8 +800,10 @@ button {
   .game-container {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.1rem;
     width: 100%;
+    max-width: 400px;
   }
 
   .wrapper {
@@ -805,20 +818,37 @@ button {
     display: none;
   }
 
+  .game-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.1rem;
+  }
+  .info-icon{
+    width: 24px;
+    height: 24px;
+  }
+
   .control-panel {
     width: 100%;
     margin-left: 0;
     align-items: center;
     margin-top: 0.1rem;
     display: flex;
+    justify-content: flex-end;
+    z-index: 10;
     flex-direction: column;
     gap: 0.1rem;
   }
 
   /* Sudoku board fills width */
   .sudoku-board {
+    color: #2c8fd1;
     width: 90vw;
     aspect-ratio: 1 / 1;
+    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 0.2rem auto;
   }
 
   /* Number pad: 1 row layout */
@@ -826,31 +856,98 @@ button {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     /* 9 buttons in one row */
-    gap: 0.3rem;
+    gap: 3px;
     margin: 0.25rem 0;
     width: 100%;
+    max-width: 100%;
     justify-items: center;
+    grid-auto-rows: 50px;
+    /* height of each button */
+    margin: 0 auto;
   }
 
   .number-pad button {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.1rem;
+    height: auto;
     aspect-ratio: 1 / 1;
+
     /* smaller size for mobile */
-    font-size: clamp(14px, 4vw, 18px);
+    font-size: clamp(16px, 4vw, 18px);
     /* slightly smaller font */
     padding: 0;
   }
 
-  .action-buttons {
+  .counts-and-actionbtn {
     display: flex;
-    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: flex-start;
+    /* align top */
     gap: 8px;
+    width: 100%;
+    grid-template-columns: 1fr;
+    margin-top:0.1rem;
+    margin-bottom: 0.3rem;
+    /* spacing between counts and action buttons */
+  }
+
+  .horizontal-counts {
+    display: flex;
+    align-self: center;
+  }
+
+  .count-item .number {
+    font-weight: bold;
+    font-size: clamp(20px, 4vw, 22px);
+  }
+
+  .action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    width: 100%;
+    max-width: 150px;
+    align-items: flex-end;
     margin-top: 0.1rem;
+  }
+
+  .action-buttons button {
+    width: 3rem;
+    height: auto;
+    aspect-ratio: 1/1;
+    font-size: clamp(12px, 4vw, 16px);
+  }
+
+  
+  .action-buttons button .btn-pencil,
+  .action-buttons button .btn-eraser,
+  .action-buttons button .btn-hint,
+  .action-buttons button .btn-reset {
+    width: 20px;
+    /* scale down icon inside */
+    height: 20px;
+  }
+
+  .btn-hint {
+
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
   }
 
   /* Optional: responsive scaling */
   .cell {
-    font-size: clamp(14px, 4vw, 18px);
+    font-size: clamp(14px, 4vw, 16px);
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
   }
+
+  .cell.bottom-border {
+    border-bottom: 2px solid #333;
+  }
+
+  .cell.right-border {
+    border-right: 2px solid #333;
+  }
+
 }
