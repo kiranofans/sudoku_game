@@ -236,17 +236,17 @@ function App() {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  function setVh() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
+//   function setVh() {
+//   let vh = window.innerHeight * 0.01;
+//   document.documentElement.style.setProperty('--vh', `${vh}px`);
+// }
 
-// Run on load
-setVh();
+// // Run on load
+// setVh();
 
-// Run again on resize and orientation change
-window.addEventListener('resize', setVh);
-window.addEventListener('orientationchange', setVh);
+// // Run again on resize and orientation change
+// window.addEventListener('resize', setVh);
+// window.addEventListener('orientationchange', setVh);
 
 
   return (
