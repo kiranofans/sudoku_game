@@ -783,9 +783,9 @@ button {
 }
 
 /* Sudoku game top margin */
-.game-controls{
+/* .game-controls{
   margin-top: 4rem;
-}
+} */
 
   html, body{
     height: 100%;
