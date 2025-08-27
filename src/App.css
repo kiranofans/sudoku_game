@@ -784,7 +784,7 @@ button {
 
 /* Sudoku game top margin */
 .game-controls{
-  margin-top: calc(env(safe-area-inset-top, 0px) + 4.5rem);;
+  margin-top: calc(env(safe-area-inset-top, 0px) + 6rem);;
 }
 
   html, body{
@@ -930,7 +930,6 @@ button {
   }
 
   .btn-hint {
-
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
