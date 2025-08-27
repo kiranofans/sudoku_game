@@ -804,8 +804,6 @@ button {
     max-height: 100vh;
     padding-top: evn(safe-area-inset-top,1rem);
     padding-bottom:env(safe-area-inset-bottom,1rem);
-    padding-left: env(safe-area-inset-left,1rem);
-    padding-right:env(safe-area-inset-right,1rem);
   }
 
   .wrapper {
