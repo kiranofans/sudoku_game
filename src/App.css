@@ -789,7 +789,7 @@ button {
 
   html, body{
     height: 100%;
-    overflow-y:hidden;
+    overflow-x: hidden;
   }
 
   /* Stack board and control panel vertically */
