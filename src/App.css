@@ -800,7 +800,7 @@ button {
     gap: 0.1rem;
     height: calc(var(--vh, 1vh) * 100);
     width: 100%;
-    max-width: 400px;
+    max-width: 700px;/* increased the max width*/
     max-height: 100vh;
     padding-top: evn(safe-area-inset-top,1rem);
     padding-bottom:env(safe-area-inset-bottom,1rem);
@@ -845,6 +845,7 @@ button {
   .sudoku-board {
     color: #2c8fd1;
     width: 90vw;
+    height: auto;
     aspect-ratio: 1 / 1;
     justify-content: center;
     max-width: 100%;
