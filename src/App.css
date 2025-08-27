@@ -782,10 +782,10 @@ button {
   --vh: 100%; /* fallback */
 }
 
-/* Sudoku game top margin
+/* Sudoku game top margin */
 .game-controls{
   margin-top: 0rem;
-} */
+}
 
   html, body{
     height: 100%;
