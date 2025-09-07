@@ -414,7 +414,7 @@ body {
 .action-buttons {
   display: flex;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  gap: 0.3rem;
   align-items: center;
   margin-top: 4px;
 }
@@ -696,7 +696,7 @@ body {
   border: 2px solid white;
 }
 
-/* 广告状态 */
+/* Ads */
 .hint-count.ad {
   background: #e67e22;
   font-size: 10px;
@@ -778,18 +778,26 @@ button {
 /* Mobile responsive adjustments for number pad */
 @media (max-width: 768px) {
 
-:root {
-  --vh: 100%; /* fallback */
-}
+  :root {
+    --vh: 100%;
+    /* fallback */
+  }
 
-/* Sudoku game top margin */
-.game-controls{
-  margin-top: calc(env(safe-area-inset-top, 0px) + 6rem);;
-}
+  /* Sudoku game top margin */
+  .game-controls {
+    margin-top: calc(env(safe-area-inset-top, 0px) + 6rem);
+    ;
+  }
 
-  html, body{
+  html,
+  body {
     height: 100%;
+
     overflow-x: hidden;
+    overflow-y: hidden;
+    /* disable vertical scroll */
+    touch-action: none;
+    /* prevent touch scroll on mobile */
   }
 
   /* Stack board and control panel vertically */
@@ -800,10 +808,11 @@ button {
     gap: 0.1rem;
     height: calc(var(--vh, 1vh) * 100);
     width: 100%;
-    max-width: 700px;/* increased the max width*/
+    max-width: 700px;
+    /* increased the max width*/
     max-height: 100vh;
-    padding-top: evn(safe-area-inset-top,1rem);
-    padding-bottom:env(safe-area-inset-bottom,1rem);
+    padding-top: evn(safe-area-inset-top, 1rem);
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
   }
 
   .wrapper {
@@ -818,13 +827,14 @@ button {
     display: none;
   }
 
-  .game-info{
+  .game-info {
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin: 0.1rem;
   }
-  .info-icon{
+
+  .info-icon {
     width: 24px;
     height: 24px;
   }
@@ -855,39 +865,48 @@ button {
 
   /* Number pad: 1 row layout */
   .number-pad {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(9, 1fr);
     /* 9 buttons in one row */
-    gap: 3px;
-    margin: 0.25rem 0;
-    width: 100%;
+    gap: 8px;
+    width: 23.5rem;
+    height: auto;
     max-width: 100%;
     justify-items: center;
-    grid-auto-rows: 50px;
+    align-content: center;
     /* height of each button */
     margin: 0 auto;
   }
 
-  .number-pad button {
-    width: 2.1rem;
-    height: auto;
-    aspect-ratio: 1 / 1;
 
+  /* .number-pad>* {
+    max-width: none;
+  } */
+
+
+  .number-pad button {
+
+    width: 2.15rem;
+    height: 2.5rem;
+    aspect-ratio: 1 / 1;
+    align-self: center;
+    justify-content: center;
     /* smaller size for mobile */
-    font-size: clamp(16px, 4vw, 18px);
+    font-size: clamp(20px, 4vw, 18px);
     /* slightly smaller font */
     padding: 0;
   }
 
   .counts-and-actionbtn {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+
+    justify-content: column;
+    align-items: center;
     /* align top */
     gap: 8px;
     width: 100%;
+    font-size: 2rem;
     grid-template-columns: 1fr;
-    margin-top:0.1rem;
+    margin-top: 0.2rem;
     margin-bottom: 0.3rem;
     /* spacing between counts and action buttons */
   }
@@ -895,21 +914,34 @@ button {
   .horizontal-counts {
     display: flex;
     align-self: center;
+    gap: 10px;
   }
 
   .count-item .number {
+    display: none;
     font-weight: bold;
     font-size: clamp(20px, 4vw, 22px);
   }
 
+  .count-item .remaining {
+    width: 2rem;
+    max-width: 90vw;
+    gap: 1px;
+    height: auto;
+    font-size: clamp(24px, 4vw, 26px);
+
+  }
+
   .action-buttons {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
+    gap: 1.5rem;
     width: 100%;
-    max-width: 150px;
-    align-items: flex-end;
-    margin-top: 0.1rem;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .action-buttons button {
@@ -919,19 +951,18 @@ button {
     font-size: clamp(12px, 4vw, 16px);
   }
 
-  
+  .action-buttons .hint-icon{
+    position:relative;
+    align-self: center;
+  }
+
+
   .action-buttons button .btn-pencil,
   .action-buttons button .btn-eraser,
   .action-buttons button .btn-hint,
   .action-buttons button .btn-reset {
     width: 20px;
     /* scale down icon inside */
-    height: 20px;
-  }
-
-  .btn-hint {
-    transform: translate(-50%, -50%);
-    width: 20px;
     height: 20px;
   }
 

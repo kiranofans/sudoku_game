@@ -237,16 +237,16 @@ function App() {
   };
 
   function setVh() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
 
-// Run on load
-setVh();
+  // Run on load
+  setVh();
 
-// Run again on resize and orientation change
-window.addEventListener('resize', setVh);
-window.addEventListener('orientationchange', setVh);
+  // Run again on resize and orientation change
+  window.addEventListener('resize', setVh);
+  window.addEventListener('orientationchange', setVh);
 
 
   return (
@@ -348,21 +348,8 @@ window.addEventListener('orientationchange', setVh);
                 </div>
               </div>
 
-              <div className="control-panel">
-
-              
-                <div className="counts-and-actionbtn">
-                    {/*Wrap counts + actions together */}
-                <div className="horizontal-counts">
-                  {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
-                    <div key={num} className="count-item">
-                      <div className={`number ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
-                        {num}
-                      </div>
-                      <div className="remaining"> {numberCounts[num]}</div>
-                    </div>
-                  ))}
-                </div>
+              <div className="counts-and-actionbtn">
+                <div className="control-panel">
                   <div className="action-buttons">
                     <button
                       className={isPencilMode ? 'active' : ''}
@@ -380,7 +367,18 @@ window.addEventListener('orientationchange', setVh);
                       <div className="btn-reset"></div>
                     </button>
                   </div>
+                  <div className="horizontal-counts">
 
+                    {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
+                      <div key={num} className="count-item">
+                        <div className={`number ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
+                          {num}
+                        </div>
+                        <div className="remaining"> {numberCounts[num]}</div>
+                      </div>
+                    ))}
+                  </div>
+                  
                 </div>
                 <div className="number-pad">
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
