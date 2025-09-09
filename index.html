@@ -11,12 +11,23 @@
 
   <!-- Optional: for Apple devices -->
   <link rel="apple-touch-icon" href="path/to/logo.png">
-  
+
+  <!-- Icon libarary -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
+<script src="https://unpkg.com/nprogress/nprogress.js"></script>
+
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Loader overlay -->
+  <div id="loader" class="loader hidden">
+    <div class="spinner"></div>
+  </div>
 </body>
 
 </html>

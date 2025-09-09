@@ -24,12 +24,14 @@ function App() {
     col: number | null;
   }>({ row: null, col: null });
 
-  // 初始化游戏
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Initialize the game
   useEffect(() => {
     startNewGame();
   }, [difficulty]);
 
-  // 计时器
+  // Timer
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (!isGameOver) {
@@ -41,19 +43,23 @@ function App() {
   }, [isGameOver]);
 
   const startNewGame = useCallback(() => {
-    const { puzzle, solution } = generateSudoku(difficulty);
-    setBoard(puzzle);
-    setSolution(solution);
-    setInitialBoard(puzzle.map(row => [...row]));
-    setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
-    setSelectedCell(null);
-    setTime(0);
-    setMistakes(0);
-    setIsGameOver(false);
-    setHintsRemaining(3);
-    setIsPencilMode(false);
-    setCrossHighlight({ row: null, col: null });
-    updateNumberCounts(puzzle);
+    setIsLoading(true);
+    setTimeout(() => {
+      const { puzzle, solution } = generateSudoku(difficulty);
+      setBoard(puzzle);
+      setSolution(solution);
+      setInitialBoard(puzzle.map(row => [...row]));
+      setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
+      setSelectedCell(null);
+      setTime(0);
+      setMistakes(0);
+      setIsGameOver(false);
+      setHintsRemaining(3);
+      setIsPencilMode(false);
+      setCrossHighlight({ row: null, col: null });
+      updateNumberCounts(puzzle);
+      setIsLoading(false);
+    }, 300);
   }, [difficulty]);
 
   const updateNumberCounts = useCallback((currentBoard: (number | null)[][]) => {
@@ -78,7 +84,7 @@ function App() {
   const handleCellClick = (row: number, col: number) => {
     if (isGameOver) return;
 
-    // 更新选中单元格和十字高亮
+    // Update cross style selection
     setSelectedCell([row, col]);
     setCrossHighlight({ row, col });
   };
@@ -150,7 +156,7 @@ function App() {
     setCrossHighlight({ row, col });
   }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput]);
 
-  // 键盘控制
+  // Keyboard control
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedCell) return;
@@ -215,14 +221,21 @@ function App() {
   }, [hintsRemaining, selectedCell, isGameOver, initialBoard, board, solution, updateCountsAfterInput]);
 
   const handleReset = useCallback(() => {
-    setBoard(initialBoard.map(row => [...row]));
-    setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
-    setTime(0);
-    setMistakes(0);
-    setIsGameOver(false);
-    setCrossHighlight({ row: null, col: null });
-    updateNumberCounts(initialBoard);
+    setIsLoading(true);
+    setTimeout(() => {
+      setBoard(initialBoard.map(row => [...row]));
+      setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
+      setTime(0);
+      setMistakes(0);
+      setIsGameOver(false);
+      setCrossHighlight({ row: null, col: null });
+      updateNumberCounts(initialBoard);
+      setIsLoading(false);
+    }, 300);
   }, [initialBoard, updateNumberCounts]);
+
+
+  const [showInstructions, setShowInstructions] = useState(false);
 
   const checkBoardComplete = (currentBoard: (number | null)[][]) => {
     return currentBoard.every((row, i) =>
@@ -254,6 +267,36 @@ function App() {
       <body>
         <div className="wrapper">
           <div className="sudoku-app">
+            {isLoading && (
+              <div className="loading-overlay">
+                <div className="loading-bar">
+                  <div className="loading-progress"></div>
+                </div>
+                <div className="loading-text">Loading...</div>
+              </div>
+            )}
+
+            {/* Instructions - only show if not loading */}
+            {showInstructions && !isLoading && (
+              <div className="instructions-overlay">
+                <div className="instructions-content">
+                  <h2>How to Play Sudoku</h2>
+
+                  <h3>Quick Guide</h3>
+                  <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
+
+                  <h3>Detailed Guide</h3>
+                  <ul>
+                    <li>Click a cell to select it.</li>
+                    <li>Type a number (1–9) or use the number pad to fill it in.</li>
+                    <li>Switch to <b>Pencil Mode</b> to make notes for possible numbers.</li>
+                    <li>You can use up to 3 hints during the game.</li>
+                    <li>The game ends after 3 mistakes or when the puzzle is solved.</li>
+                  </ul>
+                  <button className='instruct-close-btn' onClick={() => setShowInstructions(false)}>Close</button>
+                </div>
+              </div>
+            )}
             <div className="logo-title-container">
               <img src="logo_sudoku1.png" alt="Logo" className="logo" />
               <h1 className='game-title'>Sudoku Game</h1>
@@ -273,8 +316,12 @@ function App() {
               </select>
 
               <button onClick={startNewGame}>New Game</button>
-            </div>
 
+              {/* How to Play icon button */}
+              <button onClick={() => setShowInstructions(true)} className="how-to-play-btn">
+                <i className="how-to-icon"></i> ?
+              </button>
+            </div>
             <div className="game-container">
               <div className="board-section">
                 <div className="game-info">
@@ -378,7 +425,7 @@ function App() {
                       </div>
                     ))}
                   </div>
-                  
+
                 </div>
                 <div className="number-pad">
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (

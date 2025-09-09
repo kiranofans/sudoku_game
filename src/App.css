@@ -17,6 +17,47 @@ body {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.loading-bar {
+  width: 60%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.loading-progress {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #4cafef, #2196f3, #4cafef);
+  animation: progressMove 1.5s infinite linear;
+}
+
+@keyframes progressMove {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.close-btn:hover {
+  background: #555;
+}
+
 .game-title {
   text-align: left;
   font-size: clamp(1.2rem, 2vw, 2rem)m;
@@ -140,7 +181,7 @@ body {
 }
 
 
-/* 十字高亮效果 */
+/* Cross highlight effect */
 .cell.cross-highlight {
   background-color: rgba(173, 216, 230, 0.3);
 }
@@ -157,7 +198,7 @@ body {
   background-color: rgba(255, 0, 0, 0.2);
 }
 
-/* 3x3宫格边框 */
+/* 3x3 grid border */
 .cell.bottom-border {
   border-bottom: 2px solid #333;
 }
@@ -186,25 +227,25 @@ body {
   /* Red */
 }
 
-/* 高亮样式 */
+/* Highlight style */
 .highlighted-same {
   background-color: #fff9c4 !important;
-  /* 相同数字浅黄色 */
+  /* if the same number show the number in color of light yellow */
 }
 
 .highlighted-row-col {
   background-color: rgba(200, 230, 255, 0.3) !important;
-  /* 行/列浅蓝色 */
+  /* row/column in color of light blue */
 }
 
 .highlighted-box {
   background-color: rgba(255, 230, 200, 0.3) !important;
-  /* 宫格浅橙色 */
+  /* the 3x3 gride in color of light orange */
 }
 
 .highlighted-conflict {
   background-color: #ffcdd2 !important;
-  /* 冲突红色 */
+  /* Conflict status in color of red */
 }
 
 .bottom-border {
@@ -678,7 +719,7 @@ body {
   color: #ffd700;
 }
 
-/* 提示次数标记 */
+/* Number of hints count */
 .hint-count {
   position: absolute;
   top: -6px;
@@ -785,8 +826,14 @@ button {
 
   /* Sudoku game top margin */
   .game-controls {
+    display: flex;
     margin-top: calc(env(safe-area-inset-top, 0px) + 6rem);
-    ;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  .game-controls:last-child {
+    flex-grow: 2;
   }
 
   html,
@@ -843,7 +890,7 @@ button {
     width: 100%;
     margin-left: 0;
     align-items: center;
-    margin-top: 0.1rem;
+    margin-top: 0.2rem;
     display: flex;
     justify-content: flex-end;
     z-index: 10;
@@ -869,25 +916,18 @@ button {
     grid-template-columns: repeat(9, 1fr);
     /* 9 buttons in one row */
     gap: 8px;
-    width: 23.5rem;
+    width: 23rem;
     height: auto;
     max-width: 100%;
     justify-items: center;
     align-content: center;
     /* height of each button */
-    margin: 0 auto;
+    margin: 0 auto 0 16px;
   }
 
-
-  /* .number-pad>* {
-    max-width: none;
-  } */
-
-
   .number-pad button {
-
-    width: 2.15rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2.8rem;
     aspect-ratio: 1 / 1;
     align-self: center;
     justify-content: center;
@@ -897,8 +937,29 @@ button {
     padding: 0;
   }
 
-  .counts-and-actionbtn {
+  /* Top-right floating How To button */
+  .how-to-play-btn {
+    position: fixed;
+    top: 1rem;
+    /* distance from top */
+    right: 1rem;
+    /* distance from right */
+    z-index: 1000;
+    /* make sure it stays above the game UI */
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    /* fully rounded */
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    margin-top: 0.4rem;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    /* cursor: pointer; */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
 
+  .counts-and-actionbtn {
     justify-content: column;
     align-items: center;
     /* align top */
@@ -914,7 +975,7 @@ button {
   .horizontal-counts {
     display: flex;
     align-self: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .count-item .number {
@@ -945,17 +1006,20 @@ button {
   }
 
   .action-buttons button {
+    display: flex;
     width: 3rem;
     height: auto;
     aspect-ratio: 1/1;
     font-size: clamp(12px, 4vw, 16px);
+    align-items: center;
+    background: transparent;
+    justify-content: center;
   }
 
-  .action-buttons .hint-icon{
-    position:relative;
+  /* .action-buttons .hint-icon {
+    position: relative;
     align-self: center;
-  }
-
+  } */
 
   .action-buttons button .btn-pencil,
   .action-buttons button .btn-eraser,
@@ -981,5 +1045,53 @@ button {
   .cell.right-border {
     border-right: 2px solid #333;
   }
+
+/* Instruction popup modal */
+.instructions-overlay {
+  position: fixed;
+  inset: 0; /* shorthand for top, right, bottom, left = 0 */
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* make sure it’s on top */
+}
+
+/* Popup box */
+.instructions-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 1.5%;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  animation: fadeInScale 0.25s ease;
+  margin: 1rem;
+}
+
+/* Close button */
+.instruct-close-btn {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+/* Small entrance animation */
+@keyframes fadeInScale {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 }
