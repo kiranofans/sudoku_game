@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback,useRef } from 'react';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
 import './App.css';
 
@@ -25,6 +25,31 @@ function App() {
   }>({ row: null, col: null });
 
   const [isLoading, setIsLoading] = useState(false);
+  const progressRef = useRef<HTMLDivElement>(null);
+  /* loader */
+  useEffect(() => {
+    if (isLoading) {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 10;
+        if (progress > 95) progress = 95;
+        if (progressRef.current) {
+          progressRef.current.style.width = `${progress}%`;
+        }
+      }, 200);
+
+      return () => clearInterval(interval);
+    } else {
+      if (progressRef.current) {
+        progressRef.current.style.width = "100%";
+        setTimeout(() => {
+          if (progressRef.current) {
+            progressRef.current.style.width = "0%";
+          }
+        }, 300);
+      }
+    }
+  }, [isLoading]);
 
   // Initialize the game
   useEffect(() => {
@@ -269,10 +294,11 @@ function App() {
           <div className="sudoku-app">
             {isLoading && (
               <div className="loading-overlay">
-                <div className="loading-bar">
+                <div className="loading-bar"
+                  style={{ width: isLoading ? '100%' : '0%' }}>
                   <div className="loading-progress"></div>
                 </div>
-                <div className="loading-text">Loading...</div>
+                {/* <div className="loading-text">Loading...</div> */}
               </div>
             )}
 
