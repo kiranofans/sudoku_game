@@ -912,7 +912,7 @@ button {
   /* Sudoku game top margin */
   .game-controls {
     display: flex;
-    margin-top: calc(env(safe-area-inset-top, 0px) + 3rem);
+    /* margin-top: calc(env(safe-area-inset-top, 0px) + 6rem); */
     flex-grow: 1;
     flex-basis: 0;
   }
@@ -948,7 +948,6 @@ button {
   }
 
   .wrapper {
-    height: 100vh;
     overflow-y: auto;
     width: 100%;
   }
@@ -1058,6 +1057,7 @@ button {
   .count-item .remaining {
     display: flex;
     width: 2rem;
+    max-width: 60px;
     text-align: center;
     gap: 0.5rem;
     height: auto;
