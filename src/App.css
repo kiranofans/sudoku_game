@@ -19,28 +19,6 @@ body {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-/* Top-right floating How To button */
-.how-to-play-btn {
-  position: fixed;
-  top: 1rem;
-  /* distance from top */
-  right: 1rem;
-  /* distance from right */
-  z-index: 1000;
-  /* make sure it stays above the game UI */
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  /* fully rounded */
-  padding: 0.5rem;
-  margin-top: clamp(0.4rem, 2vw, 0.5rem);
-  margin-left: clamp(0.5rem, 2vw, 40%);
-  font-size: clamp(0.8rem, 2vw, 22px);
-  font-weight: 600;
-  /* cursor: pointer; */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
 /* Instruction popup modal */
 .instructions-overlay {
   position: fixed;
@@ -909,10 +887,33 @@ button {
     /* fallback */
   }
 
+  /* Top-right floating How To button */
+  .how-to-play-btn {
+    position: fixed;
+    top: 3.2rem;
+    /* distance from top */
+    right: 1rem;
+    /* distance from right */
+    z-index: clamp(1000, 2vw, 200);
+    /* make sure it stays above the game UI */
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    /* fully rounded */
+    padding: 0.5rem;
+    margin-top: clamp(0.4rem, 2vw, 0.5rem);
+    margin-left: clamp(0.5rem, 2vw, 40%);
+    font-size: clamp(0.8rem, 2vw, 22px);
+    font-weight: 600;
+    /* cursor: pointer; */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
   /* Sudoku game top margin */
   .game-controls {
     display: flex;
     /* margin-top: calc(env(safe-area-inset-top, 0px) + 6rem); */
+    margin-top: 3rem;
     flex-grow: 1;
     flex-basis: 0;
   }
@@ -1118,29 +1119,23 @@ button {
     border-right: 2px solid #333;
   }
 
-  .new-game-btn {
-    max-width: 4rem;
-  }
 
-  .difficulty-dropdown{
-    max-width: clamp(5.5rem,2vw,6rem);
-    padding:0 0.2rem 0;
-    font-size: clamp(12px,2vw,20px);
-  }
 }
 
-@media (max-width: 410px) {
-   /* Sudoku game top margin */
+@media (max-width: 410px) {/* Small screens like Iphone SE */
+
+  /* Sudoku game top margin */
   .game-controls {
+    margin: 2rem;
     display: flex;
-    /* margin-top: calc(env(safe-area-inset-top, 0px) + 6rem); */
-    margin-top:0.5rem;
     flex-grow: 1;
     flex-basis: 0;
   }
-  .wrapper{
+
+  .wrapper {
     overflow-y: hidden;
   }
+
   .number-pad {
     display: flex;
     max-width: 70px;
@@ -1165,4 +1160,33 @@ button {
   .number-pad button {
     width: 1.5rem;
   }
+
+  .difficulty-dropdown {
+    max-width: clamp(5.5rem, 2vw, 7rem);
+    padding: 0 0.2rem 0;
+    font-size: clamp(12px, 2vw, 20px);
+  }
+
+  /* Top-right floating How To button */
+  .how-to-play-btn {
+    position: fixed;
+    top: 2.5rem;
+    /* distance from top */
+    right: 1rem;
+    /* distance from right */
+    z-index: 1000;
+    /* above everything */
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    padding: 0.5rem 0.75rem;
+    /* optional, adjust for size */
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    /* remove margin interference */
+  }
+
 }
