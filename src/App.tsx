@@ -292,6 +292,7 @@ function App() {
       <body>
         <div className="wrapper">
           <div className="sudoku-app">
+            {/* Wrap themain game container in scrollable div */}
             {isLoading && (
               <div className="loading-overlay">
                 <div className="loading-bar"
@@ -328,7 +329,7 @@ function App() {
               <h1 className='game-title'>Sudoku Game</h1>
             </div>
             <div className="game-controls">
-              <select
+              <select className='difficulty-dropdown'
                 value={difficulty}
                 onChange={(e) => {
                   setDifficulty(e.target.value as Difficulty);
@@ -341,11 +342,10 @@ function App() {
                 <option value="expert">Expert</option>
               </select>
 
-              <button onClick={startNewGame}>New Game</button>
+              <button className="new-game-btn" onClick={startNewGame}>New Game</button>
 
               {/* How to Play icon button */}
-              <button onClick={() => setShowInstructions(true)} className="how-to-play-btn">
-                <i className="how-to-icon"></i> ?
+              <button onClick={() => setShowInstructions(true)} className="how-to-play-btn">?
               </button>
             </div>
             <div className="game-container">
