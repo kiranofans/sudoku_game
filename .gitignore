@@ -36,3 +36,6 @@ node_modules/.cache/
 #Coverage/test reports (If using test tools)
 coverage/
 *.lcov
+
+# GitHub pages cache / deploy files
+https!github_pat_*
