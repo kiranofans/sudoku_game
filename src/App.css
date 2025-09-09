@@ -1134,6 +1134,7 @@ button {
   .game-controls {
     display: flex;
     /* margin-top: calc(env(safe-area-inset-top, 0px) + 6rem); */
+    margin-top:0.5rem;
     flex-grow: 1;
     flex-basis: 0;
   }
