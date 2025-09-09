@@ -11,13 +11,24 @@
 
   <!-- Optional: for Apple devices -->
   <link rel="apple-touch-icon" href="path/to/logo.png">
-  
-  <script type="module" crossorigin src="/sudoku_game/assets/index-C9Zhmjwg.js"></script>
-  <link rel="stylesheet" crossorigin href="/sudoku_game/assets/index-DGC8qRU_.css">
+
+  <!-- Icon libarary -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
+<script src="https://unpkg.com/nprogress/nprogress.js"></script>
+
+  <script type="module" crossorigin src="/sudoku_game/assets/index-CnJ7C9UX.js"></script>
+  <link rel="stylesheet" crossorigin href="/sudoku_game/assets/index-4ca1iQvE.css">
 </head>
 
 <body>
   <div id="root"></div>
+
+    <!-- Loader overlay -->
+  <div id="loader" class="loader hidden">
+    <div class="spinner"></div>
+  </div>
 </body>
 
 </html>
