@@ -1,13 +1,15 @@
 # Node modules
 node_modules/
 
-# Build output
+# Build output for GitJHub pages
 build/
+dist/
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # OS files
 .DS_Store
@@ -15,3 +17,22 @@ Thumbs.db
 
 # Environment variables
 .env
+.env.local
+.env.development
+.env.production
+
+# Cache folders
+node_modules/.cache/
+.cache/
+
+#Editor/IDE config files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+#Coverage/test reports (If using test tools)
+coverage/
+*.lcov
