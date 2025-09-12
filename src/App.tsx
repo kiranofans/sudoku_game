@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback,useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
 import './App.css';
 
@@ -426,17 +426,44 @@ function App() {
                   <div className="action-buttons">
                     <button
                       className={isPencilMode ? 'active' : ''}
-                      onClick={() => setIsPencilMode(!isPencilMode)}>
+                      onClick={() => setIsPencilMode(!isPencilMode)}
+                      aria-pressed={isPencilMode}
+                      aria-label="Toggle pencil mode">
                       <div className="btn-pencil" ></div>
                     </button>
                     <button onClick={handleEraser}>
                       <div className='btn-eraser'></div>
                     </button>
-                    <button onClick={handleHint} disabled={hintsRemaining <= 0}>
-                      ({hintsRemaining})
-                      <div className='btn-hint'></div>
+                    <button onClick={() => {
+                      if (hintsRemaining > 0) {
+                        handleHint();
+                      } else {
+                        // show ad logic
+                        alert("Show Ad here to earn more hints!");
+                        setHintsRemaining(1); // for example, give 1 extra hint after ad
+                      }
+                    }}
+                      className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
+                      aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn a hint'}
+                    >
+                      {/* Central text (number or Ad) */}
+                      <span className="hint-text">
+                        {hintsRemaining > 0 ? `(${hintsRemaining})` : "Ad"}
+                      </span>
+                      <div className='btn-hint' aria-hidden="true"></div>
+
+                      {hintsRemaining <= 0 && (
+                      <span className="ad-badge" role="status" aria-live="polite">Ad</span>
+                      )}
+
+                      {/* visible top-right badge only when ad-mode (keeps "Ad" visible and also shows the badge) */}
+                      {hintsRemaining <= 0 && (
+                        <span className="ad-badge" role="status" aria-live="polite">
+                          Ad
+                        </span>
+                      )}
                     </button>
-                    <button onClick={handleReset}>
+                    <button onClick={handleReset} aria-label="Reset">
                       <div className="btn-reset"></div>
                     </button>
                   </div>
