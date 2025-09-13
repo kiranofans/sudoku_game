@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
 
 import ReactGA from 'react-ga4';
-import.meta.env.VITE_GA_MEASUREMENT_ID;
 import './App.css';
 
 {/* Set google analytic with Vite container */ }
@@ -30,14 +29,15 @@ function App() {
     col: number | null;
   }>({ row: null, col: null });
 
-  // Google Analytic setup
+  // Google Analytic setup & init
   useEffect(() => {
     ReactGA.initialize(GA_MEASUREMENT_ID);
-    ReactGA.send('pageview');
+    ReactGA.send({ hitType: 'pageview', page: `/game/${difficulty}` });
   }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
+
   /* loader */
   useEffect(() => {
     if (isLoading) {
@@ -66,6 +66,11 @@ function App() {
   // Initialize the game
   useEffect(() => {
     startNewGame();
+    ReactGA.event({
+      category: 'Game',
+      action: 'start_new_game',
+      label: difficulty
+    });
   }, [difficulty]);
 
   // Timer
@@ -97,6 +102,11 @@ function App() {
       updateNumberCounts(puzzle);
       setIsLoading(false);
     }, 300);
+    ReactGA.event({
+      category: 'Game',
+      action: 'start_new_game',
+      label: difficulty
+    });
   }, [difficulty]);
 
   const updateNumberCounts = useCallback((currentBoard: (number | null)[][]) => {
@@ -344,10 +354,15 @@ function App() {
                 value={difficulty}
                 onChange={(e) => {
                   setDifficulty(e.target.value as Difficulty);
-                  ReactGA.event("change_difficulty", {
-                    difficulty: difficulty
+                  ReactGA.event({
+                    category: 'Game',
+                    action: 'change_difficulty',
+                    label: difficulty
                   });
+                  ReactGA.send({ hitType: 'pageview', page: `/game/${difficulty}` });
+
                   startNewGame();
+
                 }}
               >
                 <option value="easy">Easy</option>
