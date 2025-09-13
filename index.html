@@ -17,16 +17,17 @@
 
   <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
   <script src="https://unpkg.com/nprogress/nprogress.js"></script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEPXZK1VC5"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    gtag('config', 'G-VEPXZK1VC5');
+    gtag('config', 'G-RCKPRQLLGW', {
+      page_path: window.location.pathname
+    });
   </script>
-
 </head>
 
 <body>
