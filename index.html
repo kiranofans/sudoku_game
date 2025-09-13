@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-RCKPRQLLGW" async></script>
+  <script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-RCKPRQLLGW');
+</script>
+
   <meta charset="UTF-8" />
 
   <title>Sudoku Game</title>
@@ -18,27 +25,34 @@
   <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
   <script src="https://unpkg.com/nprogress/nprogress.js"></script>
 
+  <!-- <script>
+    // Use an inline script to define the ID from your environment variable
+    window.GA_MEASUREMENT_ID = "G-RCKPRQLLGW";
+  </script> -->
+
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCKPRQLLGW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-RCKPRQLLGW', {
-      page_path: window.location.pathname
-    });
+    gtag('config', window.GA_MEASUREMENT_ID);
+
   </script>
-  <script type="module" crossorigin src="/sudoku_game/assets/index-DT2xj-fy.js"></script>
+  <script type="module" crossorigin src="/sudoku_game/assets/index-Cl8P1aTO.js"></script>
   <link rel="stylesheet" crossorigin href="/sudoku_game/assets/index-CZyW8yCA.css">
 </head>
 
 <body>
+  <noscript></noscript>
+
   <div id="root"></div>
 
   <!-- Loader overlay -->
   <div id="loader" class="loader hidden">
     <div class="spinner"></div>
   </div>
+  
 </body>
 
-</html>
+</html> 
