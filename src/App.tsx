@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
 
 import ReactGA from 'react-ga4';
+import.meta.env.VITE_GA_MEASUREMENT_ID;
 import './App.css';
 
 {/* Set google analytic with Vite container */ }
