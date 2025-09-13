@@ -1,6 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
+
+import ReactGA from 'react-ga4';
 import './App.css';
+
+{/* Set google analytic with Vite container */ }
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
 type CellNotes = Set<number>;
 
@@ -23,6 +28,12 @@ function App() {
     row: number | null;
     col: number | null;
   }>({ row: null, col: null });
+
+  // Google Analytic setup
+  useEffect(() => {
+    ReactGA.initialize(GA_MEASUREMENT_ID);
+    ReactGA.send('pageview');
+  }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
@@ -286,7 +297,6 @@ function App() {
   window.addEventListener('resize', setVh);
   window.addEventListener('orientationchange', setVh);
 
-
   return (
     <html>
       <body>
@@ -333,6 +343,9 @@ function App() {
                 value={difficulty}
                 onChange={(e) => {
                   setDifficulty(e.target.value as Difficulty);
+                  ReactGA.event("change_difficulty", {
+                    difficulty: difficulty
+                  });
                   startNewGame();
                 }}
               >
@@ -453,7 +466,7 @@ function App() {
                       <div className='btn-hint' aria-hidden="true"></div>
 
                       {hintsRemaining <= 0 && (
-                      <span className="ad-badge" role="status" aria-live="polite">Ad</span>
+                        <span className="ad-badge" role="status" aria-live="polite">Ad</span>
                       )}
 
                       {/* visible top-right badge only when ad-mode (keeps "Ad" visible and also shows the badge) */}

@@ -18,19 +18,25 @@
   <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
   <script src="https://unpkg.com/nprogress/nprogress.js"></script>
 
+  <!-- <script>
+    // Use an inline script to define the ID from your environment variable
+    window.GA_MEASUREMENT_ID = "%VITE_GA_MEASUREMENT_ID%";
+  </script> -->
+
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCKPRQLLGW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-RCKPRQLLGW', {
-      page_path: window.location.pathname
-    });
+    gtag('config', window.GA_MEASUREMENT_ID);
+
   </script>
 </head>
 
 <body>
+  <noscript></noscript>
+
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
@@ -38,6 +44,7 @@
   <div id="loader" class="loader hidden">
     <div class="spinner"></div>
   </div>
+  
 </body>
 
-</html>
+</html> 
