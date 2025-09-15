@@ -318,7 +318,14 @@ function App() {
               <h2 className='game-title'>Sudoku Game</h2>
             </div>
             {/* How to Play icon button */}
-            <button onClick={() => setShowInstructions(true)}
+            <button onClick={() => {
+              setShowInstructions(true);
+              ReactGA.event({
+                category: 'Instruction',
+                action: 'Instruction button clicks',
+                label: showInstructions ? "Opened" : "Didn't Open",
+              });
+            }}
               className="how-to-play-btn">?
             </button>
           </header>
@@ -340,7 +347,7 @@ function App() {
             {showInstructions && !isLoading && (
               <div className="instructions-overlay">
                 <div className="instructions-content">
-                   <button className='instruct-close-btn' onClick={() => setShowInstructions(false)}></button>
+                  <button className='instruct-close-btn' onClick={() => setShowInstructions(false)}></button>
                   <h3 className='content-title'>How to Play Sudoku</h3>
 
                   <h4>Quick Guide</h4>
@@ -354,7 +361,7 @@ function App() {
                     <li>You can use up to 3 hints during the game.</li>
                     <li>The game ends after 3 mistakes or when the puzzle is solved.</li>
                   </ol>
-              
+
                 </div>
               </div>
             )}
@@ -370,10 +377,7 @@ function App() {
                       action: 'change_difficulty',
                       label: difficulty
                     });
-                    ReactGA.send({ hitType: 'pageview', page: `/game/${difficulty}` });
-
                     startNewGame();
-
                   }}
                 >
                   <option value="easy">Easy</option>
