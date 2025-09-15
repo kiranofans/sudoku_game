@@ -340,20 +340,21 @@ function App() {
             {showInstructions && !isLoading && (
               <div className="instructions-overlay">
                 <div className="instructions-content">
-                  <h2>How to Play Sudoku</h2>
+                   <button className='instruct-close-btn' onClick={() => setShowInstructions(false)}></button>
+                  <h3 className='content-title'>How to Play Sudoku</h3>
 
-                  <h3>Quick Guide</h3>
+                  <h4>Quick Guide</h4>
                   <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
 
-                  <h3>Detailed Guide</h3>
-                  <ul>
+                  <h4>Detailed Guide</h4>
+                  <ol type='1'>
                     <li>Click a cell to select it.</li>
                     <li>Type a number (1–9) or use the number pad to fill it in.</li>
                     <li>Switch to <b>Pencil Mode</b> to make notes for possible numbers.</li>
                     <li>You can use up to 3 hints during the game.</li>
                     <li>The game ends after 3 mistakes or when the puzzle is solved.</li>
-                  </ul>
-                  <button className='instruct-close-btn' onClick={() => setShowInstructions(false)}>Close</button>
+                  </ol>
+              
                 </div>
               </div>
             )}
