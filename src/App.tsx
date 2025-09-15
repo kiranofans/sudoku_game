@@ -312,6 +312,18 @@ function App() {
     <html>
       <body>
         <div className="wrapper">
+          <header className="menu-bar">
+            <div className="logo-title-container">
+              <img src="logo_sudoku1.png" alt="Logo" className="logo" />
+              <h2 className='game-title'>Sudoku Game</h2>
+            </div>
+            {/* How to Play icon button */}
+            <button onClick={() => setShowInstructions(true)}
+              className="how-to-play-btn">?
+            </button>
+          </header>
+          <hr className="divider" />
+
           <div className="sudoku-app">
             {/* Wrap themain game container in scrollable div */}
             {isLoading && (
@@ -345,37 +357,31 @@ function App() {
                 </div>
               </div>
             )}
-            <div className="logo-title-container">
-              <img src="logo_sudoku1.png" alt="Logo" className="logo" />
-              <h1 className='game-title'>Sudoku Game</h1>
-            </div>
+
             <div className="game-controls">
-              <select className='difficulty-dropdown'
-                value={difficulty}
-                onChange={(e) => {
-                  setDifficulty(e.target.value as Difficulty);
-                  ReactGA.event({
-                    category: 'Game',
-                    action: 'change_difficulty',
-                    label: difficulty
-                  });
-                  ReactGA.send({ hitType: 'pageview', page: `/game/${difficulty}` });
+              <div className='controls-row'>
+                <select className='difficulty-dropdown'
+                  value={difficulty}
+                  onChange={(e) => {
+                    setDifficulty(e.target.value as Difficulty);
+                    ReactGA.event({
+                      category: 'Game',
+                      action: 'change_difficulty',
+                      label: difficulty
+                    });
+                    ReactGA.send({ hitType: 'pageview', page: `/game/${difficulty}` });
 
-                  startNewGame();
+                    startNewGame();
 
-                }}
-              >
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-                <option value="expert">Expert</option>
-              </select>
-
+                  }}
+                >
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                  <option value="expert">Expert</option>
+                </select>
+              </div>
               <button className="new-game-btn" onClick={startNewGame}>New Game</button>
-
-              {/* How to Play icon button */}
-              <button onClick={() => setShowInstructions(true)} className="how-to-play-btn">?
-              </button>
             </div>
             <div className="game-container">
               <div className="board-section">
@@ -458,7 +464,8 @@ function App() {
                       onClick={() => setIsPencilMode(!isPencilMode)}
                       aria-pressed={isPencilMode}
                       aria-label="Toggle pencil mode">
-                      <div className="btn-pencil" ></div>
+                      <div className="btn-pencil" title="Edit">
+                      </div>
                     </button>
                     <button onClick={handleEraser}>
                       <div className='btn-eraser'></div>
