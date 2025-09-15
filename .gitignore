@@ -38,4 +38,5 @@ coverage/
 *.lcov
 
 # GitHub pages cache / deploy files
-https!github_pat_*
+node_modules/.cache/gh-pages/
+
