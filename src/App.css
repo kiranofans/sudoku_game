@@ -1,4 +1,70 @@
-/* Base styles */
+:root {
+  --header-inner-height: 56px;
+  /* change to fit your design */
+
+}
+
+/* Menu Bar */
+.menu-bar {
+  display: flex;
+  align-items: center;
+  /* Switching left to center fixed the problem on large screen size that the 
+  how-to button stretched vertically because the menu bar’s align-items was 
+  invalid (left) and defaulted to stretch; setting it to center fixes it.*/
+  justify-content: flex-start;
+  /* align logo + title to left */
+  padding-left: clamp(12px, 2vw, 20px);
+  padding-right: clamp(12px, 2vw, 20px);
+  width: 100%;
+  gap: clamp(20px, 2vw, 100px);
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  /* must be higher than content*/
+  background-color: white;
+  top: env(safe-area-inset-top);
+  /* sits below the notch */
+  height: var(--header-inner-height, 56px);
+}
+
+.game-title {
+  text-align: left;
+  font-size: clamp(1.1rem, 2vw, 2rem)m;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Menu bar divider line */
+.divider {
+  border: none;
+  border-top: 0.8px solid #e4e4e4;
+  /* line thickness + color */
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: medium;
+  width: 100%;
+  height: 100dvh;
+  /* fallback for older browsers that don't support dvh */
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
+  gap: 0.1rem;
+  padding: 6px;
+  margin-bottom: 0;
+  color: black;
+  box-sizing: border-box;
+}
+
+/* Base styles & content */
 .sudoku-app {
   display: flex;
   flex-direction: column;
@@ -8,14 +74,21 @@
   /* vertically center children */
   text-align: center;
   font-family: Arial, sans-serif;
-  padding: 0 1rem;
+  padding-top: 0;
+  padding-bottom: 1rem;
   max-width: 100%;
-  min-height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /* smooth scrolling on iOS */
+
+  max-height: calc(var(--vh, 1vh) * 100 - 60px);
+  /* subtract header height */
   box-sizing: border-box;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 12px);
 }
 
 body {
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
 }
 
 /* Instruction popup modal */
@@ -29,9 +102,12 @@ body {
   align-items: center;
   z-index: 999;
   /* make sure it’s on top */
-  padding: 1rem;             /* add some space around */
-  flex-direction: column;    /* ensure vertical stacking */
-  box-sizing: border-box;    /* include padding in size */
+  padding: 1rem;
+  /* add some space around */
+  flex-direction: column;
+  /* ensure vertical stacking */
+  box-sizing: border-box;
+  /* include padding in size */
 }
 
 /* Popup box */
@@ -40,7 +116,7 @@ body {
   background: #fff;
   padding: 0.6rem;
   border-radius: 1.5%;
-  padding:1rem;
+  padding: 1rem;
   width: 100%;
   /* text-align: left; */
   max-width: 500px;
@@ -48,33 +124,40 @@ body {
   overflow-y: auto;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   animation: fadeInScale 0.25s ease;
-  z-index:999;
+  z-index: 999;
   box-sizing: border-box;
 }
 
-.instructions-content h3{
+.instructions-content h3 {
   text-align: center;
 }
 
-.instructions-content ol{
+.instructions-content ol {
   text-align: left;
 }
 
 /* Close button as an X in top-right corner */
 .instruct-close-btn {
-  position: absolute;       /* Position relative to parent */
-  top: 8px;                 /* Adjust distance from top */
-  right: 8px;               /* Adjust distance from right */
-  width: 24px;              /* Size of the X */
+  position: absolute;
+  /* Position relative to parent */
+  top: 8px;
+  /* Adjust distance from top */
+  right: 8px;
+  /* Adjust distance from right */
+  width: 24px;
+  /* Size of the X */
   height: 24px;
-  background: none;         /* No background */
-  border: none;             /* No border */
+  background: none;
+  /* No background */
+  border: none;
+  /* No border */
   cursor: pointer;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-    z-index: 1000; /* ensure it appears above everything */
+  z-index: 1000;
+  /* ensure it appears above everything */
 
 }
 
@@ -83,14 +166,22 @@ body {
 .instruct-close-btn::after {
   content: '';
   position: absolute;
-  width: 2px;               /* Thickness of the cross */
-  height: 24px;             /* Match button height */
-  background-color: #333;   /* Color of the X */
+  width: 2px;
+  /* Thickness of the cross */
+  height: 24px;
+  /* Match button height */
+  background-color: #333;
+  /* Color of the X */
 }
 
 /* For drwawing crossing vertical lines - '|'*/
-.instruct-close-btn::before { transform: rotate(45deg); }
-.instruct-close-btn::after { transform: rotate(-45deg); }
+.instruct-close-btn::before {
+  transform: rotate(45deg);
+}
+
+.instruct-close-btn::after {
+  transform: rotate(-45deg);
+}
 
 /* Small entrance animation */
 @keyframes fadeInScale {
@@ -153,62 +244,11 @@ body {
   background: #555;
 }
 
-/* Menu Bar */
-.menu-bar {
-  display: flex;
-  align-items: center;
-  /* Switching left to center fixed the problem on large screen size that the 
-  how-to button stretched vertically because the menu bar’s align-items was 
-  invalid (left) and defaulted to stretch; setting it to center fixes it.*/
-  justify-content: flex-start;
-  /* align logo + title to left */
-  padding-left: clamp(12px, 2vw, 20px);
-  padding-right: clamp(12px, 2vw, 20px);
-  width: 100%;
-  gap: clamp(20px, 2vw, 100px);
-  box-sizing: border-box;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.game-title {
-  text-align: left;
-  font-size: clamp(1.1rem, 2vw, 2rem)m;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-/* Menu bar divider line */
-.divider {
-  border: none;
-  border-top: 0.8px solid #e4e4e4;
-  /* line thickness + color */
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: medium;
-  width: 100%;
-  height: 100vh;
-  min-height: 100vh;
-  gap: 0.1rem;
-  padding: 6px;
-  margin-bottom: 0;
-  color: black;
-  box-sizing: border-box;
-}
-
 .logo-title-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  /*vertical center*/
   width: 100%;
   justify-content: flex-start;
   height: auto;
@@ -249,7 +289,7 @@ body {
   font-weight: 550;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  margin: 0;
+  margin: 0.5rem;
   /* remove margin interference */
 }
 
@@ -436,6 +476,8 @@ body {
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
+  margin-bottom: 0.2rem;
+
 }
 
 .number-pad button {
@@ -766,7 +808,7 @@ body {
 
 /* Reset button */
 .btn-reset::before {
-  content: "🔄";
+  content: "🔄️";
   font-size: 18px;
 }
 
@@ -794,7 +836,7 @@ body {
 
 .difficulty-dropdown,
 .new-game-btn {
-  margin: 0 0.25rem;
+  margin: 0 0 0.25rem 0;
   /* minimal side spacing */
 }
 
@@ -1012,13 +1054,15 @@ button {
 
   :root {
     --vh: 100%;
+    --header-inner-height: 56px;
+    /* change to fit your design */
+
     /* fallback */
   }
 
   /* Sudoku game top margin */
   .game-controls {
     display: flex;
-    /* margin-top: calc(env(safe-area-inset-top, 0px) + 6rem); */
     margin-top: 3rem;
     flex-grow: 1;
     flex-basis: 0;
@@ -1051,7 +1095,7 @@ button {
     /* increased the max width*/
     max-height: 100vh;
     padding-top: evn(safe-area-inset-top, 1rem);
-    padding-bottom: env(safe-area-inset-bottom, 1rem);
+    padding-bottom: env(safe-area-inset-bottom,1rem);
   }
 
   .board-section {
@@ -1059,6 +1103,7 @@ button {
   }
 
   .wrapper {
+
     overflow-y: auto;
     width: 100%;
   }
@@ -1080,11 +1125,24 @@ button {
   }
 
   .menu-bar {
+    position: fixed;
+    top: 0;
     display: flex;
     padding-left: 0.0rem;
     align-items: center;
     height: 3.5rem;
     text-align: justify;
+    padding-bottom: env(safe-area-inset-top); 
+    /* iPhone notch */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    /* optional nice blur on supporting browsers */
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+
+    /* ensure header isn't affected by ancestor transforms */
+    transform: none !important;
+    will-change: auto;
   }
 
   .logo-title-container {
@@ -1153,6 +1211,8 @@ button {
     align-content: center;
     /* height of each button */
     margin: 0 auto;
+    padding-bottom: env(safe-area-inset-bottom);
+
   }
 
   .number-pad button {
@@ -1277,7 +1337,7 @@ button {
   }
 
   .difficulty-dropdown {
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     font-size: 14px;
   }
 
@@ -1309,10 +1369,14 @@ button {
     justify-content: center;
     align-self: center;
     gap: clamp(0.2rem, 2vw, 0.5rem);
+    padding-bottom: env(safe-area-inset-bottom);
+
   }
 
   .number-pad button {
     height: 2rem;
+    width: 1.5rem;
+
   }
 
   .count-item {
@@ -1326,10 +1390,6 @@ button {
     text-align: center;
     justify-content: center;
     margin: 0;
-  }
-
-  .number-pad button {
-    width: 1.5rem;
   }
 
   .action-buttons button {
