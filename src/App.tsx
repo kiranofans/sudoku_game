@@ -29,6 +29,8 @@ function App() {
     col: number | null;
   }>({ row: null, col: null });
 
+  const currentYear = new Date().getFullYear();
+
   // Google Analytic setup & init
   useEffect(() => {
     ReactGA.initialize(GA_MEASUREMENT_ID);
@@ -63,7 +65,7 @@ function App() {
     }
   }, [isLoading]);
 
-  /** Responseive Ui resize**/
+  /** Responseive Ui resize **/
   useEffect(() => {
     const setVh = () => {
       const vh = window.innerHeight * 0.01;
@@ -315,7 +317,6 @@ function App() {
     const secs = seconds % 60;
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
-
   return (
     <div className="wrapper">
       <header className="menu-bar">
@@ -323,23 +324,27 @@ function App() {
           <img src="logo_sudoku1.png" alt="Logo" className="logo" />
           <h2 className='game-title'>Sudoku Game</h2>
         </div>
-        <select className='difficulty-dropdown'
-          value={difficulty}
-          onChange={(e) => {
-            setDifficulty(e.target.value as Difficulty);
-            ReactGA.event({
-              category: 'Game',
-              action: 'change_difficulty',
-              label: difficulty
-            });
-            startNewGame();
-          }}
-        >
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-          <option value="expert">Expert</option>
-        </select>
+        <div className='controls-row'>
+          <select className='difficulty-dropdown'
+            value={difficulty}
+            onChange={(e) => {
+              setDifficulty(e.target.value as Difficulty);
+              ReactGA.event({
+                category: 'Game',
+                action: 'change_difficulty',
+                label: difficulty
+              });
+              startNewGame();
+            }}
+          >
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="expert">Expert</option>
+          </select>
+
+        </div>
+
 
         {/* How to Play icon button */}
         <button onClick={() => {
@@ -389,19 +394,13 @@ function App() {
             </div>
           </div>
         )}
-
-        <div className="game-controls">
-          <div className='controls-row'>
-          </div>
-        </div>
         <div className="game-container">
           <div className="board-section">
             <div className="game-info">
               <div>
                 <div className="info-icon timer-icon">
-                  <div className="bell-left"></div>
-                  <div className="bell-right"></div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTime(time)}</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTime(time)}
+                </div>
               </div>
 
               <div>
@@ -411,7 +410,7 @@ function App() {
               <div>
                 <button className="new-game-btn" onClick={startNewGame}>New Game</button>
 
-                <div className="info-icon hint-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{hintsRemaining}</div>
+                {/* <div className="info-icon hint-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{hintsRemaining}</div> */}
               </div>
             </div>
 
@@ -471,7 +470,7 @@ function App() {
 
           <div className="counts-and-actionbtn">
             <div className="control-panel">
-              <div className='action-'></div>
+
               <div className="action-buttons">
                 <button
                   className={isPencilMode ? 'active' : ''}
@@ -488,73 +487,89 @@ function App() {
                 <button onClick={() => {
                   if (hintsRemaining > 0) {
                     handleHint();
-                      
+
                   } else {
-                  // show ad logic
-                  alert("The app is currently in testing!");
-                setHintsRemaining(1); // for example, give 1 extra hint after ad
+                    // show ad logic
+                    alert("The app is currently in testing!");
+                    setHintsRemaining(1); // for example, give 1 extra hint after ad
                   }
                 }}
-                className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
-                aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
+                  className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
+                  aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
                 >
-                <div className='btn-hint'></div>
+                  <div className='btn-hint' >
+                    {/* <img className="ic-hint" src="ic_hint.svg"></img> */}
+                    </div>{/* contains hint icon*/}
 
-                {hintsRemaining > 0 && (
+                  {hintsRemaining > 0 && (
                     <span className="hint-remain-badge" role="status" aria-live="polite">{hintsRemaining}</span>
                   )}
 
-                {/* visible top-right badge only when ad-mode (keeps "Ad" visible and also shows the badge) */}
-                 <span className="hint-badge" role="status" aria-live="polite">
+                  {/* visible top-right badge only when ad-mode (keeps "Ad" visible and also shows the badge) */}
+                  <span className="hint-badge" role="status" aria-live="polite">
                     {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
                   </span>
-              </button>
-              <button onClick={handleReset} aria-label="Reset">
-                <div className="btn-reset"></div>
-              </button>
-            </div>
-            <div className="horizontal-counts">
+                </button>
+                <button onClick={handleReset} aria-label="Reset">
+                  <div className="btn-reset"></div>
+                </button>
+              </div>
+              <div className="horizontal-counts">
 
-              {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
-                <div key={num} className="count-item">
-                  <div className={`number ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
-                    {num}
+                {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
+                  <div key={num} className="count-item">
+                    <div className={`number ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
+                      {num}
+                    </div>
+                    <div className="remaining"> {numberCounts[num]}</div>
                   </div>
-                  <div className="remaining"> {numberCounts[num]}</div>
-                </div>
+                ))}
+              </div>
+            </div>
+            <div className="number-pad">
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                <button
+                  key={num}
+                  onClick={() => handleNumberInput(num)}
+                  disabled={isGameOver || numberCounts[num] <= 0}
+                  className={numberCounts[num] <= 0 ? 'completed' : ''}
+                >
+                  {num}
+                </button>
               ))}
             </div>
           </div>
-          <div className="number-pad">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-              <button
-                key={num}
-                onClick={() => handleNumberInput(num)}
-                disabled={isGameOver || numberCounts[num] <= 0}
-                className={numberCounts[num] <= 0 ? 'completed' : ''}
-              >
-                {num}
-              </button>
-            ))}
-          </div>
         </div>
-
       </div>
-
-      {isGameOver && (
-        <div className="game-over-overlay">
-          <div className="game-over-content">
-            <div className="game-over-message">
-              {mistakes >= 3 ? 'Game Over!' : 'Congratulations! You won!'}
+      <footer
+        style={{
+          width: "100%",
+          padding: "1rem 0",
+          textAlign: "center",
+          backgroundColor: "#f5f5f5",
+          color: "#333",
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+        }}
+      >
+        &copy; {currentYear} Kira's Sudoku Game. All rights reserved.
+      </footer>
+      {
+        isGameOver && (
+          <div className="game-over-overlay">
+            <div className="game-over-content">
+              <div className="game-over-message">
+                {mistakes >= 3 ? 'Game Over!' : 'Congratulations! You won!'}
+              </div>
+              <button className="play-again" onClick={startNewGame}>
+                Play Again
+              </button>
             </div>
-            <button className="play-again" onClick={startNewGame}>
-              Play Again
-            </button>
           </div>
-        </div>
-      )}
+        )
+      }
     </div>
-    </div >
   );
 }
 

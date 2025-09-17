@@ -1,42 +1,76 @@
-# Node modules
-node_modules/
+# ----------------------
+# Node dependencies
+# ----------------------
+/node_modules/
 
-# Build output for GitJHub pages
-build/
-dist/
+# ----------------------
+# Build output
+# ----------------------
+/dist
+/build
 
+# ----------------------
 # Logs
+# ----------------------
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# OS files
-.DS_Store
-Thumbs.db
-
+# ----------------------
 # Environment variables
+# ----------------------
 .env
 .env.local
 .env.development
 .env.production
+.env.*.local
 
+# ----------------------
 # Cache folders
+# ----------------------
 node_modules/.cache/
 .cache/
 
-#Editor/IDE config files
+# ----------------------
+# Editor / IDE
+# ----------------------
 .vscode/
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+*.sublime-workspace
+*.sublime-project
 
-#Coverage/test reports (If using test tools)
+# ----------------------
+# OS files
+# ----------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ----------------------
+# TypeScript
+# ----------------------
+*.tsbuildinfo
+
+# ----------------------
+# Coverage / Test reports
+# ----------------------
 coverage/
 *.lcov
 
-# GitHub pages cache / deploy files
+# ----------------------
+# GitHub Pages cache / deploy files
+# ----------------------
 node_modules/.cache/gh-pages/
 
+# ----------------------
+# Optional lock files
+# ----------------------
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
