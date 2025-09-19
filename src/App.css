@@ -254,13 +254,13 @@ body {
 
 .logo {
   /* max-width: clamp(2rem, 1vw, 3rem); */
-  max-height: clamp(2rem, 1vw, 3rem);
+  max-height: clamp(2rem, 2vw, 3rem);
   aspect-ratio: 1 / 1;
   border-radius: 35%;
   cursor: pointer;
   flex-shrink: 0;
   padding-right:0 !important;/* important keywords overrode that global rule, so the logo is now free of that extra gap*/
-  padding-left: clamp(0.8rem,1.5vw,3rem) !important;
+  padding-left: clamp(0.9rem,2vw,3rem) !important;
   margin: 0;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
@@ -277,7 +277,6 @@ body {
 
 /* Top-right floating How To button */
 .how-to-play-btn {
-
   z-index: 1000;
   /* above everything */
   background: #fff;
