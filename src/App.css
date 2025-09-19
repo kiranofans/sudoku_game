@@ -1225,6 +1225,16 @@ button {
     margin-bottom: 0.2rem auto;
   }
 
+  .number-highlight{
+    background-color: rgba(200, 230, 255, 0.3);
+  }
+
+  /* highlighted cells of the same numbers */
+  .sudoku-board .cell.number-highlight{
+    background-color: rgba(173, 216, 230, 0.3) !important;
+    transition: background-color .12s ease;
+  }
+
   /* Number pad: 1 row layout */
   .number-pad {
     display: grid;

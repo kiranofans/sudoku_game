@@ -31,6 +31,9 @@ function App() {
 
   const currentYear = new Date().getFullYear();
 
+const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
+
+
   // Google Analytic setup & init
   useEffect(() => {
     ReactGA.initialize(GA_MEASUREMENT_ID);
@@ -152,10 +155,10 @@ function App() {
 
   const handleCellClick = (row: number, col: number) => {
     if (isGameOver) return;
-
     // Update cross style selection
     setSelectedCell([row, col]);
     setCrossHighlight({ row, col });
+
   };
 
   const updateCountsAfterInput = useCallback((num: number, increment: boolean) => {
@@ -289,6 +292,7 @@ function App() {
     setCrossHighlight({ row, col });
   }, [hintsRemaining, selectedCell, isGameOver, initialBoard, board, solution, updateCountsAfterInput]);
 
+
   const handleReset = useCallback(() => {
     setIsLoading(true);
     setTimeout(() => {
@@ -323,9 +327,9 @@ function App() {
         <div className="logo-title-container">
           <img src="logo_sudoku1.png" alt="Logo" className="logo" />
           <h2 className='game-title'>Sudoku</h2>
-        </div> 
+        </div>
         <div className='controls-row'>
-      <select className='difficulty-dropdown'
+          <select className='difficulty-dropdown'
             value={difficulty}
             onChange={(e) => {
               setDifficulty(e.target.value as Difficulty);
@@ -342,17 +346,17 @@ function App() {
             <option value="hard">Hard</option>
             <option value="expert">Expert</option>
           </select>
-  {/* How to Play icon button */}
-        <button onClick={() => {
-          setShowInstructions(true);
-          ReactGA.event({
-            category: 'Instruction',
-            action: 'Instruction button clicks',
-            label: showInstructions ? "Opened" : "Didn't Open",
-          });
-        }}
-          className="how-to-play-btn">?
-        </button>
+          {/* How to Play icon button */}
+          <button onClick={() => {
+            setShowInstructions(true);
+            ReactGA.event({
+              category: 'Instruction',
+              action: 'Instruction button clicks',
+              label: showInstructions ? "Opened" : "Didn't Open",
+            });
+          }}
+            className="how-to-play-btn">?
+          </button>
         </div>
       </header>
       <hr className="divider" />
@@ -413,7 +417,9 @@ function App() {
 
             <div className="sudoku-board">
               {board.map((row, rowIndex) => (
-                <div key={rowIndex} className="board-row">
+//  const cellValue = board[row][col];
+//     setHighlightSameNum(cellValue !==null ? cellValue : null);
+                <div key={rowIndex} className="board-row" >
                   {row.map((cell, colIndex) => {
                     const isCrossRow = crossHighlight.row === rowIndex;
                     const isCrossCol = crossHighlight.col === colIndex;
@@ -428,19 +434,22 @@ function App() {
                       cell === board[selectedCell[0]][selectedCell[1]] &&
                       cell !== solution[rowIndex][colIndex];
 
+      // NEW: check if this cell should be highlighted because of same number
+       const isNumHighlighted = highlightedNumber !== null && cell === highlightedNumber;
                     return (
                       <div
                         key={colIndex}
                         className={`
-                        cell 
-                        ${initialBoard[rowIndex][colIndex] !== null ? 'initial' : ''}
-                        ${isSelected ? 'selected' : ''}
-                        ${rowIndex % 3 === 2 ? 'bottom-border' : ''}
-                        ${colIndex % 3 === 2 ? 'right-border' : ''}
-                        ${cell !== null && initialBoard[rowIndex][colIndex] === null && cell !== solution[rowIndex][colIndex] ? 'wrong' : ''}
-                        ${(isCrossRow || isCrossCol || isSameBox) ? 'cross-highlight' : ''}
-                        ${isConflict ? 'highlighted-conflict' : ''}
-                      `}
+cell 
+    ${initialBoard[rowIndex][colIndex] !== null ? 'initial' : ''}
+    ${isSelected ? 'selected' : ''}
+    ${rowIndex % 3 === 2 ? 'bottom-border' : ''}
+    ${colIndex % 3 === 2 ? 'right-border' : ''}
+    ${cell !== null && initialBoard[rowIndex][colIndex] === null && cell !== solution[rowIndex][colIndex] ? 'wrong' : ''}
+    ${(isCrossRow || isCrossCol || isSameBox) ? 'cross-highlight' : ''}
+    ${isConflict ? 'highlighted-conflict' : ''}
+    ${isNumHighlighted ? 'number-highlight' : ''}
+  `}
                         onClick={() => handleCellClick(rowIndex, colIndex)}
                       >
                         {cell !== null ? (
@@ -496,7 +505,7 @@ function App() {
                 >
                   <div className='btn-hint' >
                     {/* <img className="ic-hint" src="ic_hint.svg"></img> */}
-                    </div>{/* contains hint icon*/}
+                  </div>{/* contains hint icon*/}
 
                   {hintsRemaining > 0 && (
                     <span className="hint-remain-badge" role="status" aria-live="polite">{hintsRemaining}</span>
