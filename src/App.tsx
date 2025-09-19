@@ -342,11 +342,7 @@ function App() {
             <option value="hard">Hard</option>
             <option value="expert">Expert</option>
           </select>
-
-        </div>
-
-
-        {/* How to Play icon button */}
+  {/* How to Play icon button */}
         <button onClick={() => {
           setShowInstructions(true);
           ReactGA.event({
@@ -357,6 +353,7 @@ function App() {
         }}
           className="how-to-play-btn">?
         </button>
+        </div>
       </header>
       <hr className="divider" />
 

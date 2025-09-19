@@ -1,6 +1,5 @@
 /* Menu Bar */
 .menu-bar {
-  grid-area: menu;
   position: fixed;
   display: flex;
   top: 0;
@@ -14,7 +13,7 @@
   /* align logo + title to left */
 
   width: 100%;
-  gap: clamp(20px, 2vw, 100px);
+  gap: clamp(0.5rem, 2vw, 0.5rem);
   box-sizing: border-box;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 9999;
@@ -26,7 +25,7 @@
 
 .game-title {
   text-align: left;
-  font-size: clamp(1.1rem, 2vw, 2rem)m;
+  font-size: clamp(1.1rem, 2vw, 2rem);
   margin: 0;
   padding: 0;
   line-height: 1;
@@ -249,24 +248,27 @@ body {
   /* occupied most height of the menu bar*/
   overflow: hidden;
   margin-left: 0;
+  gap: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 .logo {
-  max-width: clamp(2rem, 2vw, 3rem);
-  max-height: clamp(2rem, 2vw, 3rem);
+  /* max-width: clamp(2rem, 1vw, 3rem); */
+  max-height: clamp(2rem, 1vw, 3rem);
   aspect-ratio: 1 / 1;
   border-radius: 35%;
   cursor: pointer;
   flex-shrink: 0;
+  padding:clamp(0.8rem,2vw,1rem) !important;/* important keywords overrode that global rule, so the logo is now free of that extra gap*/
+  margin: 0;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.logo:hover {
+/* .logo:hover {
   transform: scale(1);
   filter: brightness(0.8);
-}
+} */
 
 /* Top-right floating How To button */
 .how-to-play-btn {
@@ -1010,7 +1012,7 @@ body {
 
 .controls-row {
   display: flex;
-  margin: auto;
+  margin-right:clamp(1rem,2vw,2rem);
   align-items: center;
   height: clamp(14px, 2vw, 16px);
   width: fit-content;
@@ -1140,6 +1142,7 @@ button {
   .logo {
     margin: 0;
     height: 0.5rem;
+    padding: 0;
   }
 
   .how-to-play-btn {
@@ -1384,6 +1387,7 @@ button {
   .logo {
     height: 0.4rem;
     width: auto;
+    padding: 0;
     margin: 0;
   }
 
