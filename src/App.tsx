@@ -322,7 +322,7 @@ function App() {
       <header className="menu-bar">
         <div className="logo-title-container">
           <img src="logo_sudoku1.png" alt="Logo" className="logo" />
-          <h2 className='game-title'>Sudoku Game</h2>
+          <h2 className='game-title'>Sudoku</h2>
         </div>
         <div className='controls-row'>
           <select className='difficulty-dropdown'
