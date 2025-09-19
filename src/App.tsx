@@ -323,9 +323,9 @@ function App() {
         <div className="logo-title-container">
           <img src="logo_sudoku1.png" alt="Logo" className="logo" />
           <h2 className='game-title'>Sudoku</h2>
-        </div>
+        </div> 
         <div className='controls-row'>
-          <select className='difficulty-dropdown'
+      <select className='difficulty-dropdown'
             value={difficulty}
             onChange={(e) => {
               setDifficulty(e.target.value as Difficulty);

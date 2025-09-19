@@ -238,7 +238,6 @@ body {
 
 .logo-title-container {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   /*vertical center*/
   width: 100%;
@@ -248,7 +247,7 @@ body {
   /* occupied most height of the menu bar*/
   overflow: hidden;
   margin-left: 0;
-  gap: 0;
+  gap: clamp(0.8rem,2vw,2rem);
   padding: 0;
   box-sizing: border-box;
 }
@@ -260,15 +259,21 @@ body {
   border-radius: 35%;
   cursor: pointer;
   flex-shrink: 0;
-  padding:clamp(0.8rem,2vw,1rem) !important;/* important keywords overrode that global rule, so the logo is now free of that extra gap*/
+  padding-right:0 !important;/* important keywords overrode that global rule, so the logo is now free of that extra gap*/
+  padding-left: clamp(0.8rem,1.5vw,3rem) !important;
   margin: 0;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* .logo:hover {
-  transform: scale(1);
-  filter: brightness(0.8);
-} */
+.difficulty-dropdown{
+  padding: 0.55rem;
+  height: 2.4rem;
+  align-content: center;
+  border-radius: 5%;
+  /* border:none; */
+  margin-right:0.5rem;
+}
+
 
 /* Top-right floating How To button */
 .how-to-play-btn {
@@ -1368,7 +1373,7 @@ button {
   .difficulty-dropdown {
     /* padding: 0.5rem; */
     font-size: 12px;
-    padding: clamp(0.15rem, 2vw, 0.3rem);
+    padding: clamp(0.15rem, 1.5vw, 0.2rem);
     width: fit-content;
     height: auto;
     align-items: center;
