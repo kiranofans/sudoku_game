@@ -1178,8 +1178,6 @@ button {
 
   .logo-title-container {
     display: flex;
-    flex-wrap: wrap;
-    margin-left: -1.5%;
     align-items: center;
     width: 100%;
     justify-content: flex-start;
@@ -1410,13 +1408,11 @@ button {
     align-self: center;
     gap: clamp(0.2rem, 2vw, 0.5rem);
     padding-bottom: env(safe-area-inset-bottom);
-
   }
 
   .number-pad button {
     height: 2rem;
     width: 1.5rem;
-
   }
 
   .count-item {
