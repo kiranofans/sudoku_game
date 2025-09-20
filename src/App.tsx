@@ -33,7 +33,7 @@ function App() {
 
   const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
 
-  const [isMobileView, setIsMobileView] = useState(false);
+  // const [isMobileView, setIsMobileView] = useState(false);
 
 
   // Google Analytic setup & init
