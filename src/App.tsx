@@ -547,7 +547,7 @@ cell
           </div>
         </div>
       </div>
-      <footer
+      {/* <footer
         style={{
           width: "100%",
           padding: "1rem 0",
@@ -560,7 +560,7 @@ cell
         }}
       >
         &copy; {currentYear} Kira's Sudoku Game. All rights reserved.
-      </footer>
+      </footer> */}
       {
         isGameOver && (
           <div className="game-over-overlay">
