@@ -31,7 +31,9 @@ function App() {
 
   // const currentYear = new Date().getFullYear();
 
-const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
+  const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
+
+  const [isMobileView, setIsMobileView] = useState(false);
 
 
   // Google Analytic setup & init
@@ -323,231 +325,243 @@ const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]]
   };
   return (
     <div className="wrapper">
-      <header className="menu-bar">
-        <div className="logo-title-container">
-          <img src="logo_sudoku1.png" alt="Logo" className="logo" />
-          <h2 className='game-title'>Sudoku</h2>
-        </div>
-        <div className='controls-row'>
-          <select className='difficulty-dropdown'
-            value={difficulty}
-            onChange={(e) => {
-              setDifficulty(e.target.value as Difficulty);
+        <header className="menu-bar">
+          <div className="logo-title-container">
+            <img src="logo_sudoku1.png" alt="Logo" className="logo" />
+            <h2 className='game-title'>Sudoku</h2>
+          </div>
+          <div className='controls-row'>
+            <select className='difficulty-dropdown'
+              value={difficulty}
+              onChange={(e) => {
+                setDifficulty(e.target.value as Difficulty);
+                ReactGA.event({
+                  category: 'Game',
+                  action: 'change_difficulty',
+                  label: difficulty
+                });
+                startNewGame();
+              }}
+            >
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+              <option value="expert">Expert</option>
+            </select>
+
+            {/* <div className='pc-tooltip-btn'
+              onClick={() => setIsMobileView(prev => !prev)}
+            >
+              <button className="toggle-layout-btn">
+                <img className="ic-pc" src="ic_pc.svg" />
+              </button>
+              <span className='tooltip-text-pc'>
+                {isMobileView ? "Switch to Web/PC view" : "Switch to Mobile view"}
+              </span>
+            </div> */}
+
+            {/* How to Play icon button */}
+            <button onClick={() => {
+              setShowInstructions(true);
               ReactGA.event({
-                category: 'Game',
-                action: 'change_difficulty',
-                label: difficulty
+                category: 'Instruction',
+                action: 'Instruction button clicks',
+                label: showInstructions ? "Opened" : "Didn't Open",
               });
-              startNewGame();
             }}
-          >
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-            <option value="expert">Expert</option>
-          </select>
-          {/* How to Play icon button */}
-          <button onClick={() => {
-            setShowInstructions(true);
-            ReactGA.event({
-              category: 'Instruction',
-              action: 'Instruction button clicks',
-              label: showInstructions ? "Opened" : "Didn't Open",
-            });
-          }}
-            className="how-to-play-btn">?
-          </button>
-        </div>
-      </header>
-      <hr className="divider" />
-
-      <div className="sudoku-app">
-        {/* Wrap themain game container in scrollable div */}
-        {isLoading && (
-          <div className="loading-overlay">
-            <div className="loading-bar"
-              style={{ width: isLoading ? '100%' : '0%' }}>
-              <div className="loading-progress"></div>
-            </div>
-            {/* <div className="loading-text">Loading...</div> */}
+              className="how-to-play-btn">?
+            </button>
           </div>
-        )}
+        </header>
+        <hr className="divider" />
 
-        {/* Instructions - only show if not loading */}
-        {showInstructions && !isLoading && (
-          <div className="instructions-overlay">
-            <div className="instructions-content">
-              <button className='instruct-close-btn' onClick={() => setShowInstructions(false)}></button>
-              <h3 className='content-title'>How to Play Sudoku</h3>
-
-              <h4>Quick Guide</h4>
-              <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
-
-              <h4>Detailed Guide</h4>
-              <ol type='1'>
-                <li>Click a cell to select it.</li>
-                <li>Type a number (1–9) or use the number pad to fill it in.</li>
-                <li>Switch to <b>Pencil Mode</b> to make notes for possible numbers.</li>
-                <li>You can use up to 3 hints during the game.</li>
-                <li>The game ends after 3 mistakes or when the puzzle is solved.</li>
-              </ol>
-
+        <div className="sudoku-app">
+          {/* Wrap themain game container in scrollable div */}
+          {isLoading && (
+            <div className="loading-overlay">
+              <div className="loading-bar"
+                style={{ width: isLoading ? '100%' : '0%' }}>
+                <div className="loading-progress"></div>
+              </div>
+              {/* <div className="loading-text">Loading...</div> */}
             </div>
-          </div>
-        )}
-        <div className="game-container">
-          <div className="board-section">
-            <div className="game-info">
-              <div>
-                <div className="info-icon timer-icon">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTime(time)}
-                </div>
-              </div>
+          )}
 
-              <div>
-                <div className="info-icon mistake-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mistakes}/3</div>
-              </div>
+          {/* Instructions - only show if not loading */}
+          {showInstructions && !isLoading && (
+            <div className="instructions-overlay">
+              <div className="instructions-content">
+                <button className='instruct-close-btn' onClick={() => setShowInstructions(false)}></button>
+                <h3 className='content-title'>How to Play Sudoku</h3>
 
-              <div>
-                <button className="new-game-btn" onClick={startNewGame}>New Game</button>
+                <h4>Quick Guide</h4>
+                <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
 
-                {/* <div className="info-icon hint-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{hintsRemaining}</div> */}
+                <h4>Detailed Guide</h4>
+                <ol type='1'>
+                  <li>Click a cell to select it.</li>
+                  <li>Type a number (1–9) or use the number pad to fill it in.</li>
+                  <li>Switch to <b>Pencil Mode</b> to make notes for possible numbers.</li>
+                  <li>You can use up to 3 hints during the game.</li>
+                  <li>The game ends after 3 mistakes or when the puzzle is solved.</li>
+                </ol>
+
               </div>
             </div>
-
-            <div className="sudoku-board">
-              {board.map((row, rowIndex) => (
-//  const cellValue = board[row][col];
-//     setHighlightSameNum(cellValue !==null ? cellValue : null);
-                <div key={rowIndex} className="board-row" >
-                  {row.map((cell, colIndex) => {
-                    const isCrossRow = crossHighlight.row === rowIndex;
-                    const isCrossCol = crossHighlight.col === colIndex;
-                    const isSameBox =
-                      crossHighlight.row !== null &&
-                      crossHighlight.col !== null &&
-                      Math.floor(rowIndex / 3) === Math.floor(crossHighlight.row / 3) &&
-                      Math.floor(colIndex / 3) === Math.floor(crossHighlight.col / 3);
-                    const isSelected = selectedCell?.toString() === [rowIndex, colIndex].toString();
-                    const isConflict = cell !== null &&
-                      selectedCell &&
-                      cell === board[selectedCell[0]][selectedCell[1]] &&
-                      cell !== solution[rowIndex][colIndex];
-
-      // NEW: check if this cell should be highlighted because of same number
-       const isNumHighlighted = highlightedNumber !== null && cell === highlightedNumber;
-                    return (
-                      <div
-                        key={colIndex}
-                        className={`
-cell 
-    ${initialBoard[rowIndex][colIndex] !== null ? 'initial' : ''}
-    ${isSelected ? 'selected' : ''}
-    ${rowIndex % 3 === 2 ? 'bottom-border' : ''}
-    ${colIndex % 3 === 2 ? 'right-border' : ''}
-    ${cell !== null && initialBoard[rowIndex][colIndex] === null && cell !== solution[rowIndex][colIndex] ? 'wrong' : ''}
-    ${(isCrossRow || isCrossCol || isSameBox) ? 'cross-highlight' : ''}
-    ${isConflict ? 'highlighted-conflict' : ''}
-    ${isNumHighlighted ? 'number-highlight' : ''}
-  `}
-                        onClick={() => handleCellClick(rowIndex, colIndex)}
-                      >
-                        {cell !== null ? (
-                          cell
-                        ) : (
-                          <div className="notes-grid">
-                            {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
-                              <div
-                                key={num}
-                                className={`note ${notes[rowIndex][colIndex]?.has(num) ? 'visible' : ''}`}
-                              >
-                                {notes[rowIndex][colIndex]?.has(num) ? num : ''}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="counts-and-actionbtn">
-            <div className="control-panel">
-
-              <div className="action-buttons">
-                <button
-                  className={isPencilMode ? 'active' : ''}
-                  onClick={() => setIsPencilMode(!isPencilMode)}
-                  aria-pressed={isPencilMode}
-                  aria-label="Toggle pencil mode">
-                  <div className="btn-pencil" title="Edit">
-                  </div>
-                </button>
-                <button onClick={handleEraser}>
-                  <div className='btn-eraser'></div>
-                </button>
-
-                <button onClick={() => {
-                  if (hintsRemaining > 0) {
-                    handleHint();
-
-                  } else {
-                    // show ad logic
-                    alert("The app is currently in testing!");
-                    setHintsRemaining(1); // for example, give 1 extra hint after ad
-                  }
-                }}
-                  className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
-                  aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
-                >
-                  <div className='btn-hint' >
-                    {/* <img className="ic-hint" src="ic_hint.svg"></img> */}
-                  </div>{/* contains hint icon*/}
-
-                  {hintsRemaining > 0 && (
-                    <span className="hint-remain-badge" role="status" aria-live="polite">{hintsRemaining}</span>
-                  )}
-
-                  {/* visible top-right badge only when ad-mode (keeps "Ad" visible and also shows the badge) */}
-                  <span className="hint-badge" role="status" aria-live="polite">
-                    {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
-                  </span>
-                </button>
-                <button onClick={handleReset} aria-label="Reset">
-                  <div className="btn-reset"></div>
-                </button>
-              </div>
-              <div className="horizontal-counts">
-
-                {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
-                  <div key={num} className="count-item">
-                    <div className={`number ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
-                      {num}
+          )}
+          {/* <div className={`sudoku-app ${isMobileView ? 'mobile-layout' : 'web-layout'}`}> */}
+            <div className="game-container">
+              <div className="board-section">
+                <div className="game-info">
+                  <div>
+                    <div className="info-icon timer-icon">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTime(time)}
                     </div>
-                    <div className="remaining"> {numberCounts[num]}</div>
                   </div>
-                ))}
+
+                  <div>
+                    <div className="info-icon mistake-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mistakes}/3</div>
+                  </div>
+
+                  <div>
+                    <button className="new-game-btn" onClick={startNewGame}>New Game</button>
+
+                    {/* <div className="info-icon hint-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{hintsRemaining}</div> */}
+                  </div>
+                </div>
+
+                <div className="sudoku-board">
+                  {board.map((row, rowIndex) => (
+                    //  const cellValue = board[row][col];
+                    //     setHighlightSameNum(cellValue !==null ? cellValue : null);
+                    <div key={rowIndex} className="board-row" >
+                      {row.map((cell, colIndex) => {
+                        const isCrossRow = crossHighlight.row === rowIndex;
+                        const isCrossCol = crossHighlight.col === colIndex;
+                        const isSameBox =
+                          crossHighlight.row !== null &&
+                          crossHighlight.col !== null &&
+                          Math.floor(rowIndex / 3) === Math.floor(crossHighlight.row / 3) &&
+                          Math.floor(colIndex / 3) === Math.floor(crossHighlight.col / 3);
+                        const isSelected = selectedCell?.toString() === [rowIndex, colIndex].toString();
+                        const isConflict = cell !== null &&
+                          selectedCell &&
+                          cell === board[selectedCell[0]][selectedCell[1]] &&
+                          cell !== solution[rowIndex][colIndex];
+
+                        // NEW: check if this cell should be highlighted because of same number
+                        const isNumHighlighted = highlightedNumber !== null && cell === highlightedNumber;
+                        return (
+                          <div
+                            key={colIndex}
+                            className={`
+                              cell 
+                                  ${initialBoard[rowIndex][colIndex] !== null ? 'initial' : ''}
+                                  ${isSelected ? 'selected' : ''}
+                                  ${rowIndex % 3 === 2 ? 'bottom-border' : ''}
+                                  ${colIndex % 3 === 2 ? 'right-border' : ''}
+                                  ${cell !== null && initialBoard[rowIndex][colIndex] === null && cell !== solution[rowIndex][colIndex] ? 'wrong' : ''}
+                                  ${(isCrossRow || isCrossCol || isSameBox) ? 'cross-highlight' : ''}
+                                  ${isConflict ? 'highlighted-conflict' : ''}
+                                  ${isNumHighlighted ? 'number-highlight' : ''}
+                                `}
+                            onClick={() => handleCellClick(rowIndex, colIndex)}
+                          >
+                            {cell !== null ? (
+                              cell
+                            ) : (
+                              <div className="notes-grid">
+                                {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
+                                  <div
+                                    key={num}
+                                    className={`note ${notes[rowIndex][colIndex]?.has(num) ? 'visible' : ''}`}
+                                  >
+                                    {notes[rowIndex][colIndex]?.has(num) ? num : ''}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="number-pad">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                <button
-                  key={num}
-                  onClick={() => handleNumberInput(num)}
-                  disabled={isGameOver || numberCounts[num] <= 0}
-                  className={numberCounts[num] <= 0 ? 'completed' : ''}
-                >
-                  {num}
-                </button>
-              ))}
-            </div>
+
+              <div className="counts-and-actionbtn">
+                <div className="control-panel">
+
+                  <div className="action-buttons">
+                    <button
+                      className={isPencilMode ? 'active' : ''}
+                      onClick={() => setIsPencilMode(!isPencilMode)}
+                      aria-pressed={isPencilMode}
+                      aria-label="Toggle pencil mode">
+                      <div className="btn-pencil" title="Edit">
+                      </div>
+                    </button>
+                    <button onClick={handleEraser}>
+                      <div className='btn-eraser'></div>
+                    </button>
+
+                    <button onClick={() => {
+                      if (hintsRemaining > 0) {
+                        handleHint();
+
+                      } else {
+                        // show ad logic
+                        alert("The app is currently in testing!");
+                        setHintsRemaining(1); // for example, give 1 extra hint after ad
+                      }
+                    }}
+                      className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
+                      aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
+                    >
+                      <div className='btn-hint' >
+                        {/* <img className="ic-hint" src="ic_hint.svg"></img> */}
+                      </div>{/* contains hint icon*/}
+
+                      {hintsRemaining > 0 && (
+                        <span className="hint-remain-badge" role="status" aria-live="polite">{hintsRemaining}</span>
+                      )}
+
+                      {/* visible top-right badge only when ad-mode (keeps "Ad" visible and also shows the badge) */}
+                      <span className="hint-badge" role="status" aria-live="polite">
+                        {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
+                      </span>
+                    </button>
+                    <button onClick={handleReset} aria-label="Reset">
+                      <div className="btn-reset"></div>
+                    </button>
+                  </div>
+                  <div className="horizontal-counts">
+
+                    {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
+                      <div key={num} className="count-item">
+                        <div className={`number ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
+                          {num}
+                        </div>
+                        <div className="remaining"> {numberCounts[num]}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="number-pad">
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                    <button
+                      key={num}
+                      onClick={() => handleNumberInput(num)}
+                      disabled={isGameOver || numberCounts[num] <= 0}
+                      className={numberCounts[num] <= 0 ? 'completed' : ''}
+                    >
+                      {num}
+                    </button>
+                  ))}
+                </div>
+              </div>
           </div>
-        </div>
-      </div>
-      {/* <footer
+          {/* <footer
         style={{
           width: "100%",
           padding: "1rem 0",
@@ -560,23 +574,25 @@ cell
         }}
       >
         &copy; {currentYear} Kira's Sudoku Game. All rights reserved.
-      </footer> */}
-      {
-        isGameOver && (
-          <div className="game-over-overlay">
-            <div className="game-over-content">
-              <div className="game-over-message">
-                {mistakes >= 3 ? 'Game Over!' : 'Congratulations! You won!'}
+      </footer> */
+          }
+        </div>
+        {
+          isGameOver && (
+            <div className="game-over-overlay">
+              <div className="game-over-content">
+                <div className="game-over-message">
+                  {mistakes >= 3 ? 'Game Over!' : 'Congratulations! You won!'}
+                </div>
+                <button className="play-again" onClick={startNewGame}>
+                  Play Again
+                </button>
               </div>
-              <button className="play-again" onClick={startNewGame}>
-                Play Again
-              </button>
             </div>
-          </div>
-        )
-      }
-    </div>
-  );
+          )
+        }
+      </div>
+      );
 }
 
-export default App;
+      export default App;
