@@ -728,7 +728,7 @@ body {
   font-size: clamp(11px, 2vw, 14px);
   line-height: 1;
   font-weight: 700;
-  padding: 0.2rem 0.4rem;
+  padding: 0.25rem 0.4rem;
   border-radius: 9999px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   pointer-events: none;
