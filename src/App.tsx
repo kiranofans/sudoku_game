@@ -29,7 +29,7 @@ function App() {
     col: number | null;
   }>({ row: null, col: null });
 
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
 const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
 
