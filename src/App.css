@@ -72,14 +72,17 @@
   padding-top: 6rem;
   padding-bottom: 1rem;
   max-width: 100%;
-  overflow-y: auto;
   max-height: calc(var(--vh, 1vh) * 100 - 60px);
   /* subtract header height */
   box-sizing: border-box;
 }
 
-body {
-  padding: 1rem;
+html,body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* prevents scrolling */
+  font-family: sans-serif;
 }
 
 /* Instruction popup modal */
