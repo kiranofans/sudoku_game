@@ -41,7 +41,7 @@ const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell,
                 <div className="notes">
                   {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
                     <div 
-                      key={num} 
+                      key={num}
                       className={`note ${notes[rowIndex][colIndex]?.includes(num) ? 'active' : ''}`}
                     >
                       {notes[rowIndex][colIndex]?.includes(num) ? num : ''}
