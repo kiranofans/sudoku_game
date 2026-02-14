@@ -430,18 +430,16 @@ function App() {
                 {/* <div className="info-icon hint-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{hintsRemaining}</div> */}
               </div>
             </div>
-            <div className="sudoku-board">
-              <Board
-                board={board}
-                initialBoard={initialBoard}
-                notes={notes}
-                selectedCell={selectedCell}
-                onCellClick={handleCellClick}
-                solution={solution}
-                crossHighlight={crossHighlight}
-                highlightedNumber={highlightedNumber}
-              />
-            </div>
+            <Board
+              board={board}
+              initialBoard={initialBoard}
+              notes={notes}
+              selectedCell={selectedCell}
+              onCellClick={handleCellClick}
+              solution={solution}
+              crossHighlight={crossHighlight}
+              highlightedNumber={highlightedNumber}
+            />
           </div>
 
           <div className="counts-and-actionbtn">
