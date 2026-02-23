@@ -231,23 +231,6 @@ function App() {
     setCrossHighlight({ row, col });
   }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput]);
 
-  // Keyboard control
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!selectedCell) return;
-
-      if (e.key >= '1' && e.key <= '9') {
-        handleNumberInput(parseInt(e.key));
-      } else if (e.key === 'Backspace' || e.key === 'Delete') {
-        handleEraser();
-      } else if (e.key === 'p') {
-        setIsPencilMode(prev => !prev);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleNumberInput, selectedCell]);
 
   const handleEraser = useCallback(() => {
     if (!selectedCell || isGameOver) return;
@@ -269,6 +252,41 @@ function App() {
     setNotes(newNotes);
     setCrossHighlight({ row, col });
   }, [selectedCell, isGameOver, initialBoard, board, notes, updateCountsAfterInput]);
+
+  // Keyboard control
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedCell) return;
+      const [row, col] = selectedCell;
+
+      if (e.key >= '1' && e.key <= '9') {
+        handleNumberInput(parseInt(e.key));
+      } else if (e.key === 'Backspace' || e.key === 'Delete') {
+        handleEraser();
+      } else if (e.key === 'p') {
+        setIsPencilMode(prev => !prev);
+      } else if (e.key === 'ArrowUp') {
+        const newRow = Math.max(0, row - 1);
+        setSelectedCell([newRow, col]);
+        setCrossHighlight({ row: newRow, col });
+      } else if (e.key === 'ArrowDown') {
+        const newRow = Math.min(8, row + 1);
+        setSelectedCell([newRow, col]);
+        setCrossHighlight({ row: newRow, col });
+      } else if (e.key === 'ArrowLeft') {
+        const newCol = Math.max(0, col - 1);
+        setSelectedCell([row, newCol]);
+        setCrossHighlight({ row, col: newCol });
+      } else if (e.key === 'ArrowRight') {
+        const newCol = Math.min(8, col + 1);
+        setSelectedCell([row, newCol]);
+        setCrossHighlight({ row, col: newCol });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleNumberInput, selectedCell, handleEraser]);
 
   const handleHint = useCallback(() => {
     if (hintsRemaining <= 0 || !selectedCell || isGameOver) return;
