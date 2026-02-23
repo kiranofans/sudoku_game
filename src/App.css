@@ -19,12 +19,12 @@
   /* must be higher than content*/
   background-color: white;
   /* sits below the notch */
-  height: var(--header-inner-height, 75px);
+  height: var(--header-inner-height, 60px);
 }
 
 .game-title {
   text-align: left;
-  font-size: clamp(1.1rem, 2vw, 2rem);
+  font-size: clamp(1rem, 2vw, 1.8rem);
   margin: 0;
   padding: 0;
   line-height: 1;
@@ -48,10 +48,9 @@
   justify-content: flex-start;
   font-size: medium;
   width: 100%;
-  height: 100%;
-  /* fallback for older browsers that don't support dvh */
-  height: calc(var(--vh, 1vh) * 100);
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
   gap: 0.1rem;
   padding: 6px;
   margin-bottom: 0;
@@ -69,11 +68,9 @@
   /* vertically center children */
   text-align: center;
   font-family: Arial, sans-serif;
-  padding-top: 6rem;
+  padding-top: 5rem;
   padding-bottom: 1rem;
   max-width: 100%;
-  max-height: calc(var(--vh, 1vh) * 100 - 60px);
-  /* subtract header height */
   box-sizing: border-box;
 }
 
@@ -258,7 +255,7 @@ body {
 
 .logo {
   /* max-width: clamp(2rem, 1vw, 3rem); */
-  max-height: clamp(2rem, 2vw, 3rem);
+  max-height: clamp(1.8rem, 2vw, 2.5rem);
   aspect-ratio: 1 / 1;
   border-radius: 35%;
   cursor: pointer;
@@ -271,8 +268,8 @@ body {
 }
 
 .difficulty-dropdown {
-  padding: 0.55rem;
-  height: 2.4rem;
+  padding: 0.4rem;
+  height: 2rem;
   align-content: center;
   border-radius: 5%;
   /* border:none; */
@@ -287,7 +284,7 @@ body {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 100px;
-  padding: 0.4rem 0.65rem;
+  padding: 0.3rem 0.5rem;
   /* optional, adjust for size */
   font-size: clamp(0.8rem, 2vw, 1.2rem);
   font-weight: 550;
@@ -1113,6 +1110,51 @@ button {
   border: 1px solid #ccc;
 }
 
+/* Footer Styles */
+.site-footer {
+  width: 100%;
+  padding: 0.8rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-size: 0.85rem;
+  border-top: 1px solid #dee2e6;
+  margin-top: auto;
+  /* Push to bottom of flex container */
+  z-index: 10;
+  flex-wrap: wrap;
+  /* Allow wrapping on very small screens */
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-btn {
+  background: none;
+  border: none;
+  color: #2980b9;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.footer-btn:hover {
+  color: #1a5a8a;
+  text-decoration: none;
+}
+
 /* Mobile responsive adjustments for number pad */
 @media (max-width: 768px) {
   :root {
@@ -1124,7 +1166,7 @@ button {
   }
 
   .sudoku-app {
-    padding-top: 4rem;
+    padding-top: 3.5rem;
   }
 
   /* Sudoku game top margin */
@@ -1156,11 +1198,9 @@ button {
     align-items: center;
     justify-content: flex-start;
     gap: 0.1rem;
-    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     max-width: 700px;
     /* increased the max width*/
-    max-height: 100vh;
     padding-top: evn(safe-area-inset-top, 1rem);
     /* padding-bottom: env(safe-area-inset-bottom, 1rem); */
   }
@@ -1198,7 +1238,7 @@ button {
     display: flex;
     padding-left: 0.0rem;
     align-items: center;
-    height: 3.5rem;
+    height: 3rem;
     text-align: justify;
     padding-bottom: env(safe-area-inset-top);
     /* iPhone notch */
@@ -1390,7 +1430,7 @@ button {
 @media (max-width: 410px) {
 
   .sudoku-app {
-    padding-top: 4rem;
+    padding-top: 3.2rem;
   }
 
   /* Small screens like Iphone SE */
@@ -1422,11 +1462,11 @@ button {
   }
 
   .wrapper {
-    overflow-y: hidden;
+    overflow-y: auto;
   }
 
   .menu-bar {
-    height: 2.8rem;
+    height: 2.4rem;
 
   }
 

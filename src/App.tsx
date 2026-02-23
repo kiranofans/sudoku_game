@@ -30,7 +30,7 @@ function App() {
     col: number | null;
   }>({ row: null, col: null });
 
-  // const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
 
@@ -514,22 +514,14 @@ function App() {
             </div>
           </div>
         </div>
-        {/* <footer
-        style={{
-          width: "100%",
-          padding: "1rem 0",
-          textAlign: "center",
-          backgroundColor: "#f5f5f5",
-          color: "#333",
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-        }}
-      >
-        &copy; {currentYear} Kira's Sudoku Game. All rights reserved.
-      </footer> */
-        }
       </div>
+      <footer className="site-footer">
+        <span>&copy; {currentYear} Kira's Sudoku Game. All rights reserved.</span>
+        <div className="footer-links">
+          <button className="footer-btn" onClick={() => alert("Kira's Sudoku Game is a fun and challenging puzzle game.")}>About</button>
+          <button className="footer-btn" onClick={() => alert("For support, please contact us at support@example.com")}>Contact</button>
+        </div>
+      </footer>
       {
         isGameOver && (
           <div className="game-over-overlay">
