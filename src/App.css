@@ -1470,6 +1470,12 @@ button {
 
   }
 
+  .site-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
   .logo {
     height: 0.4rem;
     width: auto;
