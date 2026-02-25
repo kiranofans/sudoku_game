@@ -754,14 +754,14 @@ body {
 
 .hint-badge {
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  top: -8px;
+  right: 4px;
   background: #2980b9;
   color: #fff;
-  font-size: clamp(11px, 2vw, 14px);
+  font-size: clamp(9px, 1.5vw, 12px);
   line-height: 1;
   font-weight: 700;
-  padding: 0.25rem 0.4rem;
+  padding: 0.15rem 0.3rem;
   border-radius: 9999px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   pointer-events: none;
