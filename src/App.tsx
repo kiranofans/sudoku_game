@@ -456,7 +456,6 @@ function App() {
 
           <div className="counts-and-actionbtn">
             <div className="control-panel">
-
               <div className="action-buttons">
                 <button
                   className={isPencilMode ? 'active' : ''}
@@ -500,29 +499,19 @@ function App() {
                   <div className="btn-reset"></div>
                 </button>
               </div>
-              <div className="horizontal-counts">
-
-                {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
-                  <div key={num} className="count-item">
-                    <div className={`number ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
-                      {num}
-                    </div>
-                    <div className="remaining"> {numberCounts[num]}</div>
-                  </div>
+              <div className="number-pad">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                  <button
+                    key={num}
+                    onClick={() => handleNumberInput(num)}
+                    disabled={isGameOver || numberCounts[num] <= 0}
+                    className={numberCounts[num] <= 0 ? 'completed' : ''}
+                  >
+                    <span className="number-value">{num}</span>
+                    <span className="count-badge">{numberCounts[num]}</span>
+                  </button>
                 ))}
               </div>
-            </div>
-            <div className="number-pad">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                <button
-                  key={num}
-                  onClick={() => handleNumberInput(num)}
-                  disabled={isGameOver || numberCounts[num] <= 0}
-                  className={numberCounts[num] <= 0 ? 'completed' : ''}
-                >
-                  {num}
-                </button>
-              ))}
             </div>
           </div>
         </div>
