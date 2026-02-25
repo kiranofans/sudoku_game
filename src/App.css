@@ -17,7 +17,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 9999;
   /* must be higher than content*/
-  background-color: white;
+  background-color: var(--header-bg);
   /* sits below the notch */
   height: var(--header-inner-height, 60px);
 }
@@ -34,7 +34,7 @@
 /* Menu bar divider line */
 .divider {
   border: none;
-  border-top: 0.6px solid #e4e4e4;
+  border-top: 0.6px solid var(--divider-color);
   /* line thickness + color */
   width: 100vw;
   margin: 0;
@@ -54,7 +54,7 @@
   gap: 0.1rem;
   padding: 6px;
   margin-bottom: 0;
-  color: black;
+  color: var(--text-color);
   box-sizing: border-box;
 }
 
@@ -106,7 +106,7 @@ body {
 /* Popup box */
 .instructions-content {
   position: relative;
-  background: #fff;
+  background: var(--modal-bg);
   padding: 0.6rem;
   border-radius: 1.5%;
   padding: 1rem;
@@ -163,7 +163,7 @@ body {
   /* Thickness of the cross */
   height: 24px;
   /* Match button height */
-  background-color: #333;
+  background-color: var(--text-color);
   /* Color of the X */
 }
 
@@ -246,7 +246,6 @@ body {
   height: auto;
   margin: 0;
   /* occupied most height of the menu bar*/
-  overflow: hidden;
   margin-left: 0;
   gap: clamp(0.8rem, 2vw, 2rem);
   padding: 0;
@@ -268,30 +267,105 @@ body {
 }
 
 .difficulty-dropdown {
-  padding: 0.4rem;
-  height: 2rem;
-  align-content: center;
-  border-radius: 5%;
-  /* border:none; */
   margin-right: 0.5rem;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: 1px solid var(--button-border);
+}
+
+.theme-selector-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.theme-icon-button {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-color);
+  transition: all 0.2s ease;
+}
+
+.theme-icon-button:hover {
+  transform: scale(1.1);
+}
+
+.theme-icon-img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.theme-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background: var(--modal-bg);
+  border: 1px solid var(--divider-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+}
+
+.theme-menu-item {
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.theme-menu-item:hover {
+  background: var(--button-bg);
+}
+
+.theme-menu-item.active {
+  background: var(--num-pad-bg);
+  color: white;
 }
 
 
 /* Top-right floating How To button */
 .how-to-play-btn {
   z-index: 1000;
-  /* above everything */
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 100px;
-  padding: 0.3rem 0.5rem;
-  /* optional, adjust for size */
-  font-size: clamp(0.8rem, 2vw, 1.2rem);
-  font-weight: 550;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   margin: 0.5rem;
-  /* remove margin interference */
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.how-to-play-btn:hover {
+  transform: scale(1.1);
+}
+
+.how-to-icon-img {
+  width: 24px;
+  height: 24px;
 }
 
 .pc-tooltip-btn {
@@ -317,8 +391,8 @@ body {
   white-space: nowrap;
   visibility: hidden;
   width: 130px;
-  background-color: black;
-  color: #fff;
+  background-color: var(--text-color);
+  color: var(--bg-color);
   text-align: center;
   font-size: small;
   top: 100%;
@@ -383,8 +457,8 @@ body {
   max-width: 90vw;
   /* cap to screen width */
   margin: 10px auto;
-  border: 2px solid #000000;
-  background: white;
+  border: 2px solid var(--text-color);
+  background: var(--board-bg);
 }
 
 .board-row {
@@ -395,7 +469,7 @@ body {
 .cell {
   width: 3rem;
   height: 3rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--cell-border);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -403,17 +477,18 @@ body {
   font-weight: bold;
   cursor: pointer;
   position: relative;
+  color: var(--cell-text);
 }
 
 
 /* Cross highlight effect */
 .cell.cross-highlight {
-  background-color: rgba(173, 216, 230, 0.3);
+  background-color: var(--cell-highlight-bg);
 }
 
 /* Selected cells */
 .cell.selected {
-  background-color: rgba(135, 206, 250, 0.7) !important;
+  background-color: var(--cell-selected-bg) !important;
   box-shadow: 0 0 0 2px #1E90FF inset;
   z-index: 2;
 }
@@ -437,18 +512,18 @@ body {
 }
 
 .cell.initial {
-  background-color: #f0f0f0;
-  color: #000;
+  background-color: var(--cell-initial-bg);
+  color: var(--cell-text);
   cursor: default;
 }
 
 .cell.correct {
-  color: #7d7979;
+  color: var(--cell-correct-text);
   /* Dark grey-blue */
 }
 
 .cell.wrong {
-  color: #e74c3c;
+  color: var(--cell-wrong-text);
   /* Red */
 }
 
@@ -508,7 +583,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #666;
+  color: var(--cell-note-text);
 }
 
 .note.visible {
@@ -530,10 +605,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa;
+  background-color: var(--score-bg);
   padding: 10px 15px;
   border-radius: 8px;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--divider-color);
   margin-bottom: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -541,7 +616,7 @@ body {
 .score-label {
   font-size: 14px;
   font-weight: 600;
-  color: #6c757d;
+  color: var(--score-label);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -549,7 +624,7 @@ body {
 .score-value {
   font-size: 20px;
   font-weight: 700;
-  color: #2c3e50;
+  color: var(--score-value);
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -565,7 +640,7 @@ body {
   width: 100%;
   aspect-ratio: 1 / 1;
   border: none;
-  background-color: #2c8fd1;
+  background-color: var(--num-pad-bg);
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -600,7 +675,8 @@ body {
 
 .count-display {
   font-size: 14px;
-  color: #666;
+  color: var(--text-color);
+  opacity: 0.7;
 }
 
 .number-pad button.completed {
@@ -646,14 +722,14 @@ body {
 
 
 .number-pad button:hover {
-  background-color: #2980b9;
+  background-color: var(--num-pad-hover);
   transform: scale(1.05);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Disabled state */
 .number-pad button:disabled {
-  background-color: #95a5a6;
+  background-color: var(--num-pad-disabled);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -697,21 +773,22 @@ body {
   height: 48px;
   font-size: 14px;
   justify-content: center;
-  border: solid 1.5px #2980b9;
+  border: solid 1.5px var(--num-pad-bg);
 
   background-color: transparent;
-  color: white;
+  color: var(--text-color);
   border-radius: 50%;
   cursor: pointer;
 }
 
 .action-buttons button:hover {
-  background: #fffefe;
+  background: var(--button-bg);
   transform: translateY(-1px);
 }
 
 .action-buttons button.active {
-  background-color: #2980b9;
+  background-color: var(--num-pad-bg);
+  color: white;
   transform: scale(0.95);
   /* slight shrink for "pressed" feel */
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -765,6 +842,8 @@ body {
   border-radius: 9999px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   pointer-events: none;
+  background-color: var(--num-pad-bg);
+  color: white;
 }
 
 

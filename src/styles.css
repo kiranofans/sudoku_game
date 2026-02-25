@@ -3,14 +3,79 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Theme variables */
+  --bg-color: #ffffff;
+  --text-color: #213547;
+  --header-bg: #ffffff;
+  --divider-color: #e4e4e4;
+  --button-bg: #f9f9f9;
+  --button-text: #213547;
+  --button-border: #cccccc;
+
+  --board-bg: #ffffff;
+  --cell-border: #cccccc;
+  --cell-initial-bg: #f0f0f0;
+  --cell-selected-bg: rgba(135, 206, 250, 0.7);
+  --cell-highlight-bg: rgba(173, 216, 230, 0.3);
+  --cell-text: #000000;
+  --cell-correct-text: #666666;
+  --cell-wrong-text: #e74c3c;
+  --cell-note-text: #666666;
+
+  --score-bg: #f8f9fa;
+  --score-label: #6c757d;
+  --score-value: #2c3e50;
+
+  --num-pad-bg: #2c8fd1;
+  --num-pad-hover: #2980b9;
+  --num-pad-disabled: #95a5a6;
+
+  --modal-bg: #ffffff;
+  --modal-overlay: rgba(0, 0, 0, 0.6);
+  --theme-icon-filter: none;
+}
+
+:root.dark-theme {
+  --bg-color: #1a1a1a;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --header-bg: #242424;
+  --divider-color: #444444;
+  --button-bg: #2a2a2a;
+  --button-text: #ffffff;
+  --button-border: #444444;
+
+  --board-bg: #2d2d2d;
+  --cell-border: #444444;
+  --cell-initial-bg: #383838;
+  --cell-selected-bg: rgba(30, 144, 255, 0.5);
+  --cell-highlight-bg: rgba(173, 216, 230, 0.15);
+  --cell-text: #ffffff;
+  --cell-correct-text: #bbbbbb;
+  --cell-wrong-text: #ff6b6b;
+  --cell-note-text: #999999;
+
+  --score-bg: #2d2d2d;
+  --score-label: #a0a0a0;
+  --score-value: #ffffff;
+
+  --num-pad-bg: #2471a3;
+  --num-pad-hover: #1f618d;
+  --num-pad-disabled: #566573;
+
+  --modal-bg: #242424;
+  --modal-overlay: rgba(0, 0, 0, 0.8);
+  --theme-icon-filter: invert(1);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -18,6 +83,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -52,9 +118,11 @@ h1 {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #3178c6aa);
 }
@@ -78,9 +146,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -91,9 +161,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
