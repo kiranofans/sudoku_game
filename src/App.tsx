@@ -26,6 +26,7 @@ function App() {
   const [numberCounts, setNumberCounts] = useState<{ [key: number]: number }>(
     Array.from({ length: 9 }, (_, i) => i + 1).reduce((acc, num) => ({ ...acc, [num]: 9 }), {})
   );
+  const [score, setScore] = useState(0);
   const [crossHighlight, setCrossHighlight] = useState<{
     row: number | null;
     col: number | null;
@@ -112,6 +113,20 @@ function App() {
     }
     return () => clearInterval(interval);
   }, [isGameOver]);
+
+  // Score Calculation
+  useEffect(() => {
+    const baseScores: Record<Difficulty, number> = {
+      'very-easy': 5000,
+      easy: 10000,
+      medium: 20000,
+      hard: 30000,
+      expert: 50000
+    };
+
+    const newScore = Math.max(0, baseScores[difficulty] - (time * 10) - (mistakes * 1000));
+    setScore(newScore);
+  }, [time, mistakes, difficulty]);
 
   const startNewGame = useCallback(() => {
     setIsLoading(true);
@@ -456,6 +471,10 @@ function App() {
 
           <div className="counts-and-actionbtn">
             <div className="control-panel">
+              <div className="score-widget">
+                <span className="score-label">Score:</span>
+                <span className="score-value">{score.toLocaleString()}</span>
+              </div>
               <div className="action-buttons">
                 <button
                   className={isPencilMode ? 'active' : ''}

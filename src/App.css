@@ -525,6 +525,34 @@ body {
   /* Matches 3 * 65px buttons + 2 * 5px gaps */
 }
 
+/* Score system Widget */
+.score-widget {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  margin-bottom: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.score-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.score-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .number-pad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -640,9 +668,9 @@ body {
 /* Hover effect of the numbers used */
 .number-pad button.completed:hover {
   background-color: #95a5a6;
-  /* 保持灰色 */
+  /* keep grey */
   transform: none;
-  /* 禁用缩放 */
+  /* disable scale */
 }
 
 
