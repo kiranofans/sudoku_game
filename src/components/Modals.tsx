@@ -57,13 +57,24 @@ export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void 
         <h4>Quick Guide</h4>
         <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
 
-        <h4>Detailed Guide</h4>
+        <h4>Detailed Sudoku Guide</h4>
         <ol type="1">
             <li>Click a cell to select it.</li>
             <li>Type a number (1–9) or use the number pad to fill it in.</li>
             <li>Switch to <b>Pencil Mode</b> to make notes for possible numbers.</li>
             <li>You can use up to 3 hints during the game.</li>
             <li>The game ends after 3 mistakes or when the puzzle is solved.</li>
+        </ol>
+
+        <h4>About the Number Pad</h4>
+        <p>The large blue buttons are for input. Each button also shows the <b>remaining count</b> of that number in the bottom-right corner.</p>
+
+        <h4>About the Scoring System</h4>
+        <p>Your score is based on difficulty, time, and mistakes:</p>
+        <ol type="1">
+            <li>Earn a <b>Base Score</b> based on difficulty (up to 50,000 for Expert).</li>
+            <li>Each second costs <b>10 points</b>.</li>
+            <li>Each mistake costs <b>1,000 points</b>.</li>
         </ol>
     </Modal>
 );
