@@ -53,7 +53,7 @@ export const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void }> = 
 );
 
 export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
-    <Modal isOpen={isOpen} onClose={onClose} title="How to Play Sudoku">
+    <Modal isOpen={isOpen} onClose={onClose} title="How to Play">
         <h4>Quick Guide</h4>
         <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
 

@@ -7,6 +7,7 @@ import Board from "./components/Board";
 import { AboutModal, ContactModal, InstructionsModal } from './components/Modals';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemeSelector from './components/ThemeSelector';
+import DifficultySelector from './components/DifficultySelector';
 
 {/* Set google analytic with Vite container */ }
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
@@ -379,23 +380,18 @@ function App() {
           <h2 className='game-title'>Sudoku</h2>
         </div>
         <div className='controls-row'>
-          <select className='difficulty-dropdown'
-            value={difficulty}
-            onChange={(e) => {
-              setDifficulty(e.target.value as Difficulty);
+          <DifficultySelector
+            difficulty={difficulty}
+            onDifficultyChange={(newDifficulty) => {
+              setDifficulty(newDifficulty);
               ReactGA.event({
                 category: 'Game',
                 action: 'change_difficulty',
-                label: difficulty
+                label: newDifficulty
               });
               startNewGame();
             }}
-          >
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-            <option value="expert">Expert</option>
-          </select>
+          />
           <ThemeSelector />
 
           <button onClick={() => {

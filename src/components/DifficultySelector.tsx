@@ -1,0 +1,44 @@
+import React from 'react';
+import Dropdown from './Dropdown';
+
+export type Difficulty = 'very-easy' | 'easy' | 'medium' | 'hard' | 'expert';
+
+interface DifficultySelectorProps {
+    difficulty: Difficulty;
+    onDifficultyChange: (difficulty: Difficulty) => void;
+}
+
+const DifficultySelector: React.FC<DifficultySelectorProps> = ({ difficulty, onDifficultyChange }) => {
+    const formatDifficulty = (s: string) => {
+        return s.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    };
+
+    return (
+        <Dropdown
+            trigger={
+                <button
+                    className="theme-icon-button"
+                    aria-label="Change difficulty"
+                    title="Change difficulty"
+                >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="theme-icon-img">
+                        <path d="M11.9999 3C10.0221 3.00003 8.0887 3.58653 6.44424 4.68535C4.79977 5.78416 3.51807 7.34594 2.7612 9.17318C2.00434 11.0004 1.8063 13.0111 2.19214 14.9509C2.57799 16.8907 3.53037 18.6725 4.92887 20.071L5.63587 20.778L8.05687 18.357L6.64287 16.943L5.67987 17.905C4.80055 16.7718 4.24206 15.4231 4.06287 14H5.99987V12H4.06287C4.24206 10.5769 4.80055 9.22817 5.67987 8.095L6.29287 8.707L6.79287 9.207L8.20687 7.793L7.09487 6.68C8.22804 5.80068 9.57678 5.24219 10.9999 5.063V6.5H12.9999V5.063C14.423 5.24219 15.7717 5.80068 16.9049 6.68L15.7929 7.793L17.2069 9.207L18.3199 8.095C19.1992 9.22817 19.7577 10.5769 19.9369 12H17.9999V14H19.9369C19.7576 15.4235 19.1987 16.7727 18.3189 17.906L17.3569 16.943L15.9429 18.357L18.3639 20.778L19.0709 20.071C20.4689 18.6723 21.4208 16.8905 21.8064 14.9509C22.192 13.0112 21.9938 11.0008 21.237 9.1738C20.4803 7.34675 19.1988 5.78508 17.5546 4.68619C15.9105 3.58729 13.9774 3.0005 11.9999 3Z" fill="currentColor" />
+                        <path d="M12.7066 13.7064C12.8888 13.5178 12.9895 13.2652 12.9873 13.003C12.985 12.7408 12.8798 12.49 12.6944 12.3046C12.509 12.1192 12.2582 12.014 11.996 12.0118C11.7338 12.0095 11.4812 12.1103 11.2926 12.2924L8.29259 15.2924C8.19708 15.3847 8.1209 15.495 8.06849 15.617C8.01608 15.739 7.9885 15.8703 7.98734 16.003C7.98619 16.1358 8.06177 16.3904C8.11205 16.5133 8.18631 16.6249 8.2802 16.7188C8.37409 16.8127 8.48574 16.887 8.60864 16.9373C8.73154 16.9875 8.86321 17.0128 8.99599 17.0117C9.12877 17.0105 9.25999 16.9829 9.382 16.9305C9.504 16.8781 9.61435 16.8019 9.70659 16.7064L12.7066 13.7064Z" fill="currentColor" />
+                    </svg>
+                </button>
+            }
+        >
+            {(['very-easy', 'easy', 'medium', 'hard', 'expert'] as Difficulty[]).map((level) => (
+                <button
+                    key={level}
+                    className={`theme-menu-item ${difficulty === level ? 'active' : ''}`}
+                    onClick={() => onDifficultyChange(level)}
+                >
+                    {formatDifficulty(level)}
+                </button>
+            ))}
+        </Dropdown>
+    );
+};
+
+export default DifficultySelector;
