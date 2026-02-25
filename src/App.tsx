@@ -26,7 +26,7 @@ function App() {
   const [numberCounts, setNumberCounts] = useState<{ [key: number]: number }>(
     Array.from({ length: 9 }, (_, i) => i + 1).reduce((acc, num) => ({ ...acc, [num]: 9 }), {})
   );
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState<number | null>(null);
   const [crossHighlight, setCrossHighlight] = useState<{
     row: number | null;
     col: number | null;
@@ -103,30 +103,21 @@ function App() {
     });
   }, [difficulty]);
 
-  // Timer
+  // Timer & Real-time Score Decay
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (!isGameOver) {
       interval = setInterval(() => {
         setTime(prev => prev + 1);
+        setScore(prev => {
+          if (prev === null || prev <= 0) return prev;
+          return Math.max(0, prev - 5);
+        });
       }, 1000);
     }
     return () => clearInterval(interval);
   }, [isGameOver]);
 
-  // Score Calculation
-  useEffect(() => {
-    const baseScores: Record<Difficulty, number> = {
-      'very-easy': 5000,
-      easy: 10000,
-      medium: 20000,
-      hard: 30000,
-      expert: 50000
-    };
-
-    const newScore = Math.max(0, baseScores[difficulty] - (time * 10) - (mistakes * 1000));
-    setScore(newScore);
-  }, [time, mistakes, difficulty]);
 
   const startNewGame = useCallback(() => {
     setIsLoading(true);
@@ -139,6 +130,7 @@ function App() {
       setSelectedCell(null);
       setTime(0);
       setMistakes(0);
+      setScore(null);
       setIsGameOver(false);
       setHintsRemaining(3);
       setIsPencilMode(false);
@@ -211,37 +203,53 @@ function App() {
       newNotes[row][col] = cellNotes;
       setNotes(newNotes);
     } else {
-      const currentNum = board[row][col];
-      if (currentNum !== null) {
-        updateCountsAfterInput(currentNum, true);
-      }
+      const multiplier = {
+        'very-easy': 1,
+        easy: 2,
+        medium: 3,
+        hard: 5,
+        expert: 10
+      }[difficulty];
 
-      if (solution[row][col] === num) {
-        const newBoard = [...board];
-        newBoard[row][col] = num;
-        setBoard(newBoard);
-
-        const newNotes = [...notes];
-        newNotes[row][col] = new Set();
-        setNotes(newNotes);
-
-        updateCountsAfterInput(num, false);
-
-        if (checkBoardComplete(newBoard)) {
-          setIsGameOver(true);
+      if (num !== null) {
+        const currentNum = board[row][col];
+        if (currentNum !== null) {
+          updateCountsAfterInput(currentNum, true);
         }
-      } else {
-        const newBoard = [...board];
-        newBoard[row][col] = num;
-        setBoard(newBoard);
 
-        setMistakes(prev => {
-          const newMistakes = prev + 1;
-          if (newMistakes >= 3) {
+        if (solution[row][col] === num) {
+          const newBoard = [...board];
+          newBoard[row][col] = num;
+          setBoard(newBoard);
+
+          const newNotes = [...notes];
+          newNotes[row][col] = new Set();
+          setNotes(newNotes);
+
+          updateCountsAfterInput(num, false);
+
+          // Add incremental points for correct move
+          setScore(prev => (prev || 0) + (100 * multiplier));
+
+          if (checkBoardComplete(newBoard)) {
             setIsGameOver(true);
           }
-          return newMistakes;
-        });
+        } else {
+          const newBoard = [...board];
+          newBoard[row][col] = num;
+          setBoard(newBoard);
+
+          // Subtract penalty for mistake
+          setScore(prev => Math.max(0, (prev || 0) - (500 * multiplier)));
+
+          setMistakes(prev => {
+            const newMistakes = prev + 1;
+            if (newMistakes >= 10) {
+              setIsGameOver(true);
+            }
+            return newMistakes;
+          });
+        }
       }
     }
     setCrossHighlight({ row, col });
@@ -448,7 +456,7 @@ function App() {
               </div>
 
               <div>
-                <div className="info-icon mistake-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mistakes}/3</div>
+                <div className="info-icon mistake-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mistakes}/10</div>
               </div>
 
               <div>
@@ -473,7 +481,7 @@ function App() {
             <div className="control-panel">
               <div className="score-widget">
                 <span className="score-label">Score:</span>
-                <span className="score-value">{score.toLocaleString()}</span>
+                <span className="score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
               </div>
               <div className="action-buttons">
                 <button
