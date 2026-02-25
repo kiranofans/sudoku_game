@@ -513,11 +513,7 @@ function App() {
                     {/* <img className="ic-hint" src="ic_hint.svg"></img> */}
                   </div>{/* contains hint icon*/}
 
-                  {hintsRemaining > 0 && (
-                    <span className="hint-remain-badge" role="status" aria-live="polite">{hintsRemaining}</span>
-                  )}
-
-                  {/* visible top-right badge only when ad-mode (keeps "Ad" visible and also shows the badge) */}
+                  {/* Unified badge for both hints count and Ad state */}
                   <span className="hint-badge" role="status" aria-live="polite">
                     {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
                   </span>

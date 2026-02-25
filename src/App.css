@@ -767,30 +767,6 @@ body {
   pointer-events: none;
 }
 
-/* badge in top-right when in ad-mode */
-.hint-ad.ad-mode::after {
-  content: "Ad";
-  position: absolute;
-  bottom: 2rem;
-  right: 0.3rem;
-  left: 1.9rem;
-  background: #2980b9;
-  color: #fff;
-  font-size: clamp(11px, 2vw, 14px);
-  font-weight: 700;
-  line-height: 1;
-  padding: 2px 6px;
-  border-radius: 999px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  pointer-events: none;
-}
-
-/* if you don't want the word "Ad" also in the button center,
-   hide the textual content only when ad-mode: */
-.hint-ad.ad-mode> :not(.btn-hint) {
-  color: transparent;
-  text-shadow: none;
-}
 
 
 
