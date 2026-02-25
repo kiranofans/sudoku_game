@@ -4,6 +4,7 @@ import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
 import ReactGA from 'react-ga4';
 import './App.css';
 import Board from "./components/Board";
+import { AboutModal, ContactModal, InstructionsModal } from './components/Modals';
 
 {/* Set google analytic with Vite container */ }
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
@@ -330,6 +331,8 @@ function App() {
 
 
   const [showInstructions, setShowInstructions] = useState(false);
+  const [showAboutModal, setShowAboutModal] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   const checkBoardComplete = (currentBoard: (number | null)[][]) => {
     return currentBoard.every((row, i) =>
@@ -406,28 +409,19 @@ function App() {
           </div>
         )}
 
-        {/* Instructions - only show if not loading */}
-        {showInstructions && !isLoading && (
-          <div className="instructions-overlay">
-            <div className="instructions-content">
-              <button className='instruct-close-btn' onClick={() => setShowInstructions(false)}></button>
-              <h3 className='content-title'>How to Play Sudoku</h3>
-
-              <h4>Quick Guide</h4>
-              <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
-
-              <h4>Detailed Guide</h4>
-              <ol type='1'>
-                <li>Click a cell to select it.</li>
-                <li>Type a number (1–9) or use the number pad to fill it in.</li>
-                <li>Switch to <b>Pencil Mode</b> to make notes for possible numbers.</li>
-                <li>You can use up to 3 hints during the game.</li>
-                <li>The game ends after 3 mistakes or when the puzzle is solved.</li>
-              </ol>
-
-            </div>
-          </div>
-        )}
+        {/* Modals */}
+        <InstructionsModal
+          isOpen={showInstructions && !isLoading}
+          onClose={() => setShowInstructions(false)}
+        />
+        <AboutModal
+          isOpen={showAboutModal}
+          onClose={() => setShowAboutModal(false)}
+        />
+        <ContactModal
+          isOpen={showContactModal}
+          onClose={() => setShowContactModal(false)}
+        />
         {/* <div className={`sudoku-app ${isMobileView ? 'mobile-layout' : 'web-layout'}`}> */}
         <div className="game-container">
           <div className="board-section">
@@ -534,10 +528,22 @@ function App() {
         </div>
       </div>
       <footer className="site-footer">
-        <span>&copy; {currentYear} Kira's Sudoku Game. All rights reserved.</span>
+        <span>&copy; {currentYear}Sudoku Game. All rights reserved.</span>
         <div className="footer-links">
-          <button className="footer-btn" onClick={() => alert("Kira's Sudoku Game is a fun and challenging puzzle game.")}>About</button>
-          <button className="footer-btn" onClick={() => alert("For support, please contact us at support@example.com")}>Contact</button>
+          <button className="footer-btn" onClick={() => {
+            setShowAboutModal(true);
+            ReactGA.event({
+              category: 'Footer',
+              action: 'About button clicks',
+            });
+          }}>About</button>
+          <button className="footer-btn" onClick={() => {
+            setShowContactModal(true);
+            ReactGA.event({
+              category: 'Footer',
+              action: 'Contact button clicks',
+            });
+          }}>Contact</button>
         </div>
       </footer>
       {
