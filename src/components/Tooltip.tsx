@@ -32,12 +32,12 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
             pressTimerRef.current = null;
         }
 
-        // If it was already shown, keep it for a bit so they can read it
+        // If it was already shown, hide it after a short delay
         if (isVisible) {
             if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
             hideTimerRef.current = setTimeout(() => {
                 setIsVisible(false);
-            }, 2000);
+            }, 500);
         }
     };
 
