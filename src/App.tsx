@@ -391,12 +391,6 @@ function App() {
             difficulty={difficulty}
             onDifficultyChange={(newDifficulty) => {
               setDifficulty(newDifficulty);
-              ReactGA.event({
-                category: 'Game',
-                action: 'change_difficulty',
-                label: newDifficulty
-              });
-              startNewGame();
             }}
           />
           <ThemeSelector />

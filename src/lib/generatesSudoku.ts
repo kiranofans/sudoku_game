@@ -200,21 +200,6 @@ function getCandidates(board: Int8Array, pos: number): number[] {
   return candidates;
 }
 
-function isValidOptimized(board: Int8Array, row: number, col: number, num: number): boolean {
-  for (let i = 0; i < 9; i++) {
-    if (board[row * 9 + i] === num) return false;
-    if (board[i * 9 + col] === num) return false;
-  }
-
-  const boxRow = Math.floor(row / 3) * 3;
-  const boxCol = Math.floor(col / 3) * 3;
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      if (board[(boxRow + i) * 9 + (boxCol + j)] === num) return false;
-    }
-  }
-  return true;
-}
 
 function shuffle<T>(array: T[]): T[] {
   const newArray = [...array];
