@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
+import { loadPersistedHints, savePersistedHints } from './lib/persistence.ts';
 
 import ReactGA from 'react-ga4';
 import './App.css';
@@ -25,7 +26,7 @@ function App() {
   const [time, setTime] = useState(0);
   const [mistakes, setMistakes] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [hintsRemaining, setHintsRemaining] = useState(3);
+  const [hintsRemaining, setHintsRemaining] = useState(loadPersistedHints());
   const [isPencilMode, setIsPencilMode] = useState(false);
   const [numberCounts, setNumberCounts] = useState<{ [key: number]: number }>(
     Array.from({ length: 9 }, (_, i) => i + 1).reduce((acc, num) => ({ ...acc, [num]: 9 }), {})
@@ -122,6 +123,11 @@ function App() {
     return () => clearInterval(interval);
   }, [isGameOver]);
 
+  // Persist hints
+  useEffect(() => {
+    savePersistedHints(hintsRemaining);
+  }, [hintsRemaining]);
+
 
   const startNewGame = useCallback(() => {
     setIsLoading(true);
@@ -136,7 +142,7 @@ function App() {
       setMistakes(0);
       setScore(null);
       setIsGameOver(false);
-      setHintsRemaining(3);
+      // Removed setHintsRemaining(3) to persist hints across games within 24h
       setIsPencilMode(false);
       setCrossHighlight({ row: null, col: null });
       updateNumberCounts(puzzle);
