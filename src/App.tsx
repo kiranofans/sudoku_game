@@ -378,7 +378,13 @@ function App() {
       <header className="menu-bar">
         <div className="logo-title-container">
           <img src="logo_sudoku1.png" alt="Logo" className="logo" />
-          <h2 className='game-title'>Sudoku</h2>
+          <div className="title-score-wrapper">
+            <h2 className='game-title'>Sudoku</h2>
+            <div className="mobile-only-score">
+              <span className="mobile-score-label">Score:</span>
+              <span className="mobile-score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
+            </div>
+          </div>
         </div>
         <div className='controls-row'>
           <DifficultySelector
@@ -484,7 +490,7 @@ function App() {
 
           <div className="counts-and-actionbtn">
             <div className="control-panel">
-              <div className="score-widget">
+              <div className="score-widget desktop-only-score">
                 <span className="score-label">Score:</span>
                 <span className="score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
               </div>
@@ -536,8 +542,15 @@ function App() {
                     className={numberCounts[num] <= 0 ? 'completed' : ''}
                   >
                     <span className="number-value">{num}</span>
-                    <span className="count-badge">{numberCounts[num]}</span>
+                    <span className="count-badge desktop-only-count">{numberCounts[num]}</span>
                   </button>
+                ))}
+              </div>
+              <div className="mobile-only-counts-row">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                  <div key={num} className={`mobile-count-item ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
+                    {numberCounts[num]}
+                  </div>
                 ))}
               </div>
             </div>

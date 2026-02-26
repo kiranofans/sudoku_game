@@ -11,7 +11,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
     const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
     const isTouchDeviceRef = useRef(false);
 
-    const startPress = (e: React.TouchEvent) => {
+    const startPress = () => {
         // Prevent default browser behavior like context menus on some devices
         // e.preventDefault(); // CAUTION: this might break the button click below
 
