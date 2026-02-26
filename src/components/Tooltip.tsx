@@ -12,35 +12,37 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
     const isTouchDeviceRef = useRef(false);
 
     const startPress = (e: React.TouchEvent) => {
+        // Prevent default browser behavior like context menus on some devices
+        // e.preventDefault(); // CAUTION: this might break the button click below
+
         isTouchDeviceRef.current = true;
-        // Clear any existing timers
         if (pressTimerRef.current) clearTimeout(pressTimerRef.current);
         if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
 
-        // Start 2-second timer for mobile long-press
+        // Start 800ms timer for better responsiveness while still being a "long-press"
+        // 2-3 seconds is very long in UX time
         pressTimerRef.current = setTimeout(() => {
             setIsVisible(true);
-        }, 2000);
+        }, 800);
     };
 
-    const cancelPress = () => {
+    const endPress = () => {
         if (pressTimerRef.current) {
             clearTimeout(pressTimerRef.current);
             pressTimerRef.current = null;
         }
 
-        // Auto-hide after 1.5s if it was shown
+        // If it was already shown, keep it for a bit so they can read it
         if (isVisible) {
+            if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
             hideTimerRef.current = setTimeout(() => {
                 setIsVisible(false);
-            }, 1500);
+            }, 2000);
         }
     };
 
     const showTooltipHover = () => {
-        // Ignore hover events on touch devices (where they are simulated)
         if (isTouchDeviceRef.current) return;
-
         if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
         setIsVisible(true);
     };
@@ -52,7 +54,6 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
     };
 
     useEffect(() => {
-        // Reset the touch flag if mouse moves - helps with hybrid devices
         const handleMouseMove = () => {
             isTouchDeviceRef.current = false;
         };
@@ -71,9 +72,9 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
             onMouseEnter={showTooltipHover}
             onMouseLeave={hideTooltipImmediate}
             onTouchStart={startPress}
-            onTouchEnd={cancelPress}
-            onTouchMove={cancelPress}
-            onTouchCancel={cancelPress}
+            onTouchEnd={endPress}
+            onTouchMove={endPress} // Cancel if they scroll/move finger
+            onTouchCancel={endPress}
         >
             {children}
             {isVisible && (
