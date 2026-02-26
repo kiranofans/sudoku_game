@@ -368,6 +368,43 @@ body {
   height: 24px;
 }
 
+.tooltip-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltip-bubble {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 100000;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
 .pc-tooltip-btn {
   position: relative;
   display: inline-block;
@@ -925,116 +962,31 @@ body {
   transform: scale(0.98);
 }
 
-/* 图标通用样式 */
-.info-icon {
-  width: 24px;
-  height: 24px;
-  position: relative;
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--text-color);
 }
 
-.timer-icon {
-  width: 24px;
-  height: 24px;
-  position: relative;
-  background: #2c3e50;
-  border-radius: 50%;
+.timer-icon-svg {
+  color: var(--text-color);
+  width: 1.2em;
+  height: 1.2em;
 }
 
-.timer-icon::before {
-  content: "";
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  top: 3px;
-  left: 3px;
-  box-sizing: border-box;
+.mistake-icon-svg {
+  color: #e74c3c;
+  width: 1.1em;
+  height: 1.1em;
 }
 
-.timer-icon::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 8px;
-  background: #ffffff;
-  top: 5px;
-  left: 11px;
-  transform: rotate(45deg);
-}
 
-/* Eraser body (vertical orientation) */
-.btn-eraser::before {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 16px;
-  border: 2px solid #555;
-  background: linear-gradient(180deg, #f0f0f0, #ccc);
-  border-radius: 3px;
-  top: 4px;
-  left: 7px;
-  transform: rotate(0deg);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
 
-/* Erasing stroke (vertical) */
-.btn-eraser::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 12px;
-  background: #555;
-  transform: rotate(0deg);
-  top: 6px;
-  left: 11px;
-  border-radius: 1px;
-  opacity: 0.8;
-}
 
-.timer-icon .bell-left,
-.timer-icon .bell-right {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #ffffff;
-  border-radius: 50%;
-  top: -4px;
-}
-
-.timer-icon .bell-left {
-  left: 0px;
-}
-
-.timer-icon .bell-right {
-  right: 0px;
-}
-
-/* 错误图标 */
-.mistake-icon {
-  width: 24px;
-  height: 24px;
-  position: relative;
-}
-
-.mistake-icon::before,
-.mistake-icon::after {
-  content: "";
-  position: absolute;
-  width: 18px;
-  height: 2px;
-  background: #e74c3c;
-  top: 11px;
-  left: 3px;
-}
-
-.mistake-icon::before {
-  transform: rotate(45deg);
-}
-
-.mistake-icon::after {
-  transform: rotate(-45deg);
-}
 
 .hint-icon {
   width: 24px;
@@ -1402,14 +1354,13 @@ button {
   }
 
   .counts-and-actionbtn {
-    justify-content: column;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     /* align top */
     gap: 8px;
     width: 100%;
-    font-size: 2rem;
-    grid-template-columns: 1fr;
-    margin-top: 0.2rem;
+    /* margin-top: 0.2rem; */
     margin-bottom: 0.3rem;
     /* spacing between counts and action buttons */
   }
@@ -1443,11 +1394,11 @@ button {
 
   .action-buttons {
     display: flex;
-    grid-template-columns: repeat(2, 1fr);
     width: 100%;
     height: auto;
     align-items: center;
     justify-content: center;
+    gap: 12px;
     margin-top: 0.1rem;
     margin-bottom: 0.4rem;
   }
