@@ -648,14 +648,36 @@ body {
 /* Score system Widget */
 .score-widget {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   background-color: var(--score-bg);
-  padding: 10px 15px;
+  padding: 8px 15px;
   border-radius: 8px;
   border: 1px solid var(--divider-color);
   margin-bottom: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.score-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.score-refresh-notice {
+  font-size: 9px;
+  opacity: 0.6;
+  color: var(--score-label);
+  margin-top: 2px;
+  text-align: right;
+  width: 100%;
+  font-style: italic;
+}
+
+.score-main-mobile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .score-label {

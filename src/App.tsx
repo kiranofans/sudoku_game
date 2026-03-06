@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
-import { loadPersistedHints, savePersistedHints } from './lib/persistence.ts';
+import { loadPersistedHints, savePersistedHints, loadPersistedScore, savePersistedScore } from './lib/persistenceStorage.ts';
 
 import ReactGA from 'react-ga4';
 import './App.css';
@@ -31,7 +31,7 @@ function App() {
   const [numberCounts, setNumberCounts] = useState<{ [key: number]: number }>(
     Array.from({ length: 9 }, (_, i) => i + 1).reduce((acc, num) => ({ ...acc, [num]: 9 }), {})
   );
-  const [score, setScore] = useState<number | null>(null);
+  const [score, setScore] = useState<number | null>(loadPersistedScore());
   const [crossHighlight, setCrossHighlight] = useState<{
     row: number | null;
     col: number | null;
@@ -127,6 +127,10 @@ function App() {
   useEffect(() => {
     savePersistedHints(hintsRemaining);
   }, [hintsRemaining]);
+
+  useEffect(() => {
+    savePersistedScore(score);
+  }, [score]);
 
 
   const startNewGame = useCallback(() => {
@@ -387,8 +391,11 @@ function App() {
           <div className="title-score-wrapper">
             <h2 className='game-title'>Sudoku</h2>
             <div className="mobile-only-score">
-              <span className="mobile-score-label">Score:</span>
-              <span className="mobile-score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
+              <div className="score-main-mobile">
+                <span className="mobile-score-label">Score:</span>
+                <span className="mobile-score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
+              </div>
+              <div className="score-refresh-notice mobile-notice">Score refreshes every 24 hours</div>
             </div>
           </div>
         </div>
@@ -491,8 +498,11 @@ function App() {
           <div className="counts-and-actionbtn">
             <div className="control-panel">
               <div className="score-widget desktop-only-score">
-                <span className="score-label">Score:</span>
-                <span className="score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
+                <div className="score-main">
+                  <span className="score-label">Score:</span>
+                  <span className="score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
+                </div>
+                <div className="score-refresh-notice">Score refreshes every 24 hours</div>
               </div>
               <div className="action-buttons">
                 <button
