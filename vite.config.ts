@@ -8,10 +8,10 @@ import { VitePluginRadar } from 'vite-plugin-radar';
 export default defineConfig({
   plugins: [
     VitePluginRadar({
-      analytics:{
-        id:"G-RCKPRQLLGW",
+      analytics: {
+        id: "G-RCKPRQLLGW",
       },
-      enableDev:true, // Optional: for debugging in development for dev tracking
+      enableDev: true, // Optional: for debugging in development for dev tracking
 
     }),
     vue()],
@@ -20,5 +20,6 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src') // Path name setting
     }
   },
-  base: '/sudoku_game/'
+  //base: '/sudoku_game/' for github.io link
+  base: '/',//for cloudflare https link
 })
