@@ -1173,21 +1173,22 @@ button {
 /* Footer Styles */
 .site-footer {
   width: 100%;
-  padding: 0.8rem 0;
+  padding: 1rem 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  background-color: #f8f9fa;
-  color: #6c757d;
+  background-color: var(--header-bg, #f8f9fa);
+  color: var(--text-color, #6c757d);
   font-size: 0.85rem;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--divider-color, #dee2e6);
   margin-top: auto;
   /* Push to bottom of flex container */
   z-index: 10;
   flex-wrap: wrap;
   /* Allow wrapping on very small screens */
+  box-sizing: border-box;
 }
 
 .site-footer p {
@@ -1196,22 +1197,25 @@ button {
 
 .footer-links {
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-btn {
   background: none;
   border: none;
-  color: #2980b9;
+  color: var(--text-color, #2980b9);
   cursor: pointer;
   padding: 0;
   font-size: 0.85rem;
   text-decoration: underline;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
+  opacity: 0.8;
 }
 
 .footer-btn:hover {
-  color: #1a5a8a;
+  opacity: 1;
   text-decoration: none;
 }
 

@@ -4,7 +4,7 @@ import { loadPersistedHints, savePersistedHints, loadPersistedScore, savePersist
 
 import './App.css';
 import Board from "./components/Board";
-import { AboutModal, ContactModal, InstructionsModal, AdModal, PrivacyPolicyModal } from './components/Modals';
+import { AboutModal, ContactModal, InstructionsModal, AdModal, PrivacyPolicyModal, TermsAndConditionsModal } from './components/Modals';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemeSelector from './components/ThemeSelector';
 import DifficultySelector from './components/DifficultySelector';
@@ -355,6 +355,7 @@ function App() {
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
   const handleEarnHint = () => {
     setHintsRemaining(prev => prev + 1);
@@ -450,6 +451,10 @@ function App() {
         <PrivacyPolicyModal
           isOpen={showPrivacyModal}
           onClose={() => setShowPrivacyModal(false)}
+        />
+        <TermsAndConditionsModal
+          isOpen={showTermsModal}
+          onClose={() => setShowTermsModal(false)}
         />
         {/* <div className={`sudoku-app ${isMobileView ? 'mobile-layout' : 'web-layout'}`}> */}
         <div className="game-container">
@@ -574,6 +579,9 @@ function App() {
           <button className="footer-btn" onClick={() => {
             setShowPrivacyModal(true);
           }}>Privacy Policy</button>
+          <button className="footer-btn" onClick={() => {
+            setShowTermsModal(true);
+          }}>Terms & Conditions</button>
         </div>
       </footer>
       {
