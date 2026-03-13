@@ -5,7 +5,7 @@ import { loadPersistedHints, savePersistedHints, loadPersistedScore, savePersist
 import ReactGA from 'react-ga4';
 import './App.css';
 import Board from "./components/Board";
-import { AboutModal, ContactModal, InstructionsModal } from './components/Modals';
+import { AboutModal, ContactModal, InstructionsModal, AdModal } from './components/Modals';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemeSelector from './components/ThemeSelector';
 import DifficultySelector from './components/DifficultySelector';
@@ -36,6 +36,7 @@ function App() {
     row: number | null;
     col: number | null;
   }>({ row: null, col: null });
+  const [showAdModal, setShowAdModal] = useState(false);
 
   const currentYear = new Date().getFullYear();
 
@@ -371,6 +372,10 @@ function App() {
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
 
+  const handleEarnHint = () => {
+    setHintsRemaining(prev => prev + 1);
+  };
+
   const checkBoardComplete = (currentBoard: (number | null)[][]) => {
     return currentBoard.every((row, i) =>
       row.every((cell, j) => cell !== null && cell === solution[i][j])
@@ -458,6 +463,11 @@ function App() {
           isOpen={showContactModal}
           onClose={() => setShowContactModal(false)}
         />
+        <AdModal
+          isOpen={showAdModal}
+          onClose={() => setShowAdModal(false)}
+          onAdComplete={handleEarnHint}
+        />
         {/* <div className={`sudoku-app ${isMobileView ? 'mobile-layout' : 'web-layout'}`}> */}
         <div className="game-container">
           <div className="board-section">
@@ -526,8 +536,7 @@ function App() {
 
                   } else {
                     // show ad logic
-                    alert("The app is currently in testing!");
-                    setHintsRemaining(1); // for example, give 1 extra hint after ad
+                    setShowAdModal(true);
                   }
                 }}
                   className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}

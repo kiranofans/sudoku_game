@@ -5,15 +5,20 @@ interface ModalProps {
     onClose: () => void;
     title: string;
     children: React.ReactNode;
+    closeable?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, closeable = true }) => {
     if (!isOpen) return null;
 
+    const handleBackdropClick = () => {
+        if (closeable) onClose();
+    };
+
     return (
-        <div className="instructions-overlay" onClick={onClose}>
+        <div className="instructions-overlay" onClick={handleBackdropClick}>
             <div className="instructions-content" onClick={(e) => e.stopPropagation()}>
-                <button className="instruct-close-btn" onClick={onClose} aria-label="Close modal"></button>
+                {closeable && <button className="instruct-close-btn" onClick={onClose} aria-label="Close modal"></button>}
                 <h3 className="content-title">{title}</h3>
                 {children}
             </div>
@@ -81,3 +86,65 @@ export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void 
         </ol>
     </Modal>
 );
+
+export const AdModal: React.FC<{ isOpen: boolean; onClose: () => void; onAdComplete: () => void }> = ({ isOpen, onClose, onAdComplete }) => {
+    const [timeLeft, setTimeLeft] = React.useState(10); // 10 second delay
+    const [isCounting, setIsCounting] = React.useState(false);
+
+    React.useEffect(() => {
+        if (isOpen) {
+            setTimeLeft(10);
+            setIsCounting(true);
+        } else {
+            setIsCounting(false);
+        }
+    }, [isOpen]);
+
+    React.useEffect(() => {
+        let timer: NodeJS.Timeout;
+        if (isCounting && timeLeft > 0) {
+            timer = setTimeout(() => setTimeLeft(prev => prev - 1), 1000);
+        } else if (timeLeft === 0) {
+            setIsCounting(false);
+        }
+        return () => clearTimeout(timer);
+    }, [isCounting, timeLeft]);
+
+    const handleClaimHint = () => {
+        onAdComplete();
+        onClose();
+    };
+
+    return (
+        <Modal isOpen={isOpen} onClose={onClose} title="Watch Ad for a Hint" closeable={timeLeft === 0}>
+            <div style={{ textAlign: 'center', minHeight: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <p>Support us by watching a short ad to earn 1 extra hint!</p>
+                <div className="ads-part" style={{ width: '100%', minHeight: '250px', margin: '0.5rem 0', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f9f9f9', borderRadius: '8px', border: '1px dashed #ccc', position: 'relative' }}>
+                    {/* The Google AdSense script code snippet provided by the user */}
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643"
+                        crossOrigin="anonymous"></script>
+                    <p style={{ fontSize: '0.8rem', color: '#888' }}>[Ad Unit Placeholder]</p>
+                    
+                    {timeLeft > 0 && (
+                        <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(0,0,0,0.6)', color: 'white', padding: '4px 8px', borderRadius: '4px', fontSize: '0.8rem' }}>
+                            Wait {timeLeft}s to claim
+                        </div>
+                    )}
+                </div>
+                <button 
+                    onClick={handleClaimHint}
+                    disabled={timeLeft > 0}
+                    className="new-game-btn"
+                    style={{ 
+                        width: 'auto', 
+                        padding: '10px 30px',
+                        opacity: timeLeft > 0 ? 0.5 : 1,
+                        cursor: timeLeft > 0 ? 'not-allowed' : 'pointer'
+                    }}
+                >
+                    {timeLeft > 0 ? `Wait ${timeLeft}s...` : 'Claim Hint'}
+                </button>
+            </div>
+        </Modal>
+    );
+};
