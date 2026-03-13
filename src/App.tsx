@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
 import { loadPersistedHints, savePersistedHints, loadPersistedScore, savePersistedScore } from './lib/persistenceStorage.ts';
 
-import ReactGA from 'react-ga4';
 import './App.css';
 import Board from "./components/Board";
 import { AboutModal, ContactModal, InstructionsModal, AdModal } from './components/Modals';
@@ -12,7 +11,6 @@ import DifficultySelector from './components/DifficultySelector';
 import Tooltip from './components/Tooltip';
 
 {/* Set google analytic with Vite container */ }
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
 type CellNotes = Set<number>;
 
@@ -45,11 +43,6 @@ function App() {
   // const [isMobileView, setIsMobileView] = useState(false);
 
 
-  // Google Analytic setup & init
-  useEffect(() => {
-    ReactGA.initialize(GA_MEASUREMENT_ID);
-    ReactGA.send({ hitType: 'pageview', page: `/game/${difficulty}` });
-  }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
@@ -102,11 +95,6 @@ function App() {
   // Initialize the game
   useEffect(() => {
     startNewGame();
-    ReactGA.event({
-      category: 'Game',
-      action: 'start_new_game',
-      label: difficulty
-    });
   }, [difficulty]);
 
   // Timer & Real-time Score Decay
@@ -153,11 +141,6 @@ function App() {
       updateNumberCounts(puzzle);
       setIsLoading(false);
     }, 300);
-    ReactGA.event({
-      category: 'Game',
-      action: 'start_new_game',
-      label: difficulty
-    });
   }, [difficulty]);
 
   const updateNumberCounts = useCallback((currentBoard: (number | null)[][]) => {
@@ -419,11 +402,6 @@ function App() {
           <Tooltip text="How to play">
             <button onClick={() => {
               setShowInstructions(true);
-              ReactGA.event({
-                category: 'Instruction',
-                action: 'Instruction button clicks',
-                label: showInstructions ? "Opened" : "Didn't Open",
-              });
             }}
               className="how-to-play-btn"
               aria-label="How to play"
@@ -584,17 +562,9 @@ function App() {
         <div className="footer-links">
           <button className="footer-btn" onClick={() => {
             setShowAboutModal(true);
-            ReactGA.event({
-              category: 'Footer',
-              action: 'About button clicks',
-            });
           }}>About</button>
           <button className="footer-btn" onClick={() => {
             setShowContactModal(true);
-            ReactGA.event({
-              category: 'Footer',
-              action: 'Contact button clicks',
-            });
           }}>Contact</button>
         </div>
       </footer>
