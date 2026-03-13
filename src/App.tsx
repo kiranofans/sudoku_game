@@ -378,7 +378,9 @@ function App() {
     <div className="wrapper">
       <header className="menu-bar">
         <div className="logo-title-container">
-          <img src="logo_sudoku1.png" alt="Logo" className="logo" />
+          <a href="/" aria-label="Go to homepage" style={{ display: 'flex', alignItems: 'center' }}>
+            <img src="/logo_sudoku1.png" alt="Logo" className="logo" />
+          </a>
           <div className="title-score-wrapper">
             <div className="title-tagline-container">
               <h2 className='game-title'>Sudoku</h2>

@@ -279,13 +279,11 @@ body {
   max-height: clamp(1.8rem, 2vw, 2.5rem);
   aspect-ratio: 1 / 1;
   border-radius: 35%;
-  cursor: pointer;
   flex-shrink: 0;
   padding-right: 0 !important;
   /* important keywords overrode that global rule, so the logo is now free of that extra gap*/
   padding-left: clamp(0.9rem, 2vw, 3rem) !important;
   margin: 0;
-  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .difficulty-dropdown {
