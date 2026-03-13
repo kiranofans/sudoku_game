@@ -1176,7 +1176,7 @@ button {
   padding: 1rem 0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 1.5rem;
   background-color: var(--header-bg, #f8f9fa);
@@ -1191,7 +1191,12 @@ button {
   box-sizing: border-box;
 }
 
-.site-footer p {
+.footer-copyright {
+  display: flex;
+  align-items: center;
+}
+
+.footer-copyright p {
   margin: 0;
 }
 
@@ -1217,6 +1222,25 @@ button {
 .footer-btn:hover {
   opacity: 1;
   text-decoration: none;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social-icon {
+  color: var(--text-color, #6c757d);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.social-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 /* Mobile responsive adjustments for number pad */
