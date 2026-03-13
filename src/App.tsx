@@ -568,7 +568,7 @@ function App() {
         </div>
       </div>
       <footer className="site-footer">
-        <span>&copy; {currentYear}Sudoku Game. All rights reserved.</span>
+        <span>&copy; {currentYear} Sudoku Game. All rights reserved.</span>
         <div className="footer-links">
           <button className="footer-btn" onClick={() => {
             setShowAboutModal(true);
