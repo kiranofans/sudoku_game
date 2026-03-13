@@ -65,7 +65,7 @@ export const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void }> = 
                     fontWeight: 'bold'
                 }}
             >
-                support@example.com
+                sitehelp.chat@gmail.com
             </a>
         </div>
     </Modal>
