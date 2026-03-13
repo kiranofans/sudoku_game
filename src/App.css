@@ -403,8 +403,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   margin-top: 8px;
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  background-color: #e0e0e0;
+  color: #333333;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.75rem;

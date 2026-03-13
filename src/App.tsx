@@ -507,42 +507,52 @@ function App() {
                 <div className="score-refresh-notice">Score refreshes every 24 hours</div>
               </div>
               <div className="action-buttons">
-                <button
-                  className={isPencilMode ? 'active' : ''}
-                  onClick={() => setIsPencilMode(!isPencilMode)}
-                  aria-pressed={isPencilMode}
-                  aria-label="Toggle pencil mode">
-                  <div className="btn-pencil" title="Edit">
-                  </div>
-                </button>
-                <button onClick={handleEraser}>
-                  <div className='btn-eraser'></div>
-                </button>
+                <Tooltip text="Pencil Mode">
+                  <button
+                    className={isPencilMode ? 'active' : ''}
+                    onClick={() => setIsPencilMode(!isPencilMode)}
+                    aria-pressed={isPencilMode}
+                    aria-label="Toggle pencil mode">
+                    <div className="btn-pencil" title="Edit">
+                    </div>
+                  </button>
+                </Tooltip>
+                
+                <Tooltip text="Eraser">
+                  <button onClick={handleEraser}>
+                    <div className='btn-eraser'></div>
+                  </button>
+                </Tooltip>
 
-                <button onClick={() => {
-                  if (hintsRemaining > 0) {
-                    handleHint();
+                <Tooltip text="Get Hint">
+                  <button onClick={() => {
+                    if (hintsRemaining > 0) {
+                      handleHint();
 
-                  } else {
-                    // show ad logic
-                    setShowAdModal(true);
-                  }
-                }}
-                  className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
-                  aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
-                >
-                  <div className='btn-hint' >
-                    {/* <img className="ic-hint" src="ic_hint.svg"></img> */}
-                  </div>{/* contains hint icon*/}
+                    } else {
+                      // show ad logic
+                      setShowAdModal(true);
+                    }
+                  }}
+                    className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
+                    aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
+                  >
+                    <div className='btn-hint' >
+                      {/* <img className="ic-hint" src="ic_hint.svg"></img> */}
+                    </div>{/* contains hint icon*/}
 
-                  {/* Unified badge for both hints count and Ad state */}
-                  <span className="hint-badge" role="status" aria-live="polite">
-                    {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
-                  </span>
-                </button>
-                <button onClick={handleReset} aria-label="Reset">
-                  <div className="btn-reset"></div>
-                </button>
+                    {/* Unified badge for both hints count and Ad state */}
+                    <span className="hint-badge" role="status" aria-live="polite">
+                      {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
+                    </span>
+                  </button>
+                </Tooltip>
+                
+                <Tooltip text="Reset Game">
+                  <button onClick={handleReset} aria-label="Reset">
+                    <div className="btn-reset"></div>
+                  </button>
+                </Tooltip>
               </div>
               <div className="number-pad">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
