@@ -28,21 +28,35 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, closeab
 
 export const AboutModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
     <Modal isOpen={isOpen} onClose={onClose} title="About Sudoku Game">
-        <div style={{ textAlign: 'center', padding: '1rem 0' }}>
-            <p>A lightweight Sudoku game built with TypeScript.</p>
-            <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#666' }}>
-                Enjoy a clean, fast, and challenging Sudoku experience.
+        <div style={{ padding: '0.5rem 0' }}>
+            <p>
+                Sudoku Game is a lightweight puzzle application built with <strong>TypeScript</strong> and modern web technologies.
+                It focuses on providing a clean, fast, and distraction-free experience so players can enjoy the classic logic puzzle
+                without unnecessary complexity.
+            </p>
+
+            <p>
+                The game features a simple interface, responsive controls, and smooth performance directly in your browser.
+                Whether you're solving a quick puzzle during a break or challenging yourself to improve your logic skills,
+                this project aims to make Sudoku accessible and enjoyable for everyone.
+            </p>
+
+            <p>
+                Designed with simplicity in mind, Sudoku Game runs entirely on the web with no downloads required.
+            </p>
+            <p style={{ marginTop: '1.5rem', fontSize: '0.9rem', color: '#666', textAlign: 'center' }}>
+                Enjoy the challenge, sharpen your logic, and have fun solving! 🧩
             </p>
         </div>
     </Modal>
 );
 
 export const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
-    <Modal isOpen={isOpen} onClose={onClose} title="Contact Us">
+    <Modal isOpen={isOpen} onClose={onClose} title="Contact">
         <div style={{ textAlign: 'center', padding: '1rem 0' }}>
             <p>For support or feedback, please contact us at:</p>
             <a
-                href="mailto:support@example.com"
+                href="mailto:sitehelp.chat@gmail.com"
                 style={{
                     display: 'block',
                     marginTop: '1rem',
@@ -124,19 +138,19 @@ export const AdModal: React.FC<{ isOpen: boolean; onClose: () => void; onAdCompl
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643"
                         crossOrigin="anonymous"></script>
                     <p style={{ fontSize: '0.8rem', color: '#888' }}>[Ad Unit Placeholder]</p>
-                    
+
                     {timeLeft > 0 && (
                         <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(0,0,0,0.6)', color: 'white', padding: '4px 8px', borderRadius: '4px', fontSize: '0.8rem' }}>
                             Wait {timeLeft}s to claim
                         </div>
                     )}
                 </div>
-                <button 
+                <button
                     onClick={handleClaimHint}
                     disabled={timeLeft > 0}
                     className="new-game-btn"
-                    style={{ 
-                        width: 'auto', 
+                    style={{
+                        width: 'auto',
                         padding: '10px 30px',
                         opacity: timeLeft > 0 ? 0.5 : 1,
                         cursor: timeLeft > 0 ? 'not-allowed' : 'pointer'
