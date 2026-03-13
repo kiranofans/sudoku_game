@@ -389,7 +389,10 @@ function App() {
         <div className="logo-title-container">
           <img src="logo_sudoku1.png" alt="Logo" className="logo" />
           <div className="title-score-wrapper">
-            <h2 className='game-title'>Sudoku</h2>
+            <div className="title-tagline-container">
+              <h2 className='game-title'>Sudoku</h2>
+              <div className="game-tagline">Play Sudoku – 5 Levels of Fun!</div>
+            </div>
             <div className="mobile-only-score">
               <div className="score-main-mobile">
                 <span className="mobile-score-label">Score:</span>

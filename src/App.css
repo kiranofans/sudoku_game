@@ -31,6 +31,20 @@
   white-space: nowrap;
 }
 
+.game-tagline {
+  font-size: clamp(0.6rem, 1.1vw, 0.85rem);
+  color: #888;
+  margin-left: 12px;
+  white-space: nowrap;
+  align-self: baseline;
+}
+
+.title-tagline-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
 .mobile-only-counts-row {
   display: none;
 }
