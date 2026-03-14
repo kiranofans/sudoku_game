@@ -274,6 +274,18 @@ body {
   box-sizing: border-box;
 }
 
+.logo-link {
+  text-decoration: none;
+  transition: none !important;
+}
+
+.logo-link:hover {
+  filter: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  background: transparent !important;
+}
+
 .logo {
   /* max-width: clamp(2rem, 1vw, 3rem); */
   max-height: clamp(1.8rem, 2vw, 2.5rem);

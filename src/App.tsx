@@ -378,7 +378,7 @@ function App() {
     <div className="wrapper">
       <header className="menu-bar">
         <div className="logo-title-container">
-          <a href="/" aria-label="Go to homepage" style={{ display: 'flex', alignItems: 'center' }}>
+          <a href="/" className="logo-link" aria-label="Go to homepage" style={{ display: 'flex', alignItems: 'center' }}>
             <img src="/logo_sudoku1.png" alt="Logo" className="logo" />
           </a>
           <div className="title-score-wrapper">
