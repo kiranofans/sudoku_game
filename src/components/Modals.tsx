@@ -26,30 +26,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, closeab
     );
 };
 
-export const AboutModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
-    <Modal isOpen={isOpen} onClose={onClose} title="About Sudoku Game">
-        <div style={{ padding: '0.5rem 0' }}>
-            <p>
-                Sudoku Game is a lightweight puzzle application built with <strong>TypeScript</strong> and modern web technologies.
-                It focuses on providing a clean, fast, and distraction-free experience so players can enjoy the classic logic puzzle
-                without unnecessary complexity.
-            </p>
-
-            <p>
-                The game features a simple interface, responsive controls, and smooth performance directly in your browser.
-                Whether you're solving a quick puzzle during a break or challenging yourself to improve your logic skills,
-                this project aims to make Sudoku accessible and enjoyable for everyone.
-            </p>
-
-            <p>
-                Designed with simplicity in mind, Sudoku Game runs entirely on the web with no downloads required.
-            </p>
-            <p style={{ marginTop: '1.5rem', fontSize: '0.9rem', color: '#666', textAlign: 'center' }}>
-                Enjoy the challenge, sharpen your logic, and have fun solving! 🧩
-            </p>
-        </div>
-    </Modal>
-);
 
 export const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
     <Modal isOpen={isOpen} onClose={onClose} title="Contact">

@@ -1125,6 +1125,43 @@ body {
   gap: clamp(6px, 8px, 12px);
 }
 
+.header-nav-item {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-border);
+}
+
+.header-nav-item:hover {
+  background-color: var(--num-pad-bg);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Responsive Visibility Classes */
+.desktop-only-nav {
+  display: inline-flex;
+}
+
+.mobile-only-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only-nav {
+    display: none !important;
+  }
+  
+  .mobile-only-nav {
+    display: flex !important;
+  }
+}
+
 /* Game over overlay */
 .game-over-overlay {
   position: absolute;

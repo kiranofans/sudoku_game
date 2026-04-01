@@ -1,15 +1,17 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
 import { loadPersistedHints, savePersistedHints, loadPersistedScore, savePersistedScore } from './lib/persistenceStorage.ts';
 import packageJson from '../package.json';
 
 import './App.css';
 import Board from "./components/Board";
-import { AboutModal, ContactModal, InstructionsModal, AdModal, PrivacyPolicyModal, TermsAndConditionsModal } from './components/Modals';
+import { ContactModal, InstructionsModal, AdModal, PrivacyPolicyModal, TermsAndConditionsModal } from './components/Modals';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemeSelector from './components/ThemeSelector';
 import DifficultySelector from './components/DifficultySelector';
 import Tooltip from './components/Tooltip';
+import About from './pages/About';
 
 {/* Set google analytic with Vite container */ }
 
@@ -40,10 +42,6 @@ function App() {
   const currentYear = new Date().getFullYear();
 
   const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
-
-  // const [isMobileView, setIsMobileView] = useState(false);
-
-
 
   const [isLoading, setIsLoading] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
@@ -136,7 +134,6 @@ function App() {
       setMistakes(0);
       setScore(null);
       setIsGameOver(false);
-      // Removed setHintsRemaining(3) to persist hints across games within 24h
       setIsPencilMode(false);
       setCrossHighlight({ row: null, col: null });
       updateNumberCounts(puzzle);
@@ -202,13 +199,13 @@ function App() {
       newNotes[row][col] = cellNotes;
       setNotes(newNotes);
     } else {
-      const multiplier = {
+      const multiplier: number = ({
         'very-easy': 1,
         easy: 2,
         medium: 3,
         hard: 5,
         expert: 10
-      }[difficulty];
+      } as Record<string, number>)[difficulty];
 
       if (num !== null) {
         const currentNum = board[row][col];
@@ -252,7 +249,7 @@ function App() {
       }
     }
     setCrossHighlight({ row, col });
-  }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput]);
+  }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput, difficulty]);
 
 
   const handleEraser = useCallback(() => {
@@ -353,7 +350,6 @@ function App() {
 
 
   const [showInstructions, setShowInstructions] = useState(false);
-  const [showAboutModal, setShowAboutModal] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
@@ -375,252 +371,245 @@ function App() {
   };
 
   return (
-    <div className="wrapper">
-      <header className="menu-bar">
-        <div className="logo-title-container">
-          <a href="/" className="logo-link" aria-label="Go to homepage" style={{ display: 'flex', alignItems: 'center' }}>
-            <img src="/images/png/logo_sudoku1.png" alt="Logo" className="logo" />
-          </a>
-          <div className="title-score-wrapper">
-            <div className="title-tagline-container">
-              <h2 className='game-title'>Sudoku</h2>
-              <div className="game-tagline">Play Sudoku – 5 Levels of Fun!</div>
-            </div>
-            <div className="mobile-only-score">
-              <div className="score-main-mobile">
-                <span className="mobile-score-label">Score:</span>
-                <span className="mobile-score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
-              </div>
-              <div className="score-refresh-notice mobile-notice">Score refreshes every 24 hours</div>
-            </div>
-          </div>
-        </div>
-        <div className='controls-row'>
-          <DifficultySelector
-            difficulty={difficulty}
-            onDifficultyChange={(newDifficulty) => {
-              setDifficulty(newDifficulty);
-            }}
-          />
-          <ThemeSelector />
-
-          <Tooltip text="How to play">
-            <button onClick={() => {
-              setShowInstructions(true);
-            }}
-              className="how-to-play-btn"
-              aria-label="How to play"
-              title="How to play"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="how-to-icon-img">
-                <path d="M12.838 17.638C13.0793 17.396 13.2 17.1 13.2 16.75C13.2 16.4 13.0793 16.104 12.838 15.862C12.5967 15.62 12.3007 15.4993 11.95 15.5C11.5993 15.5007 11.3037 15.6217 11.063 15.863C10.8223 16.1043 10.7013 16.4 10.7 16.75C10.6987 17.1 10.8197 17.396 11.063 17.638C11.3063 17.88 11.602 18.0007 11.95 18C12.298 17.9993 12.594 17.8783 12.838 17.637M11.05 14.15H12.9C12.9 13.6 12.9627 13.1667 13.088 12.85C13.2133 12.5333 13.5673 12.1 14.15 11.55C14.5833 11.1167 14.925 10.704 15.175 10.312C15.425 9.92001 15.55 9.44934 15.55 8.9C15.55 7.96667 15.2083 7.25001 14.525 6.75001C13.8417 6.25001 13.0333 6.00001 12.1 6.00001C11.15 6.00001 10.3793 6.25001 9.788 6.75001C9.19667 7.25001 8.784 7.85001 8.55 8.55001L10.2 9.20001C10.2833 8.90001 10.471 8.57501 10.763 8.22501C11.055 7.87501 11.5007 7.70001 12.1 7.70001C12.6333 7.70001 13.0333 7.846 13.3 8.138C13.5667 8.43 13.7 8.75067 13.7 9.10001C13.7 9.43334 13.6 9.746 13.4 10.038C13.2 10.33 12.95 10.6007 12.65 10.85C11.9167 11.5 11.4667 11.9917 11.3 12.325C11.1333 12.6583 11.05 13.2667 11.05 14.15ZM12 22C10.6167 22 9.31667 21.7377 8.1 21.213C6.88334 20.6883 5.825 19.9757 4.925 19.075C4.025 18.1743 3.31267 17.116 2.788 15.9C2.26333 14.684 2.00067 13.384 2 12C1.99933 10.616 2.262 9.31601 2.788 8.10001C3.314 6.88401 4.02633 5.82567 4.925 4.92501C5.82367 4.02434 6.882 3.31201 8.1 2.78801C9.318 2.26401 10.618 2.00134 12 2.00001C13.382 1.99867 14.682 2.26134 15.9 2.78801C17.118 3.31467 18.1763 4.02701 19.075 4.92501C19.9737 5.82301 20.6863 6.88134 21.213 8.10001C21.7397 9.31867 22.002 10.6187 22 12C21.998 13.3813 21.7353 14.6813 21.212 15.9C20.6887 17.1187 19.9763 18.177 19.075 19.075C18.1737 19.973 17.1153 20.6857 15.9 21.213C14.6847 21.7403 13.3847 22.0027 12 22Z" fill="currentColor" />
-              </svg>
-            </button>
-          </Tooltip>
-        </div>
-      </header>
-      <hr className="divider" />
-
-      <div className="sudoku-app">
-        {/* Wrap themain game container in scrollable div */}
-        {isLoading && (
-          <div className="loading-overlay">
-            <div className="loading-bar"
-              style={{ width: isLoading ? '100%' : '0%' }}>
-              <div className="loading-progress"></div>
-            </div>
-            {/* <div className="loading-text">Loading...</div> */}
-          </div>
-        )}
-
-        {/* Modals */}
-        <InstructionsModal
-          isOpen={showInstructions && !isLoading}
-          onClose={() => setShowInstructions(false)}
-        />
-        <AboutModal
-          isOpen={showAboutModal}
-          onClose={() => setShowAboutModal(false)}
-        />
-        <ContactModal
-          isOpen={showContactModal}
-          onClose={() => setShowContactModal(false)}
-        />
-        <AdModal
-          isOpen={showAdModal}
-          onClose={() => setShowAdModal(false)}
-          onAdComplete={handleEarnHint}
-        />
-        <PrivacyPolicyModal
-          isOpen={showPrivacyModal}
-          onClose={() => setShowPrivacyModal(false)}
-        />
-        <TermsAndConditionsModal
-          isOpen={showTermsModal}
-          onClose={() => setShowTermsModal(false)}
-        />
-        {/* <div className={`sudoku-app ${isMobileView ? 'mobile-layout' : 'web-layout'}`}> */}
-        <div className="game-container">
-          <div className="board-section">
-            <div className="game-info">
-              <div>
-                <div className="info-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="timer-icon-svg">
-                    <path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor" />
-                  </svg>
-                  <span>{formatTime(time)}</span>
+    <Routes>
+      <Route path="/" element={
+        <div className="wrapper">
+          <header className="menu-bar">
+            <div className="logo-title-container">
+              <Link to="/" className="logo-link" aria-label="Go to homepage" style={{ display: 'flex', alignItems: 'center' }}>
+                <img src="/images/png/logo_sudoku1.png" alt="Logo" className="logo" />
+              </Link>
+              <div className="title-score-wrapper">
+                <div className="title-tagline-container">
+                  <h2 className='game-title'>Sudoku</h2>
                 </div>
-              </div>
-
-              <div>
-                <div className="info-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mistake-icon-svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span>{mistakes}/10</span>
-                </div>
-              </div>
-
-              <div>
-                <button className="new-game-btn" onClick={startNewGame}>New Game</button>
-
-                {/* <div className="info-icon hint-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{hintsRemaining}</div> */}
-              </div>
-            </div>
-            <Board
-              board={board}
-              initialBoard={initialBoard}
-              notes={notes}
-              selectedCell={selectedCell}
-              onCellClick={handleCellClick}
-              solution={solution}
-              crossHighlight={crossHighlight}
-              highlightedNumber={highlightedNumber}
-            />
-          </div>
-
-          <div className="counts-and-actionbtn">
-            <div className="control-panel">
-              <div className="score-widget desktop-only-score">
-                <div className="score-main">
-                  <span className="score-label">Score:</span>
-                  <span className="score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
-                </div>
-                <div className="score-refresh-notice">Score refreshes every 24 hours</div>
-              </div>
-              <div className="action-buttons">
-                <Tooltip text="Pencil Mode">
-                  <button
-                    className={isPencilMode ? 'active' : ''}
-                    onClick={() => setIsPencilMode(!isPencilMode)}
-                    aria-pressed={isPencilMode}
-                    aria-label="Toggle pencil mode">
-                    <div className="btn-pencil" title="Edit">
-                    </div>
-                  </button>
-                </Tooltip>
-                
-                <Tooltip text="Eraser">
-                  <button onClick={handleEraser}>
-                    <div className='btn-eraser'></div>
-                  </button>
-                </Tooltip>
-
-                <Tooltip text="Get Hint">
-                  <button onClick={() => {
-                    if (hintsRemaining > 0) {
-                      handleHint();
-
-                    } else {
-                      // show ad logic
-                      setShowAdModal(true);
-                    }
-                  }}
-                    className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
-                    aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
-                  >
-                    <div className='btn-hint' >
-                      {/* <img className="ic-hint" src="ic_hint.svg"></img> */}
-                    </div>{/* contains hint icon*/}
-
-                    {/* Unified badge for both hints count and Ad state */}
-                    <span className="hint-badge" role="status" aria-live="polite">
-                      {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
-                    </span>
-                  </button>
-                </Tooltip>
-                
-                <Tooltip text="Reset Game">
-                  <button onClick={handleReset} aria-label="Reset">
-                    <div className="btn-reset"></div>
-                  </button>
-                </Tooltip>
-              </div>
-              <div className="number-pad">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                  <button
-                    key={num}
-                    onClick={() => handleNumberInput(num)}
-                    disabled={isGameOver || numberCounts[num] <= 0}
-                    className={numberCounts[num] <= 0 ? 'completed' : ''}
-                  >
-                    <span className="number-value">{num}</span>
-                    <span className="count-badge desktop-only-count">{numberCounts[num]}</span>
-                  </button>
-                ))}
-              </div>
-              <div className="mobile-only-counts-row">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                  <div key={num} className={`mobile-count-item ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
-                    {numberCounts[num]}
+                <div className="mobile-only-score">
+                  <div className="score-main-mobile">
+                    <span className="mobile-score-label">Score:</span>
+                    <span className="mobile-score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
                   </div>
-                ))}
+                  <div className="score-refresh-notice mobile-notice">Score refreshes every 24 hours</div>
+                </div>
+              </div>
+            </div>
+            <div className='controls-row'>
+              <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
+              <DifficultySelector
+                difficulty={difficulty}
+                onDifficultyChange={(newDifficulty) => {
+                  setDifficulty(newDifficulty);
+                }}
+              />
+              <ThemeSelector />
+
+              <Tooltip text="How to play">
+                <button onClick={() => {
+                  setShowInstructions(true);
+                }}
+                  className="how-to-play-btn"
+                  aria-label="How to play"
+                  title="How to play"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="how-to-icon-img">
+                    <path d="M12.838 17.638C13.0793 17.396 13.2 17.1 13.2 16.75C13.2 16.4 13.0793 16.104 12.838 15.862C12.5967 15.62 12.3007 15.4993 11.95 15.5C11.5993 15.5007 11.3037 15.6217 11.063 15.863C10.8223 16.1043 10.7013 16.4 10.7 16.75C10.6987 17.1 10.8197 17.396 11.063 17.638C11.3063 17.88 11.602 18.0007 11.95 18C12.298 17.9993 12.594 17.8783 12.838 17.637M11.05 14.15H12.9C12.9 13.6 12.9627 13.1667 13.088 12.85C13.2133 12.5333 13.5673 12.1 14.15 11.55C14.5833 11.1167 14.925 10.704 15.175 10.312C15.425 9.92001 15.55 9.44934 15.55 8.9C15.55 7.96667 15.2083 7.25001 14.525 6.75001C13.8417 6.25001 13.0333 6.00001 12.1 6.00001C11.15 6.00001 10.3793 6.25001 9.788 6.75001C9.19667 7.25001 8.784 7.85001 8.55 8.55001L10.2 9.20001C10.2833 8.90001 10.471 8.57501 10.763 8.22501C11.055 7.87501 11.5007 7.70001 12.1 7.70001C12.6333 7.70001 13.0333 7.846 13.3 8.138C13.5667 8.43 13.7 8.75067 13.7 9.10001C13.7 9.43334 13.6 9.746 13.4 10.038C13.2 10.33 12.95 10.6007 12.65 10.85C11.9167 11.5 11.4667 11.9917 11.3 12.325C11.1333 12.6583 11.05 13.2667 11.05 14.15ZM12 22C10.6167 22 9.31667 21.7377 8.1 21.213C6.88334 20.6883 5.825 19.9757 4.925 19.075C4.025 18.1743 3.31267 17.116 2.788 15.9C2.26333 14.684 2.00067 13.384 2 12C1.99933 10.616 2.262 9.31601 2.788 8.10001C3.314 6.88401 4.02633 5.82567 4.925 4.92501C5.82367 4.02434 6.882 3.31201 8.1 2.78801C9.318 2.26401 10.618 2.00134 12 2.00001C13.382 1.99867 14.682 2.26134 15.9 2.78801C17.118 3.31467 18.1763 4.02701 19.075 4.92501C19.9737 5.82301 20.6863 6.88134 21.213 8.10001C21.7397 9.31867 22.002 10.6187 22 12C21.998 13.3813 21.7353 14.6813 21.212 15.9C20.6887 17.1187 19.9763 18.177 19.075 19.075C18.1737 19.973 17.1153 20.6857 15.9 21.213C14.6847 21.7403 13.3847 22.0027 12 22Z" fill="currentColor" />
+                  </svg>
+                </button>
+              </Tooltip>
+            </div>
+          </header>
+          <hr className="divider" />
+
+          <div className="sudoku-app">
+            {/* Wrap themain game container in scrollable div */}
+            {isLoading && (
+              <div className="loading-overlay">
+                <div className="loading-bar"
+                  style={{ width: isLoading ? '100%' : '0%' }}>
+                  <div className="loading-progress"></div>
+                </div>
+              </div>
+            )}
+
+            {/* Modals */}
+            <InstructionsModal
+              isOpen={showInstructions && !isLoading}
+              onClose={() => setShowInstructions(false)}
+            />
+            <ContactModal
+              isOpen={showContactModal}
+              onClose={() => setShowContactModal(false)}
+            />
+            <AdModal
+              isOpen={showAdModal}
+              onClose={() => setShowAdModal(false)}
+              onAdComplete={handleEarnHint}
+            />
+            <PrivacyPolicyModal
+              isOpen={showPrivacyModal}
+              onClose={() => setShowPrivacyModal(false)}
+            />
+            <TermsAndConditionsModal
+              isOpen={showTermsModal}
+              onClose={() => setShowTermsModal(false)}
+            />
+            <div className="game-container">
+              <div className="board-section">
+                <div className="game-info">
+                  <div>
+                    <div className="info-item">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="timer-icon-svg">
+                        <path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor" />
+                      </svg>
+                      <span>{formatTime(time)}</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="info-item">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mistake-icon-svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span>{mistakes}/10</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button className="new-game-btn" onClick={startNewGame}>New Game</button>
+                  </div>
+                </div>
+                <Board
+                  board={board}
+                  initialBoard={initialBoard}
+                  notes={notes}
+                  selectedCell={selectedCell}
+                  onCellClick={handleCellClick}
+                  solution={solution}
+                  crossHighlight={crossHighlight}
+                  highlightedNumber={highlightedNumber}
+                />
+              </div>
+
+              <div className="counts-and-actionbtn">
+                <div className="control-panel">
+                  <div className="score-widget desktop-only-score">
+                    <div className="score-main">
+                      <span className="score-label">Score:</span>
+                      <span className="score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
+                    </div>
+                    <div className="score-refresh-notice">Score refreshes every 24 hours</div>
+                  </div>
+                  <div className="action-buttons">
+                    <Tooltip text="Pencil Mode">
+                      <button
+                        className={isPencilMode ? 'active' : ''}
+                        onClick={() => setIsPencilMode(!isPencilMode)}
+                        aria-pressed={isPencilMode}
+                        aria-label="Toggle pencil mode">
+                        <div className="btn-pencil" title="Edit">
+                        </div>
+                      </button>
+                    </Tooltip>
+
+                    <Tooltip text="Eraser">
+                      <button onClick={handleEraser}>
+                        <div className='btn-eraser'></div>
+                      </button>
+                    </Tooltip>
+
+                    <Tooltip text="Get Hint">
+                      <button onClick={() => {
+                        if (hintsRemaining > 0) {
+                          handleHint();
+
+                        } else {
+                          // show ad logic
+                          setShowAdModal(true);
+                        }
+                      }}
+                        className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
+                        aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
+                      >
+                        <div className='btn-hint' ></div>
+
+                        {/* Unified badge for both hints count and Ad state */}
+                        <span className="hint-badge" role="status" aria-live="polite">
+                          {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
+                        </span>
+                      </button>
+                    </Tooltip>
+
+                    <Tooltip text="Reset Game">
+                      <button onClick={handleReset} aria-label="Reset">
+                        <div className="btn-reset"></div>
+                      </button>
+                    </Tooltip>
+                  </div>
+                  <div className="number-pad">
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                      <button
+                        key={num}
+                        onClick={() => handleNumberInput(num)}
+                        disabled={isGameOver || numberCounts[num] <= 0}
+                        className={numberCounts[num] <= 0 ? 'completed' : ''}
+                      >
+                        <span className="number-value">{num}</span>
+                        <span className="count-badge desktop-only-count">{numberCounts[num]}</span>
+                      </button>
+                    ))}
+                  </div>
+                  <div className="mobile-only-counts-row">
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                      <div key={num} className={`mobile-count-item ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
+                        {numberCounts[num]}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <footer className="site-footer">
-        <div className="footer-copyright">
-          <span>&copy; {currentYear} Sudoku Game v{packageJson.version} | All rights reserved.</span>
-        </div>
-        <div className="footer-links">
-          <button className="footer-btn" onClick={() => {
-            setShowAboutModal(true);
-          }}>About</button>
-          <button className="footer-btn" onClick={() => {
-            setShowContactModal(true);
-          }}>Contact</button>
-          <button className="footer-btn" onClick={() => {
-            setShowPrivacyModal(true);
-          }}>Privacy Policy</button>
-          <button className="footer-btn" onClick={() => {
-            setShowTermsModal(true);
-          }}>Terms & Conditions</button>
-        </div>
-        <div className="social-links">
-          <a href="https://github.com/kiranofans" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.45-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
-            </svg>
-          </a>
-        </div>
-      </footer>
-      {
-        isGameOver && (
-          <div className="game-over-overlay">
-            <div className="game-over-content">
-              <div className="game-over-message">
-                {mistakes >= 3 ? 'Game Over!' : 'Congratulations! You won!'}
-              </div>
-              <button className="play-again" onClick={startNewGame}>
-                Play Again
-              </button>
+          <footer className="site-footer">
+            <div className="footer-copyright">
+              <span>&copy; {currentYear} Sudoku Game v{packageJson.version} | All rights reserved.</span>
             </div>
-          </div>
-        )
-      }
-    </div >
+            <div className="footer-links">
+              <Link to="/about" className="footer-btn mobile-only-nav" style={{ textDecoration: 'none' }}>About</Link>
+              <button className="footer-btn" onClick={() => {
+                setShowContactModal(true);
+              }}>Contact</button>
+              <button className="footer-btn" onClick={() => {
+                setShowPrivacyModal(true);
+              }}>Privacy Policy</button>
+              <button className="footer-btn" onClick={() => {
+                setShowTermsModal(true);
+              }}>Terms & Conditions</button>
+            </div>
+            <div className="social-links">
+              <a href="https://github.com/kiranofans" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.45-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                </svg>
+              </a>
+            </div>
+          </footer>
+          {
+            isGameOver && (
+              <div className="game-over-overlay">
+                <div className="game-over-content">
+                  <div className="game-over-message">
+                    {mistakes >= 3 ? 'Game Over!' : 'Congratulations! You won!'}
+                  </div>
+                  <button className="play-again" onClick={startNewGame}>
+                    Play Again
+                  </button>
+                </div>
+              </div>
+            )
+          }
+        </div>
+      } />
+      <Route path="/about" element={<About />} />
+    </Routes>
   );
 }
 
