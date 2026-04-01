@@ -1127,20 +1127,44 @@ body {
 
 .header-nav-item {
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-color);
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 4px 0;
+  margin: 0 10px;
+  position: relative;
   transition: all 0.2s ease;
-  background-color: var(--button-bg);
-  border: 1px solid var(--button-border);
+  background: transparent;
+  border: none;
+}
+
+.header-nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--num-pad-bg);
+  transition: width 0.3s ease;
 }
 
 .header-nav-item:hover {
-  background-color: var(--num-pad-bg);
-  color: white;
-  transform: translateY(-1px);
+  color: var(--num-pad-bg);
+}
+
+.header-nav-item:hover::after {
+  width: 100%;
+}
+
+.header-nav-separator {
+  color: var(--text-color);
+  opacity: 0.3;
+  font-size: 0.85rem;
+  margin: 0 -2px;
+  align-self: center;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Responsive Visibility Classes */

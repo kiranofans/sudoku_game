@@ -394,6 +394,7 @@ function App() {
             </div>
             <div className='controls-row'>
               <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
+              <span className="header-nav-separator desktop-only-nav">|</span>
               <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
               <DifficultySelector
                 difficulty={difficulty}
