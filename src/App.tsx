@@ -6,12 +6,13 @@ import packageJson from '../package.json';
 
 import './App.css';
 import Board from "./components/Board";
-import { ContactModal, InstructionsModal, AdModal, PrivacyPolicyModal, TermsAndConditionsModal } from './components/Modals';
+import { InstructionsModal, AdModal, PrivacyPolicyModal, TermsAndConditionsModal } from './components/Modals';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemeSelector from './components/ThemeSelector';
 import DifficultySelector from './components/DifficultySelector';
 import Tooltip from './components/Tooltip';
 import About from './pages/About';
+import Contact from './pages/Contact';
 
 {/* Set google analytic with Vite container */ }
 
@@ -350,7 +351,6 @@ function App() {
 
 
   const [showInstructions, setShowInstructions] = useState(false);
-  const [showContactModal, setShowContactModal] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
 
@@ -394,6 +394,7 @@ function App() {
             </div>
             <div className='controls-row'>
               <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
+              <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
               <DifficultySelector
                 difficulty={difficulty}
                 onDifficultyChange={(newDifficulty) => {
@@ -434,10 +435,6 @@ function App() {
             <InstructionsModal
               isOpen={showInstructions && !isLoading}
               onClose={() => setShowInstructions(false)}
-            />
-            <ContactModal
-              isOpen={showContactModal}
-              onClose={() => setShowContactModal(false)}
             />
             <AdModal
               isOpen={showAdModal}
@@ -574,9 +571,7 @@ function App() {
             </div>
             <div className="footer-links">
               <Link to="/about" className="footer-btn mobile-only-nav" style={{ textDecoration: 'none' }}>About</Link>
-              <button className="footer-btn" onClick={() => {
-                setShowContactModal(true);
-              }}>Contact</button>
+              <Link to="/contact" className="footer-btn mobile-only-nav" style={{ textDecoration: 'none' }}>Contact</Link>
               <button className="footer-btn" onClick={() => {
                 setShowPrivacyModal(true);
               }}>Privacy Policy</button>
@@ -609,6 +604,7 @@ function App() {
         </div>
       } />
       <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }

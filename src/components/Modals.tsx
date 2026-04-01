@@ -27,25 +27,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, closeab
 };
 
 
-export const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
-    <Modal isOpen={isOpen} onClose={onClose} title="Contact">
-        <div style={{ textAlign: 'center', padding: '1rem 0' }}>
-            <p>For support or feedback, please contact us at:</p>
-            <a
-                href="mailto:sitehelp.chat@gmail.com"
-                style={{
-                    display: 'block',
-                    marginTop: '1rem',
-                    color: '#2980b9',
-                    textDecoration: 'none',
-                    fontWeight: 'bold'
-                }}
-            >
-                sitehelp.chat@gmail.com
-            </a>
-        </div>
-    </Modal>
-);
+
 
 export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
     <Modal isOpen={isOpen} onClose={onClose} title="How to Play">

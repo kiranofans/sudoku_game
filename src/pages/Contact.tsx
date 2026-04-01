@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import packageJson from '../../package.json';
 import { PrivacyPolicyModal, TermsAndConditionsModal } from '../components/Modals';
 
-const About: React.FC = () => {
+const Contact: React.FC = () => {
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
     const [showTermsModal, setShowTermsModal] = useState(false);
     const currentYear = new Date().getFullYear();
@@ -23,29 +23,32 @@ const About: React.FC = () => {
                 </div>
             </header>
             <hr className="divider" />
-
+            
             <main className="sudoku-app" style={{ padding: '8rem 2rem 6rem', maxWidth: '800px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
-                <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>About Sudoku Game</h1>
-
-                <div style={{ padding: '1rem 0', fontSize: '1.1rem', lineHeight: '1.6' }}>
-                    <p style={{ marginBottom: '1.5rem' }}>
-                        Sudoku Game is a lightweight puzzle application built with <strong>TypeScript</strong> and modern web technologies.
-                        It focuses on providing a clean, fast, and distraction-free experience so players can enjoy the classic logic puzzle
-                        without unnecessary complexity.
-                    </p>
-
-                    <p style={{ marginBottom: '1.5rem' }}>
-                        The game features a simple interface, responsive controls, and smooth performance directly in your browser.
-                        Whether you're solving a quick puzzle during a break or challenging yourself to improve your logic skills,
-                        this project aims to make Sudoku accessible and enjoyable for everyone.
-                    </p>
-
-                    <p style={{ marginBottom: '1.5rem' }}>
-                        Designed with simplicity in mind, Sudoku Game runs entirely on the web with no downloads required.
-                    </p>
-
-                    <p style={{ marginTop: '2.5rem', fontSize: '1rem', color: '#666', textAlign: 'center' }}>
-                        Enjoy the challenge, sharpen your logic, and have fun solving! 🧩
+                <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>Contact</h1>
+                
+                <div style={{ textAlign: 'center', padding: '2rem 0', fontSize: '1.2rem', lineHeight: '1.6' }}>
+                    <p style={{ marginBottom: '1.5rem' }}>For support or feedback, please contact us at:</p>
+                    <a
+                        href="mailto:sitehelp.chat@gmail.com"
+                        style={{
+                            display: 'inline-block',
+                            marginTop: '1rem',
+                            color: '#2980b9',
+                            textDecoration: 'none',
+                            fontWeight: 'bold',
+                            fontSize: '1.5rem',
+                            padding: '10px 20px',
+                            borderRadius: '8px',
+                            backgroundColor: 'var(--button-bg)',
+                            border: '1px solid var(--button-border)'
+                        }}
+                    >
+                        sitehelp.chat@gmail.com
+                    </a>
+                    
+                    <p style={{ marginTop: '3.5rem', fontSize: '1rem', color: '#666' }}>
+                        We value your input and strive to respond to all inquiries as quickly as possible.
                     </p>
                 </div>
 
@@ -61,7 +64,7 @@ const About: React.FC = () => {
                     <span>&copy; {currentYear} Sudoku Game v{packageJson.version} | All rights reserved.</span>
                 </div>
                 <div className="footer-links">
-                    <Link to="/contact" className="footer-btn" style={{ textDecoration: 'none' }}>Contact</Link>
+                    <Link to="/about" className="footer-btn" style={{ textDecoration: 'none' }}>About</Link>
                     <button className="footer-btn" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
                     <button className="footer-btn" onClick={() => setShowTermsModal(true)}>Terms & Conditions</button>
                 </div>
@@ -86,4 +89,4 @@ const About: React.FC = () => {
     );
 };
 
-export default About;
+export default Contact;
