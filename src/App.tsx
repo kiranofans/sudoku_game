@@ -14,8 +14,6 @@ import Tooltip from './components/Tooltip';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
-{/* Set google analytic with Vite container */ }
-
 type CellNotes = Set<number>;
 
 function App() {
