@@ -13,6 +13,8 @@ import DifficultySelector from './components/DifficultySelector';
 import Tooltip from './components/Tooltip';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import FAQ from './pages/faq';
+import AboutSudoku from './components/aboutSudokubox.tsx';
 
 type CellNotes = Set<number>;
 
@@ -391,12 +393,13 @@ function App() {
               </div>
             </div>
             <div className='controls-row'>
-              <Link to="/sudokuTips" className="header-nav-item desktop-only-nav truncate">Sudoku Tips</Link>
+              <Link to="/sudokuTips" className="header-nav-item desktop-only-nav">Tips</Link>
+              <span className="header-nav-separator desktop-only-nav">|</span>
+              <Link to="/faq" className='header-nav-item desktop-only-nav'>FAQ</Link>
               <span className="header-nav-separator desktop-only-nav">|</span>
               <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
               <span className="header-nav-separator desktop-only-nav">|</span>
               <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
-              <span className="header-nav-separator desktop-only-nav">|</span>
 
               <DifficultySelector
                 difficulty={difficulty}
@@ -567,10 +570,12 @@ function App() {
                 </div>
               </div>
             </div>
+            <AboutSudoku />
+
           </div>
           <footer className="site-footer">
             <div className="footer-copyright">
-              <span>&copy; {currentYear} Sudoku Game v{packageJson.version} | All rights reserved.</span>
+              <span>&copy; {currentYear} sudokuplays.com v{packageJson.version}  |  All rights reserved.</span>
             </div>
             <div className="footer-links">
               <Link to="/about" className="footer-btn mobile-only-nav" style={{ textDecoration: 'none' }}>About</Link>
@@ -606,6 +611,8 @@ function App() {
           }
         </div>
       } />
+      {/* <Route path="/sudokuTips" element={<SudokuTips />} /> */}
+      <Route path="/faq" element={<FAQ />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>

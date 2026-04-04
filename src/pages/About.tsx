@@ -23,43 +23,75 @@ const About: React.FC = () => {
                     </div>
                 </div>
                 <div className='controls-row'>
+                    <Link to="/faq" className='header-nav-item desktop-only-nav'>FAQ</Link>
+                    <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
                     <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
                     <ThemeSelector />
 
                 </div>
-
-
             </header>
             <hr className="divider" />
 
-            <main className="sudoku-app" style={{ padding: '8rem 2rem 6rem', maxWidth: '800px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
-                <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>About Sudoku Game</h1>
-
+            <main className="sudoku-app" style={{ padding: '8rem 2rem 6rem', maxWidth: '900px', textAlign: 'center', margin: '0 auto', flex: '1 0 auto' }}>
+                <h1 style={{ textAlign: 'center', marginBottom: '0.1rem' }}>About this Site</h1>
                 <div style={{ padding: '1rem 0', fontSize: '1.1rem', lineHeight: '1.6' }}>
-                    <p style={{ marginBottom: '1.5rem' }}>
-                        Sudoku Game is a lightweight puzzle application built with <strong>TypeScript</strong> and modern web technologies.
-                        It focuses on providing a clean, fast, and distraction-free experience so players can enjoy the classic logic puzzle
-                        without unnecessary complexity.
+                    <p style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>
+                        sudokuplays.com is a simple, fast, and distraction-free place to enjoy Sudoku anytime.
                     </p>
 
-                    <p style={{ marginBottom: '1.5rem' }}>
+                    <p style={{ marginBottom: '2rem', fontSize: '1.2rem' }}>
+                        The goal of this site is to provide a clean,
+                        smooth, convenient and accessible puzzle experience without unnecessary complexity.
+                        Whether you're a beginner learning the basics or someone looking for a quick mental challenge,
+                        sudokuplays.com offers a clean interface that lets you focus entirely on solving puzzles.
+                    </p>
+
+                    <p style={{ marginBottom: '1rem', fontSize: '1.2rem' }}>
                         The game features a simple interface, responsive controls, and smooth performance directly in your browser.
                         Whether you're solving a quick puzzle during a break or challenging yourself to improve your logic skills,
                         this project aims to make Sudoku accessible and enjoyable for everyone.
                     </p>
-
-                    <p style={{ marginBottom: '1.5rem' }}>
-                        Designed with simplicity in mind, Sudoku Game runs entirely on the web with no downloads required.
+                    <p style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>
+                        Designed with simplicity in mind, sudokuplays.com runs entirely on the web with no downloads required.
                     </p>
 
-                    <p style={{ marginTop: '2.5rem', fontSize: '1rem', color: '#666', textAlign: 'center' }}>
-                        Enjoy the challenge, sharpen your logic, and have fun solving! 🧩
+                    {/* What you will find here */}
+                    <h2 style={{ textAlign: 'center', marginBottom: '0.1rem' }}>What you will find here</h2>
+
+                    <p style={{ marginTop: '2.5rem', marginBottom: '1.5rem' }}>
+                        <ul style={{ textAlign: 'left', fontSize: '1.2rem' }}>
+                            <li>Multiple difficulty levels to match your skill</li>
+                            <li>A responsive design that works on desktop and mobile</li>
+                            <li>Helpful tools and tips to improve your solving techniques</li>
+                            <li>A lightweight experience with fast loading and minimal clutter</li>
+                        </ul>
+                    </p>
+
+                    <p style={{ marginTop: '2.5rem', fontSize: '1.2rem', color: '#666', textAlign: 'center' }}>
+                    </p>
+                    <h2 style={{ textAlign: 'center', marginBottom: '0.1rem' }}>Why this Site Exists</h2>
+                    <p style={{ marginTop: '2.5rem', marginBottom: '0.1rem' }}>
+                        sudokuplays.com.com was created to make Sudoku easy to access and
+                        enjoyable without requiring downloads, accounts, or complicated features.
+                        It’s built with performance and usability in mind, so you can start playing
+                        instantly with almost no concerns about data collection or privacy.
                     </p>
                 </div>
 
-                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                {/* Continuous Improvement> */}
+                <div style={{ padding: '1rem 0', fontSize: '1.2rem', lineHeight: '1.6' }}>
+
+                    <h2 style={{ textAlign: 'center', marginBottom: '0.1rem' }}>Continuous Improvement</h2>
+
+                    <p style={{ marginTop: '1.5rem', fontSize: '1.2rem', textAlign: 'center' }} className='dark:text-white'>
+                        The site is actively being improved with new features, better usability,
+                        and more helpful content for players who want to sharpen their skills.
+                    </p>
+                </div>
+
+                <div style={{ textAlign: 'center', marginTop: '1rem' }}>
                     <Link to="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
                         Back to Game
                     </Link>
@@ -68,10 +100,11 @@ const About: React.FC = () => {
 
             <footer className="site-footer">
                 <div className="footer-copyright">
-                    <span>&copy; {currentYear} Sudoku Game v{packageJson.version} | All rights reserved.</span>
+                    <span>&copy; {currentYear} sudokuplays.com v{packageJson.version} | All rights reserved.</span>
                 </div>
                 <div className="footer-links">
-                    <Link to="/contact" className="footer-btn" style={{ textDecoration: 'none' }}>Contact</Link>
+                    {/* <Link to="/about" className="footer-btn" style={{ textDecoration: 'none' }}>About</Link>
+                    <Link to="/contact" className="footer-btn" style={{ textDecoration: 'none' }}>Contact</Link> */}
                     <button className="footer-btn" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
                     <button className="footer-btn" onClick={() => setShowTermsModal(true)}>Terms & Conditions</button>
                 </div>

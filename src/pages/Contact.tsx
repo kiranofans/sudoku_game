@@ -23,6 +23,8 @@ const Contact: React.FC = () => {
                     </div>
                 </div>
                 <div className='controls-row'>
+                    <Link to="/faq" className='header-nav-item desktop-only-nav'>FAQ</Link>
+                    <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
                     <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
@@ -69,7 +71,7 @@ const Contact: React.FC = () => {
 
             <footer className="site-footer">
                 <div className="footer-copyright">
-                    <span>&copy; {currentYear} Sudoku Game v{packageJson.version} | All rights reserved.</span>
+                    <span>&copy; {currentYear} sudokuplays.com v{packageJson.version} | All rights reserved.</span>
                 </div>
                 <div className="footer-links">
                     <Link to="/about" className="footer-btn" style={{ textDecoration: 'none' }}>About</Link>
