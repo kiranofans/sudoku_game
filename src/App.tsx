@@ -13,7 +13,7 @@ import DifficultySelector from './components/DifficultySelector';
 import Tooltip from './components/Tooltip';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import FAQ from './pages/faq';
+import Faq from './pages/faq.tsx';
 import AboutSudoku from './components/aboutSudokubox.tsx';
 
 type CellNotes = Set<number>;
@@ -612,7 +612,7 @@ function App() {
         </div>
       } />
       {/* <Route path="/sudokuTips" element={<SudokuTips />} /> */}
-      <Route path="/faq" element={<FAQ />} />
+      <Route path="/faq" element={<Faq />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>

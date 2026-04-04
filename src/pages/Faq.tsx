@@ -45,7 +45,7 @@ const getFAQs = (): FAQItem[] => {
     ];
 };
 
-const Faq: React.FC = () => {
+const faq: React.FC = () => {
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
     const [showTermsModal, setShowTermsModal] = useState(false);
     const faqs = getFAQs();
@@ -154,5 +154,4 @@ const Faq: React.FC = () => {
         </div>
     );
 };
-
-export default Faq;
+export default faq;
