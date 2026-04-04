@@ -391,9 +391,13 @@ function App() {
               </div>
             </div>
             <div className='controls-row'>
+              <Link to="/sudokuTips" className="header-nav-item desktop-only-nav truncate">Sudoku Tips</Link>
+              <span className="header-nav-separator desktop-only-nav">|</span>
               <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
               <span className="header-nav-separator desktop-only-nav">|</span>
               <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
+              <span className="header-nav-separator desktop-only-nav">|</span>
+
               <DifficultySelector
                 difficulty={difficulty}
                 onDifficultyChange={(newDifficulty) => {

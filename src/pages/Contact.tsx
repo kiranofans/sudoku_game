@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import packageJson from '../../package.json';
 import { PrivacyPolicyModal, TermsAndConditionsModal } from '../components/Modals';
+import ThemeSelector from '@/components/ThemeSelector';
 
 const Contact: React.FC = () => {
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
@@ -25,13 +26,15 @@ const Contact: React.FC = () => {
                     <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
                     <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
+                    <ThemeSelector />
+
                 </div>
             </header>
             <hr className="divider" />
-            
+
             <main className="sudoku-app" style={{ padding: '8rem 2rem 6rem', maxWidth: '800px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
                 <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>Contact</h1>
-                
+
                 <div style={{ textAlign: 'center', padding: '2rem 0', fontSize: '1.2rem', lineHeight: '1.6' }}>
                     <p style={{ marginBottom: '1.5rem' }}>For support or feedback, please contact us at:</p>
                     <a
@@ -51,7 +54,7 @@ const Contact: React.FC = () => {
                     >
                         sitehelp.chat@gmail.com
                     </a>
-                    
+
                     <p style={{ marginTop: '3.5rem', fontSize: '1rem', color: '#666' }}>
                         We value your input and strive to respond to all inquiries as quickly as possible.
                     </p>

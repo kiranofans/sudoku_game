@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import packageJson from '../../package.json';
 import { PrivacyPolicyModal, TermsAndConditionsModal } from '../components/Modals';
+import ThemeSelector from '@/components/ThemeSelector';
 
 const About: React.FC = () => {
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
@@ -25,7 +26,11 @@ const About: React.FC = () => {
                     <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
                     <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
+                    <ThemeSelector />
+
                 </div>
+
+
             </header>
             <hr className="divider" />
 
