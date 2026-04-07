@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark-theme *));
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -137,14 +138,15 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--button-border);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
 }
 
 button:hover {
@@ -156,28 +158,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Accordion buttons — resets the global button styles so width never shifts on click/focus */
-.accordion-btn {
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  background-color: transparent !important;
-  font-size: inherit !important;
-  font-weight: inherit !important;
-  transition: background-color 0.2s ease !important;
-  width: 100%;
-  display: flex;
-  box-sizing: border-box;
-}
 
-.accordion-btn:hover {
-  border-color: transparent !important;
-}
-
-.accordion-btn:focus,
-.accordion-btn:focus-visible {
-  outline: none !important;
-}
 
 @media (prefers-color-scheme: light) {
   :root {

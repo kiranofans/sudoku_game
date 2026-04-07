@@ -26,7 +26,7 @@ const getFAQs = (): FAQItem[] => {
         },
         {
             question: "Do I need an account to play?",
-            answer: "No account is required. You can start playing instantly.",
+            answer: "No sign up or login is required. You can start playing instantly.",
         },
         {
             question: "What difficulty levels are available?",
@@ -41,7 +41,7 @@ const getFAQs = (): FAQItem[] => {
         {
             question: "How can I improve at Sudoku?",
             answer:
-                "Practice regularly and learn strategies like scanning and pencil marks.",
+                "you can improve Sudoku skill by playing regularly and learn strategies from the Tips page, like scanning and pencil marks.",
         },
     ];
 };
@@ -100,7 +100,7 @@ const faq: React.FC = () => {
                         >
                             {index === 0 ? (
                                 <div>
-                                    <p className="italic mb-2">
+                                    <p className="italic mb-2 mx-auto">
                                         “Sudoku (/suːˈdoʊkuː, -ˈdɒk-, sə-/; Japanese: 数独, romanized: sūdoku, lit. 'digit-single'; originally called Number Place)
                                         is a logic-based, combinatorial number-placement puzzle.”
                                     </p>
@@ -114,6 +114,10 @@ const faq: React.FC = () => {
                                         — Source: <a href="https://en.wikipedia.org/wiki/Sudoku" className="underline hover:text-blue-500" target="_blank" rel="noopener noreferrer">Wikipedia</a>
                                     </p>
                                 </div>
+                            ) : faq.question === "How can I improve at Sudoku?" ? (
+                                <span>
+                                    you can improve Sudoku skill by playing regularly and learn strategies from the <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips page</Link>, like scanning and pencil marks.
+                                </span>
                             ) : (
                                 faq.answer
                             )}
