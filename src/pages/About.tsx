@@ -23,13 +23,14 @@ const About: React.FC = () => {
                     </div>
                 </div>
                 <div className='controls-row'>
+                    <Link to="/sudokuTips" className="header-nav-item desktop-only-nav">Tips</Link>
+                    <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/faq" className='header-nav-item desktop-only-nav'>FAQ</Link>
                     <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
                     <span className="header-nav-separator desktop-only-nav">|</span>
                     <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
                     <ThemeSelector />
-
                 </div>
             </header>
             <hr className="divider" />
