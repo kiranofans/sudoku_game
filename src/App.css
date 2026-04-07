@@ -24,7 +24,10 @@
 
 .game-title {
   text-align: left;
-  font-size: clamp(1rem, 2vw, 1.8rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -0.025em;
   margin: 0;
   padding: 0;
   line-height: 1;
@@ -1180,7 +1183,7 @@ body {
   .desktop-only-nav {
     display: none !important;
   }
-  
+
   .mobile-only-nav {
     display: flex !important;
   }
