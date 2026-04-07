@@ -8,9 +8,9 @@ const AboutSudoku: React.FC = () => {
             <div className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="w-full flex justify-between items-center px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none"
+                    className="w-full flex justify-between items-center px-4 h-8 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none"
                 >
-                    <span className="text-[13px] text-gray-700 dark:text-gray-200 uppercase tracking-wider font-semibold">
+                    <span className="text-[12px] text-gray-700 dark:text-gray-200 tracking-wider font-semibold">
                         About Sudoku
                     </span>
 
