@@ -15,6 +15,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Faq from './pages/faq.tsx';
 import AboutSudoku from './components/aboutSudokubox.tsx';
+import SudokuTips from './pages/SudokuTips.tsx';
 
 type CellNotes = Set<number>;
 
@@ -611,7 +612,7 @@ function App() {
           }
         </div>
       } />
-      {/* <Route path="/sudokuTips" element={<SudokuTips />} /> */}
+      <Route path="/sudokuTips" element={<SudokuTips />} />
       <Route path="/faq" element={<Faq />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />

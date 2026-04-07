@@ -3,7 +3,7 @@ import React from 'react';
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
-    title: string;
+    title: React.ReactNode;
     children: React.ReactNode;
     closeable?: boolean;
 }
@@ -30,33 +30,42 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, closeab
 
 
 export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
-    <Modal isOpen={isOpen} onClose={onClose} title="How to Play">
-        <h4>Quick Guide</h4>
-        <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
+    <Modal isOpen={isOpen} onClose={onClose} title={<b className="text-2xl">How to Play</b>}>
+        <div className="space-y-6 text-gray-700 dark:text-gray-300 text-sm leading-relaxed text-left">
+            <div>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-1 border-b border-gray-200 dark:border-gray-700 pb-1">Quick Guide</h4>
+                <p>Fill each row, column, and 3×3 box with numbers 1–9 without repeating.</p>
+            </div>
 
-        <h4>Detailed Sudoku Guide</h4>
-        <ol type="1">
-            <li>Click a cell to select it.</li>
-            <li>Type a number (1–9) or use the number pad to fill it in.</li>
-            <li>Switch to <b>Pencil Mode</b> to make notes for possible numbers.</li>
-            <li>You can use up to 3 hints during the game.</li>
-            <li>The game ends after 10 mistakes or when the puzzle is solved.</li>
-        </ol>
+            <div>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-2 border-b border-gray-200 dark:border-gray-700 pb-1">Detailed Sudoku Guide</h4>
+                <ol className="list-decimal pl-5 space-y-1">
+                    <li>Click a cell to select it.</li>
+                    <li>Type a number (1–9) or use the number pad to fill it in.</li>
+                    <li>Switch to <b className="text-gray-900 dark:text-gray-100">Pencil Mode</b> to make notes for possible numbers.</li>
+                    <li>You can use up to 3 hints during the game.</li>
+                    <li>The game ends after 10 mistakes or when the puzzle is solved.</li>
+                </ol>
+            </div>
 
-        <h4>About the Number Pad</h4>
-        <p>The large blue buttons are for input.
-            <br></br>Each button also shows the <b>remaining count</b> of that number in the bottom-right corner.</p>
+            <div>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-1 border-b border-gray-200 dark:border-gray-700 pb-1">About the Number Pad</h4>
+                <p>The large blue buttons are for input.</p>
+                <p className="mt-1">Each button also shows the <b className="text-gray-900 dark:text-gray-100">remaining count</b> of that number in the bottom-right corner.</p>
+            </div>
 
-        <h4>About the Scoring System</h4>
-        <p>Your score updates in <b>real-time</b> as you play:</p>
-        <ol type="1">
-            <li>Initially, the score shows <b>- - - -</b> until you earn points.</li>
-            <li>Earn <b>Bonus Points</b> for every correct number placed.</li>
-            <li>Higher difficulty levels provide a much larger <b>Score Multiplier</b>.</li>
-            <li>Making a <b>Mistake</b> or taking too much <b>Time</b> will reduce your score.</li>
-            <li>After <b>10 Mistakes</b> the game will end.</li>
-
-        </ol>
+            <div>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-2 border-b border-gray-200 dark:border-gray-700 pb-1">About the Scoring System</h4>
+                <p className="mb-2">Your score updates in <b className="text-gray-900 dark:text-gray-100">real-time</b> as you play:</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                    <li>Initially, the score shows <b className="text-gray-900 dark:text-gray-100">- - - -</b> until you earn points.</li>
+                    <li>Earn <b className="text-gray-900 dark:text-gray-100">Bonus Points</b> for every correct number placed.</li>
+                    <li>Higher difficulty levels provide a much larger <b className="text-gray-900 dark:text-gray-100">Score Multiplier</b>.</li>
+                    <li>Making a <b className="text-gray-900 dark:text-gray-100">Mistake</b> or taking too much <b className="text-gray-900 dark:text-gray-100">Time</b> will reduce your score.</li>
+                    <li>After <b className="text-gray-900 dark:text-gray-100">10 Mistakes</b> the game will end.</li>
+                </ol>
+            </div>
+        </div>
     </Modal>
 );
 

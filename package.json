@@ -15,10 +15,12 @@
     "Note 2": "gh-pages pushes the dist folder to GitHub Pages"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^22.14.1",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-vue": "^6.0.1",
+    "tailwindcss": "^4.2.2",
     "typescript": "^5.8.3",
     "vite": "^6.2.0",
     "vite-plugin-svgr": "^4.5.0"

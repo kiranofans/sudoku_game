@@ -95,9 +95,9 @@ const faq: React.FC = () => {
                         >
                             <button
                                 onClick={() => toggle(index)}
-                                className="w-full flex justify-between items-center px-4 py-3 text-left"
+                                className="accordion-btn justify-between items-center px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                             >
-                                <span className="font-medium text-gray-800 dark:text-gray-100">
+                                <span className="text-gray-800 dark:text-gray-100">
                                     {faq.question}
                                 </span>
                                 <span className="text-gray-500 dark:text-gray-400">
