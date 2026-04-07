@@ -86,23 +86,23 @@ const SudokuTips: React.FC = () => {
                     {tips.map((tip, index) => (
                         <div
                             key={index}
-                            className="w-full border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded"
                         >
                             <button
                                 onClick={() => toggle(index)}
-                                className="accordion-btn justify-between items-center px-5 py-4 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                                className="w-full flex justify-between items-center px-4 h-8 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none"
                             >
-                                <span className="text-base text-left font-medium text-gray-800 dark:text-gray-100">
+                                <span className="text-[12px] text-gray-700 dark:text-gray-200 tracking-wider font-semibold uppercase text-left">
                                     {tip.title}
                                 </span>
-                                <span className="text-gray-500 dark:text-gray-400 font-bold text-lg leading-none">
+                                <span className="text-gray-500 font-bold text-lg leading-none">
                                     {openIndex === index ? "−" : "+"}
                                 </span>
                             </button>
 
                             {openIndex === index && (
                                 <div className="w-full min-w-0 overflow-hidden">
-                                    <div className="w-full min-w-0 px-5 pb-4 pt-3 text-gray-600 dark:text-gray-300 text-base leading-relaxed border-t border-gray-100 dark:border-gray-700 break-words space-y-3">
+                                    <div className="px-4 pb-4 pt-2 text-left border-t border-gray-200 w-full dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400 break-words space-y-3">
                                         {tip.description.split('\n\n').map((para, i) => (
                                             <p key={i}>{para}</p>
                                         ))}
