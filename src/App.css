@@ -287,9 +287,9 @@ body {
 }
 
 .logo {
-  /* max-width: clamp(2rem, 1vw, 3rem); */
-  max-height: clamp(1.8rem, 2vw, 2.5rem);
-  aspect-ratio: 1 / 1;
+  height: clamp(1.8rem, 2vw, 2.5rem);
+  width: auto;
+  object-fit: contain;
   border-radius: 35%;
   flex-shrink: 0;
   padding-right: 0 !important;
