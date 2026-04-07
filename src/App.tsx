@@ -571,7 +571,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <AboutSudoku />
+            {/* <AboutSudoku /> */}
 
           </div>
           <footer className="site-footer">

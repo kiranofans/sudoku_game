@@ -36,8 +36,8 @@ const About: React.FC = () => {
             <hr className="divider" />
 
             <main className="sudoku-app" style={{ padding: '8rem 2rem 6rem', maxWidth: '900px', textAlign: 'center', margin: '0 auto', flex: '1 0 auto' }}>
-                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">About this Site</h1>
-                <div className="text-left space-y-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                <h1 className="text-3xl font-bold text-center mt-6 mb-8">About this Site</h1>
+                <div className="text-left space-y-6 text-lg leading-relaxed max-w-3xl mx-auto">
                     <p>
                         sudokuplays.com is a simple, fast, and distraction-free place to enjoy Sudoku anytime.
                     </p>
@@ -60,7 +60,7 @@ const About: React.FC = () => {
                     </p>
 
                     {/* What you will find here */}
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">What You Will Find Here</h2>
+                    <h2 className="text-2xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">What You Will Find Here</h2>
 
                     <ul className="list-disc pl-6 space-y-2">
                         <li>Multiple difficulty levels to match your skill</li>
@@ -70,7 +70,7 @@ const About: React.FC = () => {
                     </ul>
 
                     {/* Why this Site Exists */}
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">Why This Site Exists</h2>
+                    <h2 className="text-2xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">Why This Site Exists</h2>
                     <p>
                         sudokuplays.com was created to make Sudoku easy to access and
                         enjoyable without requiring downloads, accounts, or complicated features.
@@ -79,7 +79,7 @@ const About: React.FC = () => {
                     </p>
 
                     {/* Continuous Improvement */}
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">Continuous Improvement</h2>
+                    <h2 className="text-2xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">Continuous Improvement</h2>
                     <p>
                         The site is actively being improved with new features, better usability,
                         and more helpful content for players who want to sharpen their skills.

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import packageJson from '../../package.json';
 import { PrivacyPolicyModal, TermsAndConditionsModal } from '../components/Modals';
 import ThemeSelector from '@/components/ThemeSelector';
+import ExpandableBox from '@/components/ExpandableBox';
 
 // Define the type
 type FAQItem = {
@@ -21,7 +22,7 @@ const getFAQs = (): FAQItem[] => {
         {
             question: "Is SudokuPlays free to use?",
             answer:
-                "Yes, SudokuPlays is completely free to use without downloads or accounts.",
+                "Yes, the site is completely free to use without downloads or accounts.",
         },
         {
             question: "Do I need an account to play?",
@@ -89,30 +90,34 @@ const faq: React.FC = () => {
                     FAQ
                 </h1>
 
-                <div className="space-y-4">
+                <div className="space-y-4 max-w-[800px] w-full mx-auto">
                     {faqs.map((faq, index) => (
-                        <div
+                        <ExpandableBox
                             key={index}
-                            className="border rounded-xl shadow-sm dark:border-gray-700"
+                            title={faq.question}
+                            isOpen={openIndex === index}
+                            onToggle={() => toggle(index)}
                         >
-                            <button
-                                onClick={() => toggle(index)}
-                                className="accordion-btn justify-between items-center px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                            >
-                                <span className="text-gray-800 dark:text-gray-100">
-                                    {faq.question}
-                                </span>
-                                <span className="text-gray-500 dark:text-gray-400">
-                                    {openIndex === index ? "−" : "+"}
-                                </span>
-                            </button>
-
-                            {openIndex === index && (
-                                <div className="px-4 pb-4 text-gray-600 dark:text-gray-300">
-                                    {faq.answer}
+                            {index === 0 ? (
+                                <div>
+                                    <p className="italic mb-2">
+                                        “Sudoku (/suːˈdoʊkuː, -ˈdɒk-, sə-/; Japanese: 数独, romanized: sūdoku, lit. 'digit-single'; originally called Number Place)
+                                        is a logic-based, combinatorial number-placement puzzle.”
+                                    </p>
+                                    <p className="mb-2">
+                                        In classic Sudoku, the objective is to fill a 9 × 9 grid with digits so that each column,
+                                        each row, and each of the nine 3 × 3 subgrids that compose the grid
+                                        (also called "boxes", "blocks", or "regions") contains all of the digits from 1 to 9.
+                                        The puzzle setter provides a partially completed grid, which, for a well-posed puzzle, has a single solution.
+                                    </p>
+                                    <p className="text-[10px] text-gray-400">
+                                        — Source: <a href="https://en.wikipedia.org/wiki/Sudoku" className="underline hover:text-blue-500" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+                                    </p>
                                 </div>
+                            ) : (
+                                faq.answer
                             )}
-                        </div>
+                        </ExpandableBox>
                     ))}
                 </div>
 
@@ -131,8 +136,6 @@ const faq: React.FC = () => {
                     <span>&copy; {currentYear} sudokuplays.com.com v{packageJson.version} | All rights reserved.</span>
                 </div>
                 <div className="footer-links">
-                    {/* <Link to="/contact" className="footer-btn" style={{ textDecoration: 'none' }}>Contact</Link>
-                    <Link to="/about" className='footer-btn' style={{ textDecoration: 'none' }}>About</Link> */}
                     <button className="footer-btn" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
                     <button className="footer-btn" onClick={() => setShowTermsModal(true)}>Terms & Conditions</button>
                 </div>
