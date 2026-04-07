@@ -1742,12 +1742,28 @@ button {
   .action-buttons button {
     height: auto;
   }
+}
 
+/* Drawer Animations */
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-in.slide-in-from-left {
+  animation: slide-in-left 0.3s ease-out;
+}
+
+/* Portrait specific Drawer trigger hint */
+@media (orientation: portrait) and (max-width: 768px) {
+  .logo-link {
+    cursor: pointer;
+  }
 }
 
 /* Apply safe area padding ONLY for iPhones (portrait & landscape) */
 @supports (-webkit-touch-callout: none) {
-  @media only screen and (min-device-width:320px) and (max-device-width:1024p) and (-webkit-min-device-pixel-ratio: 2) {
+  @media only screen and (min-device-width:320px) and (max-device-width:1024px) and (-webkit-min-device-pixel-ratio: 2) {
     .sudoku-app {
       min-height: 100dvh;
     }
