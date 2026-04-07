@@ -20,7 +20,8 @@ const AboutSudoku: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                    <div className="px-4 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-400">
+                    <div className="px-4 pb-4 pt-2 text-left border-t border-gray-200 
+                    max-w-2xl w-full mx-auto dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400">
                         <p className="italic mb-2">
                             “Sudoku (/suːˈdoʊkuː, -ˈdɒk-, sə-/; Japanese: 数独, romanized: sūdoku, lit. 'digit-single'; originally called Number Place)
                             is a logic-based, combinatorial number-placement puzzle.”
