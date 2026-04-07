@@ -35,63 +35,57 @@ const About: React.FC = () => {
             <hr className="divider" />
 
             <main className="sudoku-app" style={{ padding: '8rem 2rem 6rem', maxWidth: '900px', textAlign: 'center', margin: '0 auto', flex: '1 0 auto' }}>
-                <h1 style={{ textAlign: 'center', marginBottom: '0.1rem' }}>About this Site</h1>
-                <div style={{ padding: '1rem 0', fontSize: '1.1rem', lineHeight: '1.6' }}>
-                    <p style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>
+                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">About this Site</h1>
+                <div className="text-left space-y-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                    <p>
                         sudokuplays.com is a simple, fast, and distraction-free place to enjoy Sudoku anytime.
                     </p>
 
-                    <p style={{ marginBottom: '2rem', fontSize: '1.2rem' }}>
+                    <p>
                         The goal of this site is to provide a clean,
                         smooth, convenient and accessible puzzle experience without unnecessary complexity.
                         Whether you're a beginner learning the basics or someone looking for a quick mental challenge,
                         sudokuplays.com offers a clean interface that lets you focus entirely on solving puzzles.
                     </p>
 
-                    <p style={{ marginBottom: '1rem', fontSize: '1.2rem' }}>
+                    <p>
                         The game features a simple interface, responsive controls, and smooth performance directly in your browser.
                         Whether you're solving a quick puzzle during a break or challenging yourself to improve your logic skills,
                         this project aims to make Sudoku accessible and enjoyable for everyone.
                     </p>
-                    <p style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>
+
+                    <p>
                         Designed with simplicity in mind, sudokuplays.com runs entirely on the web with no downloads required.
                     </p>
 
                     {/* What you will find here */}
-                    <h2 style={{ textAlign: 'center', marginBottom: '0.1rem' }}>What you will find here</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">What You Will Find Here</h2>
 
-                    <p style={{ marginTop: '2.5rem', marginBottom: '1.5rem' }}>
-                        <ul style={{ textAlign: 'left', fontSize: '1.2rem' }}>
-                            <li>Multiple difficulty levels to match your skill</li>
-                            <li>A responsive design that works on desktop and mobile</li>
-                            <li>Helpful tools and tips to improve your solving techniques</li>
-                            <li>A lightweight experience with fast loading and minimal clutter</li>
-                        </ul>
-                    </p>
+                    <ul className="list-disc pl-6 space-y-2">
+                        <li>Multiple difficulty levels to match your skill</li>
+                        <li>A responsive design that works on desktop and mobile</li>
+                        <li>Helpful tools and tips to improve your solving techniques</li>
+                        <li>A lightweight experience with fast loading and minimal clutter</li>
+                    </ul>
 
-                    <p style={{ marginTop: '2.5rem', fontSize: '1.2rem', color: '#666', textAlign: 'center' }}>
-                    </p>
-                    <h2 style={{ textAlign: 'center', marginBottom: '0.1rem' }}>Why this Site Exists</h2>
-                    <p style={{ marginTop: '2.5rem', marginBottom: '0.1rem' }}>
-                        sudokuplays.com.com was created to make Sudoku easy to access and
+                    {/* Why this Site Exists */}
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">Why This Site Exists</h2>
+                    <p>
+                        sudokuplays.com was created to make Sudoku easy to access and
                         enjoyable without requiring downloads, accounts, or complicated features.
                         It’s built with performance and usability in mind, so you can start playing
                         instantly with almost no concerns about data collection or privacy.
                     </p>
-                </div>
 
-                {/* Continuous Improvement> */}
-                <div style={{ padding: '1rem 0', fontSize: '1.2rem', lineHeight: '1.6' }}>
-
-                    <h2 style={{ textAlign: 'center', marginBottom: '0.1rem' }}>Continuous Improvement</h2>
-
-                    <p style={{ marginTop: '1.5rem', fontSize: '1.2rem', textAlign: 'center' }} className='dark:text-white'>
+                    {/* Continuous Improvement */}
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">Continuous Improvement</h2>
+                    <p>
                         The site is actively being improved with new features, better usability,
                         and more helpful content for players who want to sharpen their skills.
                     </p>
                 </div>
 
-                <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                     <Link to="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
                         Back to Game
                     </Link>
