@@ -54,12 +54,12 @@ const faq: React.FC = () => {
 
     return (
         <Layout>
-            <main className="sudoku-app" style={{ padding: '8rem 2rem 6rem', maxWidth: '900px', textAlign: 'center', margin: '0 auto', flex: '1 0 auto' }}>
+            <main className="sudoku-app" style={{ width: '100%', padding: '8rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">
                     FAQ
                 </h1>
 
-                <div className="space-y-4 max-w-[800px] w-full mx-auto">
+                <div className="space-y-3 max-w-[800px] w-full mx-auto">
                     {faqs.map((faq, index) => (
                         <ExpandableBox
                             key={index}
