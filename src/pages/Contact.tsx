@@ -6,7 +6,7 @@ const Contact: React.FC = () => {
     return (
         <Layout>
             <main className="sudoku-app" style={{ padding: '8rem 2rem 6rem', maxWidth: '800px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
-                <h1 style={{ textAlign: 'center', marginBottom: '2rem' }} className="dark:text-white">Contact</h1>
+                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Contact</h1>
 
                 <div style={{ textAlign: 'center', padding: '2rem 0', fontSize: '1.2rem', lineHeight: '1.6' }} className="dark:text-gray-200">
                     <p style={{ marginBottom: '1.5rem' }}>For support or feedback, please contact us at:</p>
