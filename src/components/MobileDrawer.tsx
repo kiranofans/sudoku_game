@@ -10,7 +10,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[10000] lg:hidden portrait:block">
+    <div className="fixed inset-0 z-[10000] md:hidden portrait:block">
       {/* Overlay */}
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"

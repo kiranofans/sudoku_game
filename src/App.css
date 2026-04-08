@@ -1179,7 +1179,7 @@ body {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .desktop-only-nav {
     display: none !important;
   }
@@ -1771,7 +1771,7 @@ button {
 }
 
 /* Portrait specific Drawer trigger hint */
-@media (orientation: portrait) and (max-width: 768px) {
+@media (orientation: portrait) and (max-width: 767px) {
   .logo-link {
     cursor: pointer;
   }

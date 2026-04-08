@@ -73,8 +73,8 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
           <span>&copy; {currentYear} sudokuplays.com v{packageJson.version} | All rights reserved.</span>
         </div>
         <div className="footer-links">
-          <Link to="/about" className="footer-btn lg:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>About</Link>
-          <Link to="/contact" className="footer-btn lg:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>Contact</Link>
+          <Link to="/about" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>About</Link>
+          <Link to="/contact" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>Contact</Link>
           
           <button className="footer-btn" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
           <button className="footer-btn" onClick={() => setShowTermsModal(true)}>Terms & Conditions</button>
