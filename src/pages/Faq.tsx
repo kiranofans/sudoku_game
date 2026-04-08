@@ -69,7 +69,7 @@ const faq: React.FC = () => {
                         >
                             {index === 0 ? (
                                 <div>
-                                    <p className="italic mb-2 mx-auto">
+                                    <p className="italic mb-1 mx-auto">
                                         “Sudoku (/suːˈdoʊkuː, -ˈdɒk-, sə-/; Japanese: 数独, romanized: sūdoku, lit. 'digit-single'; originally called Number Place)
                                         is a logic-based, combinatorial number-placement puzzle.”
                                     </p>
@@ -85,7 +85,7 @@ const faq: React.FC = () => {
                                 </div>
                             ) : faq.question === "How can I improve at Sudoku?" ? (
                                 <span>
-                                    you can improve Sudoku skill by playing regularly and learn strategies from the <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips page</Link>, like scanning and pencil marks.
+                                    you can improve Sudoku skill by playing regularly and learning strategies from the <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips page</Link>, like scanning and pencil marks.
                                 </span>
                             ) : (
                                 faq.answer
