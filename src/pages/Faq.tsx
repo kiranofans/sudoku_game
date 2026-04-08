@@ -69,7 +69,7 @@ const faq: React.FC = () => {
                         >
                             {index === 0 ? (
                                 <div>
-                                    <p className="italic mb-1 mx-auto">
+                                    <p className="italic mb-2 mx-auto">
                                         “Sudoku (/suːˈdoʊkuː, -ˈdɒk-, sə-/; Japanese: 数独, romanized: sūdoku, lit. 'digit-single'; originally called Number Place)
                                         is a logic-based, combinatorial number-placement puzzle.”
                                     </p>
