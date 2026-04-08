@@ -1521,21 +1521,37 @@ button {
 
   .mobile-only-score {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: -2px;
+  }
+
+  .score-main-mobile {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    margin-top: -4px;
+    gap: 4px;
+    white-space: nowrap;
   }
 
   .mobile-score-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--text-color);
     opacity: 0.8;
   }
 
   .mobile-score-value {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: bold;
     color: var(--score-color);
+    white-space: nowrap;
+  }
+
+  .mobile-notice {
+    font-size: 8px !important;
+    opacity: 0.6;
+    margin-top: -2px;
+    white-space: nowrap;
   }
 
   .horizontal-counts {
