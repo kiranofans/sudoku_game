@@ -12,7 +12,6 @@ import Tooltip from './components/Tooltip';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Faq from './pages/faq.tsx';
-import AboutSudoku from './components/aboutSudokubox.tsx';
 import SudokuTips from './pages/SudokuTips.tsx';
 import Layout from './components/Layout';
 
