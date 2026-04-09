@@ -311,7 +311,7 @@ function App() {
     if (hintsRemaining <= 0 || !selectedCell || isGameOver) return;
     const [row, col] = selectedCell;
 
-    if (initialBoard[row][col] !== null || board[row][col] !== null) return;
+    if (initialBoard[row][col] !== null || board[row][col] === solution[row][col]) return;
 
     const num = solution[row][col];
     const currentNum = board[row][col];
@@ -319,7 +319,7 @@ function App() {
       updateCountsAfterInput(currentNum, true);
     }
 
-    const newBoard = [...board];
+    const newBoard = board.map(rowArr => [...rowArr]);
     newBoard[row][col] = num;
     setBoard(newBoard);
 
