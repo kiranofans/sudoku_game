@@ -6,6 +6,7 @@ import { loadPersistedHints, savePersistedHints, loadPersistedScore, savePersist
 import './App.css';
 import Board from "./components/Board";
 import { InstructionsModal, AdModal } from './components/Modals';
+import GameStatusModal from './components/GameStatusModal';
 import { ThemeProvider } from './components/ThemeContext';
 import DifficultySelector from './components/DifficultySelector';
 import Tooltip from './components/Tooltip';
@@ -543,18 +544,17 @@ function App() {
 
           </div>
           {
-            isGameOver && (
-              <div className="game-over-overlay">
-                <div className="game-over-content">
-                  <div className="game-over-message">
-                    {mistakes >= 3 ? 'Game Over!' : 'Congratulations! You won!'}
-                  </div>
-                  <button className="play-again" onClick={startNewGame}>
-                    Play Again
-                  </button>
-                </div>
-              </div>
-            )
+              <GameStatusModal
+                isOpen={isGameOver}
+                status={mistakes < 10 ? 'won' : 'lost'}
+                onClose={() => {
+                  setIsGameOver(false);
+                  startNewGame();
+                }}
+                time={formatTime(time)}
+                score={score}
+                difficulty={difficulty}
+              />
           }
         </Layout>
       } />

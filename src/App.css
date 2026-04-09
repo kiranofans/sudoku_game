@@ -1189,51 +1189,6 @@ body {
   }
 }
 
-/* Game over overlay */
-.game-over-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-}
-
-.game-over-content {
-  background-color: white;
-  padding: clamp(20px, 2vw, 30px);
-  border-radius: 10px;
-  box-shadow: inset;
-  text-align: center;
-  border-width: 100px;
-}
-
-.game-over-message {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  inset: 50%;
-  translate: -50px -50% -50%;
-  color: #2c3e50;
-}
-
-.play-again {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.play-again:hover {
-  background-color: #2980b9;
-}
 
 /* Input elements */
 select,
