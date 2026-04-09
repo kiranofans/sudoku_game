@@ -18,9 +18,10 @@ const getFAQs = (): FAQItem[] => {
                 "Sudoku is a logic-based number puzzle where you fill a 9×9 grid so that each row, column, and 3×3 box contains the digits 1 to 9 without repetition.",
         },
         {
-            question: "Is SudokuPlays free to use?",
+            question: "Is sudokuplays.com free to use?",
             answer:
-                "Yes, the site is completely free to use without downloads or accounts.",
+                "Yes, the site is completely free to use without downloads or accounts. "
+
         },
         {
             question: "Do I need an account to play?",
@@ -83,13 +84,35 @@ const faq: React.FC = () => {
                                         — Source: <a href="https://en.wikipedia.org/wiki/Sudoku" className="underline hover:text-blue-500" target="_blank" rel="noopener noreferrer">Wikipedia</a>
                                     </p>
                                 </div>
-                            ) : faq.question === "How can I improve at Sudoku?" ? (
+                            ) : index === 1 ? (
                                 <span>
-                                    you can improve Sudoku skill by playing regularly and learning strategies from the <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips page</Link>, like scanning and pencil marks.
+                                    Yes, SudokuPlays.com is completely free to use. You can play all puzzles directly in your browser without creating an account or downloading anything.
+                                    <br /><br />
+                                    To help support the site and keep it free for everyone, we display Google AdSense ads. These ads do not affect gameplay and no personal account is required to access any features.
                                 </span>
-                            ) : (
-                                faq.answer
-                            )}
+                            ) : index === 2 ? (
+                                <span className="text-sm">
+                                    No — you don’t need to sign up or log in. You can start playing instantly.
+                                    <br /><br />
+                                    We do not require any personal information.
+                                    <br />To improve your experience, the site uses your browser’s local storage to temporarily save things like your game progress and scores (up to 24 hours).
+                                    <br /><br />
+                                    This data stays on your device and is not sent to our servers.
+                                </span>
+                            ) : index == 3 ? (
+                                <span className="text-sm">
+                                    We offer 5 difficulty levels:
+                                    <br />Very Easy, Easy, Medium, Hard, and Expert.
+                                    <br />
+                                </span>
+                            ) :
+                                index === 5 ? (
+                                    <span>
+                                        You can improve Sudoku skill by playing regularly and learning strategies from the <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips page</Link>, like scanning and pencil marks.
+                                    </span>
+                                ) : (
+                                    faq.answer
+                                )}
                         </ExpandableBox>
                     ))}
                 </div>
