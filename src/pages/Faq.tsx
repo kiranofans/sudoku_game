@@ -101,10 +101,26 @@ const faq: React.FC = () => {
                                 </span>
                             ) : index == 3 ? (
                                 <span className="text-sm">
-                                    We offer 5 difficulty levels:
-                                    <br />Very Easy, Easy, Medium, Hard, and Expert.
-                                    <br />
+                                    We offer 5 difficulty levels to suit all players: Very Easy, Easy, Medium, Hard, and Expert.
+                                    <br /><br />
+                                    Each level varies in puzzle complexity and the number of starting clues.
+                                    Easier levels provide more guidance, while harder levels require deeper logic and strategy.
+
+                                    o keep the game challenging and fair, each difficulty level applies a different score penalty for mistakes.
+                                    <br />Higher difficulty levels result in greater point deductions, rewarding more accurate and careful play:                                    <br />
+                                    <br /><ul>
+                                        <li>Very Easy: 6 ponts</li>
+                                        <li>Easy:4 points</li>
+                                        <li>Medium: 2 points</li>
+                                        <li>Hard: 0 points</li>
+                                        <li>Expert: 0 points</li>
+                                    </ul>
                                 </span>
+                            ) : index === 4 ? (
+                                <span className="text-sm">
+                                    Yes, the site is fully responsive and designed to work smoothly across all devices, including desktops, tablets, and smartphones.
+
+                                    <br /><br />We are continuously improving the layout and interface to better fit a wide range of screen sizes and real-world devices, ensuring a consistent and comfortable gameplay experience.</span>
                             ) :
                                 index === 5 ? (
                                     <span>
