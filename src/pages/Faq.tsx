@@ -107,7 +107,7 @@ const faq: React.FC = () => {
                                     Easier levels provide more guidance, while harder levels require deeper logic and strategy.
 
                                     o keep the game challenging and fair, each difficulty level applies a different score penalty for mistakes.
-                                    <br />Higher difficulty levels result in greater point deductions, rewarding more accurate and careful play:                                    <br />
+                                    <br /><br />Higher difficulty levels result in greater point deductions, rewarding more accurate and careful play:                                    <br />
                                     <br /><ul>
                                         <li>Very Easy: 6 ponts</li>
                                         <li>Easy:4 points</li>
