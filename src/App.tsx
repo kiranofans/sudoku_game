@@ -15,6 +15,7 @@ import Contact from './pages/Contact';
 import Faq from './pages/faq.tsx';
 import SudokuTips from './pages/SudokuTips.tsx';
 import Layout from './components/Layout';
+import { useTimer } from './hooks/useTimer.ts';
 
 type CellNotes = Set<number>;
 
@@ -26,6 +27,7 @@ function App() {
   const [selectedCell, setSelectedCell] = useState<[number, number] | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>('medium');
   const [time, setTime] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const [mistakes, setMistakes] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [hintsRemaining, setHintsRemaining] = useState(loadPersistedHints());
@@ -44,6 +46,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
+  const timer = useTimer(0, isGameOver);
 
   /* loader */
   useEffect(() => {
@@ -433,7 +436,25 @@ function App() {
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="timer-icon-svg">
                         <path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor" />
                       </svg>
-                      <span>{formatTime(time)}</span>
+                      <span>{formatTime(timer.timeLeft)}</span>
+                      {/* BUTTON */}
+                      <button
+                        onClick={() =>
+                          timer.isRunning ? timer.pause() : timer.start()
+                        }
+                        className="
+    w-6 h-8 flex items-center justify-center
+    rounded-full
+    border border-gray-300 dark:border-gray-600
+    bg-white dark:bg-gray-800
+    hover:bg-gray-100 dark:hover:bg-gray-700
+    transition
+    text-sm 
+  "
+                        aria-label={timer.isRunning ? "Pause timer" : "Start timer"}
+                      >
+                        {timer.isRunning ? (<span className='text-black'>⏸</span>) : (<span className='text-black'>▶</span>)}
+                      </button>
                     </div>
                   </div>
 
@@ -544,17 +565,17 @@ function App() {
 
           </div>
           {
-              <GameStatusModal
-                isOpen={isGameOver}
-                status={mistakes < 10 ? 'won' : 'lost'}
-                onClose={() => {
-                  setIsGameOver(false);
-                  startNewGame();
-                }}
-                time={formatTime(time)}
-                score={score}
-                difficulty={difficulty}
-              />
+            <GameStatusModal
+              isOpen={isGameOver}
+              status={mistakes < 10 ? 'won' : 'lost'}
+              onClose={() => {
+                setIsGameOver(false);
+                startNewGame();
+              }}
+              time={formatTime(time)}
+              score={score}
+              difficulty={difficulty}
+            />
           }
         </Layout>
       } />
