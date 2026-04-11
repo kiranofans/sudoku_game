@@ -27,7 +27,6 @@ function App() {
   const [selectedCell, setSelectedCell] = useState<[number, number] | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>('medium');
   const [time, setTime] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [mistakes, setMistakes] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [hintsRemaining, setHintsRemaining] = useState(loadPersistedHints());
