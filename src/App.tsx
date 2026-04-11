@@ -437,23 +437,33 @@ function App() {
                       </svg>
                       <span>{formatTime(timer.timeLeft)}</span>
                       {/* BUTTON */}
-                      <button
+                      <svg
                         onClick={() =>
                           timer.isRunning ? timer.pause() : timer.start()
                         }
-                        className="
-    w-6 h-8 flex items-center justify-center
-    rounded-full
-    border border-gray-300 dark:border-gray-600
-    bg-white dark:bg-gray-800
-    hover:bg-gray-100 dark:hover:bg-gray-700
-    transition
-    text-sm 
-  "
-                        aria-label={timer.isRunning ? "Pause timer" : "Start timer"}
+                        className="w-10 h-10 cursor-pointer hover:scale-100 hover:stroke-blue-700 dark:gray-400"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        stroke="black"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       >
-                        {timer.isRunning ? (<span className='text-black'>⏸</span>) : (<span className='text-black'>▶</span>)}
-                      </button>
+                        {/* outer circle outline */}
+                        <circle cx="24" cy="24" r="20" />
+
+                        {/* icon */}
+                        {timer.isRunning ? (
+                          // pause icon (black lines)
+                          <>
+                            <line x1="18" y1="16" x2="18" y2="32" />
+                            <line x1="30" y1="16" x2="30" y2="32" />
+                          </>
+                        ) : (
+                          // play icon (triangle outline)
+                          <polygon points="18,14 36,24 18,34" />
+                        )}
+                      </svg>
                     </div>
                   </div>
 
