@@ -526,7 +526,7 @@ function App() {
 
                         } else {
                           // show ad logic
-                          setShowAdModal(true);
+                          // setShowAdModal(true);
                         }
                       }}
                         className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
