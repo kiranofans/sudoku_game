@@ -12,7 +12,9 @@ const ChangeLog: React.FC = () => {
                 <h1 className="text-3xl font-bold text-center mb-12 dark:text-white">
                     What's New?
                 </h1>
-
+                <div className="text-md text-gray-600 mt-2 mb-4">
+                    <span className="font-bold">Note:</span> Advertising is currently disabled due to ongoing technical updates.
+                </div>
                 {/* Timeline container */}
                 <div className="relative border-l border-gray-300 dark:border-gray-700 pl-6 space-y-10">
 
@@ -52,6 +54,7 @@ const ChangeLog: React.FC = () => {
                                     <li>
                                         Added <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips</Link> and <Link to="/sudokuTips" className="underline hover:text-blue-500">FAQ</Link> pages to help players learn Sudoku more easily and improve their skills over time. The FAQ explains the basics, while the Tips section shares useful strategies to help players solve puzzles more confidently.
                                     </li>
+
                                 </ul>
                             </div>
 
