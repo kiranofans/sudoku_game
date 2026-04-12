@@ -528,6 +528,7 @@ function App() {
                         } else {
                           // show ad logic
                           // setShowAdModal(true);
+                          alert("The ads are currenly disabled for technical reason. \nPlease check back later.");
                         }
                       }}
                         className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
