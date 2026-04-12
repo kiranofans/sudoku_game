@@ -28,18 +28,18 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
   return (
     <div className="wrapper min-h-screen flex flex-col">
       <MobileDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-      
+
       <header className="menu-bar">
         <div className="logo-title-container">
           <div className="relative flex items-center">
-             <Link 
-                to="/" 
-                className="logo-link flex items-center group" 
-                onClick={handleLogoClick}
-                aria-label="Toggle menu on mobile or go to homepage"
-              >
-                <img src="/images/png/logo_sudoku1.png" alt="Logo" className="logo transition-transform active:scale-95" />
-              </Link>
+            <Link
+              to="/"
+              className="logo-link flex items-center group"
+              onClick={handleLogoClick}
+              aria-label="Toggle menu on mobile or go to homepage"
+            >
+              <img src="/images/png/logo_sudoku1.png" alt="Logo" className="logo transition-transform active:scale-95" />
+            </Link>
           </div>
 
           <div className="title-score-wrapper">
@@ -58,12 +58,12 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
           <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
           <span className="header-nav-separator desktop-only-nav">|</span>
           <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
-          
+
           {headerContent}
           <ThemeSelector />
         </div>
       </header>
-      
+
       <hr className="divider" />
 
       {children}
@@ -73,11 +73,13 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
           <span>&copy; {currentYear} sudokuplays.com v{packageJson.version} | All rights reserved.</span>
         </div>
         <div className="footer-links">
-          <Link to="/about" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>About</Link>
+          {/* <Link to="/about" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>About</Link>
           <Link to="/contact" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>Contact</Link>
-          
+           */}
           <button className="footer-btn" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
           <button className="footer-btn" onClick={() => setShowTermsModal(true)}>Terms & Conditions</button>
+          <Link to="/ChangeLog" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>What's New?</Link>
+
         </div>
         <div className="social-links">
           <a href="https://github.com/kiranofans" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">

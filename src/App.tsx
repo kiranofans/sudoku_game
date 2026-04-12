@@ -16,6 +16,7 @@ import Faq from './pages/faq.tsx';
 import SudokuTips from './pages/SudokuTips.tsx';
 import Layout from './components/Layout';
 import { useTimer } from './hooks/useTimer.ts';
+import ChangeLog from './pages/ChangeLog.tsx';
 
 type CellNotes = Set<number>;
 
@@ -588,6 +589,7 @@ function App() {
           }
         </Layout>
       } />
+      <Route path="/changeLog" element={<ChangeLog />} />
       <Route path="/sudokuTips" element={<SudokuTips />} />
       <Route path="/faq" element={<Faq />} />
       <Route path="/about" element={<About />} />
