@@ -2,31 +2,66 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 
+
 const ChangeLog: React.FC = () => {
     return (
         <Layout>
-            <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
-                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">What's New?</h1>
-                <div className="text-left space-y-6 text-lg leading-relaxed max-w-3xl mx-auto">
-                    <h3 className='text-xl font-bold dark:text-white'>
-                        Here's what's new in the latest update in version 1.0.0:
-                    </h3>
-                    <ul className="list-disc pl-6 space-y-2 text-md">
-                        <li><span>We added a play/pause button for the countdown timer, so players can pause the game when needed and continue without pressure, making the experience more comfortable and enjoyable.</span></li>
-                        <li><span>We added a “What’s New” page that displays version updates and changelogs to help players clearly understand what has been added, improved, or fixed over time. This ensures users are never confused after updates and can easily track the evolution of the game.
+            <main className="w-full max-w-4xl mx-auto px-6 py-24 text-left flex-1">
 
-                            <br /><br />Since this project is developed by a very small team (primarily a solo developer with occasional AI assistance), the changelog also serves as a transparent development log that shows continuous progress, even when updates are incremental or behind-the-scenes.</span></li>
-                        <li><span>We added Tips and FAQ pages to help players learn Sudoku more easily and
-                            improve their skills over time. The FAQ explains the basics, while the
-                            Tips section shares useful strategies to help players solve puzzles more confidently.
+                {/* Title */}
+                <h1 className="text-3xl font-bold text-center mb-12 dark:text-white">
+                    What's New?
+                </h1>
 
-                            <br /><br />Since this is a small indie project (mostly built by one developer with AI help),
-                            these pages also help make the experience clearer and more beginner-friendly for everyone.</span></li>
-                    </ul>
+                {/* Timeline container */}
+                <div className="relative border-l border-gray-300 dark:border-gray-700 pl-6 space-y-10">
+
+                    {/* Version 1.0.0 */}
+                    <div className="relative">
+
+                        {/* Dot */}
+                        <div className="absolute -left-[20px] top-1 w-3.5 h-3.5 rounded-full bg-gray-400 dark:bg-gray-300"></div>
+
+                        {/* Date */}
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                            2026 • Version 1.0.0
+                        </p>
+
+                        {/* Card */}
+                        <div className="rounded-xl border border-gray-200 dark:border-gray-700 p-6 space-y-6">
+
+                            <div>
+                                <h3 className="text-lg font-semibold dark:text-white mb-2">
+                                    Improvements & Features
+                                </h3>
+
+                                <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                                    <li>
+                                        Added a play/pause button for the countdown timer, allowing players to pause and resume gameplay anytime for a more relaxed and enjoyable experience.
+                                        To try the new feature, go to homepage by clicking <Link to="/" className="underline hover:text-blue-500">here</Link>.
+                                    </li>
+
+                                    <li>
+                                        Added a <Link to="/changeLog" className="underline hover:text-blue-500">What's New?</Link> page that displays version updates and changelogs to help players clearly understand what has been added, improved, or fixed over time. This ensures users are never confused after updates and can easily track the evolution of the game.
+
+                                        <br /><br />
+
+                                        Since this project is developed by a very small team (primarily a solo developer with occasional AI assistance), the changelog also serves as a transparent development log that shows continuous progress, even when updates are incremental or behind-the-scenes.
+                                    </li>
+
+                                    <li>
+                                        Added <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips</Link> and <Link to="/sudokuTips" className="underline hover:text-blue-500">FAQ</Link> pages to help players learn Sudoku more easily and improve their skills over time. The FAQ explains the basics, while the Tips section shares useful strategies to help players solve puzzles more confidently.
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </main>
-        </Layout >
+        </Layout>
     );
-}
+};
 
 export default ChangeLog;
