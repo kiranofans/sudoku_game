@@ -68,7 +68,7 @@ function App() {
           if (progressRef.current) {
             progressRef.current.style.width = "0%";
           }
-        }, 300);
+        }, 200);
       }
     }
   }, [isLoading]);
