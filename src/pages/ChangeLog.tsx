@@ -13,7 +13,15 @@ const ChangeLog: React.FC = () => {
                     What's New?
                 </h1>
                 <div className="text-md text-gray-600 mt-2 mb-4">
-                    <span className="font-bold">Note:</span> Advertising is currently disabled due to ongoing technical updates.
+
+                    <div className="mb-4 p-3 rounded bg-yellow-50 border border-yellow-200 text-sm text-yellow-800">
+                        <span className='font-bold'>⚠️ Known Issues:</span>
+                        <ol type="a">
+                            <li>1. The timer may continue running after resetting the game or changing difficulty. This will be fixed in an upcoming update.</li>
+                            <li>2. Advertising is currently disabled due to ongoing technical updates.</li>
+                        </ol>
+                    </div>
+
                 </div>
                 {/* Timeline container */}
                 <div className="relative border-l border-gray-300 dark:border-gray-700 pl-6 space-y-10">
