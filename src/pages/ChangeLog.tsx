@@ -18,8 +18,8 @@ const ChangeLog: React.FC = () => {
                 <Timeline>
                     <KnownIssuesBox
                         items={[
-                            "The timer may continue running after resetting or changing difficulty.",
-                            "Advertising is currently disabled due to technical updates.",
+                            "1. The timer may continue running after resetting or changing difficulty.",
+                            "2. Advertising is currently disabled due to technical updates.",
                         ]}
                     />
 
