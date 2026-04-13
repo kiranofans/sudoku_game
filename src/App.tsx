@@ -46,7 +46,8 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
-  const timer = useTimer(0, isGameOver);
+  const [gameKey, setGameKey] = useState(0);
+  const timer = useTimer(gameKey, isGameOver);
 
   /* loader */
   useEffect(() => {
@@ -99,19 +100,19 @@ function App() {
   }, [difficulty]);
 
   // Timer & Real-time Score Decay
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (!isGameOver) {
-      interval = setInterval(() => {
-        setTime(prev => prev + 1);
-        setScore(prev => {
-          if (prev === null || prev <= 0) return prev;
-          return Math.max(0, prev - 5);
-        });
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [isGameOver]);
+  // useEffect(() => {
+  //   let interval: NodeJS.Timeout;
+  //   if (!isGameOver) {
+  //     interval = setInterval(() => {
+  //       setTime(prev => prev + 1);
+  //       setScore(prev => {
+  //         if (prev === null || prev <= 0) return prev;
+  //         return Math.max(0, prev - 5);
+  //       });
+  //     }, 1000);
+  //   }
+  //   return () => clearInterval(interval);
+  // }, [isGameOver]);
 
   // Persist hints
   useEffect(() => {
@@ -133,6 +134,7 @@ function App() {
       setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
       setSelectedCell(null);
       setTime(0);
+      setGameKey(prev => prev + 1);//for countdown timer
       setMistakes(0);
       setScore(null);
       setIsGameOver(false);
@@ -342,6 +344,7 @@ function App() {
       setBoard(initialBoard.map(row => [...row]));
       setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
       setTime(0);
+      setGameKey(prev => prev + 1);//for timer
       setMistakes(0);
       setIsGameOver(false);
       setCrossHighlight({ row: null, col: null });
@@ -437,12 +440,13 @@ function App() {
                         <path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor" />
                       </svg>
                       <span>{formatTime(timer.timeLeft)}</span>
-                      {/* BUTTON */}
+
+                      {/* Pause/Play timer countdown BUTTON */}
                       <svg
                         onClick={() =>
                           timer.isRunning ? timer.pause() : timer.start()
                         }
-                        className="w-10 h-10 cursor-pointer hover:scale-100 hover:stroke-blue-700 dark:gray-400"
+                        className="w-7 h-7 cursor-pointer hover:scale-100 hover:stroke-blue-700 dark:gray-400"
                         viewBox="0 0 48 48"
                         fill="none"
                         stroke="black"
@@ -606,4 +610,8 @@ export default function AppWrapper() {
       <App />
     </ThemeProvider>
   );
+}
+
+function setGameKey(arg0: (v: any) => any) {
+  throw new Error('Function not implemented.');
 }
