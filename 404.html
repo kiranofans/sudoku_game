@@ -4,9 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <script>
-        // Redirect all 404s to index.html
-        sessionStorage.redirect = location.pathname;
-        window.location.href = "/";
+        // Save full path (including query + hash if any)
+        sessionStorage.redirect =
+            location.pathname + location.search + location.hash;
+
+        // Redirect to homepage
+        window.location.replace("/");
     </script>
 </head>
 
