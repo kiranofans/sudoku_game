@@ -48,15 +48,6 @@ function App() {
   const progressRef = useRef<HTMLDivElement>(null);
   const timer = useTimer(0, isGameOver);
 
-  /* 404 redirect session */
-  useEffect(() => {
-    const redirect = sessionStorage.redirect;
-    if (redirect) {
-      sessionStorage.removeItem("redirect");
-      window.history.replaceState(null, "", redirect);
-    }
-  }, []);
-
   /* loader */
   useEffect(() => {
     if (isLoading) {
@@ -599,6 +590,7 @@ function App() {
           }
         </Layout>
       } />
+      {/* Routes */}
       <Route path="/changeLog" element={<ChangeLog />} />
       <Route path="/sudokuTips" element={<SudokuTips />} />
       <Route path="/faq" element={<Faq />} />
