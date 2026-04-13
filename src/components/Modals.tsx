@@ -26,9 +26,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, closeab
     );
 };
 
-
-
-
 export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
     <Modal isOpen={isOpen} onClose={onClose} title={<b className="text-2xl">How to Play</b>}>
         <div className="space-y-6 text-gray-700 dark:text-gray-300 text-sm leading-relaxed text-left">
@@ -229,6 +226,13 @@ export const TermsAndConditionsModal: React.FC<{ isOpen: boolean; onClose: () =>
     </Modal>
 );
 
+// export const AccessibilityModal:React.FC<{isOpen: boolean; onClose:()=>void;}>= ({isOpen, onClose})=>{
+//     React.useEffect(()=>{
+//         if(isOpen){
+
+//         }
+//     },[isOpen])
+// }
 export const AdModal: React.FC<{ isOpen: boolean; onClose: () => void; onAdComplete: () => void }> = ({ isOpen, onClose, onAdComplete }) => {
     const [timeLeft, setTimeLeft] = React.useState(10); // 10 second delay
     const [isCounting, setIsCounting] = React.useState(false);

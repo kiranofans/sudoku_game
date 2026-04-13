@@ -1,0 +1,94 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+/**
+ * Small UI Widgets Collection
+ * A grouped set of reusable UI components
+ */
+export const SmallUiWidgets = {
+    ChangelogEntry, KnownIssuesBox, Timeline
+};
+
+function Timeline({ children }: { children: React.ReactNode }) {
+    return (
+        <div className="relative border-l border-gray-300 
+        dark:border-gray-700 pl-6 space-y-10">
+            {children}
+        </div>
+    );
+}
+
+/* =========================
+   TYPES
+========================= */
+
+type ChangelogEntryProps = {
+    date: string;
+    version: string;
+    title: string;
+    items: React.ReactNode[];
+    color?: string;
+};
+
+/* =========================
+   COMPONENT: ChangelogEntry
+========================= */
+
+function ChangelogEntry({
+    date,
+    version,
+    title,
+    items,
+    color = "bg-gray-400 dark:bg-gray-300",
+
+}: ChangelogEntryProps) {
+    return (
+
+        <div className="relative">
+            {/* Dot */}
+            <div
+                className={`absolute -left-[20px] top-1 w-3 h-3 rounded-full ${color}`}
+            />
+
+            {/* Date */}
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                {date} • Version {version}
+            </p>
+
+            {/* Card */}
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 p-6 space-y-6">
+                <div>
+                    <h3 className="text-lg font-semibold dark:text-white mb-2">
+                        {title}
+                    </h3>
+
+                    <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        {items.map((item, idx) => (
+                            <li key={idx}>{item}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+type KnownIssuesBoxProps = {
+    items: React.ReactNode[];
+};
+
+function KnownIssuesBox({ items }: KnownIssuesBoxProps) {
+    return (
+        <div className="text-md text-gray-600 mt-2 mb-4">
+            <div className="mb-4 p-3 rounded bg-yellow-50 border border-yellow-200 text-sm text-yellow-800">
+                <span className="font-bold">⚠️ Known Issues:</span>
+
+                <ol type="a">
+                    {items.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                    ))}
+                </ol>
+            </div>
+        </div>
+    );
+}
