@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import emailjs from '@emailjs/browser';
 
@@ -45,16 +44,18 @@ const Contact: React.FC = () => {
     return (
         <Layout>
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
-                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Contact</h1>
-
+                <h1 className="text-3xl font-bold text-center mt-6 mb-6 dark:text-white">Contact</h1>
+                <p style={{ marginTop: '0.5rem', marginBottom: "0.5rem", fontSize: '1rem' }} className="text-gray-500 dark:text-gray-400">
+                    We value your input and strive to respond to all inquiries as quickly as possible.
+                </p>
                 <div style={{ textAlign: 'center', padding: '1.5rem 0', fontSize: '1.2rem', lineHeight: '1.6' }}
                     className="dark:text-gray-200 w-2/3">
                     <form id="contact-form" onSubmit={sendEmail}>
                         <div className='felex flex-col'>
                             <div className='flex flex-col text-left' style={{ marginBottom: '1.5rem' }}>
                                 <label htmlFor="email" style={{ marginBottom: '0.5rem' }}><h3>Your Email Address: </h3></label>
-                                <input className='border-gray-400 dark:bg-gray-800 dark:text-blue-400 
-                                    dark:border-gray-700 border-2 rounded-md p-2 h-10'
+                                <input className='border-gray-400 dark:bg-gray-800 dark:text-gray-300 
+                                    dark:border-gray-600 border-2 rounded-md p-2 h-10'
                                     type="email"
                                     id="email"
                                     name="email"
@@ -66,15 +67,17 @@ const Contact: React.FC = () => {
                                 <label htmlFor="subject" className='text-md'>The Subject: </label>
 
                                 <input type="subject" id="subject" name="subject" style={{ marginTop: '0.5rem' }}
-                                    className='border-gray-400 dark:bg-gray-800 dark:text-blue-400 
+                                    className='border-gray-400 dark:bg-gray-800 dark:text-gray-300  
                                     dark:border-gray-700 border-2 rounded-md p-2 h-10'
                                     placeholder="What is this about?" />
                             </div>
 
                             <div className='flex flex-col text-left' style={{ marginBottom: '1rem' }}>
                                 <label htmlFor="message" style={{ marginBottom: '0.5rem' }}>Your Message</label>
-                                <textarea className="border-gray-400 dark:bg-gray-800 dark:text-blue-400 dark:border-gray-700 border-2 rounded-md p-2 h-50"
-                                    id="message" name="message" placeholder="What is your idea about in detail?" required />
+                                <textarea className="border-gray-400 dark:bg-gray-800 dark:text-gray-300 
+                                dark:border-gray-700 border-2 rounded-md p-2 h-50"
+                                    id="message" name="message" placeholder="What is your thought about in detail?"
+                                    required />
                             </div>
                             <button type="submit" className='new-game-btn'
                                 style={{ textDecoration: 'none', display: 'inline-block', marginTop: '1.5rem' }}>
@@ -101,17 +104,7 @@ const Contact: React.FC = () => {
                     >
                         sitehelp.chat@gmail.com
                     </a> */}
-
-                    {/* <p style={{ marginTop: '3.5rem', fontSize: '1rem' }} className="text-gray-600 dark:text-gray-400">
-                        We value your input and strive to respond to all inquiries as quickly as possible.
-                    </p> */}
                 </div>
-
-                {/* <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                    <Link to="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
-                        Back to Game
-                    </Link>
-                </div> */}
             </main>
         </Layout>
     );
