@@ -123,7 +123,6 @@ function App() {
     savePersistedScore(score);
   }, [score]);
 
-
   const startNewGame = useCallback(() => {
     setIsLoading(true);
     setTimeout(() => {
@@ -612,6 +611,4 @@ export default function AppWrapper() {
   );
 }
 
-function setGameKey(arg0: (v: any) => any) {
-  throw new Error('Function not implemented.');
-}
+
