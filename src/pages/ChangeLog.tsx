@@ -18,11 +18,19 @@ const ChangeLog: React.FC = () => {
                 <Timeline>
                     <KnownIssuesBox
                         items={[
-                            "1. The timer may continue running after resetting or changing difficulty.",
-                            "2. Advertising is currently disabled due to technical updates.",
+                            "Advertising is currently disabled due to technical updates.",
                         ]}
                     />
-
+                    <ChangelogEntry
+                        date="2026-04-14"
+                        version="1.0.0"
+                        title="Improvements & New Features"
+                        items={[
+                            <>Improved Contact page by replacing the old design with a working emil contact form,
+                                enabling users to send messages directly to the site owner via EmailJS integration.
+                            </>,
+                        ]
+                        } />
                     <ChangelogEntry
                         date="2026-04-13"
                         version="1.0.0"
@@ -31,7 +39,8 @@ const ChangeLog: React.FC = () => {
                             <>Fixed the issue regarding game timer that
                                 does not reset in case of starting new game,
                                 reset current game, or changing difficulty.
-                            </>
+                            </>,
+                            <>Fixed the React 404 problem during hard refresh.</>,
                         ]}
                     />
                     <ChangelogEntry
@@ -51,6 +60,7 @@ const ChangeLog: React.FC = () => {
                             <>Added <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips</Link> and <Link to="/sudokuTips" className="underline hover:text-blue-500">FAQ</Link> pages to help players learn Sudoku more easily and improve their skills over time. The FAQ explains the basics, while the Tips section shares useful strategies to help players solve puzzles more confidently.                        </>
                         ]}
                     />
+
                 </Timeline>
             </main>
         </Layout>
