@@ -78,10 +78,10 @@ type KnownIssuesBoxProps = {
 
 function KnownIssuesBox({ items }: KnownIssuesBoxProps) {
     return (
-        <div className="text-md text-gray-600 mt-2 mb-4">
-            <div className="mb-4 p-3 rounded bg-yellow-50 border border-yellow-200 text-sm text-yellow-800">
+        <div className="text-md text-gray-600 mt-0.5 mb-0.5 ml-2 mr-2">
+            <div className="p-2.5 text-left w-full mt-1 mx-auto rounded bg-yellow-50 
+            border border-yellow-200 text-sm text-yellow-800">
                 <span className="font-bold">⚠️ Known Issues:</span>
-
                 <ol type="a">
                     {items.map((item, idx) => (
                         <li key={idx}>{item}</li>

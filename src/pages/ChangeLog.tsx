@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { SmallUiWidgets } from "../components/SmallUiWidgets";
+import { changelog } from '@/hooks/changeLog';
+
 const { ChangelogEntry } = SmallUiWidgets;
 const { Timeline } = SmallUiWidgets;
 const { KnownIssuesBox } = SmallUiWidgets;
@@ -21,7 +23,8 @@ const ChangeLog: React.FC = () => {
                             "1. Advertising is currently disabled due to technical updates.",
                             "2. Found a bug in the remaining-number counter: "
                             + "incorrect inputs were being counted as valid entries, "
-                            + "which caused the remaining counts for the digits 1–9 to be miscalculated during gameplay."
+                            + "which caused the remaining counts for the digits 1–9 to be miscalculated during gameplay.",
+                            "3. Scoring system miscalculates the score due to previous timer bug.",
                         ]}
                     />
                     <ChangelogEntry
