@@ -17,6 +17,8 @@ import SudokuTips from './pages/SudokuTips.tsx';
 import Layout from './components/Layout';
 import { useTimer } from './hooks/useTimer.ts';
 import ChangeLog from './pages/ChangeLog.tsx';
+import PrivacyPolicy from './pages/PrivacyPolicy.tsx';
+import TermsAndConditions from './pages/TermsAndConditions.tsx';
 
 type CellNotes = Set<number>;
 
@@ -599,6 +601,8 @@ function App() {
       <Route path="/faq" element={<Faq />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+      <Route path="/termsAndConditions" element={<TermsAndConditions />} />
     </Routes>
   );
 }

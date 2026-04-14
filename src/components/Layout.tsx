@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import packageJson from '../../package.json';
-import { PrivacyPolicyModal, TermsAndConditionsModal } from './Modals';
 import ThemeSelector from './ThemeSelector';
 import MobileDrawer from './MobileDrawer';
 
@@ -13,8 +12,6 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
-  const [showTermsModal, setShowTermsModal] = useState(false);
   const currentYear = new Date().getFullYear();
 
   const handleLogoClick = (e: React.MouseEvent) => {
@@ -73,11 +70,9 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
           <span>&copy; {currentYear} sudokuplays.com v{packageJson.version} | All rights reserved.</span>
         </div>
         <div className="footer-links">
-          {/* <Link to="/about" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>About</Link>
-          <Link to="/contact" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>Contact</Link>
-           */}
-          <button className="footer-btn" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
-          <button className="footer-btn" onClick={() => setShowTermsModal(true)}>Terms & Conditions</button>
+          <Link to="/privacyPolicy" className="footer-btn">Privacy Policy</Link>
+
+          <Link to="/termsAndConditions" className="footer-btn">Terms & conditions</Link>
           <Link to="/ChangeLog" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>What's New?</Link>
 
         </div>
@@ -89,15 +84,6 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
           </a>
         </div>
       </footer>
-
-      <PrivacyPolicyModal
-        isOpen={showPrivacyModal}
-        onClose={() => setShowPrivacyModal(false)}
-      />
-      <TermsAndConditionsModal
-        isOpen={showTermsModal}
-        onClose={() => setShowTermsModal(false)}
-      />
     </div>
   );
 };
