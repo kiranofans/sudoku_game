@@ -23,8 +23,14 @@
 
 </head>
 
-<body>
-  <div id="root"></div>
+<body class="bg-white dark:bg-gray-900">
+  <div id="root">
+    <div id="initial-loader" class="fixed inset-0 flex items-center justify-center 
+  bg-white dark:bg-gray-900 text-black dark:text-white text-lg text-bold transition-opacity duration-300">
+      Loading...
+    </div>
+  </div>
+
   <script type="module" src="/src/main.tsx"></script>
 
   <!-- Loader overlay -->

@@ -4,10 +4,6 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './styles.css'
 
-// function Loader() {
-//   return <div className="loading-overlay" />
-// }
-
 export default function Root() {
   const [booting, setBooting] = useState(true)
 
@@ -25,13 +21,8 @@ export default function Root() {
       setBooting(false)
     }, 200) // adjust or remove if App handles loading
 
-    // requestAnimationFrame(() => {
-    //   setBooting(true);
-    // })
     return () => clearTimeout(timer)
   }, [])
-
-  // if (booting) return <Loader />
 
   return (
     <React.StrictMode>
