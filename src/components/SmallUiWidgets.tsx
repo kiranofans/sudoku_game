@@ -1,3 +1,4 @@
+import { changelog } from "@/hooks/changeLog";
 import React from "react";
 
 /**
@@ -74,9 +75,18 @@ function ChangelogEntry({
 
 type KnownIssuesBoxProps = {
     items: React.ReactNode[];
+
 };
 
+export function getLatestKnownIssues() {
+    const latest = changelog.find(
+        (c) => c.showKnownIssuesBox && c.knownIssues?.length
+    );
+    return latest?.knownIssues ?? [];
+}
+
 function KnownIssuesBox({ items }: KnownIssuesBoxProps) {
+    if (!items.length) return null;
     return (
         <div className="text-md text-gray-600 mt-0.5 mb-0.5 ml-2 mr-2">
             <div className="p-2.5 text-left w-full mt-1 mx-auto rounded bg-yellow-50 
@@ -86,8 +96,11 @@ function KnownIssuesBox({ items }: KnownIssuesBoxProps) {
                     {items.map((item, idx) => (
                         <li key={idx}>{item}</li>
                     ))}
+                    {/* do not put comma ',' after the big braket 
+                    unless there's another list to map */}
                 </ol>
             </div>
+
         </div>
     );
 }

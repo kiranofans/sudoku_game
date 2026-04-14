@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { SmallUiWidgets } from "../components/SmallUiWidgets";
+import { getLatestKnownIssues } from '@/components/SmallUiWidgets.tsx';
 
 const { ChangelogEntry } = SmallUiWidgets;
 const { Timeline } = SmallUiWidgets;
 const { KnownIssuesBox } = SmallUiWidgets;
+const issues = getLatestKnownIssues();
 
 const ChangeLog: React.FC = () => {
     //latest fix or improvements on top
@@ -18,14 +20,7 @@ const ChangeLog: React.FC = () => {
                 </h1>
                 <Timeline>
                     <KnownIssuesBox
-                        items={[
-                            "1. Advertising is currently disabled due to technical updates.",
-                            "2. Found a bug in the remaining-number counter: "
-                            + "incorrect inputs were being counted as valid entries, "
-                            + "which caused the remaining counts for the digits 1–9 to be miscalculated during gameplay.",
-                            "3. Scoring system miscalculates the score due to previous timer bug.",
-                        ]}
-                    />
+                        items={issues} />
                     <ChangelogEntry
                         date="2026-04-14"
                         version="1.0.0"
@@ -65,7 +60,6 @@ const ChangeLog: React.FC = () => {
                             <>Added <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips</Link> and <Link to="/sudokuTips" className="underline hover:text-blue-500">FAQ</Link> pages to help players learn Sudoku more easily and improve their skills over time. The FAQ explains the basics, while the Tips section shares useful strategies to help players solve puzzles more confidently.                        </>
                         ]}
                     />
-
                 </Timeline>
             </main>
         </Layout>
