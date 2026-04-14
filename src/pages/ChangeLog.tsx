@@ -18,7 +18,10 @@ const ChangeLog: React.FC = () => {
                 <Timeline>
                     <KnownIssuesBox
                         items={[
-                            "Advertising is currently disabled due to technical updates.",
+                            "1. Advertising is currently disabled due to technical updates.",
+                            "2. Found a bug in the remaining-number counter: "
+                            + "incorrect inputs were being counted as valid entries, "
+                            + "which caused the remaining counts for the digits 1–9 to be miscalculated during gameplay."
                         ]}
                     />
                     <ChangelogEntry
