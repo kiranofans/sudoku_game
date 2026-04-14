@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { SmallUiWidgets } from "../components/SmallUiWidgets";
-import { changelog } from '@/hooks/changeLog';
 
 const { ChangelogEntry } = SmallUiWidgets;
 const { Timeline } = SmallUiWidgets;
