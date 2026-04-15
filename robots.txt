@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+Sitemap: https://sudokuplays.com/sitemap.xml
+
+https://www.sudokuplays.com/robots.txt
+→ redirects to
+https://sudokuplays.com/robots.txt
+
+https://www.sudokuplays.com/robots.txt
+→ redirects to
+https://sudokuplays.com/robots.txt
