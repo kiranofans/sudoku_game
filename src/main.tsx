@@ -1,8 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './styles.css'
+
+const rootElement = document.getElementById("root")
+if (!rootElement) {
+  throw new Error("Root element not found")
+}
+
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement,
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>)
+} else {
+  createRoot(rootElement).render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>)
+}
 
 export default function Root() {
   const [booting, setBooting] = useState(true)
@@ -42,7 +63,7 @@ export default function Root() {
   )
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <Root />
+// createRoot(document.getElementById('root')!).render(
+//   <Root />
 
-)
+// )

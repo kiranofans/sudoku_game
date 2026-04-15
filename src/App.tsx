@@ -10,17 +10,17 @@ import GameStatusModal from './components/GameStatusModal';
 import { ThemeProvider } from './components/ThemeContext';
 import DifficultySelector from './components/DifficultySelector';
 import Tooltip from './components/Tooltip';
-import About from './pages/About';
-import Contact from './pages/Contact';
 import Faq from './pages/faq.tsx';
 import SudokuTips from './pages/SudokuTips.tsx';
 import Layout from './components/Layout';
 import { useTimer } from './hooks/useTimer.ts';
-import ChangeLog from './pages/ChangeLog.tsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.tsx';
 import TermsAndConditions from './pages/TermsAndConditions.tsx';
 import { SmallUiWidgets } from './components/SmallUiWidgets.tsx';
 import { getLatestKnownIssues } from '@/components/SmallUiWidgets.tsx';
+import ChangeLog from './pages/ChangeLog.tsx';
+import About from './pages/About.tsx';
+import Contact from './pages/Contact.tsx';
 
 type CellNotes = Set<number>;
 
