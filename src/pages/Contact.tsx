@@ -84,26 +84,6 @@ const Contact: React.FC = () => {
                                 Submit</button>
                         </div>
                     </form>
-
-                    {/* <p style={{ marginBottom: '0.1rem', marginTop: '1.5rem' }}>For support or feedback, please contact us at:</p> */}
-                    {/* <a
-                        href="mailto:sitehelp.chat@gmail.com"
-                        className="dark:bg-gray-800 dark:text-blue-400 dark:border-gray-700"
-                        style={{
-                            display: 'inline-block',
-                            marginTop: '1rem',
-                            color: '#2980b9',
-                            textDecoration: 'none',
-                            fontWeight: 'bold',
-                            fontSize: '1.5rem',
-                            padding: '10px 20px',
-                            borderRadius: '8px',
-                            backgroundColor: 'var(--button-bg)',
-                            border: '1px solid var(--button-border)'
-                        }}
-                    >
-                        sitehelp.chat@gmail.com
-                    </a> */}
                 </div>
             </main>
         </Layout>
