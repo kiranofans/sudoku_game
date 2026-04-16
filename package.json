@@ -8,20 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "include": [
-      "/",
-      "/faq",
-      "/sudokuTips",
-      "/about",
-      "/contact",
-      "/ChangeLog",
-      "/privacyPolicy",
-      "/termsAndConditions"
-    ]
+    "deploy": "gh-pages -d dist"
   },
   "comments": {
     "Note 1": "predeploy runs automatically before deploy",
@@ -30,6 +17,8 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^22.14.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-vue": "^6.0.1",
@@ -40,10 +29,8 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@types/react": "^19.1.1",
-    "@types/react-dom": "^19.1.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "react-router-dom": "^7.9.1"
   }
 }

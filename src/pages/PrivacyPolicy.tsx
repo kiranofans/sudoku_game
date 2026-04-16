@@ -1,19 +1,14 @@
-import React from 'react';
 import Layout from '@/components/Layout';
+import { Link } from 'react-router-dom';
 
-const PrivacyPolicy: React.FC = () => {
+function PrivacyPolicy() {
     return (
         <Layout>
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Privacy Policy</h1>
                 <div className="privacy-policy-content" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>
-                    <div style={{ marginBottom: '1.5rem', padding: '10px', background: '#f0f7ff', borderRadius: '6px', border: '1px solid #cce5ff' }}>
-                        <p style={{ margin: 0, fontWeight: 'bold', color: '#004085' }}>
-                            View online: <a href="https://www.freeprivacypolicy.com/live/3e213669-5074-4c1b-acfc-1b8d5287faad" target="_blank" rel="noopener noreferrer" style={{ color: '#0056b3' }}>Terms and Conditions Link</a>
-                        </p>
-                    </div>
 
-                    <p><strong>Last updated: March 13, 2026</strong></p>
+                    <p><strong>Last updated: April 15, 2026</strong></p>
                     <p>Please read these terms and conditions carefully before using Our Service.</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Interpretation and Definitions</h3>
@@ -41,6 +36,80 @@ const PrivacyPolicy: React.FC = () => {
                     <p>You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.</p>
                     <p>Your access to and use of the Service is also subject to Our Privacy Policy, which describes how We collect, use, and disclose personal information. Please read Our Privacy Policy carefully before using Our Service.</p>
 
+                    <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Regional Compliance</h3>
+                    <h4>
+                        <ol>
+                            <li style={{ marginBottom: '1rem' }}>
+                                <strong className='text-sm'>
+                                    1. Canadian Privacy Compliance (BC PIPA & PIPEDA)</strong>
+                                <div><p className='mb-1 mt-2 text-sm'><b>Compliance with Canadian Privacy Standards</b></p>
+                                    <p>
+                                        This Service is governed by the laws of British Columbia and Canada.
+                                        In accordance with the Personal Information Protection Act (PIPA) and the Personal Information Protection and Electronic Documents Act (PIPEDA),
+                                        we hereby disclose that we collect and utilize non-personally identifiable technical data for commercial purposes, specifically the delivery of rewarded advertisements.
+                                        All data stored via LocalStorage is functional in nature and remains under the user's control. We do not sell, rent, or trade individual user data to third parties.
+                                    </p>
+                                </div>
+                            </li>
+                            <li style={{ marginBottom: '1rem' }}>
+                                <strong className='text-sm'>
+                                    2. California Consumer Privacy Act (CCPA/CPRA) - "LA Law"
+                                </strong>
+                                <div>
+                                    <p className='mb-1 mt-2 text-sm'>
+                                        <b>California Resident Notice at Collection and Privacy Rights</b></p>
+                                    <p>Under the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA),
+                                        California residents have specific rights regarding their "Personal Information."
+                                    </p>
+                                    <ul className="md:list-disk ml-5 space-y-1 text-sm">
+                                        <li className="marker:text-indigo-600"><b className='text-sm'>Notice at Collection: </b>We collect identifiers (via LocalStorage and IP-based analytics)
+                                            to facilitate game rewards and analyze site traffic.</li>
+                                        <li><b className='text-sm'>Right to Opt-Out ofbSale or Sharing: </b>While we do not sell data for money,
+                                            our use of third-party advertising networks may be classified as "sharing" for cross-contextual behavioral advertising.
+                                            Users may exercise their right to opt-out by utilizing "Do Not Track" browser signals or adjusting device-level ad-tracking permissions.</li>
+                                        <li>
+                                            <b>Non-Discrimination: </b>
+                                            We will not deny service or change your game experience for exercising your privacy rights.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li style={{ marginBottom: '1rem' }}>
+                                <div>
+                                    <b>3. European Union & UK Compliance (GDPR)</b>
+                                    <p>
+                                        <b>General Data Protection Regulation (GDPR) Disclosure </b>
+                                    </p>
+                                    For users residing in the European Economic Area (EEA) or the United Kingdom,
+                                    the processing of your data is governed by the GDPR.
+                                    <ul className="md:list-disc ml-5 space-y-1 text-sm">
+                                        <li className='mb-1 mt-2 text-sm'>
+                                            <b>Legal Basis for Processing: </b>We process data based on "Legitimate Interests" (site security and basic analytics) and "Contractual Necessity" (using LocalStorage to fulfill the delivery of hints following an advertisement).
+                                        </li>
+                                        <li className='mb-1 mt-2 text-sm'>
+                                            <b>Data Controller: </b>
+                                            <Link to="/">sudokuplays.com</Link> acts as the Data Controller for local device storage.
+                                        </li>
+                                        <li className='mb-1 mt-2 text-sm'>
+                                            <b>Data Subject Rights: </b>
+                                            You have the right to access, rectify, or erase your data. Since we do not maintain server-side user accounts, you may exercise your "Right to be Forgotten" at any time by clearing your browser's cache and LocalStorage.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </li>
+                            <li>
+                                <div><b className='text-sm'>4. Specific Disclosure: LocalStorage & Analytics</b>
+                                    <p className='mb-1 mt-2 text-sm'>
+                                        <b>Technical Data & Cookies Disclaimer</b>
+                                    </p>
+                                    This Service utilizes Web LocalStorage to maintain game state, high scores, and a 24-hour
+                                    "Hint Memo" for ad verification. Unlike traditional tracking cookies, this data is stored locally on your device and is not transmitted to our servers. We utilize Cloudflare Analytics for privacy-first, non-invasive traffic monitoring
+                                    which does not collect personal identifiers or track users across external websites.
+                                </div>
+                            </li>
+                        </ol>
+                    </h4>
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Links to Other Websites</h3>
                     <p>Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.</p>
                     <p>The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such websites or services.</p>
@@ -97,7 +166,7 @@ const PrivacyPolicy: React.FC = () => {
                 </div>
             </main>
 
-        </Layout>
+        </Layout >
     )
 }
 export default PrivacyPolicy

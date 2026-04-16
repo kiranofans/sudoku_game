@@ -40,9 +40,10 @@ const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     // formElement.addEventListener("submit", {sendEmail});
 }
 
-const Contact: React.FC = () => {
+function Contact() {
     return (
         <Layout>
+            <title>Contact | Sudoku</title>
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-6 dark:text-white">Contact</h1>
                 <p style={{ marginTop: '0.5rem', marginBottom: "0.5rem", fontSize: '1rem' }} className="text-gray-500 dark:text-gray-400">

@@ -1,10 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
-
-const About: React.FC = () => {
+function About({ }) {
     return (
         <Layout>
+            <title>About | Sudoku</title>
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">About this Site</h1>
                 <div className="text-left space-y-6 text-lg leading-relaxed max-w-3xl mx-auto">
@@ -64,6 +63,6 @@ const About: React.FC = () => {
             </main>
         </Layout>
     );
-};
+}
 
 export default About;
