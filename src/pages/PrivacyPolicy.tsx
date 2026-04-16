@@ -25,7 +25,7 @@ function PrivacyPolicy() {
                         <li style={{ marginBottom: '10px' }}><strong>Service</strong> refers to the Website.</li>
                         <li style={{ marginBottom: '10px' }}><strong>Terms and Conditions</strong> (also referred to as "Terms") means these Terms and Conditions, including any documents expressly incorporated by reference, which govern Your access to and use of the Service and form the entire agreement between You and the Company regarding the Service. These Terms and Conditions have been created with the help of the <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank" rel="noopener noreferrer">TermsFeed Terms and Conditions Generator</a>.</li>
                         <li style={{ marginBottom: '10px' }}><strong>Third-Party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third party that is displayed, included, made available, or linked to through the Service.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Website</strong> refers to Sudoku, accessible from <a href="https://sudokuplays.com.com" target="_blank" rel="noopener noreferrer">sudokuplays.com.com</a></li>
+                        <li style={{ marginBottom: '10px' }}><strong>Website</strong> refers to Sudoku, accessible from <a href="https://sudokuplays.com" target="_blank" rel="noopener noreferrer">sudokuplays.com</a></li>
                         <li style={{ marginBottom: '10px' }}><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
                     </ul>
 
@@ -162,7 +162,8 @@ function PrivacyPolicy() {
                     <p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the Service.</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Contact Us</h3>
-                    <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
+                    <p>If you have any questions about these Terms and Conditions, You can contact us through <Link to='/contact'>Contact</Link> page,
+                        <br />or:</p>
                     <ul style={{ paddingLeft: '1.5rem' }}>
                         <li><strong>By email:</strong> <a href="mailto:sitehelp.chat@gmail.com">sitehelp.chat@gmail.com</a></li>
                     </ul>
