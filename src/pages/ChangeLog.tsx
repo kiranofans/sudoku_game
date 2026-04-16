@@ -18,9 +18,19 @@ function ChangeLog({ }) {
                 <h1 className="text-3xl font-bold text-center mb-12 dark:text-white">
                     What's New?
                 </h1>
+                <KnownIssuesBox
+                    items={issues} />
                 <Timeline>
-                    <KnownIssuesBox
-                        items={issues} />
+                    <ChangelogEntry
+                        date="2026-04-16"
+                        version="1.0.0"
+                        title="Improvements & New Features"
+                        items={[
+                            <>
+                                Updated Privacy Policy for regional compliance.
+                            </>
+                        ]}
+                    />
                     <ChangelogEntry
                         date="2026-04-14"
                         version="1.0.0"

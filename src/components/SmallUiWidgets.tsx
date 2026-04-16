@@ -89,8 +89,8 @@ function KnownIssuesBox({ items }: KnownIssuesBoxProps) {
     if (!items.length) return null;
     return (
         <div className="text-md text-gray-600 mt-0.5 mb-0.5 ml-2 mr-2">
-            <div className="p-2.5 text-left w-full mt-1 mx-auto rounded bg-yellow-50 
-            border border-yellow-200 text-sm text-yellow-800">
+            <div className="p-2.5 pb-1.5 pt-1.5 text-left w-full mt-1 mb-3
+            mx-auto rounded bg-yellow-50 border border-yellow-200 text-sm text-yellow-800">
                 <span className="font-bold">⚠️ Known Issues:</span>
                 <ol type="a">
                     {items.map((item, idx) => (

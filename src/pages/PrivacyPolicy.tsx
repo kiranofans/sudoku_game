@@ -17,7 +17,7 @@ function PrivacyPolicy() {
 
                     <h4>Definitions</h4>
                     <p>For the purposes of these Terms and Conditions:</p>
-                    <ul style={{ paddingLeft: '1.5rem' }}>
+                    <ul className="list-disc" style={{ paddingLeft: '1.5rem' }}>
                         <li style={{ marginBottom: '10px' }}><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</li>
                         <li style={{ marginBottom: '10px' }}><strong>Country</strong> refers to: British Columbia, Canada</li>
                         <li style={{ marginBottom: '10px' }}><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in these Terms and Conditions) refers to Sudoku.</li>
@@ -52,22 +52,25 @@ function PrivacyPolicy() {
                                 </div>
                             </li>
                             <li style={{ marginBottom: '1rem' }}>
-                                <strong className='text-sm'>
+                                <b className='text-sm'>
                                     2. California Consumer Privacy Act (CCPA/CPRA) - "LA Law"
-                                </strong>
+                                </b>
                                 <div>
                                     <p className='mb-1 mt-2 text-sm'>
-                                        <b>California Resident Notice at Collection and Privacy Rights</b></p>
-                                    <p>Under the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA),
-                                        California residents have specific rights regarding their "Personal Information."
+                                        <b>California Resident Notice at Collection and Privacy Rights</b>
                                     </p>
-                                    <ul className="md:list-disk ml-5 space-y-1 text-sm">
-                                        <li className="marker:text-indigo-600"><b className='text-sm'>Notice at Collection: </b>We collect identifiers (via LocalStorage and IP-based analytics)
+                                    Under the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA),
+                                    California residents have specific rights regarding their "Personal Information."
+
+                                    <ul className="md:list-disc ml-5 space-y-1 text-sm">
+                                        <li className='mb-1 mt-2 text-sm'>
+                                            <b className='text-sm'>Notice at Collection: </b>We collect identifiers (via LocalStorage and IP-based analytics)
                                             to facilitate game rewards and analyze site traffic.</li>
-                                        <li><b className='text-sm'>Right to Opt-Out ofbSale or Sharing: </b>While we do not sell data for money,
+                                        <li className='mb-1 mt-2 text-sm'>
+                                            <b className='text-sm'>Right to Opt-Out of Sale or Sharing: </b>While we do not sell data for money,
                                             our use of third-party advertising networks may be classified as "sharing" for cross-contextual behavioral advertising.
                                             Users may exercise their right to opt-out by utilizing "Do Not Track" browser signals or adjusting device-level ad-tracking permissions.</li>
-                                        <li>
+                                        <li className='mb-1 mt-2 text-sm'>
                                             <b>Non-Discrimination: </b>
                                             We will not deny service or change your game experience for exercising your privacy rights.
                                         </li>
@@ -84,7 +87,8 @@ function PrivacyPolicy() {
                                     the processing of your data is governed by the GDPR.
                                     <ul className="md:list-disc ml-5 space-y-1 text-sm">
                                         <li className='mb-1 mt-2 text-sm'>
-                                            <b>Legal Basis for Processing: </b>We process data based on "Legitimate Interests" (site security and basic analytics) and "Contractual Necessity" (using LocalStorage to fulfill the delivery of hints following an advertisement).
+                                            <b>Legal Basis for Processing: </b>
+                                            We process data based on "Legitimate Interests" (site security and basic analytics) and "Contractual Necessity" (using LocalStorage to fulfill the delivery of hints following an advertisement).
                                         </li>
                                         <li className='mb-1 mt-2 text-sm'>
                                             <b>Data Controller: </b>
@@ -96,7 +100,6 @@ function PrivacyPolicy() {
                                         </li>
                                     </ul>
                                 </div>
-
                             </li>
                             <li>
                                 <div><b className='text-sm'>4. Specific Disclosure: LocalStorage & Analytics</b>
@@ -165,7 +168,6 @@ function PrivacyPolicy() {
                     </ul>
                 </div>
             </main>
-
         </Layout >
     )
 }
