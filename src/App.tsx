@@ -122,6 +122,29 @@ function App() {
     savePersistedScore(score);
   }, [score]);
 
+  const updateNumberCounts = useCallback((currentBoard: (number | null)[][], solvedBoard: number[][]) => {
+    if (!solvedBoard || solvedBoard.length === 0) return;
+    const counts: { [key: number]: number } = {};
+    for (let num = 1; num <= 9; num++) counts[num] = 0;
+
+    for (let row = 0; row < 9; row++) {
+      for (let col = 0; col < 9; col++) {
+        const num = currentBoard[row][col];
+        // Only count if it's correct (matches the solution at that cell)
+        if (num !== null && num === solvedBoard[row][col]) {
+          counts[num]++;
+        }
+      }
+    }
+
+    const newCounts: { [key: number]: number } = {};
+    for (let num = 1; num <= 9; num++) {
+      newCounts[num] = 9 - counts[num];
+    }
+
+    setNumberCounts(newCounts);
+  }, []);
+
   const startNewGame = useCallback(() => {
     setIsLoading(true);
     setTimeout(() => {
@@ -138,29 +161,10 @@ function App() {
       setIsGameOver(false);
       setIsPencilMode(false);
       setCrossHighlight({ row: null, col: null });
-      updateNumberCounts(puzzle);
+      updateNumberCounts(puzzle, solution);
       setIsLoading(false);
     }, 300);
-  }, [difficulty]);
-
-  const updateNumberCounts = useCallback((currentBoard: (number | null)[][]) => {
-    const counts: { [key: number]: number } = {};
-    for (let num = 1; num <= 9; num++) counts[num] = 0;
-
-    for (let row = 0; row < 9; row++) {
-      for (let col = 0; col < 9; col++) {
-        const num = currentBoard[row][col];
-        if (num !== null) counts[num]++;
-      }
-    }
-
-    const newCounts: { [key: number]: number } = {};
-    for (let num = 1; num <= 9; num++) {
-      newCounts[num] = 9 - counts[num];
-    }
-
-    setNumberCounts(newCounts);
-  }, []);
+  }, [difficulty, updateNumberCounts]);
 
   const handleCellClick = (row: number, col: number) => {
     if (isGameOver) return;
@@ -211,12 +215,13 @@ function App() {
 
       if (num !== null) {
         const currentNum = board[row][col];
-        if (currentNum !== null) {
+        // Increment count only if the existing number is correct
+        if (currentNum !== null && currentNum === solution[row][col]) {
           updateCountsAfterInput(currentNum, true);
         }
 
         if (solution[row][col] === num) {
-          const newBoard = [...board];
+          const newBoard = board.map(row => [...row]);
           newBoard[row][col] = num;
           setBoard(newBoard);
 
@@ -244,7 +249,7 @@ function App() {
             setIsGameOver(true);
           }
         } else {
-          const newBoard = [...board];
+          const newBoard = board.map(row => [...row]);
           newBoard[row][col] = num;
           setBoard(newBoard);
 
@@ -272,11 +277,12 @@ function App() {
     if (initialBoard[row][col] !== null) return;
 
     const currentNum = board[row][col];
-    if (currentNum !== null) {
+    // Increment count only if the number being erased is correct
+    if (currentNum !== null && currentNum === solution[row][col]) {
       updateCountsAfterInput(currentNum, true);
     }
 
-    const newBoard = [...board];
+    const newBoard = board.map(rowArr => [...rowArr]);
     newBoard[row][col] = null;
     setBoard(newBoard);
 
@@ -284,7 +290,7 @@ function App() {
     newNotes[row][col] = new Set();
     setNotes(newNotes);
     setCrossHighlight({ row, col });
-  }, [selectedCell, isGameOver, initialBoard, board, notes, updateCountsAfterInput]);
+  }, [selectedCell, isGameOver, initialBoard, board, notes, updateCountsAfterInput, solution]);
 
   // Keyboard control
   useEffect(() => {
@@ -372,10 +378,10 @@ function App() {
       setMistakes(0);
       setIsGameOver(false);
       setCrossHighlight({ row: null, col: null });
-      updateNumberCounts(initialBoard);
+      updateNumberCounts(initialBoard, solution);
       setIsLoading(false);
     }, 300);
-  }, [initialBoard, updateNumberCounts]);
+  }, [initialBoard, solution, updateNumberCounts]);
 
 
   const [showInstructions, setShowInstructions] = useState(false);

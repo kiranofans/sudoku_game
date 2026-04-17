@@ -27,8 +27,15 @@ function ChangeLog({ }) {
                         title="Improvements & New Features"
                         items={[
                             <>
+                            </>,
+                            <>
+                                Modified the calculation logic for the final score
+                                by minus the result of (total time used * difficulty multiplier).
+                            </>,
+                            <>
                                 Updated Privacy Policy for regional compliance.
                             </>
+
                         ]}
                     />
                     <ChangelogEntry
