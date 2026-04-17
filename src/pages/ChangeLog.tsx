@@ -24,10 +24,10 @@ function ChangeLog({ }) {
                     <ChangelogEntry
                         date="2026-04-16"
                         version="1.0.0"
-                        title="Improvements & New Features"
+                        title="Improvements & Bug Fixes"
                         items={[
-                            <>
-                            </>,
+                            <>Fixed the bug in the remaining-number counter:
+                                <br />incorrect inputs were being counted as valid entries, which caused the remaining counts for digits 1–9 to be miscalculated during gameplay.</>,
                             <>
                                 Revised the final score calculation to deduct the product of total time used and the difficulty multiplier from the base score.
                             </>,

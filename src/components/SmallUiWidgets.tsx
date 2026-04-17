@@ -1,4 +1,4 @@
-import { changelog } from "@/hooks/changeLog";
+import { changelog } from "@/hooks/useChangeLog";
 import React from "react";
 
 /**
@@ -75,7 +75,6 @@ function ChangelogEntry({
 
 type KnownIssuesBoxProps = {
     items: React.ReactNode[];
-
 };
 
 export function getLatestKnownIssues() {
