@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import { Link } from 'react-router-dom';
+import { UnorderedListUI } from '@/components/SmallUiWidgets';
 
 function PrivacyPolicy() {
     return (
@@ -8,7 +9,7 @@ function PrivacyPolicy() {
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Privacy Policy</h1>
                 <div className="privacy-policy-content" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>
 
-                    <p><strong>Last updated: April 15, 2026</strong></p>
+                    <p><strong>Last updated: April 16, 2026</strong></p>
                     <p>Please read these terms and conditions carefully before using Our Service.</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Interpretation and Definitions</h3>
@@ -41,13 +42,38 @@ function PrivacyPolicy() {
                         <ol>
                             <li style={{ marginBottom: '1rem' }}>
                                 <strong className='text-sm'>
-                                    1. Canadian Privacy Compliance (BC PIPA & PIPEDA)</strong>
-                                <div><p className='mb-1 mt-2 text-sm'><b>Compliance with Canadian Privacy Standards</b></p>
+                                    1. Canadian Privacy Compliance (BC PIPA & PIPEDA & Quebec Law 25)</strong>
+                                <div><p className='mb-1 mt-2 text-sm'>
+                                    <b>Compliance with Canadian Privacy Standards</b></p>
                                     <p>
-                                        This Service is governed by the laws of British Columbia and Canada.
-                                        In accordance with the Personal Information Protection Act (PIPA) and the Personal Information Protection and Electronic Documents Act (PIPEDA),
-                                        we hereby disclose that we collect and utilize non-personally identifiable technical data for commercial purposes, specifically the delivery of rewarded advertisements.
-                                        All data stored via LocalStorage is functional in nature and remains under the user's control. We do not sell, rent, or trade individual user data to third parties.
+                                        This Service is governed by the laws of British Columbia and Canada. We also adhere to Quebec's
+                                        <b> Act respecting the protection of personal information in the private sector (Law 25). </b>
+                                        <ul className='md:list-disc ml-5 space-y-1 mt-2 text-sm'>
+                                            <li>
+                                                <b>Designated Privacy Officer: </b>
+                                                In compliance with Law 25 and BC PIPA, we have appointed a Privacy Officer.
+                                                For all data inquiries or to exercise your rights, contact: <b>Privacy Officer</b> at <a href="mailto:sitehelp.chat@gmail.com">sitehelp.chat@gmail.com</a>.
+                                            </li>
+                                            <li>
+                                                <b>
+                                                    Privacy By Default: </b>
+                                                Our Service implements the highest level of confidentiality by default. In accordance with Quebec law,
+                                                non-essential tracking, profiling, or advertising cookies are deactivated until you provide express,
+                                                informed consent via our consent tool.
+                                            </li>
+                                            <li>
+                                                <b>Third-Party Advertising & Cookies: </b>
+                                                To support this free Service, we use Google AdSense and other third-party vendors to serve advertisements.
+                                                These vendors use cookies to serve ads based on your prior visits to this or other websites.
+                                                You may opt out of personalized advertising by visiting <a href='https://www.google.com/search?q=https://www.google.com/settings/ads'>Google Ads Settings </a>
+                                                or <a href="www.aboutads.info">www.aboutads.info</a>.
+                                            </li>
+                                            <li>
+                                                <b>Data Portability & Erasure: </b>
+                                                Residents of Quebec and Canada have the right to request a digital copy of their processed personal information in a structured,
+                                                commonly used technological format. You may also request the deletion of your data;
+                                                as we do not host user accounts, this is typically achieved by clearing your browser's LocalStorage and cache.                                            </li>
+                                        </ul>
                                     </p>
                                 </div>
                             </li>
@@ -64,20 +90,34 @@ function PrivacyPolicy() {
 
                                     <ul className="md:list-disc ml-5 space-y-1 text-sm">
                                         <li className='mb-1 mt-2 text-sm'>
-                                            <b className='text-sm'>Notice at Collection: </b>We collect identifiers (via LocalStorage and IP-based analytics)
-                                            to facilitate game rewards and analyze site traffic.</li>
+                                            <b className='text-sm'>Notice at Collection: </b>
+                                            We collect identifiers (such as IP addresses and device IDs via LocalStorage) to facilitate game rewards, prevent fraud, and analyze site traffic. We do not collect "Sensitive Personal Information" as defined by California law.</li>
                                         <li className='mb-1 mt-2 text-sm'>
-                                            <b className='text-sm'>Right to Opt-Out of Sale or Sharing: </b>While we do not sell data for money,
-                                            our use of third-party advertising networks may be classified as "sharing" for cross-contextual behavioral advertising.
-                                            Users may exercise their right to opt-out by utilizing "Do Not Track" browser signals or adjusting device-level ad-tracking permissions.</li>
+                                            <b className='text-sm'>Right to Opt-Out of Sale or Sharing: </b>
+                                            While we do not sell your data for monetary compensation, our use of third-party advertising networks (such as Google AdSense) to serve personalized ads is classified as
+                                            <b> "Sharing" for cross-context behavioral advertising.</b>
+                                        </li>
+                                        <li className="mb-1 mt-2 text-sm">
+                                            <b>Mandatory GPC Recognition: </b>
+                                            In accordance with 2026 regulations, our Service is configured to automatically detect and honor Global Privacy Control (GPC) signals.
+                                            If your browser sends a GPC signal, we will treat it as a valid request to opt-out of the sharing of your personal information for advertising purposes.
+                                        </li>
+                                        <li className="mb-1 mt-2 text-sm">
+                                            <b>Opt-Out Confirmation: </b> If you manually exercise your right to opt-out via our consent manager, we will provide a visible confirmation that your "Opt-Out Request has been Honored."
+                                        </li>
+                                        <li className="mb-1 mt-2 text-sm">
+                                            <b>Right to Know & Delete: </b>
+                                            You have the right to request access to the specific pieces of data we have collected about you since January 1, 2022, or request its deletion.
+                                        </li>
                                         <li className='mb-1 mt-2 text-sm'>
                                             <b>Non-Discrimination: </b>
-                                            We will not deny service or change your game experience for exercising your privacy rights.
-                                        </li>
+                                            We will not deny service, suggest different pricing,
+                                            or degrade your game experience if you choose to exercise your privacy rights.                                        </li>
                                     </ul>
                                 </div>
                             </li>
                             <li style={{ marginBottom: '1rem' }}>
+
                                 <div>
                                     <b>3. European Union & UK Compliance (GDPR)</b>
                                     <p>
@@ -88,23 +128,42 @@ function PrivacyPolicy() {
                                     <ul className="md:list-disc ml-5 space-y-1 text-sm">
                                         <li className='mb-1 mt-2 text-sm'>
                                             <b>Legal Basis for Processing: </b>
-                                            We process data based on "Legitimate Interests" (site security and basic analytics) and "Contractual Necessity" (using LocalStorage to fulfill the delivery of hints following an advertisement).
-                                        </li>
+                                            We process data based on <b>Art. 6(1)(f) (Legitimate Interests)</b> for essential site security and non-invasive traffic analytics,
+                                            and <b>Art. 6(1)(b) (Contractual Necessity)</b> for using LocalStorage to maintain your game state and verify the delivery of hints following an advertisement.                                        </li>
                                         <li className='mb-1 mt-2 text-sm'>
                                             <b>Data Controller: </b>
-                                            <Link to="/">sudokuplays.com</Link> acts as the Data Controller for local device storage.
+                                            <Link to="/">sudokuplays.com</Link> acts as the Data Controller.
+                                            Since we utilize a "static" frontend-only architecture,
+                                            we do not store your personal data on our own servers.
                                         </li>
                                         <li className='mb-1 mt-2 text-sm'>
-                                            <b>Data Subject Rights: </b>
-                                            You have the right to access, rectify, or erase your data. Since we do not maintain server-side user accounts, you may exercise your "Right to be Forgotten" at any time by clearing your browser's cache and LocalStorage.
+                                            <b>Ad Technology Partners: </b>
+                                            To serve ads, we share limited technical identifiers with Google AdSense and its approved ad technology partners.
+                                            You can manage these partners at any time via our <b>Privacy Settings/Consent Banner</b>.
                                         </li>
+                                        <li>
+                                            <b>Data Subject Rights: </b>
+                                            You have the right to access, rectify, or erase your data.
+                                            Because your data is stored exclusively in your browser’s <b>LocalStorage</b>,
+                                            you may exercise your "Right to be Forgotten" immediately and independently by clearing your browser's cache and site data.
+                                        </li>
+                                        <li className='mb-1 mt-2 text-sm'>
+                                            <b>International Transfers: </b>
+                                            Technical data may be processed by our partners (like Google) in the United States.
+                                            We ensure these transfers are protected by Standard Contractual Clauses (SCCs) or other recognized adequacy frameworks.                                        </li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <div><b className='text-sm'>4. Specific Disclosure: LocalStorage & Analytics</b>
+                                <div><b className='text-sm'>4. Specific Disclosure: LocalStorage & Privacy-First Analytics</b>
+                                    <ul className='md:list-disc ml-5 space-y-1 text-sm'>
+                                        <li>
+                                            <b>Web LocalStorage: </b>
+                                            We use LocalStorage (data stored only on your device) to maintain your current game state, track high scores, and store a 24-hour "Hint Memo" for ad-reward verification. This data is functional, remains under your control, and is never transmitted to our servers.
+                                        </li>
+                                    </ul>
                                     <p className='mb-1 mt-2 text-sm'>
-                                        <b>Technical Data & Cookies Disclaimer</b>
+                                        To provide a seamless gaming experience without requiring user accounts, we utilize the following technologies:
                                     </p>
                                     This Service utilizes Web LocalStorage to maintain game state, high scores, and a 24-hour
                                     "Hint Memo" for ad verification. Unlike traditional tracking cookies, this data is stored locally on your device and is not transmitted to our servers. We utilize Cloudflare Analytics for privacy-first, non-invasive traffic monitoring

@@ -73,6 +73,51 @@ function ChangelogEntry({
     );
 }
 
+/* =========================
+   COMPONENT: UnorderedListUI
+========================= */
+type ListItem = {
+    content: React.ReactNode;
+    subItems?: ListItem[]; // Recursive definition
+};
+
+type UnorderedListProps = {
+    items: ListItem[];
+    subSectionTitle?: string;
+    supplementalText?: string;
+    isOrdered?: boolean;
+};
+
+export function UnorderedListUI({ items, subSectionTitle, supplementalText, isOrdered = false }: UnorderedListProps) {
+    const Tag = isOrdered ? 'ol' : 'ul';
+    const listStyle = isOrdered ? 'md:list-decimal' : "md:list-disc";
+    return (
+        <div className="mb-4">
+            {subSectionTitle && <p className="mb-1 font-bold">{subSectionTitle}</p>}
+            {supplementalText && <p className="mb-1 font-bold">{supplementalText}</p>}
+            <Tag className={`${listStyle} pl-5 space-y-1 text-gray-700 dark:text-gray-300`}>
+                {items.map((item, idx) => (
+                    <li key={idx}>
+                        {/* Render the current item content */}
+                        <div>{item.content}</div>
+
+                        {/* If subItems exist, render another list inside this <li> */}
+                        {item.subItems && item.subItems.length > 0 && (
+                            <div className="mt-1">
+                                <UnorderedListUI items={item.subItems} />
+                            </div>
+                        )}
+                    </li>
+                ))}
+            </Tag>
+        </div>
+    );
+}
+
+/* =========================
+   COMPONENT: KnownIssuesBox
+========================= */
+
 type KnownIssuesBoxProps = {
     items: React.ReactNode[];
 };
