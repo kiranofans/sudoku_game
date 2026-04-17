@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout';
 import { Link } from 'react-router-dom';
-import { UnorderedListUI } from '@/components/SmallUiWidgets';
+import { ListUi } from '@/components/SmallUiWidgets';
 
 function PrivacyPolicy() {
     return (
@@ -8,7 +8,6 @@ function PrivacyPolicy() {
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Privacy Policy</h1>
                 <div className="privacy-policy-content" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>
-
                     <p><strong>Last updated: April 16, 2026</strong></p>
                     <p>Please read these terms and conditions carefully before using Our Service.</p>
 
@@ -39,10 +38,10 @@ function PrivacyPolicy() {
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Regional Compliance</h3>
                     <h4>
-                        <ol>
+                        <ol className='list-decimal'>
                             <li style={{ marginBottom: '1rem' }}>
                                 <strong className='text-sm'>
-                                    1. Canadian Privacy Compliance (BC PIPA & PIPEDA & Quebec Law 25)</strong>
+                                    Canadian Privacy Compliance (BC PIPA & PIPEDA & Quebec Law 25)</strong>
                                 <div><p className='mb-1 mt-2 text-sm'>
                                     <b>Compliance with Canadian Privacy Standards</b></p>
                                     <p>
@@ -79,7 +78,7 @@ function PrivacyPolicy() {
                             </li>
                             <li style={{ marginBottom: '1rem' }}>
                                 <b className='text-sm'>
-                                    2. California Consumer Privacy Act (CCPA/CPRA) - "LA Law"
+                                    California Consumer Privacy Act (CCPA/CPRA) - "LA Law"
                                 </b>
                                 <div>
                                     <p className='mb-1 mt-2 text-sm'>
@@ -119,7 +118,7 @@ function PrivacyPolicy() {
                             <li style={{ marginBottom: '1rem' }}>
 
                                 <div>
-                                    <b>3. European Union & UK Compliance (GDPR)</b>
+                                    <b>European Union & UK Compliance (GDPR)</b>
                                     <p>
                                         <b>General Data Protection Regulation (GDPR) Disclosure </b>
                                     </p>
@@ -155,7 +154,7 @@ function PrivacyPolicy() {
                                 </div>
                             </li>
                             <li>
-                                <div><b className='text-sm'>4. Specific Disclosure: LocalStorage & Privacy-First Analytics</b>
+                                <div><b className='text-sm'>Specific Disclosure: LocalStorage & Privacy-First Analytics</b>
                                     <ul className='md:list-disc ml-5 space-y-1 text-sm'>
                                         <li>
                                             <b>Web LocalStorage: </b>

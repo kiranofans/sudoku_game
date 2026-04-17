@@ -81,22 +81,23 @@ type ListItem = {
     subItems?: ListItem[]; // Recursive definition
 };
 
-type UnorderedListProps = {
+type ListUiProps = {
     items: ListItem[];
     subSectionTitle?: string;
     supplementalText?: string;
     isOrdered?: boolean;
 };
 
-export function UnorderedListUI({ items, subSectionTitle, supplementalText, isOrdered = false }: UnorderedListProps) {
+export function ListUi({ items, subSectionTitle, supplementalText,
+    isOrdered = false }: ListUiProps) {
     const Tag = isOrdered ? 'ol' : 'ul';
     const listStyle = isOrdered ? 'md:list-decimal' : "md:list-disc";
     return (
-        <div className="mb-4">
-            {subSectionTitle && <p className="mb-1 font-bold">{subSectionTitle}</p>}
-            {supplementalText && <p className="mb-1 font-bold">{supplementalText}</p>}
-            <Tag className={`${listStyle} pl-5 space-y-1 text-gray-700 dark:text-gray-300`}>
-                {items.map((item, idx) => (
+        <Tag className={`${listStyle} space-y-1 text-gray-700 dark:text-gray-300 text-sm`}>
+            {items.map((item, idx) => (
+                <div className="mb-4">
+                    {subSectionTitle && <p className="mb-1 font-bold">{subSectionTitle}</p>}
+                    {supplementalText && <p className="mb-1 font-bold">{supplementalText}</p>}
                     <li key={idx}>
                         {/* Render the current item content */}
                         <div>{item.content}</div>
@@ -104,13 +105,13 @@ export function UnorderedListUI({ items, subSectionTitle, supplementalText, isOr
                         {/* If subItems exist, render another list inside this <li> */}
                         {item.subItems && item.subItems.length > 0 && (
                             <div className="mt-1">
-                                <UnorderedListUI items={item.subItems} />
+                                <ListUi items={item.subItems} />
                             </div>
                         )}
                     </li>
-                ))}
-            </Tag>
-        </div>
+                </div >
+            ))}
+        </Tag>
     );
 }
 
