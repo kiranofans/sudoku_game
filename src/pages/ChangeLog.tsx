@@ -29,8 +29,7 @@ function ChangeLog({ }) {
                             <>
                             </>,
                             <>
-                                Modified the calculation logic for the final score
-                                by minus the result of (total time used * difficulty multiplier).
+                                Revised the final score calculation to deduct the product of total time used and the difficulty multiplier from the base score.
                             </>,
                             <>
                                 Updated Privacy Policy for regional compliance.

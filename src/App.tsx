@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { generateSudoku, Difficulty } from './lib/generatesSudoku.ts';
-import { loadPersistedHints, savePersistedHints, loadPersistedScore, savePersistedScore } from './lib/persistenceStorage.ts';
+import { loadPersistedHints, savePersistedHints } from './lib/persistenceStorage.ts';
 
 import './App.css';
 import Board from "./components/Board";
@@ -14,6 +14,8 @@ import Faq from './pages/faq.tsx';
 import SudokuTips from './pages/SudokuTips.tsx';
 import Layout from './components/Layout';
 import { useTimer } from './hooks/useTimer.ts';
+import { useScore } from './hooks/useScore.ts';
+import ScoreSystem from './components/ScoreSystem.tsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.tsx';
 import TermsAndConditions from './pages/TermsAndConditions.tsx';
 import { SmallUiWidgets } from './components/SmallUiWidgets.tsx';
@@ -34,6 +36,7 @@ function App() {
   const [notes, setNotes] = useState<CellNotes[][]>([]);
   const [selectedCell, setSelectedCell] = useState<[number, number] | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>('medium');
+  const { score, scoreBreakdown, addCorrectMoveScore, deductMistakeScore, calculateFinalWin, resetScore } = useScore(difficulty);
   const [mistakes, setMistakes] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [hintsRemaining, setHintsRemaining] = useState(loadPersistedHints());
@@ -41,13 +44,6 @@ function App() {
   const [numberCounts, setNumberCounts] = useState<{ [key: number]: number }>(
     Array.from({ length: 9 }, (_, i) => i + 1).reduce((acc, num) => ({ ...acc, [num]: 9 }), {})
   );
-  const [score, setScore] = useState<number | null>(loadPersistedScore());
-  const [scoreBreakdown, setScoreBreakdown] = useState<{
-    gross: number;
-    penalty: number;
-    multiplier: number;
-    time: number;
-  } | null>(null);
   const [crossHighlight, setCrossHighlight] = useState<{
     row: number | null;
     col: number | null;
@@ -118,10 +114,6 @@ function App() {
     savePersistedHints(hintsRemaining);
   }, [hintsRemaining]);
 
-  useEffect(() => {
-    savePersistedScore(score);
-  }, [score]);
-
   const updateNumberCounts = useCallback((currentBoard: (number | null)[][], solvedBoard: number[][]) => {
     if (!solvedBoard || solvedBoard.length === 0) return;
     const counts: { [key: number]: number } = {};
@@ -156,8 +148,7 @@ function App() {
       setSelectedCell(null);
       setGameKey(prev => prev + 1);
       setMistakes(0);
-      setScore(null);
-      setScoreBreakdown(null);
+      resetScore();
       setIsGameOver(false);
       setIsPencilMode(false);
       setCrossHighlight({ row: null, col: null });
@@ -205,14 +196,6 @@ function App() {
       newNotes[row][col] = cellNotes;
       setNotes(newNotes);
     } else {
-      const scoreMultiplier: number = ({
-        'very-easy': 1,
-        easy: 2,
-        medium: 3,
-        hard: 5,
-        expert: 10
-      } as Record<string, number>)[difficulty];
-
       if (num !== null) {
         const currentNum = board[row][col];
         // Increment count only if the existing number is correct
@@ -232,20 +215,11 @@ function App() {
           updateCountsAfterInput(num, false);
 
           // Add incremental points for correct move
-          const moveScore = (score || 0) + (100 * scoreMultiplier);
-          setScore(moveScore);
+          addCorrectMoveScore();
 
           if (checkBoardComplete(newBoard)) {
             // Final score calculation with time used
-            const timePenalty = timer.timeLeft * scoreMultiplier;
-            const finalScore = Math.max(0, moveScore - timePenalty);
-            setScore(finalScore);
-            setScoreBreakdown({
-              gross: moveScore,
-              penalty: timePenalty,
-              multiplier: scoreMultiplier,
-              time: timer.timeLeft
-            });
+            calculateFinalWin(timer.timeLeft);
             setIsGameOver(true);
           }
         } else {
@@ -254,7 +228,7 @@ function App() {
           setBoard(newBoard);
 
           // Subtract penalty for mistake
-          setScore(prev => Math.max(0, (prev || 0) - (500 * scoreMultiplier)));
+          deductMistakeScore();
 
           setMistakes(prev => {
             const newMistakes = prev + 1;
@@ -267,7 +241,7 @@ function App() {
       }
     }
     setCrossHighlight({ row, col });
-  }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput, difficulty, score, timer.timeLeft]);
+  }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput, addCorrectMoveScore, deductMistakeScore, calculateFinalWin, timer.timeLeft]);
 
 
   const handleEraser = useCallback(() => {
@@ -347,26 +321,11 @@ function App() {
     updateCountsAfterInput(num, false);
 
     if (checkBoardComplete(newBoard)) {
-      const scoreMultiplier: number = ({
-        'very-easy': 1,
-        easy: 2,
-        medium: 3,
-        hard: 5,
-        expert: 10
-      } as Record<string, number>)[difficulty];
-      const timePenalty = timer.timeLeft * scoreMultiplier;
-      const finalScore = Math.max(0, (score || 0) - timePenalty);
-      setScore(finalScore);
-      setScoreBreakdown({
-        gross: score || 0,
-        penalty: timePenalty,
-        multiplier: scoreMultiplier,
-        time: timer.timeLeft
-      });
+      calculateFinalWin(timer.timeLeft);
       setIsGameOver(true);
     }
     setCrossHighlight({ row, col });
-  }, [hintsRemaining, selectedCell, isGameOver, initialBoard, board, solution, updateCountsAfterInput, score, difficulty, timer.timeLeft]);
+  }, [hintsRemaining, selectedCell, isGameOver, initialBoard, board, solution, updateCountsAfterInput, calculateFinalWin, difficulty, timer.timeLeft]);
 
 
   const handleReset = useCallback(() => {
@@ -406,15 +365,7 @@ function App() {
     <Routes>
       <Route path="/" element={
         <Layout
-          mobileScore={
-            <div className="mobile-only-score">
-              <div className="score-main-mobile">
-                <span className="mobile-score-label">Score:</span>
-                <span className="mobile-score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
-              </div>
-              <div className="score-refresh-notice mobile-notice">Score refreshes every 24 hours</div>
-            </div>
-          }
+          mobileScore={<ScoreSystem score={score} isMobile />}
           headerContent={
             <>
               <DifficultySelector
@@ -529,13 +480,7 @@ function App() {
 
               <div className="counts-and-actionbtn">
                 <div className="control-panel">
-                  <div className="score-widget desktop-only-score">
-                    <div className="score-main">
-                      <span className="score-label">Score:</span>
-                      <span className="score-value">{score !== null ? score.toLocaleString() : "- - - -"}</span>
-                    </div>
-                    <div className="score-refresh-notice">Score refreshes every 24 hours</div>
-                  </div>
+                  <ScoreSystem score={score} />
                   <div className="action-buttons">
                     <Tooltip text="Pencil Mode">
                       <button
