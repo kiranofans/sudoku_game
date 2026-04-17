@@ -8,9 +8,15 @@ interface GameStatusModalProps {
     time: string;
     score: number | null;
     difficulty: string;
+    scoreBreakdown?: {
+        gross: number;
+        penalty: number;
+        multiplier: number;
+        time: number;
+    } | null;
 }
 
-const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, status, time, score, difficulty }) => {
+const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, status, time, score, difficulty, scoreBreakdown }) => {
     if (!isOpen) return null;
 
     const tips = [
@@ -33,28 +39,55 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
                 {isWon ? '🎉🥳🎊' : '😞❌🚫'}
             </div>
             
-            <div className="bg-white dark:bg-[#1a1a1a] w-full max-w-[400px] rounded-[24px] p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)] text-center text-[#333] dark:text-[#eee]">
+            <div className="bg-white dark:bg-[#1a1a1a] w-full max-w-[420px] rounded-[24px] p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)] text-center text-[#333] dark:text-[#eee]">
                 <h2 className="text-[1.75rem] font-extrabold mb-2 text-black dark:text-white">
-                    {isWon ? 'Completed' : 'Mistake Limit Reached'}
+                    {isWon ? 'Round Completed' : 'Mistake Limit Reached'}
                 </h2>
                 {!isWon && (
                     <p className="text-[#888] mb-6 font-medium">You have reached the mistake limit</p>
                 )}
                 
-                <div className={`grid grid-cols-3 gap-4 ${isWon ? 'mb-8' : 'mb-6'}`}>
+                <div className={`grid grid-cols-3 gap-4 ${isWon ? 'mb-6' : 'mb-6'}`}>
                     <div className="flex flex-col gap-1">
-                        <span className="text-[0.85rem] text-[#888] font-semibold">Time</span>
-                        <span className="text-[1.15rem] font-extrabold text-black dark:text-white">{time}</span>
+                        <span className="text-[0.75rem] text-[#888] font-bold uppercase tracking-wider">Time</span>
+                        <span className="text-[1.1rem] font-black text-black dark:text-white">{time}</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <span className="text-[0.85rem] text-[#888] font-semibold">Score</span>
-                        <span className="text-[1.15rem] font-extrabold text-black dark:text-white">{score?.toLocaleString() || '0'}</span>
+                        <span className="text-[0.75rem] text-[#888] font-bold uppercase tracking-wider">Final Score</span>
+                        <span className="text-[1.1rem] font-black text-black dark:text-white">{score?.toLocaleString() || '0'}</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <span className="text-[0.85rem] text-[#888] font-semibold">Difficulty</span>
-                        <span className="text-[1.15rem] font-extrabold text-black dark:text-white capitalize">{difficulty.replace('-', ' ')}</span>
+                        <span className="text-[0.75rem] text-[#888] font-bold uppercase tracking-wider">Difficulty</span>
+                        <span className="text-[1.1rem] font-black text-black dark:text-white capitalize">{difficulty.replace('-', ' ')}</span>
                     </div>
                 </div>
+
+                {isWon && scoreBreakdown && (
+                    <div className="bg-[#f8fafc] dark:bg-[#252525] rounded-[16px] p-4 mb-6 border border-[#e2e8f0] dark:border-[#333] text-left">
+                        <h3 className="text-[0.75rem] font-black text-[#64748b] uppercase tracking-[0.1em] mb-3 border-b border-[#e2e8f0] dark:border-[#333] pb-1">
+                            Score Breakdown
+                        </h3>
+                        <div className="space-y-2 text-[0.9rem]">
+                            <div className="flex justify-between items-center text-[#444] dark:text-[#ccc] font-medium">
+                                <span className="flex items-center gap-1.5">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                                    Gross Score
+                                </span>
+                                <span className="font-bold">{scoreBreakdown.gross.toLocaleString()}</span>
+                            </div>
+                            <div className="flex justify-between items-center text-[#ef4444] font-medium">
+                                <span className="flex items-center gap-1.5">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>
+                                    Time Penalty
+                                </span>
+                                <span className="font-bold">-{scoreBreakdown.penalty.toLocaleString()}</span>
+                            </div>
+                            <div className="pt-2 mt-1 border-t border-dashed border-[#cbd5e1] dark:border-[#444] text-[0.7rem] text-[#94a3b8] font-bold italic">
+                                Calculation: {scoreBreakdown.gross} - ({scoreBreakdown.time}s × {scoreBreakdown.multiplier})
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 <div className="relative border-t border-[#eee] dark:border-[#333] my-6 flex justify-center">
                     <span className="absolute -top-2.5 bg-white dark:bg-[#1a1a1a] px-2.5 text-[0.8rem] text-[#aaa] font-semibold uppercase">

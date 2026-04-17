@@ -34,7 +34,6 @@ function App() {
   const [notes, setNotes] = useState<CellNotes[][]>([]);
   const [selectedCell, setSelectedCell] = useState<[number, number] | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>('medium');
-  const [time, setTime] = useState(0);
   const [mistakes, setMistakes] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [hintsRemaining, setHintsRemaining] = useState(loadPersistedHints());
@@ -43,6 +42,12 @@ function App() {
     Array.from({ length: 9 }, (_, i) => i + 1).reduce((acc, num) => ({ ...acc, [num]: 9 }), {})
   );
   const [score, setScore] = useState<number | null>(loadPersistedScore());
+  const [scoreBreakdown, setScoreBreakdown] = useState<{
+    gross: number;
+    penalty: number;
+    multiplier: number;
+    time: number;
+  } | null>(null);
   const [crossHighlight, setCrossHighlight] = useState<{
     row: number | null;
     col: number | null;
@@ -106,20 +111,7 @@ function App() {
     startNewGame();
   }, [difficulty]);
 
-  // Timer & Real-time Score Decay
-  // useEffect(() => {
-  //   let interval: NodeJS.Timeout;
-  //   if (!isGameOver) {
-  //     interval = setInterval(() => {
-  //       setTime(prev => prev + 1);
-  //       setScore(prev => {
-  //         if (prev === null || prev <= 0) return prev;
-  //         return Math.max(0, prev - 5);
-  //       });
-  //     }, 1000);
-  //   }
-  //   return () => clearInterval(interval);
-  // }, [isGameOver]);
+
 
   // Persist hints
   useEffect(() => {
@@ -139,10 +131,10 @@ function App() {
       setInitialBoard(puzzle.map(row => [...row]));
       setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
       setSelectedCell(null);
-      setTime(0);
-      setGameKey(prev => prev + 1);//for countdown timer
+      setGameKey(prev => prev + 1);
       setMistakes(0);
       setScore(null);
+      setScoreBreakdown(null);
       setIsGameOver(false);
       setIsPencilMode(false);
       setCrossHighlight({ row: null, col: null });
@@ -209,7 +201,7 @@ function App() {
       newNotes[row][col] = cellNotes;
       setNotes(newNotes);
     } else {
-      const multiplier: number = ({
+      const scoreMultiplier: number = ({
         'very-easy': 1,
         easy: 2,
         medium: 3,
@@ -235,9 +227,20 @@ function App() {
           updateCountsAfterInput(num, false);
 
           // Add incremental points for correct move
-          setScore(prev => (prev || 0) + (100 * multiplier));
+          const moveScore = (score || 0) + (100 * scoreMultiplier);
+          setScore(moveScore);
 
           if (checkBoardComplete(newBoard)) {
+            // Final score calculation with time used
+            const timePenalty = timer.timeLeft * scoreMultiplier;
+            const finalScore = Math.max(0, moveScore - timePenalty);
+            setScore(finalScore);
+            setScoreBreakdown({
+              gross: moveScore,
+              penalty: timePenalty,
+              multiplier: scoreMultiplier,
+              time: timer.timeLeft
+            });
             setIsGameOver(true);
           }
         } else {
@@ -246,7 +249,7 @@ function App() {
           setBoard(newBoard);
 
           // Subtract penalty for mistake
-          setScore(prev => Math.max(0, (prev || 0) - (500 * multiplier)));
+          setScore(prev => Math.max(0, (prev || 0) - (500 * scoreMultiplier)));
 
           setMistakes(prev => {
             const newMistakes = prev + 1;
@@ -259,7 +262,7 @@ function App() {
       }
     }
     setCrossHighlight({ row, col });
-  }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput, difficulty]);
+  }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput, difficulty, score, timer.timeLeft]);
 
 
   const handleEraser = useCallback(() => {
@@ -338,10 +341,26 @@ function App() {
     updateCountsAfterInput(num, false);
 
     if (checkBoardComplete(newBoard)) {
+      const scoreMultiplier: number = ({
+        'very-easy': 1,
+        easy: 2,
+        medium: 3,
+        hard: 5,
+        expert: 10
+      } as Record<string, number>)[difficulty];
+      const timePenalty = timer.timeLeft * scoreMultiplier;
+      const finalScore = Math.max(0, (score || 0) - timePenalty);
+      setScore(finalScore);
+      setScoreBreakdown({
+        gross: score || 0,
+        penalty: timePenalty,
+        multiplier: scoreMultiplier,
+        time: timer.timeLeft
+      });
       setIsGameOver(true);
     }
     setCrossHighlight({ row, col });
-  }, [hintsRemaining, selectedCell, isGameOver, initialBoard, board, solution, updateCountsAfterInput]);
+  }, [hintsRemaining, selectedCell, isGameOver, initialBoard, board, solution, updateCountsAfterInput, score, difficulty, timer.timeLeft]);
 
 
   const handleReset = useCallback(() => {
@@ -349,8 +368,7 @@ function App() {
     setTimeout(() => {
       setBoard(initialBoard.map(row => [...row]));
       setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
-      setTime(0);
-      setGameKey(prev => prev + 1);//for timer
+      setGameKey(prev => prev + 1);
       setMistakes(0);
       setIsGameOver(false);
       setCrossHighlight({ row: null, col: null });
@@ -595,8 +613,9 @@ function App() {
                 setIsGameOver(false);
                 startNewGame();
               }}
-              time={formatTime(time)}
+              time={formatTime(timer.timeLeft)}
               score={score}
+              scoreBreakdown={scoreBreakdown}
               difficulty={difficulty}
             />
           }
