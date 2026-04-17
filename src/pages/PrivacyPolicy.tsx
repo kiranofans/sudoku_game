@@ -1,6 +1,5 @@
 import Layout from '@/components/Layout';
 import { Link } from 'react-router-dom';
-import { ListUi } from '@/components/SmallUiWidgets';
 
 function PrivacyPolicy() {
     return (
