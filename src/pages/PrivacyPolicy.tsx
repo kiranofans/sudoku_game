@@ -159,6 +159,14 @@ function PrivacyPolicy() {
                                             <b>Web LocalStorage: </b>
                                             We use LocalStorage (data stored only on your device) to maintain your current game state, track high scores, and store a 24-hour "Hint Memo" for ad-reward verification. This data is functional, remains under your control, and is never transmitted to our servers.
                                         </li>
+                                        <li>
+                                            <b>Cloudflare Analytics: </b>
+                                            We use Cloudflare’s privacy-first analytics to monitor site performance and traffic trends. Unlike traditional trackers, this does not collect personal identifiers, does not use cookies, and does not track your activity across other websites.
+                                        </li>
+                                        <li>
+                                            <b>No Server-Side Tracking: </b>
+                                            Since we do not use a backend database or server-side accounts, we do not store, sell, or rent your individual gameplay data.
+                                        </li>
                                     </ul>
                                     <p className='mb-1 mt-2 text-sm'>
                                         To provide a seamless gaming experience without requiring user accounts, we utilize the following technologies:
