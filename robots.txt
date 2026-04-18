@@ -2,9 +2,46 @@ User-agent: *
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
+Allow: /
+Content-Signal: search=yes, ai-train=no
+
+# OpenAI (ChatGPT & Bing AI Training)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+# Common Crawl (Used by many open-source AI models)
+User-agent: CCBot
+Disallow: /
+
+# Google Gemini Training (Does NOT block Google Search)
+User-agent: Google-Extended
+Disallow: /
+
+# Meta / Facebook AI Training
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+# Anthropic (Claude AI)
+User-agent: ClaudeBot
+Disallow: /
+
+# Apple Intelligence Training (Does NOT block Apple Search)
+User-agent: Applebot-Extended
+Disallow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Disallow: /
+
+# DuckDuckGo AI Assist
+User-agent: DuckAssistBot
+Disallow: /
+
+# ByteDance (TikTok AI)
+User-agent: Bytespider
+Disallow: /
 
 Sitemap: https://sudokuplays.com/sitemap.xml
-
-https://www.sudokuplays.com/robots.txt
-→ redirects to
-https://sudokuplays.com/robots.txt
