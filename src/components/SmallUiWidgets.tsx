@@ -92,24 +92,30 @@ export function ListUi({ items, subSectionTitle, supplementalText,
     isOrdered = false }: ListUiProps) {
     const Tag = isOrdered ? 'ol' : 'ul';
     const listStyle = isOrdered ? 'md:list-decimal' : "md:list-disc";
-    return (
-        <Tag className={`${listStyle} space-y-1 text-gray-700 dark:text-gray-300 text-sm`}>
-            {items.map((item, idx) => (
-                <div className="mb-4">
-                    {subSectionTitle && <p className="mb-1 font-bold">{subSectionTitle}</p>}
-                    {supplementalText && <p className="mb-1 font-bold">{supplementalText}</p>}
-                    <li key={idx}>
-                        {/* Render the current item content */}
-                        <div>{item.content}</div>
 
-                        {/* If subItems exist, render another list inside this <li> */}
-                        {item.subItems && item.subItems.length > 0 && (
-                            <div className="mt-1">
-                                <ListUi items={item.subItems} />
-                            </div>
-                        )}
-                    </li>
-                </div >
+    return (
+        <Tag className={`${listStyle} space-y-2 text-gray-700 dark:text-gray-300 text-sm`}>
+            {items.map((item, idx) => (
+                <li key={idx} className="mb-4">
+
+                    {subSectionTitle && (
+                        <p className="mb-1 font-bold">{subSectionTitle}</p>
+                    )}
+
+                    {supplementalText && (
+                        <p className="mb-1 font-bold">{supplementalText}</p>
+                    )}
+
+                    {/* Main content */}
+                    <div>{item.content}</div>
+
+                    {/* Nested list */}
+                    {item.subItems && item.subItems.length > 0 && (
+                        <div className="mt-1 ml-4">
+                            <ListUi items={item.subItems} />
+                        </div>
+                    )}
+                </li>
             ))}
         </Tag>
     );

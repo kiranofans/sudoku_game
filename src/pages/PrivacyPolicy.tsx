@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import { ListUi } from '@/components/SmallUiWidgets';
 import { Link } from 'react-router-dom';
 
 function PrivacyPolicy() {
@@ -37,6 +38,14 @@ function PrivacyPolicy() {
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Regional Compliance</h3>
                     <h4>
+                        <ListUi
+                            isOrdered={true}
+                            subSectionTitle='Canadian Privacy Compliance'
+                            supplementalText='Compliance with Canadian Privacy Standards'
+                            items={[
+
+                            ]}
+                        />
                         <ol className='list-decimal'>
                             <li style={{ marginBottom: '1rem' }}>
                                 <strong className='text-sm'>
