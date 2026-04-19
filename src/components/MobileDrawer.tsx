@@ -12,11 +12,11 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-[10000] md:hidden portrait:block">
       {/* Overlay */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={onClose}
       />
-      
+
       {/* Drawer Panel */}
       <div className="absolute left-0 top-0 h-full w-64 bg-white dark:bg-gray-900 shadow-2xl flex flex-col p-6 animate-in slide-in-from-left duration-300">
         <div className="flex justify-between items-center mb-8">
@@ -24,7 +24,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
             <img src="/images/png/logo_sudoku1.png" alt="Logo" className="w-8 h-8 rounded-lg" />
             <span className="font-bold text-xl dark:text-white">Sudoku</span>
           </div>
-          <button 
+          <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full dark:text-gray-400"
             aria-label="Close menu"
@@ -36,40 +36,50 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
         </div>
 
         <nav className="flex flex-col gap-4 text-lg font-medium">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             Play Game
           </Link>
-          <Link 
-            to="/sudokuTips" 
+          <Link
+            to="/sudokuTips"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             Tips
           </Link>
-          <Link 
-            to="/faq" 
+          <Link
+            to="/faq"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             FAQ
           </Link>
-          <Link 
-            to="/about" 
+          <Link
+            to="/about"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             About
           </Link>
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             Contact
+          </Link>
+          <span className="header-nav-separator desktop-only-nav">-----------------</span>
+
+          <Link
+            to="/changeLog"
+            className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 
+            dark:text-gray-200 mt-auto"
+            onClick={onClose}
+          >
+            What's New?
           </Link>
         </nav>
 
