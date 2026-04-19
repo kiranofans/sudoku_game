@@ -20,7 +20,7 @@
 
     100% {
       transform: scale(1);
-      background-color: rgba(167, 243, 208, 0.3);
+      background-color: #E8F8FF;
     }
   }
 }

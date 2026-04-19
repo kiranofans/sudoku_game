@@ -9,10 +9,11 @@ export const useCompletedDomains = (
   const [fixedCells, setFixedCells] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    if (isLoading || isGameOver || board.length !== 9 || solution.length !== 9) return;
+    if (board.length !== 9 || solution.length !== 9) return;
 
-    let changed = false;
-    const newlyFixed = new Set(fixedCells);
+    // We start from a fresh set to ensure that if a row is cleared (Reset), 
+    // it properly loses its "fixed" status and animation.
+    const newlyFixed = new Set<string>();
 
     // check rows
     for (let r = 0; r < 9; r++) {
@@ -25,11 +26,7 @@ export const useCompletedDomains = (
       }
       if (rowComplete) {
         for (let c = 0; c < 9; c++) {
-          const key = `${r},${c}`;
-          if (!newlyFixed.has(key)) {
-            newlyFixed.add(key);
-            changed = true;
-          }
+          newlyFixed.add(`${r},${c}`);
         }
       }
     }
@@ -45,11 +42,7 @@ export const useCompletedDomains = (
       }
       if (colComplete) {
         for (let r = 0; r < 9; r++) {
-          const key = `${r},${c}`;
-          if (!newlyFixed.has(key)) {
-            newlyFixed.add(key);
-            changed = true;
-          }
+          newlyFixed.add(`${r},${c}`);
         }
       }
     }
@@ -69,21 +62,18 @@ export const useCompletedDomains = (
         if (boxComplete) {
           for (let r = boxR * 3; r < boxR * 3 + 3; r++) {
             for (let c = boxC * 3; c < boxC * 3 + 3; c++) {
-              const key = `${r},${c}`;
-              if (!newlyFixed.has(key)) {
-                newlyFixed.add(key);
-                changed = true;
-              }
+              newlyFixed.add(`${r},${c}`);
             }
           }
         }
       }
     }
 
-    if (changed) {
+    // Only update state if the set has actually changed to prevent render loops
+    if (newlyFixed.size !== fixedCells.size || [...newlyFixed].some(key => !fixedCells.has(key))) {
       setFixedCells(newlyFixed);
     }
-  }, [board, solution, isLoading, isGameOver]);
+  }, [board, solution, isLoading, isGameOver, fixedCells]);
 
   const resetFixedCells = () => setFixedCells(new Set());
 

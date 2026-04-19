@@ -301,6 +301,7 @@ function App() {
     setTimeout(() => {
       setBoard(initialBoard.map(row => [...row]));
       setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
+      resetFixedCells();
       setGameKey(prev => prev + 1);
       setMistakes(0);
       setIsGameOver(false);
