@@ -24,6 +24,7 @@ import { getLatestKnownIssues } from '@/components/SmallUiWidgets.tsx';
 import ChangeLog from './pages/ChangeLog.tsx';
 import About from './pages/About.tsx';
 import Contact from './pages/Contact.tsx';
+import { useCompletedDomains } from './hooks/useCompletedDomains.ts';
 
 type CellNotes = Set<number>;
 
@@ -57,6 +58,7 @@ function App() {
   const progressRef = useRef<HTMLDivElement>(null);
   const [gameKey, setGameKey] = useState(0);
   const timer = useTimer(gameKey, isGameOver);
+  const { fixedCells, resetFixedCells } = useCompletedDomains(board, solution, isLoading, isGameOver);
 
   /* loader */
   useEffect(() => {
@@ -147,6 +149,7 @@ function App() {
       setInitialBoard(puzzle.map(row => [...row]));
       setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
       setSelectedCell(null);
+      resetFixedCells();
       setGameKey(prev => prev + 1);
       setMistakes(0);
       resetScore();
@@ -203,7 +206,8 @@ function App() {
     deductMistakeScore,
     setMistakes,
     setCrossHighlight,
-    numberCounts
+    numberCounts,
+    fixedCells,
   });
 
 
@@ -212,6 +216,7 @@ function App() {
     const [row, col] = selectedCell;
 
     if (initialBoard[row][col] !== null) return;
+    if (fixedCells.has(`${row},${col}`)) return;
 
     const currentNum = board[row][col];
     // Increment count only if the number being erased is correct
@@ -227,7 +232,7 @@ function App() {
     newNotes[row][col] = new Set();
     setNotes(newNotes);
     setCrossHighlight({ row, col });
-  }, [selectedCell, isGameOver, initialBoard, board, notes, updateCountsAfterInput, solution]);
+  }, [selectedCell, isGameOver, initialBoard, board, notes, updateCountsAfterInput, solution, fixedCells]);
 
   // Keyboard control
   useEffect(() => {
@@ -433,6 +438,7 @@ function App() {
                   solution={solution}
                   crossHighlight={crossHighlight}
                   highlightedNumber={highlightedNumber}
+                  fixedCells={fixedCells}
                 />
               </div>
 

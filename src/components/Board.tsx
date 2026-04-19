@@ -9,12 +9,14 @@ interface BoardProps {
   solution: number[][];
   crossHighlight: { row: number | null; col: number | null };
   highlightedNumber: number | null;
+  fixedCells: Set<string>;
 }
 
 const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell, onCellClick,
   solution,
   crossHighlight,
-  highlightedNumber
+  highlightedNumber,
+  fixedCells
 }) => {
   const getCellClass = (row: number, col: number): string => {
     let classes = "cell";
@@ -73,6 +75,11 @@ const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell,
     // same-number highlight
     if (highlightedNumber !== null && cell === highlightedNumber) {
       classes += " number-highlight";
+    }
+
+    // Dynamic completion animation via Tailwind Custom Class
+    if (fixedCells.has(`${row},${col}`)) {
+      classes += " animate-complete-domain pointer-events-none";
     }
 
     return classes;
