@@ -15,6 +15,7 @@ import SudokuTips from './pages/SudokuTips.tsx';
 import Layout from './components/Layout';
 import { useTimer } from './hooks/useTimer.ts';
 import { useScore } from './hooks/useScore.ts';
+import { useNumberInput } from './hooks/useNumberInput.ts';
 import ScoreSystem from './components/ScoreSystem.tsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.tsx';
 import TermsAndConditions from './pages/TermsAndConditions.tsx';
@@ -177,71 +178,33 @@ function App() {
     });
   }, []);
 
-  const handleNumberInput = useCallback((num: number) => {
-    if (!selectedCell || isGameOver) return;
-    const [row, col] = selectedCell;
+  const checkBoardComplete = useCallback((currentBoard: (number | null)[][]) => {
+    return currentBoard.every((row, i) =>
+      row.every((cell, j) => cell !== null && cell === solution[i][j])
+    );
+  }, [solution]);
 
-    if (initialBoard[row][col] !== null) return;
-
-    if (isPencilMode) {
-      const newNotes = [...notes];
-      const cellNotes = new Set(newNotes[row][col]);
-
-      if (cellNotes.has(num)) {
-        cellNotes.delete(num);
-      } else {
-        cellNotes.add(num);
-      }
-
-      newNotes[row][col] = cellNotes;
-      setNotes(newNotes);
-    } else {
-      if (num !== null) {
-        const currentNum = board[row][col];
-        // Increment count only if the existing number is correct
-        if (currentNum !== null && currentNum === solution[row][col]) {
-          updateCountsAfterInput(currentNum, true);
-        }
-
-        if (solution[row][col] === num) {
-          const newBoard = board.map(row => [...row]);
-          newBoard[row][col] = num;
-          setBoard(newBoard);
-
-          const newNotes = [...notes];
-          newNotes[row][col] = new Set();
-          setNotes(newNotes);
-
-          updateCountsAfterInput(num, false);
-
-          // Add incremental points for correct move
-          addCorrectMoveScore();
-
-          if (checkBoardComplete(newBoard)) {
-            // Final score calculation with time used
-            calculateFinalWin(timer.timeLeft);
-            setIsGameOver(true);
-          }
-        } else {
-          const newBoard = board.map(row => [...row]);
-          newBoard[row][col] = num;
-          setBoard(newBoard);
-
-          // Subtract penalty for mistake
-          deductMistakeScore();
-
-          setMistakes(prev => {
-            const newMistakes = prev + 1;
-            if (newMistakes >= 10) {
-              setIsGameOver(true);
-            }
-            return newMistakes;
-          });
-        }
-      }
-    }
-    setCrossHighlight({ row, col });
-  }, [selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard, updateCountsAfterInput, addCorrectMoveScore, deductMistakeScore, calculateFinalWin, timer.timeLeft]);
+  const { handleNumberInput } = useNumberInput({
+    selectedCell,
+    isGameOver,
+    initialBoard,
+    isPencilMode,
+    notes,
+    setNotes,
+    board,
+    setBoard,
+    solution,
+    updateCountsAfterInput,
+    addCorrectMoveScore,
+    checkBoardComplete,
+    calculateFinalWin,
+    setIsGameOver,
+    timeLeft: timer.timeLeft,
+    deductMistakeScore,
+    setMistakes,
+    setCrossHighlight,
+    numberCounts
+  });
 
 
   const handleEraser = useCallback(() => {
@@ -349,11 +312,6 @@ function App() {
     setHintsRemaining(prev => prev + 1);
   };
 
-  const checkBoardComplete = (currentBoard: (number | null)[][]) => {
-    return currentBoard.every((row, i) =>
-      row.every((cell, j) => cell !== null && cell === solution[i][j])
-    );
-  };
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);

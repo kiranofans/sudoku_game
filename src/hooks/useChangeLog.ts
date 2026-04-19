@@ -10,8 +10,7 @@ export const changelog = [
         date: "2026-04-14",
         showKnownIssuesBox: true,
         knownIssues: [
-            "1. Advertising is currently disabled due to technical updates.",
-            "2. Scoring system miscalculates the score due to a previous timer bug."
+            "1. Advertising is currently disabled due to technical updates."
         ]
     }
 ];
