@@ -94,10 +94,11 @@ const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell,
             return (
               <div
                 key={colIndex}
-                className={
-                  getCellClass(rowIndex, colIndex)
-                }
+                className={getCellClass(rowIndex, colIndex)}
                 onClick={() => onCellClick(rowIndex, colIndex)}
+                style={fixedCells.has(`${rowIndex},${colIndex}`) ? { 
+                  animationDelay: `${(rowIndex + colIndex) * 0.03}s` 
+                } : {}}
               >
                 {cell !== null ? (
                   cell

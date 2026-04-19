@@ -2,25 +2,33 @@
 @custom-variant dark (&:is(.dark-theme *));
 
 @theme {
-  --animate-complete-domain: complete-domain 0.7s ease-out forwards;
+  /* Using a 'Quart' ease for a slick, decelerating finish */
+  --animate-complete-domain: complete-domain 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 
   @keyframes complete-domain {
     0% {
       transform: scale(1);
       background-color: var(--cell-highlight-bg);
+      color: inherit;
     }
 
-    50% {
-      transform: scale(1.08);
-      background-color: rgba(52, 211, 153, 0.4);
-      box-shadow: 0 0 12px rgba(52, 211, 153, 0.8);
-      z-index: 10;
-      border-color: rgba(52, 211, 153, 1);
+    40% {
+      /* Subtle scale-up with a soft glow */
+      transform: scale(1.04);
+      background-color: rgba(52, 211, 153, 0.15);
+      /* Changing text/icon color to a vibrant emerald */
+      color: #10b981;
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+      filter: brightness(1.1);
     }
 
     100% {
       transform: scale(1);
       background-color: #E8F8FF;
+      color: #0c4a6e;
+      /* Deep blue for the final 'locked' state */
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      filter: brightness(1);
     }
   }
 }
