@@ -34,10 +34,6 @@ const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
         console.error('FAILED...', err);
         alert('Failed to send email');
     };
-
-    //Attachment to existing form
-    // const formElement = document.getElementById('contact-form') as HTMLFormElement;
-    // formElement.addEventListener("submit", {sendEmail});
 }
 
 function Contact() {
@@ -46,16 +42,16 @@ function Contact() {
             <title>Contact | Sudoku</title>
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-6 dark:text-white">Contact</h1>
-                <p style={{ marginTop: '0.5rem', marginBottom: "0.5rem", fontSize: '1rem' }} className="text-gray-500 dark:text-gray-400">
+                <p style={{ marginTop: '0.5rem', marginBottom: "0.5rem", fontSize: '1rem' }} className="text-gray-500 dark:text-gray-400 text-center">
                     We value your input and strive to respond to all inquiries as quickly as possible.
                 </p>
                 <div style={{ textAlign: 'center', padding: '1.5rem 0', fontSize: '1.2rem', lineHeight: '1.6' }}
-                    className="dark:text-gray-200 w-2/3">
+                    className="dark:text-gray-200 w-full max-w-xl mx-auto px-4">
                     <form id="contact-form" onSubmit={sendEmail}>
-                        <div className='felex flex-col'>
+                        <div className='flex flex-col'>
                             <div className='flex flex-col text-left' style={{ marginBottom: '1.5rem' }}>
                                 <label htmlFor="email" style={{ marginBottom: '0.5rem' }}><h3>Your Email Address: </h3></label>
-                                <input className='border-gray-400 dark:bg-gray-800 dark:text-gray-300 
+                                <input className='border-gray-400 md:w-full dark:bg-gray-800 dark:text-gray-300 
                                     dark:border-gray-600 border-2 rounded-md p-2 h-10'
                                     type="email"
                                     id="email"
