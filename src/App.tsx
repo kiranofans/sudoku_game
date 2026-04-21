@@ -58,7 +58,9 @@ function App() {
   const progressRef = useRef<HTMLDivElement>(null);
   const [gameKey, setGameKey] = useState(0);
   const timer = useTimer(gameKey, isGameOver);
-  const { fixedCells, resetFixedCells } = useCompletedDomains(board, solution, isLoading, isGameOver);
+  const { fixedCells, newAnimations, resetFixedCells,
+    clearAnimations } = useCompletedDomains(board, solution,
+      isLoading, isGameOver);
 
   /* loader */
   useEffect(() => {
@@ -84,6 +86,38 @@ function App() {
       }
     }
   }, [isLoading]);
+
+  /* Listen for new completed domains and play animations */
+  useEffect(() => {
+    if (newAnimations.length > 0) {
+      newAnimations.forEach(anim => {
+        // 1. Animate the single cell that triggered the completion
+        if (anim.triggerCell) {
+          // Assuming your cells have a data attribute like: data-cell="0,0" in Board.tsx
+          const triggerEl = document.querySelector(`[data-cell="${anim.triggerCell}"]`);
+          if (triggerEl) {
+            triggerEl.classList.add('animate-trigger-pulse'); // Add your CSS animation class here
+            setTimeout(() => triggerEl.classList.remove('animate-trigger-pulse'), 800);
+          }
+        }
+
+        // 2. Animate the whole completed row/col/box
+        anim.cells.forEach((cellKey, index) => {
+          const cellEl = document.querySelector(`[data-cell="${cellKey}"]`);
+          if (cellEl) {
+            // Optional: add a slight delay based on index for a "wave" effect
+            setTimeout(() => {
+              cellEl.classList.add('animate-domain-glow'); // Add your CSS animation class here
+              setTimeout(() => cellEl.classList.remove('animate-domain-glow'), 1000);
+            }, index * 50);
+          }
+        });
+      });
+
+      // Clear the animations array so it doesn't re-fire
+      clearAnimations();
+    }
+  }, [newAnimations, clearAnimations]);
 
   /** Responseive Ui resize **/
   useEffect(() => {
@@ -318,7 +352,6 @@ function App() {
     setHintsRemaining(prev => prev + 1);
   };
 
-
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -376,7 +409,7 @@ function App() {
               onClose={() => setShowAdModal(false)}
               onAdComplete={handleEarnHint}
             />
-            <div className="game-container">
+            <div className="game-container h-auto [contain:none] [will-change:auto]">
               <div className="board-section">
                 <div className="game-info">
                   <div>

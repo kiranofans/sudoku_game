@@ -49,11 +49,13 @@ export const useNumberInput = ({
 }: UseNumberInputProps) => {
     const handleNumberInput = useCallback((num: number) => {
         if (!selectedCell || isGameOver) return;
+        // const [r, c] = selectedCell;
         if (numberCounts[num] <= 0) return;
 
         const [row, col] = selectedCell;
         const key = `${row},${col}`;
 
+        // BLOCK modification if fixed, but don't block selection
         if (fixedCells.has(key)) return;
 
         if (initialBoard[row][col] !== null) return;

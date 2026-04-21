@@ -559,10 +559,26 @@ body {
 }
 
 /* Selected cells */
-.cell.selected {
+.cell.selected:not(.cell-fixed) {
   background-color: var(--cell-selected-bg) !important;
   box-shadow: 0 0 0 2px #1E90FF inset;
   z-index: 2;
+}
+
+/* cell fixed selection style; to distinguish from normal selected cell*/
+.cell-fixed.selected {
+  /* This is where you fix your missing box-shadow/UI issue */
+  background-color: #bfdbfe !important;
+  /* Different shade to distinguish */
+
+  /* We use OUTLINE instead of box-shadow because fixed cells 
+     often have animations/backgrounds that "eat" box-shadows */
+  outline: 2px solid #1E90FF !important;
+  outline-offset: -3px;
+
+  /* High z-index is crucial so the selection "pops" over the domain animation */
+  z-index: 50 !important;
+  position: relative !important;
 }
 
 /* Conflict cells */
@@ -1041,10 +1057,6 @@ body {
   height: 1.1em;
 }
 
-
-
-
-
 .hint-icon {
   width: 24px;
   height: 24px;
@@ -1179,7 +1191,58 @@ body {
   display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px) and (orientation: portrait) {
+
+  /* 1. The Wrapper becomes a strict flex container */
+  .wrapper {
+    height: 100dvh;
+    /* Use dynamic VH to prevent mobile browser bar jumps */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Keeps the header at the top */
+    align-items: center;
+    overflow: hidden;
+    /* Prevents the "bounce" scroll on many phones */
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 2. Create a spacer for the fixed header */
+  .sudoku-app {
+    flex: 1;
+    /* This is the magic: it tells the game to take up ALL remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* This centers the game vertically in that remaining space */
+    align-items: center;
+    width: 100%;
+
+    /* Remove your old hardcoded padding-top */
+    padding-top: 0 !important;
+
+    /* Offset the height of your fixed menu bar so the game doesn't overlap it */
+    margin-top: var(--header-inner-height, 60px);
+
+    /* Handle the iPhone Notch / Safe Area */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* 3. Ensure the game container doesn't overflow */
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    /* Tighten the gap for small screens */
+    width: 100%;
+    max-height: 100%;
+    /* Prevents it from pushing off screen */
+  }
+
   .desktop-only-nav {
     display: none !important;
   }
@@ -1275,6 +1338,8 @@ button {
 /* Mobile responsive adjustments for number pad */
 @media (max-width: 768px) {
   :root {
+    background-color: #fff;
+
     --vh: 100%;
     --header-inner-height: 56px;
     --score-color: #2980b9;
@@ -1284,7 +1349,24 @@ button {
   }
 
   .sudoku-app {
+    /* This forces the browser to keep all children in the same stacking context */
+    contain: layout style;
+    isolation: isolate;
+    /* CRITICAL: Force the board to be 'flat' so it can't float above the footer */
+    -webkit-transform: none !important;
+    transform: none !important;
+    flex: 1;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    /* Required for smooth iOS scroll */
     padding-top: 3.5rem;
+    position: relative;
+    /* 4. Ensure it fills the space correctly between header/footer */
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    /* Keep the game low */
+    margin-top: calc(var(--header-height, 60px) + env(safe-area-inset-top, 20px));
   }
 
   /* Sudoku game top margin */
@@ -1301,6 +1383,18 @@ button {
 
   html,
   body {
+
+    /* This forces the browser to treat this section as standard flow */
+    content-visibility: visible;
+    /* This prevents the 'overlay' from being created as a separate paint task */
+    contain: none;
+
+    /* This prevents the 'blending' mode from activating */
+    isolation: isolate;
+
+    /* Force the body into the same 3D space as the board */
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
     height: 100%;
 
     overflow-x: hidden;
@@ -1310,8 +1404,33 @@ button {
     /* prevent touch scroll on mobile */
   }
 
+  /* This works on any device with a notch, not just iPhone */
+  .menu-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    padding-top: env(safe-area-inset-top, 20px);
+    /* Force it to stay on top layer */
+    transform: translateZ(1000px);
+  }
+
   /* Stack board and control panel vertically */
   .game-container {
+    /* This tells Safari: "Do not create a separate GPU layer for me" */
+    will-change: auto !important;
+    transform: none !important;
+    /* This forces the layer to be 'flat' against the background */
+    isolation: auto !important;
+    /* This prevents the GPU from 'holding' a background color for this layer */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* This prevents Safari from 'caching' the area as an image */
+    -webkit-perspective: 1000;
+    perspective: 1000;
+
+    /* Force it to use the parent's pixels instead of its own */
+    background: none !important;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -1328,9 +1447,37 @@ button {
   }
 
   .wrapper {
-
+    /* 1. Ensure the height is restricted so scrolling can trigger */
+    height: 100dvh;
+    isolation: isolate;
+    /* This is the wall that stops the ghosting */
+    /* 2. Standard scrolling */
     overflow-y: auto;
-    width: 100%;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+
+    /* 3. CRITICAL iOS property */
+    -webkit-overflow-scrolling: touch;
+
+    /* 4. Stop the 'pull-to-refresh' or 'bounce' from breaking the UI */
+    overscroll-behavior-y: contain;
+
+    /* 5. Force the container to actually scroll */
+    display: block;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    /* Force a new stacking context that isn't transparent */
+    isolation: isolate;
+
+    /* One last Safari hack: force the background to be 'opaque' to the compositor */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    /* The Standard version */
   }
 
   .game-title {
@@ -1420,7 +1567,6 @@ button {
     max-height: 700px;
     margin-bottom: 0.2rem auto;
   }
-
 
 
   /* Number pad: 1 row layout */
@@ -1617,6 +1763,10 @@ button {
     border-right: 2px solid #333;
   }
 
+  .footer {
+    position: fixed;
+    z-index: 9999;
+  }
 
 }
 
@@ -1717,8 +1867,13 @@ button {
 
 /* Drawer Animations */
 @keyframes slide-in-left {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 .animate-in.slide-in-from-left {

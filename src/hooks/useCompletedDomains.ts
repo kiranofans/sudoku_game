@@ -1,4 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+export type AnimationEvent = {
+  type: 'row' | 'col' | 'box';
+  index: number;
+  triggerCell: string | null;
+  cells: string[];
+};
 
 export const useCompletedDomains = (
   board: (number | null)[][],
@@ -7,75 +14,120 @@ export const useCompletedDomains = (
   isGameOver: boolean
 ) => {
   const [fixedCells, setFixedCells] = useState<Set<string>>(new Set());
+  const [newAnimations, setNewAnimations] = useState<AnimationEvent[]>([]);
+
+  const prevCompletedDomains = useRef({
+    rows: new Set<number>(),
+    cols: new Set<number>(),
+    boxes: new Set<number>()
+  });
+  const prevBoard = useRef<(number | null)[][]>([]);
 
   useEffect(() => {
-    if (board.length !== 9 || solution.length !== 9) return;
+    if (board.length !== 9 || solution.length !== 9 || isLoading || isGameOver) return;
 
-    // We start from a fresh set to ensure that if a row is cleared (Reset), 
-    // it properly loses its "fixed" status and animation.
+    let modifiedCell: string | null = null;
+    if (prevBoard.current.length === 9) {
+      for (let r = 0; r < 9; r++) {
+        for (let c = 0; c < 9; c++) {
+          if (board[r][c] !== prevBoard.current[r][c] && board[r][c] !== null) {
+            modifiedCell = `${r},${c}`;
+          }
+        }
+      }
+    }
+
     const newlyFixed = new Set<string>();
+    const currentCompleted = {
+      rows: new Set<number>(),
+      cols: new Set<number>(),
+      boxes: new Set<number>()
+    };
+    const animationsToTrigger: AnimationEvent[] = [];
 
-    // check rows
+    // Check Rows
     for (let r = 0; r < 9; r++) {
       let rowComplete = true;
+      const cellsInRow: string[] = [];
       for (let c = 0; c < 9; c++) {
-        if (board[r]?.[c] === null || board[r]?.[c] !== solution[r]?.[c]) {
+        cellsInRow.push(`${r},${c}`);
+        if (board[r][c] === null || board[r][c] !== solution[r][c]) {
           rowComplete = false;
-          break;
         }
       }
       if (rowComplete) {
-        for (let c = 0; c < 9; c++) {
-          newlyFixed.add(`${r},${c}`);
+        currentCompleted.rows.add(r);
+        cellsInRow.forEach(cell => newlyFixed.add(cell));
+        if (!prevCompletedDomains.current.rows.has(r)) {
+          animationsToTrigger.push({ type: 'row', index: r, triggerCell: modifiedCell, cells: cellsInRow });
         }
       }
     }
 
-    // check cols
+    // Check Cols
     for (let c = 0; c < 9; c++) {
       let colComplete = true;
+      const cellsInCol: string[] = [];
       for (let r = 0; r < 9; r++) {
-        if (board[r]?.[c] === null || board[r]?.[c] !== solution[r]?.[c]) {
+        cellsInCol.push(`${r},${c}`);
+        if (board[r][c] === null || board[r][c] !== solution[r][c]) {
           colComplete = false;
-          break;
         }
       }
       if (colComplete) {
-        for (let r = 0; r < 9; r++) {
-          newlyFixed.add(`${r},${c}`);
+        currentCompleted.cols.add(c);
+        cellsInCol.forEach(cell => newlyFixed.add(cell));
+        if (!prevCompletedDomains.current.cols.has(c)) {
+          animationsToTrigger.push({ type: 'col', index: c, triggerCell: modifiedCell, cells: cellsInCol });
         }
       }
     }
 
-    // check 3x3 boxes
+    // Check Boxes
     for (let boxR = 0; boxR < 3; boxR++) {
       for (let boxC = 0; boxC < 3; boxC++) {
         let boxComplete = true;
+        const cellsInBox: string[] = [];
+        const boxIndex = boxR * 3 + boxC;
+
         for (let r = boxR * 3; r < boxR * 3 + 3; r++) {
           for (let c = boxC * 3; c < boxC * 3 + 3; c++) {
-            if (board[r]?.[c] === null || board[r]?.[c] !== solution[r]?.[c]) {
+            cellsInBox.push(`${r},${c}`);
+            if (board[r][c] === null || board[r][c] !== solution[r][c]) {
               boxComplete = false;
-              break;
             }
           }
         }
         if (boxComplete) {
-          for (let r = boxR * 3; r < boxR * 3 + 3; r++) {
-            for (let c = boxC * 3; c < boxC * 3 + 3; c++) {
-              newlyFixed.add(`${r},${c}`);
-            }
+          currentCompleted.boxes.add(boxIndex);
+          cellsInBox.forEach(cell => newlyFixed.add(cell));
+          if (!prevCompletedDomains.current.boxes.has(boxIndex)) {
+            animationsToTrigger.push({ type: 'box', index: boxIndex, triggerCell: modifiedCell, cells: cellsInBox });
           }
         }
       }
     }
 
-    // Only update state if the set has actually changed to prevent render loops
+    prevCompletedDomains.current = currentCompleted;
+    prevBoard.current = board.map(row => [...row]);
+
+    if (animationsToTrigger.length > 0) {
+      setNewAnimations(animationsToTrigger);
+    }
+
     if (newlyFixed.size !== fixedCells.size || [...newlyFixed].some(key => !fixedCells.has(key))) {
       setFixedCells(newlyFixed);
     }
   }, [board, solution, isLoading, isGameOver, fixedCells]);
 
-  const resetFixedCells = () => setFixedCells(new Set());
+  const resetFixedCells = () => {
+    setFixedCells(new Set());
+    setNewAnimations([]);
+    prevCompletedDomains.current = { rows: new Set(), cols: new Set(), boxes: new Set() };
+    prevBoard.current = [];
+  };
 
-  return { fixedCells, resetFixedCells };
+  const clearAnimations = () => setNewAnimations([]);
+
+  return { fixedCells, newAnimations, resetFixedCells, clearAnimations };
 };

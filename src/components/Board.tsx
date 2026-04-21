@@ -79,7 +79,7 @@ const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell,
 
     // Dynamic completion animation via Tailwind Custom Class
     if (fixedCells.has(`${row},${col}`)) {
-      classes += " animate-complete-domain pointer-events-none";
+      classes += " animate-complete-domain cell-fixed";
     }
 
     return classes;
@@ -90,14 +90,22 @@ const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell,
       {board.map((row, rowIndex) => (
         <div key={rowIndex} className="board-row">
           {row.map((cell, colIndex) => {
+            // Inside your cell render loop
+            const cellKey = `${rowIndex},${colIndex}`;
+            const isFixed = fixedCells.has(cellKey);
+            const isSelected = selectedCell?.[0] === rowIndex && selectedCell?.[1] === colIndex;
 
             return (
               <div
-                key={colIndex}
-                className={getCellClass(rowIndex, colIndex)}
+                key={cellKey}
+                // data-cell={cell}
+                className={`sudoku-cell 
+    ${isFixed ? 'cell-fixed' : ''} 
+    ${isSelected ? 'selected' : ''}
+    ${getCellClass(rowIndex, colIndex)}`}
                 onClick={() => onCellClick(rowIndex, colIndex)}
-                style={fixedCells.has(`${rowIndex},${colIndex}`) ? { 
-                  animationDelay: `${(rowIndex + colIndex) * 0.03}s` 
+                style={fixedCells.has(`${rowIndex},${colIndex}`) ? {
+                  animationDelay: `${(rowIndex + colIndex) * 0.03}s`
                 } : {}}
               >
                 {cell !== null ? (
