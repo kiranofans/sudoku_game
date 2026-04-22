@@ -39,24 +39,38 @@ export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void 
             <div>
                 <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-2 border-b border-gray-200 dark:border-gray-700 pb-1">Quick Sudoku Guide</h4>
                 <ol className="list-decimal pl-5 space-y-1">
-                    <li><span className='font-bold'>Selecting a Cell: </span> Click any square to select it. The game will <b>highlight</b> the row, column, and 3x3 box to help you see where numbers are missing.</li>
-                    <li><b>Match Tracking:</b> Click on any existing number to instantly highlight all matching digits across the board.</li>
-                    <li><span className='font-bold'>Placing a Number: </span>Once a cell is selected, type a number from 1 to 9 using your physical keyboard, or click the corresponding digit on the on-screen number pad to lock in your answer.</li>
+                    <li><b>Selecting a Cell: </b> Click/tap any cell to select it. The game will <b className="text-gray-900 dark:text-gray-100">highlight</b> the row, column, and 3x3 box to help you see where numbers are missing.</li>
+                    <li><b>Match Tracking:</b> Click/tap on any existing number, including completed/fixed numbers/cells, to instantly highlight all matching digits across the board.</li>
+                    <li><b>Placing a Number: </b>Once an empty cell is selected, type a number from 1 to 9 using the physical keyboard, buttons on mobile devies, or click the corresponding digit on the on-screen number pad to lock in the answer.
+                        You can also placing another number on wrongly inputted number(s).
+                        <p>Be aware that if a <b className="text-gray-900 dark:text-gray-100">domain</b> (row, col, or 3x3 box) was completed, it won't be able to place a number but to select.</p>
+                    </li>
                     <li><b className=""> Using Pencil Mode:</b> Click/tap on <b className="text-gray-900 dark:text-gray-100">Pencil Mode</b> action button to make notes for possible numbers inside a single cell if you are not sure yet.</li>
+                    <li><b>Using the Eraser: </b>
+                        If wrong number(s) inputted, click/tap on <b className="text-gray-900 dark:text-gray-100">Eraser</b> to delete.
+                        <p>And if you used <b className="text-gray-900 dark:text-gray-100">Pencil</b> to take notes in one cell, you can also use <b>Eraser</b> to delete those notes.</p>
+                        if a domain was completed, the eraser will not work on those cells.
+                    </li>
                     <li>
-                        <b>Need Hints?</b> You can use up to 3 hints per game to get the correct number for a tricky cell.
-                        <br />Out of hints? You can earn extra ones by watching a quick <b>ad</b>.
+                        <b>Using the Reset Button: </b>
+                        By clicking/tapping on the <b className="text-gray-900 dark:text-gray-100">Reset Button</b>, the system will reset the entire board/game, including the <b className="text-gray-900 dark:text-gray-100">Pencil</b> notes and <b className="text-gray-900 dark:text-gray-100">Hints</b> used.
+                    </li>
+                    <li>
+                        <b>Need Hints?</b> You can use up to <b className='text-[1rem] text-gray-900 dark:text-gray-100'>3</b> hints per game to get the correct number for a tricky cell.
+                        The hints will replace your wrong inputs and/or the <b>Pencil</b> notes.
+                        <br />Out of hints? You can earn extra ones by watching a quick <b className="text-gray-900 dark:text-gray-100">ad</b>.
                     </li>
                     <li><b>Winning and Losing: </b>
                         The game is won when all the empty cells are filled and no red number shows.
-                        <br />Be careful—the game ends early if you make <b>10</b> mistakes.</li>
+                        <br />Be careful—the game ends early if you make <b className='text-[1rem] text-gray-900 dark:text-gray-100'>10</b> mistakes.</li>
                 </ol>
             </div>
 
             <div>
                 <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-1 border-b border-gray-200 dark:border-gray-700 pb-1">About the Number Pad</h4>
-                <p>The large <b>blue buttons</b> are for input.</p>
+                <p>The <b className="text-gray-900 dark:text-gray-100">blue buttons</b> are for input.</p>
                 <p className="mt-1">Each button also shows the <b className="text-gray-900 dark:text-gray-100">remaining count</b> of that number in the bottom-right corner, or below each number on the portrait mobile screens.</p>
+                <p>If a domain was completed, the number pad will not work on those cells.</p>
             </div>
 
             <div>
@@ -65,13 +79,15 @@ export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void 
                 <ol className="list-decimal pl-5 space-y-1">
                     <li>Initially, the score shows <b className="text-gray-900 dark:text-gray-100">- - - -</b> until you input a number.</li>
                     <li>Earn <b className="text-gray-900 dark:text-gray-100">Bonus Points</b> for every correct number placed.</li>
-                    <li>Higher difficulty levels provide a much larger <b className="text-gray-900 dark:text-gray-100">Score Multiplier</b>.</li>
+                    <li>Higher <b className="text-gray-900 dark:text-gray-100">difficulty levels</b> provide a much larger <b className="text-gray-900 dark:text-gray-100">Score Multiplier</b>.</li>
                     <li>Making a <b className="text-gray-900 dark:text-gray-100">Mistake</b> or taking too much <b className="text-gray-900 dark:text-gray-100">Time</b> will reduce your score.</li>
                     <li>After <b className="text-gray-900 dark:text-gray-100">10 Mistakes</b> the game will end.</li>
                 </ol>
             </div>
             <div className="pt-2 text-center" style={{ fontSize: "0.8rem" }}>
-                <span className='font-bold text-gray-700 dark:text-gray-400'> For more professional skill development, visit the <Link to="/sudokuTips">Tips</Link> page, or <a href="https://www.sudokuwiki.org/" target="_blank" rel="noopener noreferrer">Sudoku Wiki</a> for more detailed techniques.</span>
+                <span className='font-bold text-gray-700 dark:text-gray-400'> For more professional & detailed skill development, visit the <Link to="/sudokuTips">Tips</Link> page, or
+                    <a href="https://www.sudokuwiki.org/" target="_blank" rel="noopener noreferrer"> Sudoku Wiki</a>.
+                    <p>The instruction is subject to change.</p></span>
             </div>
         </div >
 
