@@ -22,6 +22,34 @@ function ChangeLog({ }) {
                     items={issues} />
                 <Timeline>
                     <ChangelogEntry
+                        date="2026-04-21"
+                        version="1.0.0"
+                        title="Bug Fixes"
+                        items={[
+                            <>Found and fixed the bug that the score is not reset while reseting the current game</>,
+                            <>
+                                Try to fix the UI bug on iPhone old and new models, especially with known issues box.
+                            </>
+                        ]}
+                    />
+                    <ChangelogEntry
+                        date="2026-04-20"
+                        version="1.0.0"
+                        title="Improvements & Features"
+                        items={[
+                            <>
+                                <b>Juicy UI / Success Feedback: </b><br />
+                                Added a Validation Ripple Effect animations at completetion of a domain.
+                            </>,
+                            <><b>Validated Domain Anchoring & Interactive Immutability: </b><br />
+
+                                Once completed, the values are "anchored" (fixed) so the player can't accidentally
+                                break what they’ve already solved, but the cell isn't "dead" or "disabled." It still participates in
+                                the Cross-Highlighting or Selection State so the player can use it as a reference for the rest of the board.</>
+
+                        ]}
+                    />
+                    <ChangelogEntry
                         date="2026-04-16"
                         version="1.0.0"
                         title="Improvements & Bug Fixes"
@@ -76,7 +104,7 @@ function ChangeLog({ }) {
                             <>Added <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips</Link> and <Link to="/sudokuTips" className="underline hover:text-blue-500">FAQ</Link> pages to help players learn Sudoku more easily and improve their skills over time. The FAQ explains the basics, while the Tips section shares useful strategies to help players solve puzzles more confidently.                        </>
                         ]}
                     />
-                </Timeline>
+                </Timeline >
             </main>
         </Layout>
     </>);

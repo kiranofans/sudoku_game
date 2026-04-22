@@ -56,7 +56,7 @@ function faq() {
     return (
         <Layout>
             <title>FAQ | Sudoku</title>
-            <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
+            <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">
                     FAQ
                 </h1>

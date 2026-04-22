@@ -4,8 +4,8 @@ function About({ }) {
     return (
         <Layout>
             <title>About | Sudoku</title>
-            <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', margin: '0 auto', flex: '1 0 auto' }}>
-                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">About this Site</h1>
+            <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
+                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white md:mt-10">About this Site</h1>
                 <div className="text-left space-y-6 text-lg leading-relaxed max-w-3xl mx-auto">
                     <p>
                         sudokuplays.com is a simple, fast, and distraction-free place to enjoy Sudoku anytime.
