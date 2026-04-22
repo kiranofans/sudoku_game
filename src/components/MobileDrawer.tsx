@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 interface MobileDrawerProps {
@@ -71,12 +71,11 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
           >
             Contact
           </Link>
-          <span className="header-nav-separator desktop-only-nav">-----------------</span>
 
           <Link
             to="/changeLog"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 
-            dark:text-gray-200 mt-auto"
+            dark:text-gray-200"
             onClick={onClose}
           >
             What's New?

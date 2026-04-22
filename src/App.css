@@ -81,6 +81,7 @@
   margin-bottom: 0;
   color: var(--text-color);
   box-sizing: border-box;
+  min-height: 100dvh;
 }
 
 /* Base styles & content */
@@ -93,7 +94,7 @@
   /* vertically center children */
   text-align: center;
   font-family: Arial, sans-serif;
-  padding-top: 5rem;
+  padding-top: 6.2rem;
   padding-bottom: 1rem;
   max-width: 100%;
   box-sizing: border-box;
@@ -107,6 +108,12 @@ body {
   overflow: hidden;
   /* prevents scrolling */
   font-family: sans-serif;
+  /* Prevent iOS from auto-zooming text when rotating to landscape */
+  -webkit-text-size-adjust: 100%;
+  /* Removes the gray highlight box when tapping buttons */
+  -webkit-tap-highlight-color: transparent;
+  height: -webkit-fill-available;
+
 }
 
 /* Instruction popup modal */
@@ -1191,6 +1198,8 @@ body {
   display: none;
 }
 
+/* */
+
 @media (max-width: 767px) and (orientation: portrait) {
 
   /* 1. The Wrapper becomes a strict flex container */
@@ -1228,6 +1237,7 @@ body {
     /* Handle the iPhone Notch / Safe Area */
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
+
   }
 
   /* 3. Ensure the game container doesn't overflow */
@@ -1353,18 +1363,18 @@ button {
     contain: layout style;
     isolation: isolate;
     /* CRITICAL: Force the board to be 'flat' so it can't float above the footer */
-    -webkit-transform: none !important;
-    transform: none !important;
+    /* -webkit-transform: none !important; */
+    /* transform: none !important; */
     flex: 1;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
+    /* overflow-y: auto !important; */
+    /* -webkit-overflow-scrolling: touch; */
     /* Required for smooth iOS scroll */
     padding-top: 3.5rem;
     position: relative;
     /* 4. Ensure it fills the space correctly between header/footer */
     display: flex;
     flex-direction: column;
-    z-index: 1;
+    /* z-index: 1; */
     /* Keep the game low */
     margin-top: calc(var(--header-height, 60px) + env(safe-area-inset-top, 20px));
   }
@@ -1393,7 +1403,7 @@ button {
     isolation: isolate;
 
     /* Force the body into the same 3D space as the board */
-    transform: translate3d(0, 0, 0);
+    /* transform: translate3d(0, 0, 0); */
     -webkit-transform: translate3d(0, 0, 0);
     height: 100%;
 
@@ -1409,10 +1419,10 @@ button {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 9999;
     padding-top: env(safe-area-inset-top, 20px);
     /* Force it to stay on top layer */
-    transform: translateZ(1000px);
+    /* transform: translateZ(1000px); */
   }
 
   /* Stack board and control panel vertically */
@@ -1892,6 +1902,13 @@ button {
   @media only screen and (min-device-width:320px) and (max-device-width:1024px) and (-webkit-min-device-pixel-ratio: 2) {
     .sudoku-app {
       min-height: 100dvh;
+      -webkit-transform: none !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .game-only-issues {
+      margin-top: 35rem !important;
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     .wrapper {
@@ -1910,11 +1927,18 @@ button {
       /* Adds padding equal to the safe area inset */
       width: 100%;
       height: 100%;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
     }
 
     body {
       min-height: -webkit-fill-available;
-      overflow: auto;
+      overflow-y: auto;
+    }
+
+    body.drawer-open {
+      position: fixed;
+      width: 100%;
     }
 
     .sudoku-app {
@@ -1942,6 +1966,12 @@ button {
       max-lines: 1;
       border-radius: 50px;
       height: 30px;
+    }
+
+    .site-footer {
+      position: fixed;
+      z-index: 9999;
+      padding-top: 0;
     }
   }
 

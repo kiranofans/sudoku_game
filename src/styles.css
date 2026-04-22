@@ -17,7 +17,8 @@
       transform: scale(1.04);
       background-color: rgba(52, 211, 153, 0.15);
       /* Changing text/icon color to a vibrant emerald */
-      color: #10b981;
+      color: rgba(180, 140, 0, 1);
+      /*#10b981*/
       box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
       filter: brightness(1.1);
     }
@@ -99,8 +100,6 @@
   --cell-correct-text: #bbbbbb;
   --cell-wrong-text: #ff6b6b;
   --cell-note-text: #999999;
-
-  --score-bg: #2d2d2d;
   --score-label: #a0a0a0;
   --score-value: #ffffff;
 

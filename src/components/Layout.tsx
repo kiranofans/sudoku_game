@@ -35,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
               onClick={handleLogoClick}
               aria-label="Toggle menu on mobile or go to homepage"
             >
-              <img src="/images/png/logo_sudoku1.png" alt="Logo" className="logo transition-transform active:scale-95" />
+              <img src="/images/png/logo_sudoku1.png" alt="Logo" className="logo transition-transform active:scale-10" />
             </Link>
           </div>
 
@@ -65,7 +65,8 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
 
       {children}
 
-      <footer className="site-footer mt-auto">
+      <footer className="site-footer z-[100] bg-white border-t border-gray-200 
+       [transform:translateZ(0)]">
         <div className="footer-copyright">
           <span>&copy; {currentYear} sudokuplays.com v{packageJson.version} | All rights reserved.</span>
         </div>
