@@ -342,6 +342,7 @@ function App() {
       setCrossHighlight({ row: null, col: null });
       updateNumberCounts(initialBoard, solution);
       setIsLoading(false);
+      resetScore();
     }, 300);
   }, [initialBoard, solution, updateNumberCounts]);
 
