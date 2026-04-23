@@ -22,12 +22,22 @@ function ChangeLog({ }) {
                     items={issues} />
                 <Timeline>
                     <ChangelogEntry
+                        date="2026-04-22"
+                        version="1.0.0"
+                        title="Improvements & Features"
+                        items={[
+                            <>Updated <a href="https://sudokuplays.com/ChangeLog">What's New?</a> page</>,
+                            <>Updated the Terms & Conditions.</>,
+                            <>Changed the color of timer controll button for dark theme.</>,
+                            <>Updated instructions modal for better understanding of the game.</>,
+                        ]}
+                    />
+                    <ChangelogEntry
                         date="2026-04-21"
                         version="1.0.0"
                         title="Improvements &Bug Fixes"
                         items={[
-                            <>Disabled & prevented landscape rotation for iPhones (not iPads).</>,
-                            <>Updated how-to instructions modal for better understanding of the game.</>,
+                            <>Disabled landscape rotation on iPhones (iPads unaffected).</>,
                             <>Improved UI compatibility for newer iPhones in portrait mode.</>,
                             <>Found and fixed the bug that the score is not reset while reseting the current game.</>,
                             <>

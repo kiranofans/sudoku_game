@@ -7,11 +7,6 @@ function TermsAndConditions() {
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Terms & Condtions</h1>
                 <div className="terms-conditions-content" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>
-                    <div style={{ marginBottom: '1.5rem', padding: '10px', background: '#f0f7ff', borderRadius: '6px', border: '1px solid #cce5ff' }}>
-                        <p style={{ margin: 0, fontWeight: 'bold', color: '#004085' }}>
-                            View online: <a href="https://www.freeprivacypolicy.com/live/3e213669-5074-4c1b-acfc-1b8d5287faad" target="_blank" rel="noopener noreferrer" style={{ color: '#0056b3' }}>Terms and Conditions Link</a>
-                        </p>
-                    </div>
 
                     <p><strong>Last updated: March 13, 2026</strong></p>
                     <p>Please read these terms and conditions carefully before using Our Service.</p>
@@ -30,7 +25,7 @@ function TermsAndConditions() {
                         <li style={{ marginBottom: '10px' }}><strong>Service</strong> refers to the Website.</li>
                         <li style={{ marginBottom: '10px' }}><strong>Terms and Conditions</strong> (also referred to as "Terms") means these Terms and Conditions, including any documents expressly incorporated by reference, which govern Your access to and use of the Service and form the entire agreement between You and the Company regarding the Service. These Terms and Conditions have been created with the help of the <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank" rel="noopener noreferrer">TermsFeed Terms and Conditions Generator</a>.</li>
                         <li style={{ marginBottom: '10px' }}><strong>Third-Party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third party that is displayed, included, made available, or linked to through the Service.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Website</strong> refers to Sudoku, accessible from <a href="https://sudokuplays.com.com" target="_blank" rel="noopener noreferrer">sudokuplays.com.com</a></li>
+                        <li style={{ marginBottom: '10px' }}><strong>Website</strong> refers to Sudoku, accessible from <a href="https://sudokuplays.com" target="_blank" rel="noopener noreferrer">sudokuplays.com</a></li>
                         <li style={{ marginBottom: '10px' }}><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
                     </ul>
 
@@ -39,7 +34,27 @@ function TermsAndConditions() {
                     <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.</p>
                     <p>By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
                     <p>You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.</p>
-                    <p>Your access to and use of the Service is also subject to Our Privacy Policy, which describes how We collect, use, and disclose personal information. Please read Our Privacy Policy carefully before using Our Service.</p>
+                    <p>Your access to and use of the Service is also subject to Our <a href="https://sudokuplays.com/privacyPolicy">Privacy Policy</a>,
+                        which describes how We collect, use, and disclose personal information.
+                        Please read Our Privacy Policy carefully before using Our Service.</p>
+                    <p>Your access to and use of the Service is also governed by our <a href="https://sudokuplays.com/privacyPolicy">Privacy Policy</a>. By using the Service, you acknowledge the use of <b>Web LocalStorage</b> as a functional necessity to maintain game states and verify advertisement delivery. In accordance with <b>Quebec’s Law 25</b>, our Service is configured with the highest privacy settings by default.</p>
+
+                    <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>
+                        Third-Party Advertising and LocalStorage
+                    </h3>
+                    <h3 className='font-bold text-[0.85rem]'>Advertising Disclosure</h3>
+                    <p>To provide this Service for free, we use third-party advertising partners, including <b>Google AdSense</b>.
+                        These partners may use cookies or web beacons to serve ads based on your prior visits to this or other websites.
+                        You may opt out of personalized advertising by visiting Google’s Ad Settings or via your browser's "Global Privacy Control" (GPC) signal.</p>
+                    <h3 className="font-bold text-[0.85rem] mt-2">LocalStorage Usage</h3>
+                    <p>This Service utilizes<b> Web LocalStorage</b> (data stored locally on your Devic e) to: </p>
+                    <ul className='list-disc ml-5 space-y-1'>
+                        <li>Save your game progerss and high scores.</li>
+                        <li>Maintain a 24-hour "Hint Memo" to verify advertisement views for rewarded hints.</li>
+                        <li>Ensure site performance and security.
+                            This data is not stored on our servers and is refreshed or cleared based on your browser settings or
+                            after 24 hours for specific ad-related functions.</li>
+                    </ul>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Links to Other Websites</h3>
                     <p>Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.</p>
@@ -65,16 +80,36 @@ function TermsAndConditions() {
                     <p>Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law.</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Governing Law</h3>
-                    <p>The laws of the Country, excluding its conflicts of law rules, shall govern these Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
+                    <p>The laws of the <b>Country,</b> excluding its conflicts of law rules, shall govern these Terms and Your use of the Service.
+                        Your use of the Service may also be subject to other local, state, national, or international laws. <b>For consumers in Quebec or the EU,
+                            mandatory consumer protection laws of your jurisdiction may also apply</b>.</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Disputes Resolution</h3>
                     <p>If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company.</p>
 
-                    <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>For European Union (EU) Users</h3>
-                    <p>If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which You are resident.</p>
+                    <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>
+                        Regional Compliance & Consumer Rights</h3>
+                    <b>Canada (BC PIPA & Quebec Law 25)</b>
+                    <p>
+                        If you are a resident of Canada, your rights are governed by PIPEDA and BC PIPA. If you are a resident of <b>Quebec</b>,
+                        you are entitled to mandatory protections under Law 25, including the right to data portability and "Privacy by Default."
+                    </p>
+
+                    <h3 className='font-bold text-[0.85rem] mt-2'>United States (CCPA/CPRA - California)</h3>
+                    <p>
+                        If you are a California resident, you have the right to opt-out of the "sharing" of your personal information for cross-context behavioral advertising.
+                        Our Service is configured to recognize and honor <b>Global Privacy Control (GPC)</b> signals. We do not "sell" your personal information for monetary value.
+                    </p>
+
+                    <h3 className='font-bold text-[0.85rem] mt-2'>European Union (GDPR)</h3>
+                    <p>If You are a European Union consumer, you will benefit from any mandatory provisions of
+                        the law of the country in which You are resident. Our legal basis for processing technical
+                        identifiers is <b>Legitimate Interest</b> (security/analytics) and <b>Contractual Necessity</b> (delivering game rewards).</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>United States Legal Compliance</h3>
-                    <p>You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been designated by the United States government as a "terrorist supporting" country, and (ii) You are not listed on any United States government list of prohibited or restricted parties.</p>
+                    <p>You represent and warrant that (i) You are not located in a country that is subject to the United States government
+                        embargo, or that has been designated by the United States government as a "terrorist supporting" country,
+                        and (ii) You are not listed on any United States government list of prohibited or restricted parties.</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Severability and Waiver</h3>
                     <h4>Severability</h4>
