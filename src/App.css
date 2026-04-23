@@ -1897,8 +1897,22 @@ button {
   }
 }
 
+
+/* Hide the shield by default on ALL platforms */
+.ios-landscape-shield {
+  display: none;
+}
+
 /* Apply safe area padding ONLY for iPhones (portrait & landscape) */
 @supports (-webkit-touch-callout: none) {
+  /* ONLY apply if it is a phone-sized screen in landscape */
+  @media screen and (max-width: 950px) and (orientation: landscape) {
+    .ios-landscape-shield {
+      /* Force the shield to show */
+      display: flex !important;
+    }
+  }
+
   @media only screen and (min-device-width:320px) and (max-device-width:1024px) and (-webkit-min-device-pixel-ratio: 2) {
     .sudoku-app {
       min-height: 100dvh;
@@ -1974,5 +1988,4 @@ button {
       padding-top: 0;
     }
   }
-
 }

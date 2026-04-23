@@ -24,11 +24,14 @@ function ChangeLog({ }) {
                     <ChangelogEntry
                         date="2026-04-21"
                         version="1.0.0"
-                        title="Bug Fixes"
+                        title="Improvements &Bug Fixes"
                         items={[
-                            <>Found and fixed the bug that the score is not reset while reseting the current game</>,
+                            <>Disabled & prevented landscape rotation for iPhones (not iPads).</>,
+                            <>Updated how-to instructions modal for better understanding of the game.</>,
+                            <>Improved UI compatibility for newer iPhones in portrait mode.</>,
+                            <>Found and fixed the bug that the score is not reset while reseting the current game.</>,
                             <>
-                                Try to fix the UI bug on iPhone old and new models, especially with known issues box.
+                                Fixed the UI bug on old and new iPhone models, especially with known issues box.
                             </>
                         ]}
                     />
