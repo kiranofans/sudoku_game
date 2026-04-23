@@ -100,6 +100,11 @@
   --cell-correct-text: #bbbbbb;
   --cell-wrong-text: #ff6b6b;
   --cell-note-text: #999999;
+  --cell-fixed: rgba(180, 140, 0, 1);
+
+  --score-bg: rgba(255, 255, 255, 0.05);
+  --score-border: rgba(255, 255, 255, 0.1);
+  /* Subtle edge highlight */
   --score-label: #a0a0a0;
   --score-value: #ffffff;
 
@@ -110,6 +115,8 @@
   --modal-bg: #242424;
   --modal-overlay: rgba(0, 0, 0, 0.8);
   --theme-icon-filter: invert(1);
+
+
 }
 
 body {

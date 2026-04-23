@@ -425,11 +425,13 @@ function App() {
                         onClick={() =>
                           timer.isRunning ? timer.pause() : timer.start()
                         }
-                        className="w-7 h-7 cursor-pointer hover:scale-100 hover:stroke-blue-700 dark:gray-400"
+                        /* stroke-current removes the need for stroke="black" */
+                        className="w-7 h-7 cursor-pointer transition-transform hover:scale-100 
+                        hover:stroke-blue-700 stroke-current text-black dark:text-gray-300 dark:gray-300
+                        dark:hover:stroke-gray-200"
                         viewBox="0 0 48 48"
                         fill="none"
-                        stroke="black"
-                        strokeWidth="2"
+                        strokeWidth="3"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       >
