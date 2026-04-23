@@ -8,7 +8,7 @@ function TermsAndConditions() {
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Terms & Condtions</h1>
                 <div className="terms-conditions-content" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>
 
-                    <p><strong>Last updated: March 13, 2026</strong></p>
+                    <p><strong>Last updated: April 23, 2026</strong></p>
                     <p>Please read these terms and conditions carefully before using Our Service.</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Interpretation and Definitions</h3>
