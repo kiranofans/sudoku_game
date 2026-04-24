@@ -144,7 +144,7 @@ function KnownIssuesBox({ items, isOnHomePage = false }: KnownIssuesBoxProps) {
     isOnHomePage = useLocation()?.pathname === "/";
     const onWherePlaced = isOnHomePage ? "game-only-issues mt-auto" : "";
     return (
-        <div className={`${onWherePlaced} px-2 pb-2 text-md text-gray-600 mt-0.5 mb-0.5 ml-2 mr-2"`}>
+        <div data-nosnippet className={`${onWherePlaced} px-2 pb-2 text-md text-gray-600 mt-0.5 mb-0.5 ml-2 mr-2"`}>
             <div className="text-left max-w-[720px] mt-1 mb-3 p-2 pt-1.5 
             mx-auto rounded bg-yellow-50 border border-yellow-200 text-sm 
             text-yellow-800 [transform:translateZ(0)] pb-[max(1rem,env(safe-area-inset-bottom))]">

@@ -388,6 +388,21 @@ function App() {
             </>
           }
         >
+          <div style={{
+            position: 'absolute',
+            width: '1px',
+            height: '1px',
+            padding: '0',
+            margin: '-1px',
+            overflow: 'hidden',
+            clip: 'rect(0, 0, 0, 0)',
+            whiteSpace: 'nowrap',
+            border: '0'
+          }}>
+            Play Sudoku online for free. Featuring daily puzzles, multiple difficulty levels,
+            scoring system, no database, no logins,and a mobile-friendly design optimized for iOS and Android.
+            SudokuPlays is the best place for logic puzzle enthusiasts.
+          </div>
 
           <div className="sudoku-app" style={{ maxWidth: '720px' }}>
             {/* Wrap themain game container in scrollable div */}
