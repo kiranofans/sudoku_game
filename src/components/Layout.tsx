@@ -24,6 +24,10 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
 
   return (
     <>
+      {/* Put description meta tag here for Homepage description only */}
+      <meta name="description"
+        content="Play Sudoku online for free. Features real-time scoring, dark mode, and a mobile-friendly design for iOS. Start your daily challenge today!" />
+
       <div className="ios-landscape-shield fixed inset-0 z-[99999] bg-slate-900 flex-col items-center justify-center text-white px-6 text-center">
         <div className="text-6xl mb-6 animate-bounce">🔄</div>
         <h1 className="text-3xl font-bold mb-2">Rotate your iPhone</h1>
