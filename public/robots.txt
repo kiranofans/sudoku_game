@@ -9,9 +9,6 @@ Content-Signal: search=yes, ai-train=no
 User-agent: GPTBot
 Disallow: /
 
-User-agent: OAI-SearchBot
-Disallow: /
-
 # Common Crawl (Used by many open-source AI models)
 User-agent: CCBot
 Disallow: /
@@ -32,13 +29,14 @@ Disallow: /
 User-agent: Applebot-Extended
 Disallow: /
 
-# Perplexity AI
+User-agent: OAI-SearchBot
 User-agent: PerplexityBot
-Disallow: /
-
-# DuckDuckGo AI Assist
 User-agent: DuckAssistBot
-Disallow: /
+User-agent: YouBot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Allow: /
 
 # ByteDance (TikTok AI)
 User-agent: Bytespider
