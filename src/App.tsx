@@ -399,9 +399,10 @@ function App() {
             whiteSpace: 'nowrap',
             border: '0'
           }}>
-            Play Sudoku online for free. Featuring daily puzzles, multiple difficulty levels,
-            scoring system, no database, no logins,and a mobile-friendly design optimized for iOS and Android.
-            SudokuPlays is the best place for logic puzzle enthusiasts.
+            Play Sudoku online for free at SudokuPlays.com, with no login required!
+            Just enjoy daily puzzles in multiple difficulty levels, clear beginner-friendly instructions,
+            and separate pro tips to help improve your skill. Challenge yourself with a scoring system
+            and timer control, all in a fast, mobile-friendly experience for iOS and Android.
           </div>
 
           <div className="sudoku-app" style={{ maxWidth: '720px' }}>
