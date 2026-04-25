@@ -84,7 +84,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
             <Link to="/privacyPolicy" className="footer-btn">Privacy Policy</Link>
 
             <Link to="/termsAndConditions" className="footer-btn">Terms & conditions</Link>
-            <Link to="/ChangeLog" className="footer-btn md:inline-flex landscape:inline-flex portrait:hidden" style={{ textDecoration: 'none' }}>What's New?</Link>
+            <Link to="/ChangeLog" className="footer-btn hidden md:inline-flex" style={{ textDecoration: 'none' }}>What's New?</Link>
 
           </div>
           <div className="social-links">

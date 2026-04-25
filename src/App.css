@@ -281,7 +281,7 @@ body {
     margin: 0;
     /* occupied most height of the menu bar*/
     margin-left: 0;
-    gap: clamp(0.8rem, 2vw, 2rem);
+    gap: clamp(0.6rem, 2vw, 2rem);
     padding: 0;
     box-sizing: border-box;
 }
@@ -299,7 +299,7 @@ body {
 }
 
 .logo {
-    height: clamp(1.8rem, 2vw, 2.5rem);
+    height: clamp(2rem, 2vw, 2.5rem);
     width: auto;
     object-fit: contain;
     border-radius: 35%;
@@ -1500,7 +1500,8 @@ button {
 
     .logo {
         margin: 0;
-        height: 0.5rem;
+        height: 1.5rem;
+        /* Adjusted for better proportions on iPhone */
         padding: 0;
     }
 
@@ -1635,9 +1636,18 @@ button {
     .mobile-only-score {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        /* Center the score and subtext text */
         gap: 0;
-        margin-top: -2px;
+
+        /* Absolute center positioning */
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        /* Let clicks pass through if needed */
+        width: max-content;
     }
 
     .score-main-mobile {
@@ -1832,7 +1842,8 @@ button {
     }
 
     .logo {
-        height: 0.4rem;
+        height: 1.25rem;
+        /* Adjusted for smaller iPhones */
         width: auto;
         padding: 0;
         margin: 0;
@@ -1907,6 +1918,13 @@ button {
 
 /* Apply safe area padding ONLY for iPhones (portrait & landscape) */
 @supports (-webkit-touch-callout: none) {
+    /* Specifically resize the logo on iPhones */
+    @media screen and (max-width: 768px) {
+        .logo {
+            height: 1.5rem;
+        }
+    }
+
     /* ONLY apply if it is a phone-sized screen in landscape */
     @media screen and (max-width: 950px) and (orientation: landscape) {
         .ios-landscape-shield {
