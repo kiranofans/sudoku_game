@@ -38,7 +38,7 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
             <div className="text-4xl mb-6 animate-bounce">
                 {isWon ? '🎉🥳🎊' : '😞❌🚫'}
             </div>
-            
+
             <div className="bg-white dark:bg-[#1a1a1a] w-full max-w-[420px] rounded-[24px] p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)] text-center text-[#333] dark:text-[#eee]">
                 <h2 className="text-[1.75rem] font-extrabold mb-2 text-black dark:text-white">
                     {isWon ? 'Round Completed' : 'Mistake Limit Reached'}
@@ -46,7 +46,7 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
                 {!isWon && (
                     <p className="text-[#888] mb-6 font-medium">You have reached the mistake limit</p>
                 )}
-                
+
                 <div className={`grid grid-cols-3 gap-4 ${isWon ? 'mb-6' : 'mb-6'}`}>
                     <div className="flex flex-col gap-1">
                         <span className="text-[0.75rem] text-[#888] font-bold uppercase tracking-wider">Time</span>
@@ -103,8 +103,8 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
                             <p className="text-[0.95rem] leading-relaxed text-[#444] dark:text-[#bbb] font-medium">
                                 Want to master Sudoku? Check out our pro strategies to reduce mistakes and solve puzzles faster!
                             </p>
-                            <Link 
-                                to="/sudokuTips" 
+                            <Link
+                                to="/sudokuTips"
                                 className="text-[var(--num-pad-bg)] font-bold hover:underline inline-block"
                                 onClick={onClose}
                             >
@@ -114,7 +114,7 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
                     )}
                 </div>
 
-                <button 
+                <button
                     className="w-full p-4 rounded-[50px] !bg-[#2c8fd1] hover:!bg-[#2980b9] !text-white text-[1.1rem] font-bold !border-none cursor-pointer transition-all duration-200 shadow-[0_4px_12px_rgba(44,143,209,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(44,143,209,0.4)] active:translate-y-0"
                     onClick={onClose}
                 >
