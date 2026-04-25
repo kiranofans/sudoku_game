@@ -32,8 +32,13 @@ export function useScore(difficulty: Difficulty) {
   }, [scoreMultiplier]);
 
   const deductMistakeScore = useCallback(() => {
-    setScore(prev => Math.max(0, (prev || 0) - (500 * scoreMultiplier)));
-  }, [scoreMultiplier]);
+    setScore(prev => {
+      const current = prev || 0;
+      // Flat 50-point penalty per mistake.
+      const penalty = 50;
+      return Math.max(0, current - penalty);
+    });
+  }, []);
 
   /**
    * Final score calculation with time used
