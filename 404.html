@@ -1,18 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <script>
-        // Save full path (including query + hash if any)
-        sessionStorage.redirect =
-            location.pathname + location.search + location.hash;
+  <meta charset="UTF-8" />
 
-        // Redirect to homepage
-        window.location.replace("/");
-    </script>
+  <title>Sudoku | Free Online Sudoku & Daily Puzzles</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover user-scalable=no">
+  <meta name="description" content="Play free Sudoku puzzles online." />
+
+  <meta name="msvalidate.01" content="C82111AE0E298F17FEE4E665BA3D7BD2" />
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5203dad2-52c2-4c9a-8944-cd55a2d13cd7"></script>
+
+  <!-- Optional: for Apple devices -->
+  <link rel="apple-touch-icon" href="path/to/logo.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/png/logo_sudoku1.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="path/to/logo-16.png">
+
+  <!-- Icon libarary -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
+  <script src="https://unpkg.com/nprogress/nprogress.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643"
+    crossorigin="anonymous"></script>
+
+  <script type="module" crossorigin src="/assets/index-Bk9EAbaf.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Dnx9zh6M.css">
 </head>
 
-<body></body>
+<body class="bg-white dark:bg-gray-900">
+  <div id="root">
+    <div id="initial-loader" class="fixed inset-0 flex items-center justify-center 
+  bg-white dark:bg-gray-900 text-black dark:text-white text-lg text-bold transition-opacity duration-300">
+      Loading...
+    </div>
+  </div>
+
+
+  <!-- Loader overlay -->
+  <div id="loader" class="loader hidden">
+    <div class="spinner"></div>
+  </div>
+
+</body>
 
 </html>
