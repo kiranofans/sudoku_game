@@ -27,17 +27,27 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643"
     crossorigin="anonymous"></script>
 
-  <script type="module" crossorigin src="/assets/index-Bk9EAbaf.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-Dnx9zh6M.css">
+  <script type="module" crossorigin src="/assets/index-BHlwTtJk.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BzxALVUs.css">
 </head>
 
 <body class="bg-white dark:bg-gray-900">
-  <div id="root">
-    <div id="initial-loader" class="fixed inset-0 flex items-center justify-center 
+  <div id="initial-loader" class="fixed inset-0 flex items-center justify-center 
   bg-white dark:bg-gray-900 text-black dark:text-white text-lg text-bold transition-opacity duration-300">
-      Loading...
-    </div>
+    Loading...
   </div>
+  <div id="root"></div>
+  <!-- Better not put anything in the root div for hydration error -->
+  <script>
+    // This will hide the loader as soon as the JS starts executing
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('initial-loader');
+      if (loader) loader.classList.add('fade-out');
+      setTimeout(() => {
+        loader.classList.add('fade-out');
+      }, 200);
+    });
+  </script>
 
 
   <!-- Loader overlay -->
