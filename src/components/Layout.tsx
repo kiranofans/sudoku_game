@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import packageJson from '../../package.json';
 import ThemeSelector from './ThemeSelector';
@@ -12,6 +12,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false); // Add this
   const currentYear = new Date().getFullYear();
 
   const handleLogoClick = (e: React.MouseEvent) => {
@@ -22,17 +23,19 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
     }
   };
 
+  useEffect(() => {
+    setIsMounted(true); // Set to true only after the browser takes over
+  }, []);
+
   return (
     <>
-      {/* Put description meta tag here for Homepage description only */}
-      <meta name="description"
-        content="Play Sudoku online for free. Features real-time scoring, dark mode, and a mobile-friendly design for iOS. Start your daily challenge today!" />
-
-      <div className="ios-landscape-shield fixed inset-0 z-[99999] bg-slate-900 flex-col items-center justify-center text-white px-6 text-center">
+      {/* Only render the shield if we are on the client side */}
+      {isMounted && (<div className="ios-landscape-shield fixed inset-0 z-[99999] bg-slate-900 flex-col items-center justify-center text-white px-6 text-center">
         <div className="text-6xl mb-6 animate-bounce">🔄</div>
         <h1 className="text-3xl font-bold mb-2">Rotate your iPhone</h1>
         <p className="text-slate-400">This layout is optimized for portrait mode on iOS.</p>
-      </div>
+      </div>)}
+
       <div className="wrapper min-h-screen flex flex-col">
         <MobileDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
 

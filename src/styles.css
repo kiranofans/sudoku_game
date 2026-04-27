@@ -154,3 +154,10 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+/* Use a simple CSS class to handle the transition */
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
