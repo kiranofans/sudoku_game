@@ -379,9 +379,6 @@ function Homepage() {
                 </>
             }
         >
-            {/* Put description meta tag here for Homepage description only */}
-            <meta name="description"
-                content="Play Sudoku online for free. Features real-time scoring, dark mode, and a mobile-friendly design for iOS. Start your daily challenge today!" />
 
             <h1 className="sr-only">Free Online Sudoku Puzzles - Enjoy Daily Logic Games</h1>
             <div style={{

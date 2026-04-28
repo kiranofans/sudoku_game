@@ -32,9 +32,9 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
 
     return (
         <div className="fixed inset-0 bg-black/80 flex flex-col justify-center items-center z-[9999] p-4 backdrop-blur-[4px]">
-            <h1 className="text-[clamp(2.5rem,8vw,4rem)] font-black text-white mb-2 text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
+            <h2 className="text-[clamp(2.5rem,8vw,4rem)] font-black text-white mb-2 text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
                 {isWon ? 'Congratulations' : 'Game Over'}
-            </h1>
+            </h2>
             <div className="text-4xl mb-6 animate-bounce">
                 {isWon ? '🎉🥳🎊' : '😞❌🚫'}
             </div>
