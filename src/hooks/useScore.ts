@@ -16,11 +16,11 @@ export function useScore(difficulty: Difficulty) {
 
   // Score multiplier based on difficulty (used for time penalty on easier modes)
   const scoreMultiplier: number = ({
-    'very-easy': 5,
+    'very-easy': 4,
     easy: 4,
-    medium: 3,
-    hard: 4,
-    expert: 4
+    medium: 3.5,
+    hard: 3.25,
+    expert: 3.15
   } as Record<string, number>)[difficulty];
 
   // Persist score changes
