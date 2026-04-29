@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
     "preview": "vite preview",
+    "test": "vitest",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -16,16 +17,21 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^22.14.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-vue": "^6.0.1",
+    "jsdom": "^29.1.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.8.3",
     "vite": "^6.2.0",
-    "vite-plugin-svgr": "^4.5.0"
+    "vite-plugin-svgr": "^4.5.0",
+    "vitest": "^4.1.5"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
