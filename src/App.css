@@ -1623,7 +1623,7 @@ button {
         margin-bottom: 0.3rem;
     }
 
-    .desktop-only-score {
+    .desktop-only-score, .desktop-only-history {
         display: none !important;
     }
 
@@ -1640,14 +1640,6 @@ button {
         /* Center the score and subtext text */
         gap: 0;
 
-        /* Absolute center positioning */
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        /* Let clicks pass through if needed */
-        width: max-content;
     }
 
     .score-main-mobile {
@@ -2007,5 +1999,37 @@ button {
             z-index: 9999;
             padding-top: 0;
         }
+    }
+}
+
+/* Score History Animations */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.mobile-only-score {
+    width: auto;
+}
+.header-center-content {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .header-center-content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        width: auto;
     }
 }

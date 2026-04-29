@@ -5,6 +5,7 @@ import { Difficulty } from '../lib/generatesSudoku.ts';
 export interface ScoreBreakdown {
   gross: number;
   penalty: number;
+  bonus: number;
   multiplier: number;
   time: number;
 }
@@ -13,7 +14,7 @@ export function useScore(difficulty: Difficulty) {
   const [score, setScore] = useState<number | null>(loadPersistedScore());
   const [scoreBreakdown, setScoreBreakdown] = useState<ScoreBreakdown | null>(null);
 
-  // Score multiplier based on difficulty
+  // Score multiplier based on difficulty (used for time penalty on easier modes)
   const scoreMultiplier: number = ({
     'very-easy': 1,
     easy: 2,
@@ -28,8 +29,17 @@ export function useScore(difficulty: Difficulty) {
   }, [score]);
 
   const addCorrectMoveScore = useCallback(() => {
-    setScore(prev => (prev || 0) + (100 * scoreMultiplier));
-  }, [scoreMultiplier]);
+    // Same points for all difficulties (100 pts per correct move)
+    setScore(prev => (prev || 0) + 100);
+  }, []);
+
+  const deductHintScore = useCallback(() => {
+    setScore(prev => {
+      const current = prev || 0;
+      // 50-point penalty per hint
+      return Math.max(0, current - 50);
+    });
+  }, []);
 
   const deductMistakeScore = useCallback(() => {
     setScore(prev => {
@@ -48,12 +58,31 @@ export function useScore(difficulty: Difficulty) {
   const calculateFinalWin = useCallback((timeLeft: number) => {
     setScore(prev => {
       const currentMoveScore = prev || 0;
-      const penalty = timeLeft * scoreMultiplier;
-      const finalScore = Math.max(0, currentMoveScore - penalty);
+      
+      const isEasyOrMedium = difficulty === 'very-easy' || difficulty === 'easy' || difficulty === 'medium';
+      
+      let penalty = 0;
+      let bonus = 0;
+
+      if (isEasyOrMedium) {
+        // Time penalty for easy/medium
+        penalty = timeLeft * scoreMultiplier;
+      } else {
+        // No time penalty for Hard and Expert, but speed bonuses
+        if (difficulty === 'hard' && timeLeft <= 300) {
+          bonus = 1000;
+        } else if (difficulty === 'expert' && timeLeft <= 360) {
+          bonus = 2000;
+        }
+        // Beyond 8 minutes (480s), no bonus is awarded
+      }
+
+      const finalScore = Math.max(0, currentMoveScore - penalty + bonus);
 
       setScoreBreakdown({
         gross: currentMoveScore,
         penalty: penalty,
+        bonus: bonus,
         multiplier: scoreMultiplier,
         time: timeLeft
       });
@@ -74,6 +103,7 @@ export function useScore(difficulty: Difficulty) {
     addCorrectMoveScore,
     deductMistakeScore,
     calculateFinalWin,
+    deductHintScore,
     resetScore
   };
 }

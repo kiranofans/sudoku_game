@@ -1,16 +1,27 @@
 const STORAGE_KEY = 'sudoku_app_persistence_state';
 const RESET_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
+export interface GameHistoryEntry {
+    score: number;
+    time: string;
+    mistakes: number;
+    hintsUsed: number;
+    difficulty: string;
+    timestamp: number;
+}
+
 interface PersistenceState {
     hints: number;
     score: number | null;
     lastResetTimestamp: number;
+    history: GameHistoryEntry[];
 }
 
 const DEFAULT_STATE: PersistenceState = {
     hints: 3,
     score: null,
-    lastResetTimestamp: Date.now()
+    lastResetTimestamp: Date.now(),
+    history: []
 };
 
 const getPersistedState = (): PersistenceState => {
@@ -67,4 +78,14 @@ export const savePersistedHints = (hints: number) => {
 export const savePersistedScore = (score: number | null) => {
     const state = getPersistedState();
     savePersistedState({ ...state, score });
+};
+
+export const loadGameHistory = (): GameHistoryEntry[] => {
+    return getPersistedState().history;
+};
+
+export const saveGameToHistory = (entry: GameHistoryEntry) => {
+    const state = getPersistedState();
+    const updatedHistory = [entry, ...state.history];
+    savePersistedState({ ...state, history: updatedHistory });
 };

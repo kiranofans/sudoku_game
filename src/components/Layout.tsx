@@ -56,8 +56,11 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
               <div className="title-tagline-container">
                 <h2 className='game-title'>Sudoku</h2>
               </div>
-              {mobileScore}
             </div>
+          </div>
+
+          <div className="header-center-content">
+            {mobileScore}
           </div>
 
           <div className='controls-row'>

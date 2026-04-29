@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from '@/lib/generatesSudoku.ts';
-import { loadPersistedHints, savePersistedHints } from '@/lib/persistenceStorage.ts';
 
 import '@/App.css';
 import Board from "@/components/Board.tsx";
@@ -13,6 +12,7 @@ import { useTimer } from '@/hooks/useTimer.ts';
 import { useScore } from '@/hooks/useScore.ts';
 import { useNumberInput } from '@/hooks/useNumberInput.ts';
 import ScoreSystem from '@/components/ScoreSystem.tsx';
+import { loadPersistedHints, savePersistedHints, loadGameHistory, saveGameToHistory, GameHistoryEntry } from '@/lib/persistenceStorage.ts';
 import { SmallUiWidgets, getLatestKnownIssues } from '@/components/SmallUiWidgets.tsx';
 import { useCompletedDomains } from '@/hooks/useCompletedDomains.ts';
 
@@ -28,7 +28,7 @@ function Homepage() {
     const [notes, setNotes] = useState<CellNotes[][]>([]);
     const [selectedCell, setSelectedCell] = useState<[number, number] | null>(null);
     const [difficulty, setDifficulty] = useState<Difficulty>('medium');
-    const { score, scoreBreakdown, addCorrectMoveScore, deductMistakeScore, calculateFinalWin, resetScore } = useScore(difficulty);
+    const { score, scoreBreakdown, addCorrectMoveScore, deductMistakeScore, deductHintScore, calculateFinalWin, resetScore } = useScore(difficulty);
     const [mistakes, setMistakes] = useState(0);
     const [isGameOver, setIsGameOver] = useState(false);
     const [hintsRemaining, setHintsRemaining] = useState(loadPersistedHints());
@@ -43,10 +43,13 @@ function Homepage() {
     const [showAdModal, setShowAdModal] = useState(false);
 
     const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
+    const [hintsUsedInGame, setHintsUsedInGame] = useState(0);
 
     const [isLoading, setIsLoading] = useState(false);
     const progressRef = useRef<HTMLDivElement>(null);
     const [gameKey, setGameKey] = useState(0);
+    const [history, setHistory] = useState<GameHistoryEntry[]>(loadGameHistory());
+    const lastRecordedGameKey = useRef<number>(-1);
     const timer = useTimer(gameKey, isGameOver);
     const { fixedCells, newAnimations, resetFixedCells,
         clearAnimations } = useCompletedDomains(board, solution,
@@ -176,6 +179,7 @@ function Homepage() {
             resetFixedCells();
             setGameKey(prev => prev + 1);
             setMistakes(0);
+            setHintsUsedInGame(0);
             resetScore();
             setIsGameOver(false);
             setIsPencilMode(false);
@@ -310,6 +314,8 @@ function Homepage() {
         setBoard(newBoard);
 
         setHintsRemaining(prev => prev - 1);
+        setHintsUsedInGame(prev => prev + 1);
+        deductHintScore();
         updateCountsAfterInput(num, false);
 
         if (checkBoardComplete(newBoard)) {
@@ -349,9 +355,30 @@ function Homepage() {
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     };
 
+    // Record history when game is won
+    useEffect(() => {
+        if (isGameOver && mistakes < 10 && score !== null && lastRecordedGameKey.current !== gameKey) {
+            const entry: GameHistoryEntry = {
+                score: score,
+                time: formatTime(timer.timeLeft),
+                mistakes: mistakes,
+                hintsUsed: hintsUsedInGame,
+                difficulty: difficulty,
+                timestamp: Date.now()
+            };
+            saveGameToHistory(entry);
+            setHistory(loadGameHistory());
+            lastRecordedGameKey.current = gameKey;
+        }
+    }, [isGameOver, mistakes, score, timer.timeLeft, hintsUsedInGame, difficulty, gameKey]);
+
     return (
         <Layout
-            mobileScore={<ScoreSystem score={score} isMobile />}
+            mobileScore={
+                <div className="mobile-score-column flex flex-row items-center justify-center gap-3">
+                    <ScoreSystem score={score} history={history} isMobile />
+                </div>
+            }
             headerContent={
                 <>
                     <DifficultySelector
@@ -500,7 +527,7 @@ function Homepage() {
 
                     <div className="counts-and-actionbtn">
                         <div className="control-panel">
-                            <ScoreSystem score={score} />
+                            <ScoreSystem score={score} history={history} />
                             <div className="action-buttons">
                                 <Tooltip text="Pencil Mode">
                                     <button

@@ -11,6 +11,7 @@ interface GameStatusModalProps {
     scoreBreakdown?: {
         gross: number;
         penalty: number;
+        bonus: number;
         multiplier: number;
         time: number;
     } | null;
@@ -82,8 +83,19 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
                                 </span>
                                 <span className="font-bold">-{scoreBreakdown.penalty.toLocaleString()}</span>
                             </div>
+                            {scoreBreakdown.bonus > 0 && (
+                                <div className="flex justify-between items-center text-blue-500 font-medium">
+                                    <span className="flex items-center gap-1.5">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                                        Speed Bonus
+                                    </span>
+                                    <span className="font-bold">+{scoreBreakdown.bonus.toLocaleString()}</span>
+                                </div>
+                            )}
                             <div className="pt-2 mt-1 border-t border-dashed border-[#cbd5e1] dark:border-[#444] text-[0.7rem] text-[#94a3b8] font-bold italic">
-                                Calculation: {scoreBreakdown.gross} - ({scoreBreakdown.time}s × {scoreBreakdown.multiplier})
+                                {scoreBreakdown.penalty === 0 
+                                    ? `Calculation: ${scoreBreakdown.gross} ${scoreBreakdown.bonus > 0 ? `+ ${scoreBreakdown.bonus} (Speed Bonus)` : '(No time penalty)'}` 
+                                    : `Calculation: ${scoreBreakdown.gross} - (${scoreBreakdown.time}s × ${scoreBreakdown.multiplier})`}
                             </div>
                         </div>
                     </div>
