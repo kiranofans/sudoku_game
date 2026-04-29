@@ -22,6 +22,23 @@ function ChangeLog({ }) {
                     items={issues} />
                 <Timeline>
                     <ChangelogEntry
+                        date="2026-04-28"
+                        version="1.0.0"
+                        title="Improvements & Features"
+                        items={[
+                            <>Added auto-pause when player didn't do anything for 2 minutes or away from the tab. </>,
+                            <>Added Game Pause popup once player pauses the timer/game.</>,
+                            <>
+                                Added score history widget, which refreshes every 24 hours.
+                            </>,
+                            <>
+                                Adjusted score widget UI due to new history widgeton mobile portrait screens.
+                            </>,
+                            <>
+                                Changed scoring calculation for hard and expert difficulties, and adjusted the timer penalty multiplier.</>
+                        ]}
+                    />
+                    <ChangelogEntry
                         date="2026-04-22"
                         version="1.0.0"
                         title="Improvements & Features"
