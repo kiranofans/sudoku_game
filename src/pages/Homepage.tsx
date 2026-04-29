@@ -3,7 +3,7 @@ import { generateSudoku, Difficulty } from '@/lib/generatesSudoku.ts';
 
 import '@/App.css';
 import Board from "@/components/Board.tsx";
-import { InstructionsModal, AdModal } from '@/components/Modals.tsx';
+import { InstructionsModal, AdModal, PauseModal } from '@/components/Modals.tsx';
 import GameStatusModal from '@/components/GameStatusModal.tsx';
 import DifficultySelector from '@/components/DifficultySelector.tsx';
 import Tooltip from '@/components/Tooltip.tsx';
@@ -231,6 +231,7 @@ function Homepage() {
         calculateFinalWin,
         setIsGameOver,
         timeLeft: timer.timeLeft,
+        isRunning: timer.isRunning,
         deductMistakeScore,
         setMistakes,
         setCrossHighlight,
@@ -446,7 +447,11 @@ function Homepage() {
                     onClose={() => setShowAdModal(false)}
                     onAdComplete={handleEarnHint}
                 />
-                <div className="game-container h-auto [contain:none] [will-change:auto]">
+                <PauseModal
+                    isOpen={!timer.isRunning && !isGameOver && !isLoading}
+                    onResume={() => timer.start()}
+                />
+                <div className={`game-container h-auto [contain:none] [will-change:auto] ${(!timer.isRunning && !isGameOver) ? 'blur-md pointer-events-none' : ''}`}>
                     <div className="board-section">
                         <div className="game-info">
                             <div>

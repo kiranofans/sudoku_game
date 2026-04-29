@@ -18,6 +18,7 @@ interface UseNumberInputProps {
     calculateFinalWin: (timeLeft: number) => void;
     setIsGameOver: (isGameOver: boolean) => void;
     timeLeft: number;
+    isRunning: boolean;
     deductMistakeScore: () => void;
     setMistakes: (updater: (prev: number) => number) => void;
     setCrossHighlight: (coords: { row: number | null; col: number | null }) => void;
@@ -41,6 +42,7 @@ export const useNumberInput = ({
     calculateFinalWin,
     setIsGameOver,
     timeLeft,
+    isRunning,
     deductMistakeScore,
     setMistakes,
     setCrossHighlight,
@@ -95,8 +97,10 @@ export const useNumberInput = ({
                     addCorrectMoveScore();
 
                     if (checkBoardComplete(newBoard)) {
-                        // Final score calculation with time used
-                        calculateFinalWin(timeLeft);
+                        // Final score calculation with time used ONLY IF timer was running
+                        if (isRunning) {
+                            calculateFinalWin(timeLeft);
+                        }
                         setIsGameOver(true);
                     }
                 } else {
@@ -121,7 +125,7 @@ export const useNumberInput = ({
     }, [
         selectedCell, isGameOver, isPencilMode, notes, solution, board, initialBoard,
         updateCountsAfterInput, addCorrectMoveScore, deductMistakeScore,
-        calculateFinalWin, timeLeft, setNotes, setBoard, checkBoardComplete,
+        calculateFinalWin, timeLeft, isRunning, setNotes, setBoard, checkBoardComplete,
         setIsGameOver, setMistakes, setCrossHighlight, numberCounts
     ]);
 

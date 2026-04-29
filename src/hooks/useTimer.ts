@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 export function useTimer(resetKey: number, isGameOver: boolean) {
     const [timeLeft, setTimeLeft] = useState(0);
@@ -31,8 +31,8 @@ export function useTimer(resetKey: number, isGameOver: boolean) {
         };
     }, [isRunning, isGameOver]);
 
-    const start = () => setIsRunning(true);
-    const pause = () => setIsRunning(false);
+    const start = useCallback(() => setIsRunning(true), []);
+    const pause = useCallback(() => setIsRunning(false), []);
 
     return { timeLeft, isRunning, start, pause };
 }

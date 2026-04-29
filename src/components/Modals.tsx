@@ -170,3 +170,27 @@ export const AdModal: React.FC<{ isOpen: boolean; onClose: () => void; onAdCompl
         </Modal>
     );
 };
+export const PauseModal: React.FC<{ isOpen: boolean; onResume: () => void }> = ({ isOpen, onResume }) => {
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[10005] flex justify-center items-center p-6">
+            <div
+                className="bg-white/95 dark:bg-[#1a1a1a]/95 w-full max-w-[340px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col overflow-hidden animate-[slideUpFade_0.4s_cubic-bezier(0.16,1,0.3,1)] backdrop-blur-2xl border border-white/20 dark:border-white/10 p-8 text-center"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <div className="text-5xl mb-4 animate-pulse">⏸️</div>
+                <h3 className="text-xl font-black mb-4 text-black dark:text-white">Game Paused</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-8">
+                    You’ve paused the timer. The game is paused until you resume the timer.
+                </p>
+                <button
+                    onClick={onResume}
+                    className="w-full py-4 rounded-full bg-[#2c8fd1] hover:bg-[#2980b9] text-white text-lg font-bold border-none cursor-pointer transition-all active:scale-95 shadow-lg"
+                >
+                    Resume Game
+                </button>
+            </div>
+        </div>
+    );
+};
