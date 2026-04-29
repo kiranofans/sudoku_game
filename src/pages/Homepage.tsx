@@ -50,7 +50,7 @@ function Homepage() {
     const [gameKey, setGameKey] = useState(0);
     const [history, setHistory] = useState<GameHistoryEntry[]>(loadGameHistory());
     const lastRecordedGameKey = useRef<number>(-1);
-    const timer = useTimer(gameKey, isGameOver);
+    const timer = useTimer(gameKey, isGameOver, isLoading, [board, notes, mistakes, hintsUsedInGame]);
     const { fixedCells, newAnimations, resetFixedCells,
         clearAnimations } = useCompletedDomains(board, solution,
             isLoading, isGameOver);
