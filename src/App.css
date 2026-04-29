@@ -694,6 +694,7 @@ body {
     gap: 16px;
     margin-left: 20px;
     width: 205px;
+    margin-top: 4rem;
     /* Matches 3 * 65px buttons + 2 * 5px gaps */
 }
 
@@ -1623,7 +1624,8 @@ button {
         margin-bottom: 0.3rem;
     }
 
-    .desktop-only-score, .desktop-only-history {
+    .desktop-only-score,
+    .desktop-only-history {
         display: none !important;
     }
 
@@ -2008,14 +2010,17 @@ button {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 .mobile-only-score {
     width: auto;
 }
+
 .header-center-content {
     display: none;
 }

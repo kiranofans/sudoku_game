@@ -16,11 +16,11 @@ export function useScore(difficulty: Difficulty) {
 
   // Score multiplier based on difficulty (used for time penalty on easier modes)
   const scoreMultiplier: number = ({
-    'very-easy': 1,
-    easy: 2,
+    'very-easy': 5,
+    easy: 4,
     medium: 3,
-    hard: 5,
-    expert: 10
+    hard: 4,
+    expert: 4
   } as Record<string, number>)[difficulty];
 
   // Persist score changes
@@ -58,9 +58,9 @@ export function useScore(difficulty: Difficulty) {
   const calculateFinalWin = useCallback((timeLeft: number) => {
     setScore(prev => {
       const currentMoveScore = prev || 0;
-      
+
       const isEasyOrMedium = difficulty === 'very-easy' || difficulty === 'easy' || difficulty === 'medium';
-      
+
       let penalty = 0;
       let bonus = 0;
 
