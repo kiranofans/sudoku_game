@@ -182,11 +182,11 @@ export const PauseModal: React.FC<{ isOpen: boolean; onResume: () => void }> = (
                 <div className="text-5xl mb-4 animate-pulse">⏸️</div>
                 <h3 className="text-xl font-black mb-4 text-black dark:text-white">Game Paused</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-8">
-                    You’ve paused the timer. The game is paused until you resume the timer.
-                </p>
+                    The game is now paused. Click/Tap on Resume Game button whenever you’re ready to continue.                </p>
                 <button
                     onClick={onResume}
-                    className="w-full py-4 rounded-full bg-[#2c8fd1] hover:bg-[#2980b9] text-white text-lg font-bold border-none cursor-pointer transition-all active:scale-95 shadow-lg"
+                    className="new-game-btn"
+                    style={{ padding: '14px 24px', fontSize: '1.1rem' }}
                 >
                     Resume Game
                 </button>
