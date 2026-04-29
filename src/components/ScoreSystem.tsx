@@ -22,6 +22,7 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
       strokeLinecap="round"
       strokeLinejoin="round"
       className="text-[var(--num-pad-bg)] shrink-0 cursor-pointer transition-all duration-200 hover:text-[var(--score-value)] hover:scale-110 ml-1"
+      aria-labelledby='svg-title svg-description'
       onClick={(e) => {
         e.stopPropagation();
         setShowHistory(!showHistory);
@@ -36,16 +37,16 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
         }
       }}
     >
-      <title>Score History</title>
-      <desc>Score history icon button</desc>
+      <title id="svg-title">Score History icon button for mobile</title>
+      <desc id="svg-descriptions">Score history icon button for mobile portrait screens</desc>
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
     </svg>
   );
 
   const historyOverlay = showHistory && createPortal(
-    <div 
-      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[99999] flex justify-center items-center p-4" 
+    <div
+      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[99999] flex justify-center items-center p-4"
       onClick={() => setShowHistory(false)}
     >
       <div
@@ -57,8 +58,8 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
             <h3 className="m-0 text-lg font-black tracking-tight">24-Hour Activity</h3>
             <span className="text-[0.65rem] opacity-70 font-bold uppercase tracking-wider">Game History Log</span>
           </div>
-          <button 
-            className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-2xl cursor-pointer hover:bg-white/20 transition-colors border-none text-white" 
+          <button
+            className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-2xl cursor-pointer hover:bg-white/20 transition-colors border-none text-white"
             onClick={() => setShowHistory(false)}
           >
             &times;
@@ -68,7 +69,9 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
           {history.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 px-5 text-gray-400">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-20 mb-4">
-                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="10" aria-labelledby='svg-title svg-description' />
+                <title id='svg-title'>No games completed yet</title>
+                <desc id='svg-description'>A clock icon</desc>
                 <polyline points="12 6 12 12 16 14" />
               </svg>
               <p className="italic text-sm m-0">No games completed yet</p>
@@ -149,8 +152,11 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
         className="desktop-only-score w-full mt-2 p-[10px_15px] flex items-center justify-center gap-2 bg-[var(--score-bg)] border border-[var(--divider-color)] text-[var(--score-label)] rounded-lg cursor-pointer transition-all duration-200 shadow-[0_2px_4px_rgba(0,0,0,0.05)] hover:bg-[var(--button-bg)] hover:text-[var(--score-value)] hover:-translate-y-px hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] group"
         aria-label="Toggle score history"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--num-pad-bg)] shrink-0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+          strokeLinecap="round" strokeLinejoin="round" className="text-[var(--num-pad-bg)] shrink-0" aria-labelledby='svg-title svg-description'>
           <circle cx="12" cy="12" r="10" />
+          <title id='svg-title'>History icon button for web/desktop</title>
+          <desc id='svg-description'>Score/game play history icon button for web/desktop</desc>
           <polyline points="12 6 12 12 16 14" />
         </svg>
         <span className="text-sm font-bold uppercase tracking-wider">History</span>
