@@ -90,7 +90,7 @@ function ChangeLog({ }) {
                                 Revised the final score calculation to deduct the product of total time used and the difficulty multiplier from the base score.
                             </>,
                             <>
-                                Updated Privacy Policy for regional compliance.
+                                Updated <a href="https://sudokuplays.com/privacyPolicy">Privacy Policy</a> for regional compliance.
                             </>
 
                         ]}
@@ -100,7 +100,7 @@ function ChangeLog({ }) {
                         version="1.0.0"
                         title="Improvements & New Features"
                         items={[
-                            <>Improved Contact page by replacing the old design with a working emil contact form,
+                            <>Improved <a href="https://sudokuplays.com/contact">Contact</a> page by replacing the old design with a working emil contact form,
                                 enabling users to send messages directly to the site owner via EmailJS integration.
                             </>,
                         ]
