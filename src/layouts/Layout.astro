@@ -1,0 +1,58 @@
+---
+import '../App.css'; // Make sure this path is correct
+
+import '../styles.css';
+const { title = "SudokuPlays" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="description" content="Play Sudoku online for free~! Features a mobile-friendly design for both Android & iOS. Start your daily challenge today!" />
+  
+  <meta name="msvalidate.01" content="C82111AE0E298F17FEE4E665BA3D7BD2" />
+
+  <!-- Analytics and Ads -->
+  <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="5203dad2-52c2-4c9a-8944-cd55a2d13cd7"></script>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643" crossorigin="anonymous"></script>
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/png/logo_sudoku1.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- NProgress -->
+  <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
+  <script is:inline src="https://unpkg.com/nprogress/nprogress.js"></script>
+
+</head>
+<body class="bg-white dark:bg-gray-900">
+  
+  <!-- The Loading Screen -->
+  <div id="initial-loader" class="fixed inset-0 flex items-center justify-center bg-white dark:bg-gray-900 text-black dark:text-white text-lg font-bold transition-opacity duration-300">
+    Loading...
+  </div>
+
+  <!-- The <slot /> replaces your old <div id="root"></div> -->
+  <slot />
+
+  <div id="loader" class="loader hidden">
+    <div class="spinner"></div>
+  </div>
+
+  <script is:inline>
+    // This runs on the client to hide the loader
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('initial-loader');
+      if (loader) {
+        loader.classList.add('opacity-0'); // Tailwind class for fade-out
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 300);
+      }
+    });
+  </script>
+</body>
+</html>

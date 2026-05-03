@@ -1,7 +1,5 @@
 import { changelog } from "@/hooks/useChangeLog";
 import React from "react";
-import { useLocation } from "react-router-dom";
-
 /**
  * Small UI Widgets Collection
  * A grouped set of reusable UI components
@@ -141,7 +139,7 @@ export function getLatestKnownIssues() {
 function KnownIssuesBox({ items, isOnHomePage = false }: KnownIssuesBoxProps) {
     if (!items.length) return null;
 
-    isOnHomePage = useLocation()?.pathname === "/";
+    isOnHomePage = typeof window !== 'undefined' ? window.location.pathname === "/" || window.location.pathname === "/sudoku_game/" : false;
     const onWherePlaced = isOnHomePage ? "game-only-issues mt-auto" : "";
     return (
         <div data-nosnippet className={`${onWherePlaced} px-2 pb-2 text-md text-gray-600 mt-0.5 mb-0.5 ml-2 mr-2"`}>

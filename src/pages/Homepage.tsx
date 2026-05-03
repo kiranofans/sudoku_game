@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateSudoku, Difficulty } from '@/lib/generatesSudoku.ts';
 
 import '@/App.css';
-import Board from "@/components/Board.tsx";
+import Board from "@/components/Board";
 import { InstructionsModal, AdModal, PauseModal } from '@/components/Modals';
 import GameStatusModal from '@/components/GameStatusModal.tsx';
 import DifficultySelector from '@/components/DifficultySelector.tsx';
 import Tooltip from '@/components/Tooltip.tsx';
-import Layout from '@/components/Layout.tsx';
+import Layout from '@/components/Layout';
 import { useTimer } from '@/hooks/useTimer.ts';
 import { useScore } from '@/hooks/useScore.ts';
 import { useNumberInput } from '@/hooks/useNumberInput.ts';
@@ -80,34 +80,32 @@ function Homepage() {
         }
     }, [isLoading]);
 
-    /* Listen for new completed domains and play animations */
+    /* Listen for new completed domains and play juicy animations */
     useEffect(() => {
         if (newAnimations.length > 0) {
-            newAnimations.forEach(anim => {
-                // 1. Animate the single cell that triggered the completion
-                if (anim.triggerCell) {
-                    // Assuming your cells have a data attribute like: data-cell="0,0" in Board.tsx
-                    const triggerEl = document.querySelector(`[data-cell="${anim.triggerCell}"]`);
-                    if (triggerEl) {
-                        triggerEl.classList.add('animate-trigger-pulse'); // Add your CSS animation class here
-                        setTimeout(() => triggerEl.classList.remove('animate-trigger-pulse'), 800);
-                    }
-                }
-
-                // 2. Animate the whole completed row/col/box
+            newAnimations.forEach((anim) => {
+                // We animate all cells in the domain (row, col, or box)
                 anim.cells.forEach((cellKey, index) => {
                     const cellEl = document.querySelector(`[data-cell="${cellKey}"]`);
+
                     if (cellEl) {
-                        // Optional: add a slight delay based on index for a "wave" effect
+                        // THE WAVE EFFECT
+                        // We use index * 40 to create a smooth ripple across the 9 cells.
+                        // Even if the cell was already "fixed," this targets the DOM element directly.
                         setTimeout(() => {
-                            cellEl.classList.add('animate-domain-glow'); // Add your CSS animation class here
-                            setTimeout(() => cellEl.classList.remove('animate-domain-glow'), 1000);
-                        }, index * 50);
+                            // Apply the 'juicy' class
+                            cellEl.classList.add('animate-domain-glow');
+
+                            // Remove it after the animation finishes (matching CSS duration)
+                            setTimeout(() => {
+                                cellEl.classList.remove('animate-domain-glow');
+                            }, 800);
+                        }, index * 40);
                     }
                 });
             });
 
-            // Clear the animations array so it doesn't re-fire
+            // Clear the animations array so it doesn't re-fire on next render
             clearAnimations();
         }
     }, [newAnimations, clearAnimations]);

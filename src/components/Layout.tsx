@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import packageJson from '../../package.json';
 import ThemeSelector from './ThemeSelector';
 import MobileDrawer from './MobileDrawer';

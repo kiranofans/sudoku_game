@@ -85,6 +85,8 @@ const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell,
     return classes;
   };
 
+
+
   return (
     <div className="sudoku-board">
       {board.map((row, rowIndex) => (

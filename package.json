@@ -4,10 +4,15 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
-    "preview": "vite preview",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astrobuild",
+    "preview": "astro preview",
+    "astro": "astro",
     "test": "vitest",
+    "vite:dev": "vite",
+    "vite:build": "tsc -b && vite build && cp dist/index.html dist/404.html",
+    "vite:preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -34,7 +39,9 @@
     "vitest": "^4.1.5"
   },
   "dependencies": {
+    "@astrojs/react": "^5.0.4",
     "@emailjs/browser": "^4.4.1",
+    "astro": "^6.2.1",
     "postcss": "^8.5.12",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

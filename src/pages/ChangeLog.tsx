@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { SmallUiWidgets } from "../components/SmallUiWidgets";
 import { getLatestKnownIssues } from '@/components/SmallUiWidgets.tsx';
@@ -123,15 +122,15 @@ function ChangeLog({ }) {
                         title="Improvements & Features"
                         items={[
                             <> Added a play/pause button for the countdown timer, allowing players to pause and resume gameplay anytime for a more relaxed and enjoyable experience.
-                                To try the new feature, go to homepage by clicking <Link to="/" className="underline hover:text-blue-500">here</Link>.
+                                To try the new feature, go to homepage by clicking <a href="/" className="underline hover:text-blue-500">here</a>.
                             </>,
-                            <> Added a <Link to="/changeLog" className="underline hover:text-blue-500">What's New?</Link> page that displays version updates and changelogs to help players clearly understand what has been added, improved, or fixed over time. This ensures users are never confused after updates and can easily track the evolution of the game.
+                            <> Added a <a href="/changeLog" className="underline hover:text-blue-500">What's New?</a> page that displays version updates and changelogs to help players clearly understand what has been added, improved, or fixed over time. This ensures users are never confused after updates and can easily track the evolution of the game.
 
                                 <br /><br />
 
                                 Since this project is developed by a very small team (primarily a solo developer with occasional AI assistance), the changelog also serves as a transparent development log that shows continuous progress, even when updates are incremental or behind-the-scenes.
                             </>,
-                            <>Added <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips</Link> and <Link to="/sudokuTips" className="underline hover:text-blue-500">FAQ</Link> pages to help players learn Sudoku more easily and improve their skills over time. The FAQ explains the basics, while the Tips section shares useful strategies to help players solve puzzles more confidently.                        </>
+                            <>Added <a href="/sudokuTips" className="underline hover:text-blue-500">Tips</a>, <a href="/sudokuTips" className="underline hover:text-blue-500">FAQ</a>, and <a href="/about" className="underline hover:text-blue-500">About</a> pages to help players learn Sudoku more easily, improve their skills over time, and learn more about this site. </>
                         ]}
                     />
                 </Timeline >
