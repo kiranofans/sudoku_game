@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import ExpandableBox from '@/components/ExpandableBox';
 import Layout from '@/components/Layout';
 
@@ -118,7 +117,7 @@ function faq() {
                             ) :
                                 index === 5 ? (
                                     <span>
-                                        You can improve Sudoku skill by playing regularly and learning strategies from the <Link to="/sudokuTips" className="underline hover:text-blue-500">Tips page</Link>, like scanning and pencil marks.
+                                        You can improve Sudoku skill by playing regularly and learning strategies from the <a href="/sudokuTips" className="underline hover:text-blue-500">Tips page</a>, like scanning and pencil marks.
                                     </span>
                                 ) : (
                                     faq.answer
@@ -131,9 +130,9 @@ function faq() {
                     Still have questions? Visit the Contact page.
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                    <Link to="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                    <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
                         Back to Game
-                    </Link>
+                    </a>
                 </div>
             </main>
         </Layout>

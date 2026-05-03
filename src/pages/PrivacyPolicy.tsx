@@ -1,6 +1,5 @@
 import Layout from '@/components/Layout';
 import { ListUi } from '@/components/SmallUiWidgets';
-import { Link } from 'react-router-dom';
 
 function PrivacyPolicy() {
     return (
@@ -139,7 +138,7 @@ function PrivacyPolicy() {
                                             and <b>Art. 6(1)(b) (Contractual Necessity)</b> for using LocalStorage to maintain your game state and verify the delivery of hints following an advertisement.                                        </li>
                                         <li className='mb-1 mt-2 text-sm'>
                                             <b>Data Controller: </b>
-                                            <Link to="/">sudokuplays.com</Link> acts as the Data Controller.
+                                            <a href="/">sudokuplays.com</a> acts as the Data Controller.
                                             Since we utilize a "static" frontend-only architecture,
                                             we do not store your personal data on our own servers.
                                         </li>
@@ -236,7 +235,7 @@ function PrivacyPolicy() {
                     <p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the Service.</p>
 
                     <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Contact Us</h3>
-                    <p>If you have any questions about these Terms and Conditions, You can contact us through <Link to='/contact'>Contact</Link> page,
+                    <p>If you have any questions about these Terms and Conditions, You can contact us through <a href='/contact'>Contact</a> page,
                         <br />or:</p>
                     <ul style={{ paddingLeft: '1.5rem' }}>
                         <li><strong>By email:</strong> <a href="mailto:sitehelp.chat@gmail.com">sitehelp.chat@gmail.com</a></li>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import ExpandableBox from '@/components/ExpandableBox';
 import Layout from '@/components/Layout';
 
@@ -74,9 +73,9 @@ function SudokuTips() {
                     Ready to put these strategies to the test?
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                    <Link to="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                    <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
                         Play Sudoku
-                    </Link>
+                    </a>
                 </div>
             </main>
         </Layout>

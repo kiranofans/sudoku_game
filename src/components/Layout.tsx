@@ -42,14 +42,14 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
         <header className="menu-bar">
           <div className="logo-title-container">
             <div className="relative flex items-center">
-              <Link
-                to="/"
+              <a
+                href="/"
                 className="logo-link flex items-center group"
                 onClick={handleLogoClick}
                 aria-label="Toggle menu on mobile or go to homepage"
               >
                 <img src="/images/png/logo_sudoku1.png" alt="Logo" className="logo transition-transform active:scale-10" />
-              </Link>
+              </a>
             </div>
 
             <div className="title-score-wrapper">
@@ -64,13 +64,13 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
           </div>
 
           <div className='controls-row'>
-            <Link to="/sudokuTips" className="header-nav-item desktop-only-nav">Tips</Link>
+            <a href="/sudokuTips" className="header-nav-item desktop-only-nav">Tips</a>
             <span className="header-nav-separator desktop-only-nav">|</span>
-            <Link to="/faq" className='header-nav-item desktop-only-nav'>FAQ</Link>
+            <a href="/faq" className='header-nav-item desktop-only-nav'>FAQ</a>
             <span className="header-nav-separator desktop-only-nav">|</span>
-            <Link to="/about" className="header-nav-item desktop-only-nav">About</Link>
+            <a href="/about" className="header-nav-item desktop-only-nav">About</a>
             <span className="header-nav-separator desktop-only-nav">|</span>
-            <Link to="/contact" className="header-nav-item desktop-only-nav">Contact</Link>
+            <a href="/contact" className="header-nav-item desktop-only-nav">Contact</a>
 
             {headerContent}
             <ThemeSelector />
@@ -87,10 +87,11 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
             <span>&copy; {currentYear} sudokuplays.com v{packageJson.version} | All rights reserved.</span>
           </div>
           <div className="footer-links">
-            <Link to="/privacyPolicy" className="footer-btn">Privacy Policy</Link>
+            <a href="/privacyPolicy" className="footer-btn">Privacy Policy</a>
 
-            <Link to="/termsAndConditions" className="footer-btn">Terms & conditions</Link>
-            <Link to="/ChangeLog" className="footer-btn hidden md:inline-flex" style={{ textDecoration: 'none' }}>What's New?</Link>
+            <a href="/termsAndConditions" className="footer-btn">Terms & conditions</a>
+            <a href="/ChangeLog" className="footer-btn hidden md:inline-flex"
+              style={{ textDecoration: 'none' }}>What's New?</a>
 
           </div>
           <div className="social-links">

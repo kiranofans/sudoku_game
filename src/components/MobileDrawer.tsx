@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -38,50 +37,50 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
         </div>
 
         <nav className="flex flex-col gap-4 text-lg font-medium">
-          <Link
-            to="/"
+          <a
+            href="/"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             Play Game
-          </Link>
-          <Link
-            to="/sudokuTips"
+          </a>
+          <a
+            href="/sudokuTips"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             Tips
-          </Link>
-          <Link
-            to="/faq"
+          </a>
+          <a
+            href="/faq"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             FAQ
-          </Link>
-          <Link
-            to="/about"
+          </a>
+          <a
+            href="/about"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             About
-          </Link>
-          <Link
-            to="/contact"
+          </a>
+          <a
+            href="/contact"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
           >
             Contact
-          </Link>
+          </a>
 
-          <Link
-            to="/changeLog"
+          <a
+            href="/changeLog"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 
             dark:text-gray-200"
             onClick={onClose}
           >
             What's New?
-          </Link>
+          </a>
         </nav>
 
         <div className="mt-auto pt-8 border-t dark:border-gray-800 text-sm text-gray-500 text-center">

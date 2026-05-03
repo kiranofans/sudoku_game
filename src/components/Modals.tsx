@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 interface ModalProps {
     isOpen: boolean;
@@ -93,7 +92,7 @@ export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void 
                 </ol>
             </div>
             <div className="pt-2 text-center" style={{ fontSize: "0.8rem" }}>
-                <span className='font-bold text-gray-700 dark:text-gray-400'> For more professional & detailed skill development, visit the <Link to="/sudokuTips">Tips</Link> page, or
+                <span className='font-bold text-gray-700 dark:text-gray-400'> For more professional & detailed skill development, visit the <a href="/sudokuTips">Tips</a> page, or
                     <a href="https://www.sudokuwiki.org/" target="_blank" rel="noopener noreferrer"> Sudoku Wiki</a>.
                     <p>The instruction is subject to change or update.</p></span>
             </div>

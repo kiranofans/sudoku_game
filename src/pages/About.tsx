@@ -56,9 +56,9 @@ function About({ }) {
                 </div>
 
                 <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-                    <Link to="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                    <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
                         Back to Game
-                    </Link>
+                    </a>
                 </div>
             </main>
         </Layout>

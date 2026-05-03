@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 interface GameStatusModalProps {
     isOpen: boolean;
@@ -93,8 +92,8 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
                                 </div>
                             )}
                             <div className="pt-2 mt-1 border-t border-dashed border-[#cbd5e1] dark:border-[#444] text-[0.7rem] text-[#94a3b8] font-bold italic">
-                                {scoreBreakdown.penalty === 0 
-                                    ? `Calculation: ${scoreBreakdown.gross} ${scoreBreakdown.bonus > 0 ? `+ ${scoreBreakdown.bonus} (Speed Bonus)` : '(No time penalty)'}` 
+                                {scoreBreakdown.penalty === 0
+                                    ? `Calculation: ${scoreBreakdown.gross} ${scoreBreakdown.bonus > 0 ? `+ ${scoreBreakdown.bonus} (Speed Bonus)` : '(No time penalty)'}`
                                     : `Calculation: ${scoreBreakdown.gross} - (${scoreBreakdown.time}s × ${scoreBreakdown.multiplier})`}
                             </div>
                         </div>
@@ -115,13 +114,13 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
                             <p className="text-[0.95rem] leading-relaxed text-[#444] dark:text-[#bbb] font-medium">
                                 Want to master Sudoku? Check out our pro strategies to reduce mistakes and solve puzzles faster!
                             </p>
-                            <Link
-                                to="/sudokuTips"
+                            <a
+                                href="/sudokuTips"
                                 className="text-[var(--num-pad-bg)] font-bold hover:underline inline-block"
                                 onClick={onClose}
                             >
                                 View Sudoku Tips &rarr;
-                            </Link>
+                            </a>
                         </div>
                     )}
                 </div>
