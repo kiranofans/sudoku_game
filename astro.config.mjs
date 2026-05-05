@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
-import path from 'path';
+import tailwind from '@astrojs/tailwind'; import path from 'path';
 
 // This checks if the build is running on GitHub Actions
 const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
