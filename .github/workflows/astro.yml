@@ -35,6 +35,7 @@ jobs:
         with:
           # This ensures it uses the correct directory
           path: .
+          node-version: 22
 
   deploy:
     needs: build
