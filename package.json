@@ -39,7 +39,7 @@
     "vitest": "^4.1.5"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.9",
+    "@astrojs/check": "^0.9.2",
     "@astrojs/react": "^5.0.4",
     "@emailjs/browser": "^4.4.1",
     "astro": "^6.2.1",
