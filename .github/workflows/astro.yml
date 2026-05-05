@@ -35,7 +35,7 @@ jobs:
         uses: withastro/action@v3
         with:
           # This ensures it uses the correct directory
-          path: . 
+          path: ./SudokuGame
 
   deploy:
     needs: build
