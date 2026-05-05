@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ExpandableBox from '@/components/ExpandableBox';
 import Layout from '@/components/Layout';
+import { ThemeProvider } from '@/components/ThemeContext';
 
 // Define the type
 type TipItem = {
@@ -47,38 +48,40 @@ function SudokuTips() {
     };
 
     return (
-        <Layout>
-            <title>Tips | Sudoku</title>
-            <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
-                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">
-                    Pro Tips & Strategies
-                </h1>
+        <ThemeProvider>
+            <Layout>
+                <title>Tips | Sudoku</title>
+                <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
+                    <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">
+                        Pro Tips & Strategies
+                    </h1>
 
-                <div className="w-full space-y-3 max-w-[800px] mx-auto">
-                    {tips.map((tip, index) => (
-                        <ExpandableBox
-                            key={index}
-                            title={tip.title}
-                            isOpen={openIndex === index}
-                            onToggle={() => toggle(index)}
-                        >
-                            {tip.description.split('\n\n').map((para, i) => (
-                                <p key={i}>{para}</p>
-                            ))}
-                        </ExpandableBox>
-                    ))}
-                </div>
+                    <div className="w-full space-y-3 max-w-[800px] mx-auto">
+                        {tips.map((tip, index) => (
+                            <ExpandableBox
+                                key={index}
+                                title={tip.title}
+                                isOpen={openIndex === index}
+                                onToggle={() => toggle(index)}
+                            >
+                                {tip.description.split('\n\n').map((para, i) => (
+                                    <p key={i}>{para}</p>
+                                ))}
+                            </ExpandableBox>
+                        ))}
+                    </div>
 
-                <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
-                    Ready to put these strategies to the test?
-                </div>
-                <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                    <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
-                        Play Sudoku
-                    </a>
-                </div>
-            </main>
-        </Layout>
+                    <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
+                        Ready to put these strategies to the test?
+                    </div>
+                    <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                        <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                            Play Sudoku
+                        </a>
+                    </div>
+                </main>
+            </Layout>
+        </ThemeProvider>
     );
 };
 

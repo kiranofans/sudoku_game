@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { ThemeProvider } from '@/components/ThemeContext.tsx';
 import { generateSudoku, Difficulty } from '@/lib/generatesSudoku.ts';
 
 import '@/App.css';
@@ -372,6 +373,7 @@ function Homepage() {
     }, [isGameOver, mistakes, score, timer.timeLeft, hintsUsedInGame, difficulty, gameKey]);
 
     return (
+        <ThemeProvider>
         <Layout
             mobileScore={
                 <div className="mobile-score-column flex flex-row items-center justify-center gap-3">
@@ -621,6 +623,7 @@ function Homepage() {
                 />
             }
         </Layout>
+        </ThemeProvider>
 
     );
 }

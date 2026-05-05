@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ExpandableBox from '@/components/ExpandableBox';
 import Layout from '@/components/Layout';
+import { ThemeProvider } from '@/components/ThemeContext';
 
 // Define the type
 type FAQItem = {
@@ -53,89 +54,91 @@ function faq() {
     };
 
     return (
-        <Layout>
-            <title>FAQ | Sudoku</title>
-            <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
-                <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">
-                    FAQ
-                </h1>
+        <ThemeProvider>
+            <Layout>
+                <title>FAQ | Sudoku</title>
+                <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
+                    <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">
+                        FAQ
+                    </h1>
 
-                <div className="space-y-3 max-w-[800px] w-full mx-auto">
-                    {faqs.map((faq, index) => (
-                        <ExpandableBox
-                            key={index}
-                            title={faq.question}
-                            isOpen={openIndex === index}
-                            onToggle={() => toggle(index)}
-                        >
-                            {index === 0 ? (
-                                <div>
-                                    <p className="italic mb-2 mx-auto">
-                                        “Sudoku (/suːˈdoʊkuː, -ˈdɒk-, sə-/; Japanese: 数独, romanized: sūdoku, lit. 'digit-single'; originally called Number Place)
-                                        is a logic-based, combinatorial number-placement puzzle.”
-                                    </p>
-                                    <p className="mb-2">
-                                        In classic Sudoku, the objective is to fill a 9 × 9 grid with digits so that each column,
-                                        each row, and each of the nine 3 × 3 subgrids that compose the grid
-                                        (also called "boxes", "blocks", or "regions") contains all of the digits from 1 to 9.
-                                        The puzzle setter provides a partially completed grid, which, for a well-posed puzzle, has a single solution.
-                                    </p>
-                                    <p className="text-[10px] text-gray-400">
-                                        — Source: <a href="https://en.wikipedia.org/wiki/Sudoku" className="underline hover:text-blue-500" target="_blank" rel="noopener noreferrer">Wikipedia</a>
-                                    </p>
-                                </div>
-                            ) : index === 1 ? (
-                                <span>
-                                    Yes, SudokuPlays.com is completely free to use. You can play all puzzles directly in your browser without creating an account or downloading anything.
-                                    <br /><br />
-                                    To help support the site and keep it free for everyone, we display Google AdSense ads. These ads do not affect gameplay and no personal account is required to access any features.
-                                </span>
-                            ) : index === 2 ? (
-                                <span className="text-sm">
-                                    No — you don’t need to sign up or log in. You can start playing instantly.
-                                    <br /><br />
-                                    We do not require any personal information.
-                                    <br />To improve your experience, the site uses your browser’s local storage to temporarily save things like your game progress and scores (up to 24 hours).
-                                    <br /><br />
-                                    This data stays on your device and is not sent to our servers.
-                                </span>
-                            ) : index == 3 ? (
-                                <span className="text-sm">
-                                    We offer 5 difficulty levels to suit all players: Very Easy, Easy, Medium, Hard, and Expert.
-                                    <br /><br />
-                                    Each level varies in puzzle complexity and the number of starting clues.
-                                    Easier levels provide more guidance, while harder levels require deeper logic and strategy.
-
-                                    o keep the game challenging and fair, each difficulty level applies a different score penalty for mistakes.
-                                    <br /><br />Higher difficulty levels result in greater point deductions, rewarding more accurate and careful play.
-                                </span>
-                            ) : index === 4 ? (
-                                <span className="text-sm">
-                                    Yes, the site is fully responsive and designed to work smoothly across all devices, including desktops, tablets, and smartphones.
-
-                                    <br /><br />We are continuously improving the layout and interface to better fit a wide range of screen sizes and real-world devices, ensuring a consistent and comfortable gameplay experience.</span>
-                            ) :
-                                index === 5 ? (
+                    <div className="space-y-3 max-w-[800px] w-full mx-auto">
+                        {faqs.map((faq, index) => (
+                            <ExpandableBox
+                                key={index}
+                                title={faq.question}
+                                isOpen={openIndex === index}
+                                onToggle={() => toggle(index)}
+                            >
+                                {index === 0 ? (
+                                    <div>
+                                        <p className="italic mb-2 mx-auto">
+                                            “Sudoku (/suːˈdoʊkuː, -ˈdɒk-, sə-/; Japanese: 数独, romanized: sūdoku, lit. 'digit-single'; originally called Number Place)
+                                            is a logic-based, combinatorial number-placement puzzle.”
+                                        </p>
+                                        <p className="mb-2">
+                                            In classic Sudoku, the objective is to fill a 9 × 9 grid with digits so that each column,
+                                            each row, and each of the nine 3 × 3 subgrids that compose the grid
+                                            (also called "boxes", "blocks", or "regions") contains all of the digits from 1 to 9.
+                                            The puzzle setter provides a partially completed grid, which, for a well-posed puzzle, has a single solution.
+                                        </p>
+                                        <p className="text-[10px] text-gray-400">
+                                            — Source: <a href="https://en.wikipedia.org/wiki/Sudoku" className="underline hover:text-blue-500" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+                                        </p>
+                                    </div>
+                                ) : index === 1 ? (
                                     <span>
-                                        You can improve Sudoku skill by playing regularly and learning strategies from the <a href="/sudokuTips" className="underline hover:text-blue-500">Tips page</a>, like scanning and pencil marks.
+                                        Yes, SudokuPlays.com is completely free to use. You can play all puzzles directly in your browser without creating an account or downloading anything.
+                                        <br /><br />
+                                        To help support the site and keep it free for everyone, we display Google AdSense ads. These ads do not affect gameplay and no personal account is required to access any features.
                                     </span>
-                                ) : (
-                                    faq.answer
-                                )}
-                        </ExpandableBox>
-                    ))}
-                </div>
+                                ) : index === 2 ? (
+                                    <span className="text-sm">
+                                        No — you don’t need to sign up or log in. You can start playing instantly.
+                                        <br /><br />
+                                        We do not require any personal information.
+                                        <br />To improve your experience, the site uses your browser’s local storage to temporarily save things like your game progress and scores (up to 24 hours).
+                                        <br /><br />
+                                        This data stays on your device and is not sent to our servers.
+                                    </span>
+                                ) : index == 3 ? (
+                                    <span className="text-sm">
+                                        We offer 5 difficulty levels to suit all players: Very Easy, Easy, Medium, Hard, and Expert.
+                                        <br /><br />
+                                        Each level varies in puzzle complexity and the number of starting clues.
+                                        Easier levels provide more guidance, while harder levels require deeper logic and strategy.
 
-                <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
-                    Still have questions? Visit the Contact page.
-                </div>
-                <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                    <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
-                        Back to Game
-                    </a>
-                </div>
-            </main>
-        </Layout>
+                                        o keep the game challenging and fair, each difficulty level applies a different score penalty for mistakes.
+                                        <br /><br />Higher difficulty levels result in greater point deductions, rewarding more accurate and careful play.
+                                    </span>
+                                ) : index === 4 ? (
+                                    <span className="text-sm">
+                                        Yes, the site is fully responsive and designed to work smoothly across all devices, including desktops, tablets, and smartphones.
+
+                                        <br /><br />We are continuously improving the layout and interface to better fit a wide range of screen sizes and real-world devices, ensuring a consistent and comfortable gameplay experience.</span>
+                                ) :
+                                    index === 5 ? (
+                                        <span>
+                                            You can improve Sudoku skill by playing regularly and learning strategies from the <a href="/sudokuTips" className="underline hover:text-blue-500">Tips page</a>, like scanning and pencil marks.
+                                        </span>
+                                    ) : (
+                                        faq.answer
+                                    )}
+                            </ExpandableBox>
+                        ))}
+                    </div>
+
+                    <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
+                        Still have questions? Visit the Contact page.
+                    </div>
+                    <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                        <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                            Back to Game
+                        </a>
+                    </div>
+                </main>
+            </Layout>
+        </ThemeProvider>
     );
 };
 

@@ -1,6 +1,8 @@
 import Layout from '@/components/Layout';
+import { ThemeProvider } from '@/components/ThemeContext.tsx';
 function About({ }) {
     return (
+        <ThemeProvider>
         <Layout>
             <title>About | Sudoku</title>
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
@@ -61,6 +63,7 @@ function About({ }) {
                 </div>
             </main>
         </Layout>
+        </ThemeProvider>
     );
 }
 

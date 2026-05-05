@@ -1,8 +1,10 @@
 import Layout from '@/components/Layout';
+import { ThemeProvider } from '@/components/ThemeContext';
 
 function TermsAndConditions() {
     return (
-        <Layout>
+        <ThemeProvider>
+            <Layout>
             <title>Terms & Conditions | Sudoku</title>
             <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                 <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Terms & Condtions</h1>
@@ -131,7 +133,8 @@ function TermsAndConditions() {
                     </ul>
                 </div>
             </main>
-        </Layout>
+            </Layout>
+        </ThemeProvider>
     )
 }
 export default TermsAndConditions

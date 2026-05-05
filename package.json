@@ -33,12 +33,13 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "jsdom": "^29.1.0",
     "tailwindcss": "^4.2.2",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.3",
     "vite": "^6.2.0",
     "vite-plugin-svgr": "^4.5.0",
     "vitest": "^4.1.5"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "@astrojs/react": "^5.0.4",
     "@emailjs/browser": "^4.4.1",
     "astro": "^6.2.1",
