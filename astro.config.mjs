@@ -10,8 +10,8 @@ const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
 export default defineConfig({
     // 1. Set this for the final domain
     site: 'https://sudokuplays.com',
-    // 2. Set your repo name (e.g., '/sudoku_game') for Github testing
-    base: isGitHubActions ? '/sudoku_game' : '/',
+    // 2. Custom domains on GitHub Pages serve from root, so base is always '/'
+    base: '/',
     integrations: [react()],
     build: {
         assets: 'assets',
