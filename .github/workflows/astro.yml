@@ -22,6 +22,8 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
+          # Add this line if your lock file is in a subfolder
+          cache-dependency-path: package-lock.json
 
       - name: Install, build, and upload your site
         uses: withastro/action@v3
