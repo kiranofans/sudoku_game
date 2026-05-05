@@ -8,6 +8,7 @@
 # ----------------------
 /dist
 /build
+.astro/
 
 # ----------------------
 # Logs
@@ -35,7 +36,8 @@ node_modules/.cache/
 # ----------------------
 # Editor / IDE
 # ----------------------
-.vscode/
+.vscode/*
+!.vscode/extensions.json
 .idea/
 *.suo
 *.ntvs*
@@ -43,6 +45,7 @@ node_modules/.cache/
 *.sln
 *.sublime-workspace
 *.sublime-project
+*.sw?
 
 # ----------------------
 # OS files
