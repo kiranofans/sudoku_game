@@ -24,18 +24,17 @@ jobs:
           check-latest: true
           cache: 'npm'
           # Add this line if your lock file is in a subfolder
-          cache-dependency-path: 'SudokuGame/package-lock.json'
+          cache-dependency-path: package-lock.json
 
       - name: Install Dependencies
         # This tells GitHub to run the command inside your folder
         run: npm ci 
-        working-directory: ./SudokuGame
           
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         with:
           # This ensures it uses the correct directory
-          path: ./SudokuGame
+          path: .
 
   deploy:
     needs: build
