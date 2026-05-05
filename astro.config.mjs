@@ -12,7 +12,7 @@ export default defineConfig({
     site: 'https://sudokuplays.com',
     // 2. Set your repo name (e.g., '/sudoku_game') for Github testing
     base: isGitHubActions ? '/sudoku_game' : '/',
-    integrations: [react()],
+    integrations: [react(), tailwind()],
     build: {
         assets: 'assets',
     },
