@@ -7,6 +7,14 @@ export type AnimationEvent = {
   cells: string[];
 };
 
+/**
+ * 
+ * @param board - The current Sudoku board
+ * @param solution - The solution to the Sudoku board
+ * @param isLoading - Whether the game is loading
+ * @param isGameOver - Whether the game is over
+ * @returns 
+ */
 export const useCompletedDomains = (
   board: (number | null)[][],
   solution: number[][],
@@ -22,6 +30,11 @@ export const useCompletedDomains = (
     boxes: new Set<number>()
   });
   const prevBoard = useRef<(number | null)[][]>([]);
+
+  // 1. Create a flattened set of all cells that should be animating right now
+  const animatingCellKeys = new Set(
+    newAnimations.flatMap(animation => animation.cells)
+  );
 
   useEffect(() => {
     if (board.length !== 9 || solution.length !== 9 || isLoading || isGameOver) return;
@@ -129,5 +142,5 @@ export const useCompletedDomains = (
 
   const clearAnimations = () => setNewAnimations([]);
 
-  return { fixedCells, newAnimations, resetFixedCells, clearAnimations };
+  return { fixedCells, newAnimations, animatingCellKeys, resetFixedCells, clearAnimations };
 };
