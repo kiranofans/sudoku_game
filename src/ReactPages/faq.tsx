@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ExpandableBox from '@/components/ExpandableBox';
 import Layout from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeContext';
+import Homepage from './Homepage';
 
 // Define the type
 type FAQItem = {
@@ -36,6 +37,11 @@ const getFAQs = (): FAQItem[] => {
             question: "Does this site work on mobile?",
             answer:
                 "Yes, the site is fully responsive and works on all devices.",
+        },
+        {
+            question: "How to play sudoku on this site?",
+            answer:
+                "We have a instruction modal/popup on home page to guide you.",
         },
         {
             question: "How can I improve at Sudoku?",
@@ -116,8 +122,21 @@ function faq() {
                                         Yes, the site is fully responsive and designed to work smoothly across all devices, including desktops, tablets, and smartphones.
 
                                         <br /><br />We are continuously improving the layout and interface to better fit a wide range of screen sizes and real-world devices, ensuring a consistent and comfortable gameplay experience.</span>
-                                ) :
-                                    index === 5 ? (
+                                ) : index === 5 ?
+                                    (
+                                        <span className="text-sm">
+                                            To learn how to play Sudoku on <a href="/" className="underline hover:text-blue-500">sudokuplays.com</a>, follow these steps:
+                                            <ol className="list-disc text-sm ml-3 space-y-1">
+                                                <li>
+                                                    Navigate to the {<a href="/Homepage">home page </a>} by clicking on the Sudoku logo in the top left (On mobile, this opens the drawer menu where you can tap <b>Play Sudoku</b>).
+                                                </li>
+                                                <li>
+                                                    Select the <b>question mark icon</b> in the top right corner to open the 'How to Play' guide."
+                                                </li>
+                                            </ol>
+                                        </span>
+                                    ) :
+                                    index === 6 ? (
                                         <span>
                                             You can improve Sudoku skill by playing regularly and learning strategies from the <a href="/sudokuTips" className="underline hover:text-blue-500">Tips page</a>, like scanning and pencil marks.
                                         </span>

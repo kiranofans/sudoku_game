@@ -25,6 +25,15 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-05-06"
+                                version="1.0.0"
+                                title="Improvements"
+                                items={[
+                                    <>Added one more Q&A to FAQ page</>,
+                                    <>Optimized the project to reduce bundle size</>,
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-04-28"
                                 version="1.0.0"
                                 title="Improvements & Features"
