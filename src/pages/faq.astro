@@ -6,3 +6,27 @@ import FaqPage from "../ReactPages/faq";
 <AstroLayout title="FAQ | Sudoku">
     <FaqPage client:load />
 </AstroLayout>
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the benefit of this site?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This site provides fast, accessible information using modern web tech."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is it free to use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, all our basic features are completely free."
+                }
+            }
+        ]
+    }
+</script>
