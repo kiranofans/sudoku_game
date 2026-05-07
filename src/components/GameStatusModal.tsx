@@ -109,7 +109,7 @@ const GameStatusModal: React.FC<GameStatusModalProps> = ({ isOpen, onClose, stat
                 <div className="bg-[#f0f7ff] dark:bg-[#1c252e] rounded-[16px] p-5 mb-8">
                     {isWon ? (
                         <p className="text-[0.95rem] leading-relaxed text-[#444] dark:text-[#bbb] font-medium">{randomTip}
-                            <span className='text-sm'>For more details, please visit <a href="/sudokuTips" className="text-[var(--num-pad-bg)] font-bold hover:underline inline-block">Tips</a></span></p>
+                            <br /><br /><span className='text-sm'>For more details, please visit <a href="/sudokuTips" className="text-[var(--num-pad-bg)] font-bold hover:underline inline-block">Tips</a></span></p>
                     ) : (
                         <div className="space-y-3">
                             <p className="text-[0.95rem] leading-relaxed text-[#444] dark:text-[#bbb] font-medium">
