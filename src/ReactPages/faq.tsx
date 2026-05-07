@@ -2,7 +2,6 @@ import { useState } from 'react';
 import ExpandableBox from '@/components/ExpandableBox';
 import Layout from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeContext';
-import Homepage from './Homepage';
 
 // Define the type
 type FAQItem = {
