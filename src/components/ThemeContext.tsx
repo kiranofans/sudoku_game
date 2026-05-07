@@ -17,28 +17,21 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // 1. Start with a safe default for the server
     const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
-    const [hasHydrated, setHasHydrated] = useState(false);
+    // 1. Initial hydration from localStorage
     useEffect(() => {
-        // 1. Run ONCE on mount to sync with browser storage
-        if (!hasHydrated) {
-            const saved = localStorage.getItem('theme') as Theme;
-            if (saved) setTheme(saved);
-            setHasHydrated(true);
-            return;
-        }
-
-        const root = window.document.documentElement;
-        // 2. Check storage ONLY once the component mounts in the browser
         const saved = localStorage.getItem('theme') as Theme;
-        if (saved && saved !== theme) {
+        if (saved) {
             setTheme(saved);
-            return; // Let the next effect run handle the update
         }
+    }, []);
 
+    // 2. Apply theme changes to DOM and localStorage
+    useEffect(() => {
         const updateTheme = () => {
+            const root = window.document.documentElement;
             let nextResolved: 'light' | 'dark';
+            
             if (theme === 'system') {
-                // This is now safe because it is inside useEffect
                 nextResolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             } else {
                 nextResolved = theme as 'light' | 'dark';
@@ -48,10 +41,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             root.classList.remove('light-theme', 'dark-theme');
             root.classList.add(`${nextResolved}-theme`);
             root.style.colorScheme = nextResolved;
+            
+            localStorage.setItem('theme', theme);
         };
 
         updateTheme();
-        localStorage.setItem('theme', theme);
 
         if (theme === 'system') {
             const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -59,7 +53,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             mediaQuery.addEventListener('change', listener);
             return () => mediaQuery.removeEventListener('change', listener);
         }
-    }, [theme, hasHydrated]);
+    }, [theme]);
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme }}>

@@ -9,6 +9,24 @@ const { title = "SudokuPlays" } = Astro.props;
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script is:inline>
+    // Inline script to prevent FOUC by applying the theme before the page renders
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const root = document.documentElement;
+      const isDark = saved === 'dark' || (saved !== 'light' && systemDark);
+      
+      root.classList.remove('light-theme', 'dark-theme');
+      if (isDark) {
+        root.classList.add('dark-theme');
+        root.style.colorScheme = 'dark';
+      } else {
+        root.classList.add('light-theme');
+        root.style.colorScheme = 'light';
+      }
+    })();
+  </script>
   <title>{title}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
   <meta name="description" content="Play Sudoku online for free~! Features a mobile-friendly design for both Android & iOS. Start your daily challenge today!" />
