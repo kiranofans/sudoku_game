@@ -25,6 +25,16 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-05-07"
+                                version="1.0.0"
+                                title="Improvements"
+                                items={[
+                                    <>Updated <a href="/about">About</a>, <a href="/sudokuTips">Tips</a>, and <a href="/faq">FAQ</a> Pages.</>,
+                                    <>Updated the <a href="/privacyPolicy">Privacy Policy</a>.</>,
+                                    // <>Updated the <a href="/termsAndConditions">Terms & Conditions</a> page.</>
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-05-06"
                                 version="1.0.0"
                                 title="Improvements"
