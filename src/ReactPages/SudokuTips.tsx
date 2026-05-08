@@ -72,6 +72,8 @@ function SudokuTips() {
                     </div>
 
                     <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
+                        For more deep explanations and other logic strategies, checkout this site: <a href="https://www.sudokuwiki.org/">Sudoku Wiki</a>
+                        <br />
                         Ready to put these strategies to the test?
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '1rem' }}>

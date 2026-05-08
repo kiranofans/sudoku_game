@@ -47,6 +47,10 @@ const getFAQs = (): FAQItem[] => {
             answer:
                 "you can improve Sudoku skill by playing regularly and learn strategies from the Tips page, like scanning and pencil marks.",
         },
+        {
+            question: "What are the 'What's New' page and 'known issues box' for?",
+            answer: "The What's New page keeps you updated on recent improvements and new features. The Known Issues box transparently lists any current problems/bugs we're aware of, so you know what to expect.",
+        },
     ];
 };
 
@@ -121,33 +125,37 @@ function faq() {
                                         Yes, the site is fully responsive and designed to work smoothly across all devices, including desktops, tablets, and smartphones.
 
                                         <br /><br />We are continuously improving the layout and interface to better fit a wide range of screen sizes and real-world devices, ensuring a consistent and comfortable gameplay experience.</span>
-                                ) : index === 5 ?
-                                    (
-                                        <span className="text-sm">
-                                            To learn how to play Sudoku on <a href="/" className="underline hover:text-blue-500">sudokuplays.com</a>, follow these steps:
-                                            <ol className="list-disc text-sm ml-3 space-y-1">
-                                                <li>
-                                                    Navigate to the {<a href="/Homepage">home page </a>} by clicking on the Sudoku logo in the top left (On mobile, this opens the drawer menu where you can tap <b>Play Sudoku</b>).
-                                                </li>
-                                                <li>
-                                                    Select the <b>question mark icon</b> in the top right corner to open the 'How to Play' guide."
-                                                </li>
-                                            </ol>
-                                        </span>
-                                    ) :
-                                    index === 6 ? (
-                                        <span>
-                                            You can improve Sudoku skill by playing regularly and learning strategies from the <a href="/sudokuTips" className="underline hover:text-blue-500">Tips page</a>, like scanning and pencil marks.
-                                        </span>
-                                    ) : (
-                                        faq.answer
-                                    )}
+                                ) : index === 5 ? (
+                                    <span className="text-sm">
+                                        To learn how to play Sudoku on <a href="/" className="underline hover:text-blue-500">sudokuplays.com</a>, follow these steps:
+                                        <ol className="list-disc text-sm ml-3 space-y-1">
+                                            <li>
+                                                Navigate to the {<a href="/Homepage">home page </a>} by clicking on the Sudoku logo in the top left (On mobile, this opens the drawer menu where you can tap <b>Play Sudoku</b>).
+                                            </li>
+                                            <li>
+                                                Select the <b>question mark icon</b> in the top right corner to open the 'How to Play' guide."
+                                            </li>
+                                        </ol>
+                                    </span>
+                                ) : index === 7 ? (
+                                    <span>
+                                        The <a href="/ChangeLog" className="underline hover:text-blue-500">What's New? </a> page keeps you updated on recent improvements and new features. <br />The Known Issues box transparently lists any current problems/bugs we're aware of, so you know what to expect. For convenience, it’s available on both the <a href="/">homepage</a> and the What’s New page.
+                                    </span>
+
+                                ) : index === 6 ? (
+                                    <span>
+                                        You can improve Sudoku skill by playing regularly and learning strategies from the <a href="/sudokuTips" className="underline hover:text-blue-500">Tips page</a>, like scanning and pencil marks.
+                                    </span>
+                                ) : (
+                                    faq.answer
+                                )}
+
                             </ExpandableBox>
                         ))}
                     </div>
 
                     <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
-                        Still have questions? Visit the Contact page.
+                        Still have questions? Visit the <a href='/contact'>Contact</a> page.
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '1rem' }}>
                         <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
@@ -156,7 +164,7 @@ function faq() {
                     </div>
                 </main>
             </Layout>
-        </ThemeProvider>
+        </ThemeProvider >
     );
 };
 
