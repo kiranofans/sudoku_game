@@ -6,3 +6,33 @@ import PrivacyPolicypage from "../ReactPages/PrivacyPolicy.tsx";
 <AstroLayout title="Privacy Policy | Sudoku">
     <PrivacyPolicypage client:load />
 </AstroLayout>
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "PrivacyPolicy",
+                "name": "Privacy Policy - SudokuPlays",
+                "url": "https://sudokuplays.com/privacyPolicy/",
+                "description": "Information on how SudokuPlays collects, uses, and protects your data while you play our games.",
+                "mainEntity": [
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Data Collection",
+                        "text": "SudokuPlays does not require user accounts. We may collect minimal technical data (like browser type) to improve site performance, but no personal identity info is stored."
+                    },
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Cookies and Tracking",
+                        "text": "We use third party cookies to save your game progress and settings (like Google ads) locally on your device."
+                    },
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Third-Party Services",
+                        "text": "We use Google Search Console, Google ads, Unami and Cloudflare to ensure site security and performance. These services may collect standard web traffic logs."
+                    }
+                ]
+            }
+        ]
+    }
+</script>

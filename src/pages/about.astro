@@ -6,3 +6,82 @@ import AboutPage from "../ReactPages/About.tsx";
 <AstroLayout title="About | Sudoku Play">
     <AboutPage client:load />
 </AstroLayout>
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "SoftwareApplication",
+                "name": "About Sudoku Play Site",
+                "alternateName": "Sudoku Game Online",
+                "applicationCategory": "Game",
+                "operatingSystem": "Web",
+                "description": "A logic-based, number-placement puzzle web app.",
+                "url": "https://sudokuplays.com/about/"
+            },
+            {
+                "@type": "AboutPage",
+                "mainEntity": [
+                    {
+                        "@type": "WebPageElement",
+                        "cssSelector": ".improvement-section",
+                        "name": "About this Site",
+                        "text": "sudokuplays.com is a simple, fast, and distraction-free place to enjoy Sudoku anytime."
+                    },
+                    {
+                        "@type": "WebPageElement",
+                        "name": "What You Will Find Here",
+                        "text": "Multiple difficulty levels to match your skill
+A responsive design that works on desktop and mobile
+Helpful tools and tips to improve your solving techniques
+A lightweight experience with fast loading and minimal clutter",
+                    },
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Why This Site Exists?",
+                        "text": "sudokuplays.com was created to make Sudoku easy to access and enjoyable without requiring downloads, accounts, or complicated features. It’s built with performance and usability in mind, so you can start playing instantly with almost no concerns about data collection or privacy.",
+                    },
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Continuous Improvement",
+                        "text":"We are actively enhancing the site with new features and better usability. 
+                        Stay updated by visiting our What's New? page, or sharpen your skills with strategy guides on our Tips page.",
+                    },
+                ]
+            }
+        ],
+
+        "screenshot": "https://sudokugameplay.com/og-image.png",
+        "inLanguage": "English",
+        "softwareVersion": "1.0",
+        "keywords": [
+            "Sudoku",
+            "Online Sudoku",
+            "Logic Puzzle",
+            "Number Puzzle",
+            "Brain Game",
+            "Puzzle Game",
+            "Developer",
+            "About Sudoku",
+            "Introduction",
+            "What You Will Find Here",
+            "About sudokuplays.com",
+            "Why This Site Exists",
+            "About this Site"
+        ],
+        "genre": "Puzzle Game",
+        "featureList": [
+            "Multiple Difficulty Levels",
+            "Daily Challenges",
+            "Hint System",
+            "Timer and Stats",
+            "Score System",
+            "Theme System",
+            "Dark Mode",
+            "Light Mode",
+            "Responsive Design",
+            "No Signup Required"
+        ]
+    }
+</script>
