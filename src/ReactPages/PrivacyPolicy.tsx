@@ -119,7 +119,7 @@ function PrivacyPolicy() {
                                                 <b className='text-sm'>Right to Opt-Out of Sale or Sharing: </b>
                                                 Currently, sudokuplays.com does not sell or share your personal information for monetary compensation or cross-context behavioral advertising.
                                                 However, we reserve the right to enable third-party advertising networks (such as Googgle AdSense) in the future.
-                                                When enabled, this may be classified as<b> "Sharing" for cross-context behavioral advertising.</b>.
+                                                When enabled, this may be classified as<b> "Sharing" for cross-context behavioral advertising</b>.
                                                 You may opt out by visiting <a href="https://myadcenter.google.com/" className=''>Google's my Ad Center</a>.
                                             </li>
                                             <li className="mb-1 mt-2 text-sm">
@@ -166,7 +166,7 @@ function PrivacyPolicy() {
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b>Ad Technology Partners: </b>
                                                 To support this free service, we reserve the right to utilize Google AdSense in the future.
-                                                <b>Currently, third-party advertising is disabled</b> for all users in the EEA and UK. When enabled,
+                                                <b> Currently, third-party advertising is disabled</b> for all users in the EEA and UK. When enabled,
                                                 we will provide a method for you to manage your preferences. In the meantime, you can control how Google uses your data
                                                 for ads across the web at <a href="https://myadcenter.google.com/" className=''>Google's my Ad Center</a>.
                                                 {/* You can manage these partners at any time via our <b>Privacy Settings/Consent Banner</b>. */}
