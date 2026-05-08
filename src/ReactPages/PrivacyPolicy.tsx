@@ -10,7 +10,7 @@ function PrivacyPolicy() {
                 <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                     <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Privacy Policy</h1>
                     <div className="privacy-policy-content" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>
-                        <p><strong>Last updated: April 16, 2026</strong></p>
+                        <p><strong>Last updated: May 7, 2026</strong></p>
                         <p>Please read these terms and conditions carefully before using Our Service.</p>
 
                         <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Interpretation and Definitions</h3>
@@ -71,11 +71,25 @@ function PrivacyPolicy() {
                                                     informed consent via our consent tool.
                                                 </li>
                                                 <li>
-                                                    <b>Third-Party Advertising & Cookies: </b>
-                                                    To support this free Service, we use Google AdSense and other third-party vendors to serve advertisements.
-                                                    These vendors use cookies to serve ads based on your prior visits to this or other websites.
-                                                    You may opt out of personalized advertising by visiting <a href='https://www.google.com/search?q=https://www.google.com/settings/ads'>Google Ads Settings </a>
-                                                    or <a href="www.aboutads.info">www.aboutads.info</a>.
+                                                    <b>Analytics, Third-Party Advertising & Cookies: </b>
+                                                    <ol type="1" className='list-decimal space-y-2 ml-5 mt-1 text-sm'>
+                                                        <li>
+                                                            <b>Privacy-First Analytics (Current)</b>
+                                                            <p> To understand how our site is performing and improve your gameplay, we use <b>Unami Analytics</b>. Umami is a privacy-focused tool that collects anonymous technical data (such as general region and browser type).
+                                                                It <b>does not</b> collect personally identifiable information (PII), does not track you across other websites, and operates entirely <b> without the use of cookies</b>.</p>
+                                                        </li>
+                                                        <li>
+                                                            <b>Future Advertising and Third-Party Cookies</b>
+                                                            <p>
+                                                                Currently, SudokuPlays operates as an ad-free experience and does not deploy third-party advertising cookies. However, to support the ongoing maintenance and development of this free Service, we reserve the right to enable third-party advertising (such as Google AdSense) in the future.
+                                                            </p>
+                                                            <p className='mt-1'>
+                                                                When active, these third-party vendors use cookies to serve advertisements based on your prior visits to this or other websites. If and when these services are enabled,
+                                                                you may opt out of personalized advertising at any time by visiting <a href='https://www.google.com/search?q=https://www.google.com/settings/ads'>Google Ads Settings </a>
+                                                                or <a href="www.aboutads.info">www.aboutads.info</a>.
+                                                            </p>
+                                                        </li>
+                                                    </ol>
                                                 </li>
                                                 <li>
                                                     <b>Data Portability & Erasure: </b>
@@ -100,20 +114,23 @@ function PrivacyPolicy() {
                                         <ul className="md:list-disc ml-5 space-y-1 text-sm">
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b className='text-sm'>Notice at Collection: </b>
-                                                We collect identifiers (such as IP addresses and device IDs via LocalStorage) to facilitate game rewards, prevent fraud, and analyze site traffic. We do not collect "Sensitive Personal Information" as defined by California law.</li>
+                                                We collect limited identifiers (such as anonymized IP addresses via Unami Analytics and device IDs via LocalStorage) to facilitate game rewards, prevent fraud, and analyze site traffic. We do not collect "Sensitive Personal Information" as defined by California law.</li>
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b className='text-sm'>Right to Opt-Out of Sale or Sharing: </b>
-                                                While we do not sell your data for monetary compensation, our use of third-party advertising networks (such as Google AdSense) to serve personalized ads is classified as
-                                                <b> "Sharing" for cross-context behavioral advertising.</b>
+                                                Currently, sudokuplays.com does not sell or share your personal information for monetary compensation or cross-context behavioral advertising.
+                                                However, we reserve the right to enable third-party advertising networks (such as Googgle AdSense) in the future.
+                                                When enabled, this may be classified as<b> "Sharing" for cross-context behavioral advertising.</b>.
+                                                You may opt out by visiting <a href="https://myadcenter.google.com/" className=''>Google's my Ad Center</a>.
                                             </li>
                                             <li className="mb-1 mt-2 text-sm">
                                                 <b>Mandatory GPC Recognition: </b>
-                                                In accordance with 2026 regulations, our Service is configured to automatically detect and honor Global Privacy Control (GPC) signals.
-                                                If your browser sends a GPC signal, we will treat it as a valid request to opt-out of the sharing of your personal information for advertising purposes.
+                                                In accordance with 2026 regulations, if your browser sends a GPC signal, we will treat it as a valid request to opt-out of future advertising sharing.
+                                                Since we do not use a local consent manager, honoring your GPC signal is handled by our commitment to serve only non-personalized ads to users with this signal enabled.
                                             </li>
-                                            <li className="mb-1 mt-2 text-sm">
-                                                <b>Opt-Out Confirmation: </b> If you manually exercise your right to opt-out via our consent manager, we will provide a visible confirmation that your "Opt-Out Request has been Honored."
-                                            </li>
+                                            {/* For future use when google adsense is enabled*/}
+                                            {/* <li className="mb-1 mt-2 text-sm">
+                                                <b>Opt-Out Confirmation: </b> If you manually exercise your right to opt-out, we will provide a visible confirmation that your "Opt-Out Request has been Honored."
+                                            </li> */}
                                             <li className="mb-1 mt-2 text-sm">
                                                 <b>Right to Know & Delete: </b>
                                                 You have the right to request access to the specific pieces of data we have collected about you since January 1, 2022, or request its deletion.
@@ -121,7 +138,8 @@ function PrivacyPolicy() {
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b>Non-Discrimination: </b>
                                                 We will not deny service, suggest different pricing,
-                                                or degrade your game experience if you choose to exercise your privacy rights.                                        </li>
+                                                or degrade your game experience if you choose to exercise your privacy rights.
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -147,14 +165,17 @@ function PrivacyPolicy() {
                                             </li>
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b>Ad Technology Partners: </b>
-                                                To serve ads, we share limited technical identifiers with Google AdSense and its approved ad technology partners.
-                                                You can manage these partners at any time via our <b>Privacy Settings/Consent Banner</b>.
+                                                To support this free service, we reserve the right to utilize Google AdSense in the future.
+                                                <b>Currently, third-party advertising is disabled</b> for all users in the EEA and UK. When enabled,
+                                                we will provide a method for you to manage your preferences. In the meantime, you can control how Google uses your data
+                                                for ads across the web at <a href="https://myadcenter.google.com/" className=''>Google's my Ad Center</a>.
+                                                {/* You can manage these partners at any time via our <b>Privacy Settings/Consent Banner</b>. */}
                                             </li>
                                             <li>
                                                 <b>Data Subject Rights: </b>
                                                 You have the right to access, rectify, or erase your data.
                                                 Because your data is stored exclusively in your browser’s <b>LocalStorage</b>,
-                                                you may exercise your "Right to be Forgotten" immediately and independently by clearing your browser's cache and site data.
+                                                you can exercise your "Right to be Forgotten" immediately by clearing and independently by clearing your browser's cache and site data.
                                             </li>
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b>International Transfers: </b>
@@ -168,11 +189,12 @@ function PrivacyPolicy() {
                                         <ul className='md:list-disc ml-5 space-y-1 text-sm'>
                                             <li>
                                                 <b>Web LocalStorage: </b>
-                                                We use LocalStorage (data stored only on your device) to maintain your current game state, track high scores, and store a 24-hour "Hint Memo" for ad-reward verification. This data is functional, remains under your control, and is never transmitted to our servers.
+                                                We use LocalStorage (data stored only on your device) to maintain your current game state, track high scores, and store a 24-hour "Hint Memo" for ad-reward verification and "Score History". This data is functional, remains under your control, and is never transmitted to our servers.
                                             </li>
                                             <li>
-                                                <b>Cloudflare Analytics: </b>
-                                                We use Cloudflare’s privacy-first analytics to monitor site performance and traffic trends. Unlike traditional trackers, this does not collect personal identifiers, does not use cookies, and does not track your activity across other websites.
+                                                <b>Cloudflare & Unami Analytics: </b>
+                                                We use these for privacy-first, non-invasive traffic analytics to monitor site performance and traffic trends.
+                                                Unlike traditional trackers, they do not collect personal identifiers, do not use cookies, and do not track your activity across other websites.
                                             </li>
                                             <li>
                                                 <b>No Server-Side Tracking: </b>
