@@ -75,7 +75,7 @@ function PrivacyPolicy() {
                                                     <ol type="1" className='list-decimal space-y-2 ml-5 mt-1 text-sm'>
                                                         <li>
                                                             <b>Privacy-First Analytics (Current)</b>
-                                                            <p> To understand how our site is performing and improve your gameplay, we use <b>Unami Analytics</b>. Umami is a privacy-focused tool that collects anonymous technical data (such as general region and browser type).
+                                                            <p> To understand how our site is performing and improve your gameplay, we use <b>Umami Analytics</b>. Umami is a privacy-focused tool that collects anonymous technical data (such as general region and browser type).
                                                                 It <b>does not</b> collect personally identifiable information (PII), does not track you across other websites, and operates entirely <b> without the use of cookies</b>.</p>
                                                         </li>
                                                         <li>
@@ -114,11 +114,11 @@ function PrivacyPolicy() {
                                         <ul className="md:list-disc ml-5 space-y-1 text-sm">
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b className='text-sm'>Notice at Collection: </b>
-                                                We collect limited identifiers (such as anonymized IP addresses via Unami Analytics and device IDs via LocalStorage) to facilitate game rewards, prevent fraud, and analyze site traffic. We do not collect "Sensitive Personal Information" as defined by California law.</li>
+                                                We collect limited identifiers (such as anonymized IP addresses via Umami Analytics and device IDs via LocalStorage) to facilitate game rewards, prevent fraud, and analyze site traffic. We do not collect "Sensitive Personal Information" as defined by California law.</li>
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b className='text-sm'>Right to Opt-Out of Sale or Sharing: </b>
                                                 Currently, sudokuplays.com does not sell or share your personal information for monetary compensation or cross-context behavioral advertising.
-                                                However, we reserve the right to enable third-party advertising networks (such as Googgle AdSense) in the future.
+                                                However, we reserve the right to enable third-party advertising networks (such as Google AdSense) in the future.
                                                 When enabled, this may be classified as<b> "Sharing" for cross-context behavioral advertising</b>.
                                                 You may opt out by visiting <a href="https://myadcenter.google.com/" className=''>Google's my Ad Center</a>.
                                             </li>
@@ -175,7 +175,7 @@ function PrivacyPolicy() {
                                                 <b>Data Subject Rights: </b>
                                                 You have the right to access, rectify, or erase your data.
                                                 Because your data is stored exclusively in your browser’s <b>LocalStorage</b>,
-                                                you can exercise your "Right to be Forgotten" immediately by clearing and independently by clearing your browser's cache and site data.
+                                                you can exercise your "Right to be Forgotten" immediately and independently by clearing your browser's cache and site data.
                                             </li>
                                             <li className='mb-1 mt-2 text-sm'>
                                                 <b>International Transfers: </b>
@@ -192,7 +192,7 @@ function PrivacyPolicy() {
                                                 We use LocalStorage (data stored only on your device) to maintain your current game state, track high scores, and store a 24-hour "Hint Memo" for ad-reward verification and "Score History". This data is functional, remains under your control, and is never transmitted to our servers.
                                             </li>
                                             <li>
-                                                <b>Cloudflare & Unami Analytics: </b>
+                                                <b>Cloudflare & Umami Analytics: </b>
                                                 We use these for privacy-first, non-invasive traffic analytics to monitor site performance and traffic trends.
                                                 Unlike traditional trackers, they do not collect personal identifiers, do not use cookies, and do not track your activity across other websites.
                                             </li>

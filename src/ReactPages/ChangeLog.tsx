@@ -31,7 +31,7 @@ function ChangeLog({ }) {
                                 items={[
                                     <>Updated <a href="/about">About</a>, <a href="/sudokuTips">Tips</a>, and <a href="/faq">FAQ</a> Pages.</>,
                                     <>Updated the <a href="/privacyPolicy">Privacy Policy</a>.</>,
-                                    // <>Updated the <a href="/termsAndConditions">Terms & Conditions</a> page.</>
+                                    <>Updated the <a href="/termsAndConditions">Terms & Conditions</a> page.</>
                                 ]}
                             />
                             <ChangelogEntry
