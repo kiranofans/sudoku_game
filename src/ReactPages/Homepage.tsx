@@ -374,255 +374,258 @@ function Homepage() {
 
     return (
         <ThemeProvider>
-        <Layout
-            mobileScore={
-                <div className="mobile-score-column flex flex-row items-center justify-center gap-3">
-                    <ScoreSystem score={score} history={history} isMobile />
-                </div>
-            }
-            headerContent={
-                <>
-                    <DifficultySelector
-                        difficulty={difficulty}
-                        onDifficultyChange={(newDifficulty) => {
-                            setDifficulty(newDifficulty);
-                        }}
-                    />
-                    <Tooltip text="How to play">
-                        <button onClick={() => {
-                            setShowInstructions(true);
-                        }}
-                            className="how-to-play-btn"
-                            aria-label="How to play"
-                            title="How to play"
-                        >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                className="how-to-icon-img" aria-labelledby='svg-title svg-description'>
-                                <title id="svg-title">How-to-play icon</title>
-                                <desc id="svg-description">Clickable how-to icon for Sudoku instructions for beginners</desc>
-                                <path d="M12.838 17.638C13.0793 17.396 13.2 17.1 13.2 16.75C13.2 16.4 13.0793 16.104 12.838 15.862C12.5967 15.62 12.3007 15.4993 11.95 15.5C11.5993 15.5007 11.3037 15.6217 11.063 15.863C10.8223 16.1043 10.7013 16.4 10.7 16.75C10.6987 17.1 10.8197 17.396 11.063 17.638C11.3063 17.88 11.602 18.0007 11.95 18C12.298 17.9993 12.594 17.8783 12.838 17.637M11.05 14.15H12.9C12.9 13.6 12.9627 13.1667 13.088 12.85C13.2133 12.5333 13.5673 12.1 14.15 11.55C14.5833 11.1167 14.925 10.704 15.175 10.312C15.425 9.92001 15.55 9.44934 15.55 8.9C15.55 7.96667 15.2083 7.25001 14.525 6.75001C13.8417 6.25001 13.0333 6.00001 12.1 6.00001C11.15 6.00001 10.3793 6.25001 9.788 6.75001C9.19667 7.25001 8.784 7.85001 8.55 8.55001L10.2 9.20001C10.2833 8.90001 10.471 8.57501 10.763 8.22501C11.055 7.87501 11.5007 7.70001 12.1 7.70001C12.6333 7.70001 13.0333 7.846 13.3 8.138C13.5667 8.43 13.7 8.75067 13.7 9.10001C13.7 9.43334 13.6 9.746 13.4 10.038C13.2 10.33 12.95 10.6007 12.65 10.85C11.9167 11.5 11.4667 11.9917 11.3 12.325C11.1333 12.6583 11.05 13.2667 11.05 14.15ZM12 22C10.6167 22 9.31667 21.7377 8.1 21.213C6.88334 20.6883 5.825 19.9757 4.925 19.075C4.025 18.1743 3.31267 17.116 2.788 15.9C2.26333 14.684 2.00067 13.384 2 12C1.99933 10.616 2.262 9.31601 2.788 8.10001C3.314 6.88401 4.02633 5.82567 4.925 4.92501C5.82367 4.02434 6.882 3.31201 8.1 2.78801C9.318 2.26401 10.618 2.00134 12 2.00001C13.382 1.99867 14.682 2.26134 15.9 2.78801C17.118 3.31467 18.1763 4.02701 19.075 4.92501C19.9737 5.82301 20.6863 6.88134 21.213 8.10001C21.7397 9.31867 22.002 10.6187 22 12C21.998 13.3813 21.7353 14.6813 21.212 15.9C20.6887 17.1187 19.9763 18.177 19.075 19.075C18.1737 19.973 17.1153 20.6857 15.9 21.213C14.6847 21.7403 13.3847 22.0027 12 22Z" fill="currentColor" />
-                            </svg>
-                        </button>
-                    </Tooltip>
-                </>
-            }
-        >
-
-            <h1 className="sr-only">Free Online Sudoku Puzzles - Enjoy Daily Logic Games</h1>
-            <div style={{
-                position: 'absolute',
-                width: '1px',
-                height: '1px',
-                padding: '0',
-                margin: '-1px',
-                overflow: 'hidden',
-                clip: 'rect(0, 0, 0, 0)',
-                whiteSpace: 'nowrap',
-                border: '0'
-            }}>
-                Play Sudoku online for free at SudokuPlays.com, with no login required!
-                Just enjoy daily puzzles in multiple difficulty levels, clear beginner-friendly instructions,
-                and separate pro tips to help improve your skill. Challenge yourself with a scoring system
-                and timer control, all in a fast, mobile-friendly experience for iOS and Android.
-            </div>
-
-            <div className="sudoku-app" style={{ maxWidth: '720px' }}>
-                {/* Wrap themain game container in scrollable div */}
-                {isLoading && (
-                    <div className="loading-overlay">
-                        <div className="loading-bar"
-                            style={{ width: isLoading ? '100%' : '0%' }}>
-                            <div className="loading-progress"></div>
-                        </div>
+            <Layout
+                mobileScore={
+                    <div className="mobile-score-column flex flex-row items-center justify-center gap-3">
+                        <ScoreSystem score={score} history={history} isMobile />
                     </div>
-                )}
+                }
+                headerContent={
+                    <>
+                        <DifficultySelector
+                            difficulty={difficulty}
+                            onDifficultyChange={(newDifficulty) => {
+                                setDifficulty(newDifficulty);
+                            }}
+                        />
+                        <Tooltip text="How to play">
+                            <button onClick={() => {
+                                setShowInstructions(true);
+                            }}
+                                className="how-to-play-btn"
+                                aria-label="How to play"
+                                title="How to play"
+                            >
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                    className="how-to-icon-img" aria-labelledby='svg-title svg-description'>
+                                    <title id="svg-title">How-to-play icon</title>
+                                    <desc id="svg-description">Clickable how-to icon for Sudoku instructions for beginners</desc>
+                                    <path d="M12.838 17.638C13.0793 17.396 13.2 17.1 13.2 16.75C13.2 16.4 13.0793 16.104 12.838 15.862C12.5967 15.62 12.3007 15.4993 11.95 15.5C11.5993 15.5007 11.3037 15.6217 11.063 15.863C10.8223 16.1043 10.7013 16.4 10.7 16.75C10.6987 17.1 10.8197 17.396 11.063 17.638C11.3063 17.88 11.602 18.0007 11.95 18C12.298 17.9993 12.594 17.8783 12.838 17.637M11.05 14.15H12.9C12.9 13.6 12.9627 13.1667 13.088 12.85C13.2133 12.5333 13.5673 12.1 14.15 11.55C14.5833 11.1167 14.925 10.704 15.175 10.312C15.425 9.92001 15.55 9.44934 15.55 8.9C15.55 7.96667 15.2083 7.25001 14.525 6.75001C13.8417 6.25001 13.0333 6.00001 12.1 6.00001C11.15 6.00001 10.3793 6.25001 9.788 6.75001C9.19667 7.25001 8.784 7.85001 8.55 8.55001L10.2 9.20001C10.2833 8.90001 10.471 8.57501 10.763 8.22501C11.055 7.87501 11.5007 7.70001 12.1 7.70001C12.6333 7.70001 13.0333 7.846 13.3 8.138C13.5667 8.43 13.7 8.75067 13.7 9.10001C13.7 9.43334 13.6 9.746 13.4 10.038C13.2 10.33 12.95 10.6007 12.65 10.85C11.9167 11.5 11.4667 11.9917 11.3 12.325C11.1333 12.6583 11.05 13.2667 11.05 14.15ZM12 22C10.6167 22 9.31667 21.7377 8.1 21.213C6.88334 20.6883 5.825 19.9757 4.925 19.075C4.025 18.1743 3.31267 17.116 2.788 15.9C2.26333 14.684 2.00067 13.384 2 12C1.99933 10.616 2.262 9.31601 2.788 8.10001C3.314 6.88401 4.02633 5.82567 4.925 4.92501C5.82367 4.02434 6.882 3.31201 8.1 2.78801C9.318 2.26401 10.618 2.00134 12 2.00001C13.382 1.99867 14.682 2.26134 15.9 2.78801C17.118 3.31467 18.1763 4.02701 19.075 4.92501C19.9737 5.82301 20.6863 6.88134 21.213 8.10001C21.7397 9.31867 22.002 10.6187 22 12C21.998 13.3813 21.7353 14.6813 21.212 15.9C20.6887 17.1187 19.9763 18.177 19.075 19.075C18.1737 19.973 17.1153 20.6857 15.9 21.213C14.6847 21.7403 13.3847 22.0027 12 22Z" fill="currentColor" />
+                                </svg>
+                            </button>
+                        </Tooltip>
+                    </>
+                }
+            >
 
-                {/* Modals */}
-                <InstructionsModal
-                    isOpen={showInstructions && !isLoading}
-                    onClose={() => setShowInstructions(false)}
-                />
-                <AdModal
-                    isOpen={showAdModal}
-                    onClose={() => setShowAdModal(false)}
-                    onAdComplete={handleEarnHint}
-                />
-                <PauseModal
-                    isOpen={!timer.isRunning && !isGameOver && !isLoading}
-                    onResume={() => timer.start()}
-                />
-                <div className={`game-container h-auto [contain:none] [will-change:auto] ${(!timer.isRunning && !isGameOver) ? 'blur-md pointer-events-none' : ''}`}>
-                    <div className="board-section">
-                        <div className="game-info">
-                            <div>
-                                <div className="info-item">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        aria-labelledby="svg-title svg-description"
-                                        xmlns="http://www.w3.org/2000/svg" className="timer-icon-svg">
-                                        <title id="svg-title">SudokuPlays timer icon</title>
-                                        <desc id="svg-description">Countdown timer during gameplay</desc>
-                                        <path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor" />
-                                    </svg>
-                                    <span>{formatTime(timer.timeLeft)}</span>
+                <h1 className="sr-only">Free Online Sudoku Puzzles - Enjoy Daily Logic Games</h1>
+                <div style={{
+                    position: 'absolute',
+                    width: '1px',
+                    height: '1px',
+                    padding: '0',
+                    margin: '-1px',
+                    overflow: 'hidden',
+                    clip: 'rect(0, 0, 0, 0)',
+                    whiteSpace: 'nowrap',
+                    border: '0'
+                }}>
+                    Play Sudoku online for free at SudokuPlays.com, with no login required!
+                    Just enjoy daily puzzles in multiple difficulty levels, clear beginner-friendly instructions,
+                    and separate pro tips to help improve your skill. Challenge yourself with a scoring system
+                    and timer control, all in a fast, mobile-friendly experience for iOS and Android.
+                </div>
 
-                                    {/* Pause/Play timer countdown BUTTON */}
-                                    <svg
-                                        onClick={() =>
-                                            timer.isRunning ? timer.pause() : timer.start()
-                                        }
-                                        aria-labelledby="svg-title svg-description"
-                                        /* stroke-current removes the need for stroke="black" */
-                                        className="w-7 h-7 cursor-pointer transition-transform hover:scale-100 
+                <div className="sudoku-app" style={{ maxWidth: '720px' }}>
+                    {/* Wrap themain game container in scrollable div */}
+                    {isLoading && (
+                        <div className="loading-overlay">
+                            <div className="loading-bar"
+                                style={{ width: isLoading ? '100%' : '0%' }}>
+                                <div className="loading-progress"></div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Modals */}
+                    <InstructionsModal
+                        isOpen={showInstructions && !isLoading}
+                        onClose={() => setShowInstructions(false)}
+                    />
+                    <AdModal
+                        isOpen={showAdModal}
+                        onClose={() => setShowAdModal(false)}
+                        onAdComplete={handleEarnHint}
+                    />
+                    <PauseModal
+                        isOpen={!timer.isRunning && !isGameOver && !isLoading}
+                        onResume={() => timer.start()}
+                    />
+                    <div className={`game-container h-auto [contain:none] [will-change:auto] ${(!timer.isRunning && !isGameOver) ? 'blur-md pointer-events-none' : ''}`}>
+                        <div className="board-section">
+                            <div className="game-info">
+                                <div>
+                                    <div className="info-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            aria-labelledby="svg-title svg-description"
+                                            xmlns="http://www.w3.org/2000/svg" className="timer-icon-svg">
+                                            <title id="svg-title">SudokuPlays timer icon</title>
+                                            <desc id="svg-description">Countdown timer during gameplay</desc>
+                                            <path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor" />
+                                        </svg>
+                                        <span>{formatTime(timer.timeLeft)}</span>
+
+                                        {/* Pause/Play timer countdown BUTTON */}
+                                        <svg
+                                            onClick={() =>
+                                                timer.isRunning ? timer.pause() : timer.start()
+                                            }
+                                            aria-labelledby="svg-title svg-description"
+                                            /* stroke-current removes the need for stroke="black" */
+                                            className="w-7 h-7 cursor-pointer transition-transform hover:scale-100 
                         hover:stroke-blue-700 stroke-current text-black dark:text-gray-300 dark:gray-300
                         dark:hover:stroke-gray-200"
-                                        viewBox="0 0 48 48"
-                                        fill="none"
-                                        strokeWidth="3"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <title id='svg-title'>Countdown timer control button</title>
-                                        <desc id="svg-description">Sudoku Play game timer control button: play/pause</desc>
-                                        {/* outer circle outline */}
-                                        <circle cx="24" cy="24" r="20" />
+                                            viewBox="0 0 48 48"
+                                            fill="none"
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <title id='svg-title'>Countdown timer control button</title>
+                                            <desc id="svg-description">Sudoku Play game timer control button: play/pause</desc>
+                                            {/* outer circle outline */}
+                                            <circle cx="24" cy="24" r="20" />
 
-                                        {/* icon */}
-                                        {timer.isRunning ? (
-                                            // pause icon (black lines)
-                                            <>
-                                                <line x1="18" y1="16" x2="18" y2="32" />
-                                                <line x1="30" y1="16" x2="30" y2="32" />
-                                            </>
-                                        ) : (
-                                            // play icon (triangle outline)
-                                            <polygon points="18,14 36,24 18,34" />
-                                        )}
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div className="info-item">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                        className="mistake-icon-svg" aria-labelledby='svg-title svg-description'>
-                                        <title id="svg-title">Mistakes icon</title>
-                                        <desc id="svg-description">Sudoku Play game mistakes icon</desc>
-                                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                    <span>{mistakes}/10</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <button className="new-game-btn" onClick={startNewGame}>New Game</button>
-                            </div>
-                        </div>
-                        <Board
-                            board={board}
-                            initialBoard={initialBoard}
-                            notes={notes}
-                            selectedCell={selectedCell}
-                            onCellClick={handleCellClick}
-                            solution={solution}
-                            crossHighlight={crossHighlight}
-                            highlightedNumber={highlightedNumber}
-                            fixedCells={fixedCells}
-                        />
-                    </div>
-
-                    <div className="counts-and-actionbtn">
-                        <div className="control-panel">
-                            <ScoreSystem score={score} history={history} />
-                            <div className="action-buttons">
-                                <Tooltip text="Pencil Mode">
-                                    <button
-                                        className={isPencilMode ? 'active' : ''}
-                                        onClick={() => setIsPencilMode(!isPencilMode)}
-                                        aria-pressed={isPencilMode}
-                                        aria-label="Toggle pencil mode">
-                                        <div className="btn-pencil" title="Edit">
-                                        </div>
-                                    </button>
-                                </Tooltip>
-
-                                <Tooltip text="Eraser">
-                                    <button onClick={handleEraser}>
-                                        <div className='btn-eraser'></div>
-                                    </button>
-                                </Tooltip>
-
-                                <Tooltip text="Get Hint">
-                                    <button onClick={() => {
-                                        if (hintsRemaining > 0) {
-                                            handleHint();
-
-                                        } else {
-                                            // show ad logic
-                                            // setShowAdModal(true);
-                                            alert("The ads are currenly disabled for technical reason. \nPlease check back later.");
-                                        }
-                                    }}
-                                        className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
-                                        aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
-                                    >
-                                        <div className='btn-hint' ></div>
-
-                                        {/* Unified badge for both hints count and Ad state */}
-                                        <span className="hint-badge" role="status" aria-live="polite">
-                                            {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
-                                        </span>
-                                    </button>
-                                </Tooltip>
-
-                                <Tooltip text="Reset Game">
-                                    <button onClick={handleReset} aria-label="Reset">
-                                        <div className="btn-reset"></div>
-                                    </button>
-                                </Tooltip>
-                            </div>
-                            <div className="number-pad">
-                                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                                    <button
-                                        key={num}
-                                        onClick={() => handleNumberInput(num)}
-                                        disabled={isGameOver || numberCounts[num] <= 0}
-                                        className={numberCounts[num] <= 0 ? 'completed' : ''}
-                                    >
-                                        <span className="number-value">{num}</span>
-                                        <span className="count-badge desktop-only-count">{numberCounts[num]}</span>
-                                    </button>
-                                ))}
-                            </div>
-                            <div className="mobile-only-counts-row">
-                                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                                    <div key={num} className={`mobile-count-item ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
-                                        {numberCounts[num]}
+                                            {/* icon */}
+                                            {timer.isRunning ? (
+                                                // pause icon (black lines)
+                                                <>
+                                                    <line x1="18" y1="16" x2="18" y2="32" />
+                                                    <line x1="30" y1="16" x2="30" y2="32" />
+                                                </>
+                                            ) : (
+                                                // play icon (triangle outline)
+                                                <polygon points="18,14 36,24 18,34" />
+                                            )}
+                                        </svg>
                                     </div>
-                                ))}
+                                </div>
+
+                                <div>
+                                    <div className="info-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                            className="mistake-icon-svg" aria-labelledby='svg-title svg-description'>
+                                            <title id="svg-title">Mistakes icon</title>
+                                            <desc id="svg-description">Sudoku Play game mistakes icon</desc>
+                                            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                        <span>{mistakes}/10</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button className="new-game-btn" onClick={startNewGame}>New Game</button>
+                                </div>
+                            </div>
+                            <Board
+                                board={board}
+                                initialBoard={initialBoard}
+                                notes={notes}
+                                selectedCell={selectedCell}
+                                onCellClick={handleCellClick}
+                                solution={solution}
+                                crossHighlight={crossHighlight}
+                                highlightedNumber={highlightedNumber}
+                                fixedCells={fixedCells}
+                            />
+                        </div>
+
+                        <div className="counts-and-actionbtn">
+                            <div className="control-panel">
+                                <ScoreSystem score={score} history={history} />
+                                <div className="action-buttons">
+                                    <Tooltip text="Pencil Mode">
+                                        <button
+                                            className={isPencilMode ? 'active' : ''}
+                                            onClick={() => setIsPencilMode(!isPencilMode)}
+                                            aria-pressed={isPencilMode}
+                                            aria-label="Toggle pencil mode">
+                                            <div className="btn-pencil" title="Edit">
+                                            </div>
+                                        </button>
+                                    </Tooltip>
+
+                                    <Tooltip text="Eraser">
+                                        <button onClick={handleEraser}>
+                                            <div className='btn-eraser'></div>
+                                        </button>
+                                    </Tooltip>
+
+                                    <Tooltip text="Get Hint">
+                                        <button onClick={() => {
+                                            if (hintsRemaining > 0) {
+                                                handleHint();
+
+                                            } else {
+                                                // show ad logic
+                                                // setShowAdModal(true);
+                                                alert("The ads are currenly disabled for technical reason. \nPlease check back later.");
+                                            }
+                                        }}
+                                            className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
+                                            aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
+                                        >
+                                            <div className='btn-hint' ></div>
+
+                                            {/* Unified badge for both hints count and Ad state */}
+                                            <span className="hint-badge" role="status" aria-live="polite">
+                                                {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
+                                            </span>
+                                        </button>
+                                    </Tooltip>
+
+                                    <Tooltip text="Reset Game">
+                                        <button onClick={handleReset} aria-label="Reset">
+                                            <div className="btn-reset"></div>
+                                        </button>
+                                    </Tooltip>
+                                </div>
+                                <div className="number-pad">
+                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                                        <button
+                                            key={num}
+                                            onClick={() => handleNumberInput(num)}
+                                            disabled={isGameOver || numberCounts[num] <= 0}
+                                            className={numberCounts[num] <= 0 ? 'completed' : ''}
+                                        >
+                                            <span className="number-value">{num}</span>
+                                            <span className="count-badge desktop-only-count">{numberCounts[num]}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="mobile-only-counts-row">
+                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                                        <div key={num} className={`mobile-count-item ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
+                                            {numberCounts[num]}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {/* Divider above known issues box - adjusted width to match game board + panel */}
+                    <div className="w-full border-t border-gray-200 dark:border-gray-700 my-4 max-w-[660px] mx-auto opacity-60"></div>
+
+                    {/* known issues box */}
+                    <KnownIssuesBox
+                        items={issues}
+                    />
                 </div>
-                {/* known issues box */}
-                <KnownIssuesBox
-                    items={issues}
-                />
-            </div>
-            {
-                <GameStatusModal
-                    isOpen={isGameOver}
-                    status={mistakes < 10 ? 'won' : 'lost'}
-                    onClose={() => {
-                        setIsGameOver(false);
-                        startNewGame();
-                    }}
-                    time={formatTime(timer.timeLeft)}
-                    score={score}
-                    scoreBreakdown={scoreBreakdown}
-                    difficulty={difficulty}
-                />
-            }
-        </Layout>
+                {
+                    <GameStatusModal
+                        isOpen={isGameOver}
+                        status={mistakes < 10 ? 'won' : 'lost'}
+                        onClose={() => {
+                            setIsGameOver(false);
+                            startNewGame();
+                        }}
+                        time={formatTime(timer.timeLeft)}
+                        score={score}
+                        scoreBreakdown={scoreBreakdown}
+                        difficulty={difficulty}
+                    />
+                }
+            </Layout>
         </ThemeProvider>
 
     );
