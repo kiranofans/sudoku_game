@@ -157,20 +157,20 @@ function KnownIssuesBox({
     const onWherePlaced = isOnHomePage ? "game-only-issues mt-auto" : "";
 
     return (
-        <div data-nosnippet className={`${onWherePlaced} px-2 pb-2 text-md text-gray-600 mt-4 mb-0.5 ml-2 mr-2 known-issues-container`}>
-            <div className="w-full mx-auto max-w-[800px]">
+        <div data-nosnippet className={`${onWherePlaced} px-2 pb-2 text-md text-gray-600 mt-4 mb-0.5 mx-2 known-issues-container`}>
+            <div className="max-w-[800px] w-full xs:w-[8rem] mx-auto">
                 <ExpandableBox
                     title={
-                        <span className="flex items-center font-bold text-yellow-900 dark:text-yellow-100">
+                        <span className=" flex justify-center w-full font-bold text-yellow-900 dark:text-yellow-100">
                             <span className="mr-1">⚠️</span>
-                            <span>Known Issues</span>
+                            <span className="line-clamp-1">Known Issues</span>
                         </span>
                     }
                     isOpen={isOpen}
                     onToggle={() => setIsOpen(!isOpen)}
                     bgColor={`${bgColor} border-yellow-200 dark:border-yellow-900/50`}
                 >
-                    <ol className="list-decimal pl-5 space-y-1 text-yellow-900 dark:text-yellow-100">
+                    <ol className="pl-0 space-y-1 text-yellow-900 dark:text-yellow-100">
                         {items.map((item, idx) => (
                             <li key={idx}>{item}</li>
                         ))}

@@ -30,7 +30,6 @@ const ExpandableBox: React.FC<ExpandableBoxProps> = ({
                 <span className="text-[13px] text-gray-700 dark:text-gray-300 tracking-wider font-semibold text-left">
                     {title}
                 </span>
-
                 <span className="text-gray-500 dark:text-gray-200 font-bold text-lg leading-none">
                     {isOpen ? "−" : "+"}
                 </span>
