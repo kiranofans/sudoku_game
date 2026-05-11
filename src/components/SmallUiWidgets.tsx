@@ -1,5 +1,8 @@
 import { changelog } from "@/hooks/useChangeLog";
 import React from "react";
+
+import ExpandableBox from "./ExpandableBox";
+
 /**
  * Small UI Widgets Collection
  * A grouped set of reusable UI components
@@ -120,13 +123,12 @@ export function ListUi({ items, subSectionTitle, supplementalText,
     );
 }
 
-/* =========================
-   COMPONENT: KnownIssuesBox
-========================= */
 
 type KnownIssuesBoxProps = {
     items: React.ReactNode[];
     isOnHomePage?: boolean;
+    defaultOpen?: boolean;
+    bgColor?: string;
 };
 
 export function getLatestKnownIssues() {
@@ -136,8 +138,15 @@ export function getLatestKnownIssues() {
     return latest?.knownIssues ?? [];
 }
 
-function KnownIssuesBox({ items, isOnHomePage: initialIsOnHomePage = false }: KnownIssuesBoxProps) {
+function KnownIssuesBox({
+    items,
+    isOnHomePage: initialIsOnHomePage = false,
+    defaultOpen = false,
+    bgColor = "bg-yellow-50 dark:bg-yellow-200"
+}: KnownIssuesBoxProps) {
     const [isOnHomePage, setIsOnHomePage] = React.useState(initialIsOnHomePage);
+    const [isOpen, setIsOpen] = React.useState(defaultOpen);
+
 
     React.useEffect(() => {
         setIsOnHomePage(window.location.pathname === "/" || window.location.pathname === "/sudoku_game/");
@@ -146,21 +155,28 @@ function KnownIssuesBox({ items, isOnHomePage: initialIsOnHomePage = false }: Kn
     if (!items.length) return null;
 
     const onWherePlaced = isOnHomePage ? "game-only-issues mt-auto" : "";
-    return (
-        <div data-nosnippet className={`${onWherePlaced} px-2 pb-2 text-md text-gray-600 mt-0.5 mb-0.5 ml-2 mr-2`}>
-            <div className="text-left max-w-[720px] mt-1 mb-3 p-2 pt-1.5 
-            mx-auto rounded bg-yellow-50 border border-yellow-200 text-sm 
-            text-yellow-800 [transform:translateZ(0)] pb-[max(1rem,env(safe-area-inset-bottom))]">
-                <span className="font-bold">⚠️ Known Issues:</span>
-                <ol type="a">
-                    {items.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                    ))}
-                    {/* do not put comma ',' after the big braket 
-                    unless there's another list to map */}
-                </ol>
-            </div>
 
+    return (
+        <div data-nosnippet className={`${onWherePlaced} px-2 pb-2 text-md text-gray-600 mt-4 mb-0.5 ml-2 mr-2 known-issues-container`}>
+            <div className="w-full mx-auto max-w-[800px]">
+                <ExpandableBox
+                    title={
+                        <span className="flex items-center font-bold text-yellow-900 dark:text-yellow-100">
+                            <span className="mr-1">⚠️</span>
+                            <span>Known Issues</span>
+                        </span>
+                    }
+                    isOpen={isOpen}
+                    onToggle={() => setIsOpen(!isOpen)}
+                    bgColor={`${bgColor} border-yellow-200 dark:border-yellow-900/50`}
+                >
+                    <ol className="list-decimal pl-5 space-y-1 text-yellow-900 dark:text-yellow-100">
+                        {items.map((item, idx) => (
+                            <li key={idx}>{item}</li>
+                        ))}
+                    </ol>
+                </ExpandableBox>
+            </div>
         </div>
     );
 }

@@ -1,10 +1,11 @@
 import React from "react";
 
 interface ExpandableBoxProps {
-    title: string;
+    title: React.ReactNode;
     isOpen: boolean;
     onToggle: () => void;
     children: React.ReactNode;
+    bgColor?: string;
 }
 
 const ExpandableBox: React.FC<ExpandableBoxProps> = ({
@@ -12,15 +13,16 @@ const ExpandableBox: React.FC<ExpandableBoxProps> = ({
     isOpen,
     onToggle,
     children,
+    bgColor = "bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600",
 }) => {
     return (
         /* The main container/box */
-        <div className="w-full border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 rounded overflow-hidden">
+        <div className={`w-full border ${bgColor} rounded overflow-hidden transition-all duration-300`}>
 
             {/* Toggle bar */}
             <button
                 onClick={onToggle}
-                className="w-full flex justify-between items-center p-2 
+                className="w-full flex justify-between items-center px-4 py-2.5 
                !border-none !rounded-none !bg-transparent
                hover:bg-gray-50 dark:hover:bg-gray-600
                transition-colors focus:outline-none"
