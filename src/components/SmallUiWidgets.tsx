@@ -157,6 +157,7 @@ function KnownIssuesBox({
     const onWherePlaced = isOnHomePage ? "game-only-issues mt-auto" : "";
 
     return (
+        /* Container div*/
         <div data-nosnippet className={`${onWherePlaced} w-full mx-auto px-2 pb-2 text-md text-gray-600 mt-4 mb-0.5 mx-2 known-issues-container`}>
             <div className=" max-w-[800px] mx-auto " style={{ width: '100%', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                 <ExpandableBox
