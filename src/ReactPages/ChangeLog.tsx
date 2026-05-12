@@ -25,6 +25,15 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-05-11"
+                                version="1.0.0"
+                                title="Improvements"
+                                items={[
+                                    <>Modified the number pad on mobile portrait screens for bigger finger tips and better precision.</>,
+                                    <>Made the known issues box expandable and collapsable</>
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-05-08"
                                 version="1.0.0"
                                 title="Improvements"

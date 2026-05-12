@@ -162,7 +162,7 @@ function KnownIssuesBox({
             <div className=" max-w-[800px] mx-auto " style={{ width: '100%', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                 <ExpandableBox
                     title={
-                        <span className=" flex items-center font-bold text-yellow-900 dark:text-yellow-100">
+                        <span className="flex items-center font-bold text-yellow-900 dark:text-yellow-900">
                             <span className="mr-1">⚠️</span>
                             <span className="line-clamp-1">Known Issues</span>
                         </span>
