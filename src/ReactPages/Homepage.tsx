@@ -408,7 +408,7 @@ function Homepage() {
                 }
             >
 
-                <h1 className="sr-only">Free Online Sudoku Puzzles - Enjoy Daily Logic Games</h1>
+                <h2 className="sr-only">Free Online Sudoku Puzzles - Enjoy Daily Logic Games</h2>
                 <div style={{
                     position: 'absolute',
                     width: '1px',
