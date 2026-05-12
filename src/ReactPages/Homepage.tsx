@@ -587,17 +587,14 @@ function Homepage() {
                                             onClick={() => handleNumberInput(num)}
                                             disabled={isGameOver || numberCounts[num] <= 0}
                                             className={numberCounts[num] <= 0 ? 'completed' : ''}
+                                            aria-labelledby=''
+
                                         >
-                                            <span className="number-value">{num}</span>
-                                            <span className="count-badge desktop-only-count">{numberCounts[num]}</span>
+                                            <div className='number-pad-count-container items-center vertical-center align-center space-y-1'>
+                                                <span className="number-value ">{num}</span>
+                                                <span className="count-badge">{numberCounts[num]}</span>
+                                            </div>
                                         </button>
-                                    ))}
-                                </div>
-                                <div className="mobile-only-counts-row">
-                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                                        <div key={num} className={`mobile-count-item ${numberCounts[num] <= 0 ? 'completed' : ''}`}>
-                                            {numberCounts[num]}
-                                        </div>
                                     ))}
                                 </div>
                             </div>
