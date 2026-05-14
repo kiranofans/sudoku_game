@@ -5,7 +5,6 @@ function TermsAndConditions() {
     return (
         <ThemeProvider>
             <Layout>
-                <title>Terms & Conditions | Sudoku</title>
                 <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                     <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Terms & Condtions</h1>
                     <div className="terms-conditions-content" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>

@@ -13,7 +13,6 @@ function ChangeLog({ }) {
         <ThemeProvider>
 
             <>
-                <title>"What's New?" | Sudoku </title>
                 <meta name="description" content="It's the change log" />
                 <Layout>
                     <main className="w-full max-w-4xl mx-auto px-6 py-24 text-left flex-1">
