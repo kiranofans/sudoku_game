@@ -9,70 +9,60 @@ import ContactPage from "../ReactPages/Contact";
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "name": "Sudoku Play's Contact Us",
-        "description": "Have questions or feedback about our Sudoku games? Reach out to the SudokuPlays team for support.",
-        "alternateName": "Sudoku Game Site Contact Page",
-        "applicationCategory": "Game",
-        "operatingSystem": "Web",
-        "url": "https://sudokuplays.com/contact/",
-
-        "mainEntity": {
-            "@type": "Organization",
-            "name": "SudokuPlay",
-            "url": "https://sudokuplays.com",
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "site.help@gmail.com",
-                "contactType": "customer service",
-                "availableLanguage": "en,cn,jp,fr"
+        "@graph": [
+            {
+                "@type": "ContactPage",
+                "@id": "https://sudokuplays.com/contact/#webpage",
+                "url": "https://sudokuplays.com/contact/",
+                "name": "Contact Us | Sudoku Plays",
+                "description": "Have questions or feedback about our Sudoku games? Reach out to the SudokuPlays team for support and suggestions.",
+                "breadcrumb": {
+                    "@id": "https://sudokuplays.com/contact/#breadcrumb"
+                },
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://sudokuplays.com/#website",
+                    "name": "Sudoku Plays",
+                    "url": "https://sudokuplays.com/"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://sudokuplays.com/contact/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://sudokuplays.com/",
+                            "url": "https://sudokuplays.com/",
+                            "name": "Home"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://sudokuplays.com/contact/",
+                            "name": "Contact"
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "Organization",
+                "name": "Sudoku Plays",
+                "url": "https://sudokuplays.com/",
+                "logo": "https://sudokuplays.com/images/png/logo_sudoku1.png",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "email": "site.help@gmail.com",
+                    "contactType": "customer service",
+                    "availableLanguage": "en"
+                }
             }
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "screenshot": "https://sudokugameplay.com/og-image.png",
-        "inLanguage": "English",
-        "softwareVersion": "1.0",
-        "keywords": [
-            "Sudoku",
-            "Online Sudoku",
-            "Quick Contact",
-            "Brain Game",
-            "Help & Support",
-            "Found bugs?",
-            "Performance improvements",
-            "New features",
-            "Suggestions?",
-            "General feedback",
-            "Feedbacks",
-            "Conatact sudokuplays.com",
-            "Contact Us",
-            "Questions?",
-            "What's New?",
-            "Changelog",
-            "Contact us Sudoku",
-            "Send Message",
-            "Ideas",
-            "Send Feedback",
-            "Subject",
-            "Email address",
-            "Submit"
-        ],
-        "genre": "Puzzle Game",
-        "featureList": [
-            "Easy & quick contact",
-            "send feedback",
-            "Subject",
-            "Message",
-            "Submit button",
-            "Responsive Design",
-            "No Signup Required",
-            "Send message imediately",
-            "Get quick response",
-            "Get response by email"
         ]
     }
 </script>

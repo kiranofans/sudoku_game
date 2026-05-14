@@ -9,114 +9,98 @@ import FaqPage from "../ReactPages/faq";
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "name": "Sudoku Play FAQ",
-        "url": "https://sudokuplays.com/faq/",
-        "@type": "FAQPage",
-        "mainEntity": [
+        "@graph": [
             {
-                "@type": "Question",
-                "name": "What is Suodoku?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Have frequently asked questions about our Sudoku game site? Find quick answers to common questions here.",
-                }
+                "@type": "FAQPage",
+                "@id": "https://sudokuplays.com/faq/#webpage",
+                "url": "https://sudokuplays.com/faq/",
+                "name": "Frequently Asked Questions | Sudoku Plays",
+                "description": "Find answers to common questions about Sudoku Plays, how to play, and our features.",
+                "breadcrumb": {
+                    "@id": "https://sudokuplays.com/faq/#breadcrumb"
+                },
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://sudokuplays.com/#website",
+                    "name": "Sudoku Plays",
+                    "url": "https://sudokuplays.com/"
+                },
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Sudoku?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sudoku is a logic-based, number-placement puzzle. The objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids contains all of the digits from 1 to 9."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is sudokuplays.com free to use?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the site is completely free to use without downloads or accounts."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do I need an account to play?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No sign up or login is required. You can start playing instantly."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What difficulty levels are available?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We offer multiple difficulty levels from easy to hard for all players."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does this site work on mobile?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the site is fully responsive and works on all devices including iOS and Android."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I play Sudoku on this site?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Navigate to the home page, select a difficulty, and start filling in the grid. You can find a detailed 'How to Play' guide by clicking the question mark icon in the top right corner."
+                        }
+                    }
+                ]
             },
             {
-                "@type": "Question",
-                "name": "What is the benefit of this site?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "This site provides fast, accessible Sudoku game puzzles using modern web tech."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is sudokuplays.com free to use?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, the site is completely free to use without downloads or accounts."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Do I need an account to play?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No sign up or login is required. You can start playing instantly."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What difficulty levels are available?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We offer multiple difficulty levels from easy to hard for all players."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Does this site work on mobile?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, the site is fully responsive and works on all devices."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How do I play Sudoku on this site?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "To learn how to play Sudoku on sudokuplays.com, follow these steps:\n\n1. Navigate to the home page by clicking on the Sudoku logo in the top left. (On mobile, this opens the drawer menu where you can tap Play Sudoku).\n2. Select the question mark icon in the top right corner to open the 'How to Play' guide."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How can I improve at Sudoku?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "You can improve Sudoku skill by playing regularly and learn strategies from the Tips page, like scanning and pencil marks."
-                }
-            },
-            {
-                "@type":"Question",
-                "name":"What are the 'What's New?' page and the 'Known Issues box' for?",
-                "acceptedAnswer":{
-                    "@type":"Answer",
-                    "text":"The Known Issues box transparently lists any current problems/bugs we're aware of, so you know what to expect. For convenience, it’s available on both the homepage and the What’s New page."
-                }
-            },
-        ],
-        "keywords": [
-            "Sudoku",
-            "Online Sudoku",
-            "Puzzle",
-            "Brain Game",
-            "Q & A",
-            "Sudoku FAQ",
-            "Question and Answers Sudoku",
-            "How to use sudokuplays.com",
-            "Known issues box",
-            "What's New page",
-            "Frequently Asked Questions",
-            "What's New? page",
-            "Changelog",
-            "Faq Page",
-            "Q&A page"
-            "Question and Answers page",
-        ],
-         "featureList": [
-            "Multiple Difficulty Levels",
-            "Free Sudoku game",
-            "Hint System",
-            "Pro Tips",
-            "Sudoku Instruction",
-            "Expandable Faq",
-            "What is Change Log?",
-            "What is Known issues box?",
-            "Responsive Design",
-            "What is Sudoku?",
-            "Send message imediately",
-            "Get quick response",
+                "@type": "BreadcrumbList",
+                "@id": "https://sudokuplays.com/faq/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://sudokuplays.com/",
+                            "url": "https://sudokuplays.com/",
+                            "name": "Home"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://sudokuplays.com/faq/",
+                            "name": "FAQ"
+                        }
+                    }
+                ]
+            }
         ]
     }
 </script>

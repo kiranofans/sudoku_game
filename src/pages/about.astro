@@ -12,72 +12,83 @@ import AboutPage from "../ReactPages/About.tsx";
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": "SoftwareApplication",
-                "name": "About Sudoku Play Site",
-                "alternateName": "Sudoku Game Online",
-                "applicationCategory": "Game",
-                "operatingSystem": "Web",
-                "description": "A logic-based, number-placement puzzle web app.",
-                "url": "https://sudokuplays.com/about/"
+                "@type": "AboutPage",
+                "@id": "https://sudokuplays.com/about/#webpage",
+                "url": "https://sudokuplays.com/about/",
+                "name": "About Sudoku Plays",
+                "description": "Learn more about Sudoku Plays, a modern and responsive Sudoku game web app. Discover our mission to provide a clean, fast, and accessible puzzle experience for everyone.",
+                "breadcrumb": {
+                    "@id": "https://sudokuplays.com/about/#breadcrumb"
+                },
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": "Sudoku Plays",
+                    "url": "https://sudokuplays.com/"
+                }
             },
             {
-                "@type": "AboutPage",
-                "mainEntity": [
+                "@type": "BreadcrumbList",
+                "@id": "https://sudokuplays.com/about/#breadcrumb",
+                "itemListElement": [
                     {
-                        "@type": "WebPageElement",
-                        "cssSelector": ".improvement-section",
-                        "name": "About this Site",
-                        "text": "sudokuplays.com is a simple, fast, and distraction-free place to enjoy Sudoku anytime."
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://sudokuplays.com/",
+                            "url": "https://sudokuplays.com/",
+                            "name": "Home"
+                        }
                     },
                     {
-                        "@type": "WebPageElement",
-                        "name": "What You Will Find Here",
-                        "text": "Multiple difficulty levels to match your skill
-A responsive design that works on desktop and mobile
-Helpful tools and tips to improve your solving techniques
-A lightweight experience with fast loading and minimal clutter",
-                    },
-                    {
-                        "@type": "WebPageElement",
-                        "name": "Why This Site Exists?",
-                        "text": "sudokuplays.com was created to make Sudoku easy to access and enjoyable without requiring downloads, accounts, or complicated features. It’s built with performance and usability in mind, so you can start playing instantly with almost no concerns about data collection or privacy.",
-                    },
-                    {
-                        "@type": "WebPageElement",
-                        "name": "Continuous Improvement",
-                        "text":"We are actively enhancing the site with new features and better usability. 
-                        Stay updated by visiting our What's New? page, or sharpen your skills with strategy guides on our Tips page.",
-                    },
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://sudokuplays.com/about/",
+                            "name": "About"
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Sudoku Plays",
+                "alternateName": "Free Sudoku Game Online",
+                "applicationCategory": "GameApplication",
+                "operatingSystem": "Web",
+                "url": "https://sudokuplays.com/",
+                "image": "https://sudokuplays.com/images/png/logo_sudoku1.png",
+                "description": "A logic-based, number-placement puzzle web app featuring multiple difficulty levels and a responsive design.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "publisher": {
+                    "@type": "Person",
+                    "name": "Kiranofans",
+                    "url": "https://github.com/kiranofans"
+                },
+                "keywords": [
+                    "Sudoku",
+                    "Online Sudoku",
+                    "Brain Game",
+                    "Puzzle Game",
+                    "Free Sudoku",
+                    "Sudoku Strategies",
+                    "About Sudoku Plays",
+                    "Sudoku Developer"
+                ],
+                "featureList": [
+                    "Multiple Difficulty Levels",
+                    "Responsive Design",
+                    "Fast Loading",
+                    "No Signup Required",
+                    "Privacy Focused",
+                    "Modern Glassmorphism UI"
                 ]
             }
-        ],
-
-        "screenshot": "https://sudokugameplay.com/og-image.png",
-        "inLanguage": "English",
-        "softwareVersion": "1.0",
-        "keywords": [
-            "Sudoku",
-            "Online Sudoku",
-            "Logic Puzzle",
-            "Number Puzzle",
-            "Brain Game",
-            "Puzzle Game",
-            "Developer",
-            "About Sudoku",
-            "Introduction",
-            "What You Will Find Here",
-            "About sudokuplays.com",
-            "Why This Site Exists",
-            "About this Site"
-        ],
-        "genre": "Puzzle Game",
-        "featureList": [
-            "About Sudoku Plays",
-            "About this site",
-            "Why This Site Exists",
-            "What You Will Find Here",
-            "Responsive Design",
-            "Actively improving",
         ]
     }
 </script>

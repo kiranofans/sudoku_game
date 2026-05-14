@@ -12,40 +12,43 @@ import PrivacyPolicypage from "../ReactPages/PrivacyPolicy.tsx";
         "@graph": [
             {
                 "@type": "PrivacyPolicy",
-                "name": "Privacy Policy - SudokuPlays",
+                "@id": "https://sudokuplays.com/privacyPolicy/#webpage",
                 "url": "https://sudokuplays.com/privacyPolicy/",
-                "description": "Information on how SudokuPlays collects, uses, and protects your data while you play our games.",
-
-                "mainEntity": [
+                "name": "Privacy Policy | Sudoku Plays",
+                "description": "Learn about how Sudoku Plays handles your data and ensures your privacy while you enjoy our games.",
+                "breadcrumb": {
+                    "@id": "https://sudokuplays.com/privacyPolicy/#breadcrumb"
+                },
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://sudokuplays.com/#website",
+                    "name": "Sudoku Plays",
+                    "url": "https://sudokuplays.com/"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://sudokuplays.com/privacyPolicy/#breadcrumb",
+                "itemListElement": [
                     {
-                        "@type": "WebPageElement",
-                        "name": "Data Collection",
-                        "text": "SudokuPlays does not require user accounts. We may collect minimal technical data (like browser type) to improve site performance, but no personal identity info is stored."
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://sudokuplays.com/",
+                            "url": "https://sudokuplays.com/",
+                            "name": "Home"
+                        }
                     },
                     {
-                        "@type": "WebPageElement",
-                        "name": "Cookies and Tracking",
-                        "text": "We use third party cookies to save your game progress and settings (like Google ads) locally on your device."
-                    },
-                    {
-                        "@type": "WebPageElement",
-                        "name": "Third-Party Services",
-                        "text": "We use Google Search Console, Google ads, Unami and Cloudflare to ensure site security and performance. These services may collect standard web traffic logs."
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://sudokuplays.com/privacyPolicy/",
+                            "name": "Privacy Policy"
+                        }
                     }
-                ],
-                "keyword": [
-                    "Sudoku",
-                    "Online Sudoku",
-                    "Brain Game",
-                    "Developer",
-                    "Analytics",
-                    "Introduction",
-                    "Privacy Policy",
-                    "Terms & Conditions",
-                    "Regional Compliances",
-                    "About this Site",
-                    "Contact",
-                    "Privacy Officer"
                 ]
             }
         ]

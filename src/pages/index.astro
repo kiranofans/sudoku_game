@@ -95,20 +95,35 @@ import "../styles.css";
         "@graph": [
             {
                 "@type": "WebSite",
-                "name": "SudokuPlays",
+                "@id": "https://sudokuplays.com/#website",
                 "url": "https://sudokuplays.com/",
+                "name": "Sudoku Plays",
+                "description": "Play Sudoku online for free. Featuring a responsive, glassy UI, multiple difficulty levels, and daily challenges.",
                 "potentialAction": {
                     "@type": "SearchAction",
                     "target": "https://sudokuplays.com/?s={search_term_string}",
                     "query-input": "required name=search_term_string"
-                }
+                },
+                "inLanguage": "en"
+            },
+            {
+                "@type": "VideoGame",
+                "@id": "https://sudokuplays.com/#game",
+                "name": "Sudoku Plays",
+                "url": "https://sudokuplays.com/",
+                "genre": "Puzzle Game",
+                "applicationCategory": "GameApplication",
+                "operatingSystem": "Web",
+                "description": "A modern, logic-based Sudoku puzzle game designed for a smooth and distraction-free experience."
             },
             {
                 "@type": "SoftwareApplication",
-                "name": "SudokuPlay",
+                "@id": "https://sudokuplays.com/#software",
+                "name": "Sudoku Plays",
                 "alternateName": "Free Sudoku Game Online",
                 "applicationCategory": "GameApplication",
                 "operatingSystem": "Web",
+                "inLanguage": "en",
                 "description": "Play Sudoku online for free. Featuring a responsive, glassy UI, multiple difficulty levels, and daily challenges.",
                 "offers": {
                     "@type": "Offer",
@@ -116,7 +131,7 @@ import "../styles.css";
                     "priceCurrency": "USD"
                 },
                 "keywords": [
-                    "SudokuPlays",
+                    "Sudoku Plays",
                     "Sudoku",
                     "Free Sudoku",
                     "Play Sudoku Online",
@@ -141,19 +156,12 @@ import "../styles.css";
                     "Multiple Difficulty Levels",
                     "Mobile Responsive Design",
                     "No Signup Required",
-                    "24 hours data reset",
-                    "Timer control",
-                    "Scoring",
-                    "Theme Switching",
-                    "System Theme",
-                    "Direct Feadback",
-                    "Temporary Statistics Tracking",
-                    "Sudoku Tips",
-                    "Actively Updating & Change log page",
-                    "Sudoku Introduction & Instruction",
-                    "Questions and Answers",
-                    "Low System Requirements",
-                    "Resume game after time pause"
+                    "Timer and Stats Tracking",
+                    "Score History",
+                    "Theme Switching (Dark/Light)",
+                    "Sudoku Tips and Strategies",
+                    "Daily Challenges",
+                    "Offline Support Capabilities"
                 ]
             }
         ]

@@ -12,41 +12,43 @@ import TermsConditionsPage from "../ReactPages/TermsAndConditions.tsx";
         "@graph": [
             {
                 "@type": "WebPage",
-                "name": "Terms and Conditions - SudokuPlays",
+                "@id": "https://sudokuplays.com/termsAndConditions/#webpage",
                 "url": "https://sudokuplays.com/termsAndConditions/",
-                "description": "The legal terms and conditions governing the use of the SudokuPlays website and game services.",
-                "inLanguage": "English",
-                "mainEntity": [
+                "name": "Terms and Conditions | Sudoku Plays",
+                "description": "Read the terms and conditions for using Sudoku Plays. Understand your rights and responsibilities while playing on our site.",
+                "breadcrumb": {
+                    "@id": "https://sudokuplays.com/termsAndConditions/#breadcrumb"
+                },
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://sudokuplays.com/#website",
+                    "name": "Sudoku Plays",
+                    "url": "https://sudokuplays.com/"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://sudokuplays.com/termsAndConditions/#breadcrumb",
+                "itemListElement": [
                     {
-                        "@type": "WebPageElement",
-                        "name": "Acceptance of Terms",
-                        "text": "By accessing sudokuplays.com, you agree to be bound by these terms, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws."
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://sudokuplays.com/",
+                            "url": "https://sudokuplays.com/",
+                            "name": "Home"
+                        }
                     },
                     {
-                        "@type": "WebPageElement",
-                        "name": "Use License",
-                        "text": "Permission is granted to temporarily use the game for personal, non-commercial transitory viewing only."
-                    },
-                    {
-                        "@type": "WebPageElement",
-                        "name": "Governing Law",
-                        "text": "Any claim relating to SudokuPlays shall be governed by the laws of British Columbia, Canada without regard to its conflict of law provisions."
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://sudokuplays.com/termsAndConditions/",
+                            "name": "Terms & Conditions"
+                        }
                     }
-                ],
-                "keywords": [
-                    "Terms and Conditions",
-                    "Legal",
-                    "Terms of Use",
-                    "Privacy Policy",
-                    "Copyright",
-                    "Disclaimer",
-                    "Governing Law",
-                    "British Columbia PIPA",
-                    "Canada PIPEDA",
-                    "Quebec law 25",
-                    "UK GDPR",
-                    "Regional Compliances",
-                    "LA law"
                 ]
             }
         ]
