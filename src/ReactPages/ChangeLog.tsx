@@ -24,6 +24,15 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-06-14"
+                                version="1.0.0"
+                                title="Bug Fix"
+                                items={[
+                                    <>Fixed What's new? page's 404 problem on mobile</>,
+                                    <>Fixed the site's 404</>
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-05-11"
                                 version="1.0.0"
                                 title="Improvements"
@@ -80,7 +89,7 @@ function ChangeLog({ }) {
                                 version="1.0.0"
                                 title="Improvements & Features"
                                 items={[
-                                    <>Updated <a href="https://sudokuplays.com/ChangeLog">What's New?</a> page</>,
+                                    <>Updated <a href="https://sudokuplays.com/changeLog">What's New?</a> page</>,
                                     <>Updated the Terms & Conditions.</>,
                                     <>Changed the color of timer controll button for dark theme.</>,
                                     <>Updated instructions modal for better understanding of the game.</>,

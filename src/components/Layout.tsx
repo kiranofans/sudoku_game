@@ -89,7 +89,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
             <a href="/privacyPolicy" className="footer-btn">Privacy Policy</a>
 
             <a href="/termsAndConditions" className="footer-btn">Terms & conditions</a>
-            <a href="/ChangeLog" className="footer-btn hidden md:inline-flex"
+            <a href="/changeLog" className="footer-btn hidden md:inline-flex"
               style={{ textDecoration: 'none' }}>What's New?</a>
 
           </div>

@@ -138,7 +138,7 @@ function faq() {
                                     </span>
                                 ) : index === 7 ? (
                                     <span>
-                                        The <a href="/ChangeLog" className="underline hover:text-blue-500">What's New? </a> page keeps you updated on recent improvements and new features. <br />The Known Issues box transparently lists any current problems/bugs we're aware of, so you know what to expect. For convenience, it’s available on both the <a href="/">homepage</a> and the What’s New page.
+                                        The <a href="/changeLog" className="underline hover:text-blue-500">What's New? </a> page keeps you updated on recent improvements and new features. <br />The Known Issues box transparently lists any current problems/bugs we're aware of, so you know what to expect. For convenience, it’s available on both the <a href="/">homepage</a> and the What’s New page.
                                     </span>
 
                                 ) : index === 6 ? (

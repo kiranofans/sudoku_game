@@ -74,7 +74,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
           </a>
 
           <a
-            href="/ChangeLog"
+            href="/changeLog"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 
             dark:text-gray-200"
             onClick={onClose}
