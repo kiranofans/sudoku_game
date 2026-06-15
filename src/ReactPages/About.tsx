@@ -50,7 +50,7 @@ function About({ }) {
                         {/* Continuous Improvement */}
                         <h2 className="text-2xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mt-10 mb-4">Continuous Improvement</h2>
                         <p>
-                            We are actively enhancing the site with new features and better usability. Stay updated by visiting our <a href="https://sudokuplays.com/ChangeLog">What's New?</a> page,
+                            We are actively enhancing the site with new features and better usability. Stay updated by visiting our <a href="https://sudokuplays.com/changeLog">What's New?</a> page,
                             or sharpen your skills with strategy guides on our <a href='https://sudokuplays.com/Tips'>Tips</a> page.
                         </p>
                     </div>
