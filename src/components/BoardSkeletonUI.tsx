@@ -8,7 +8,7 @@ const BoardSkeleton: React.FC = () => {
         // FIX 1: Removed the outer wrapper. Added mx-auto to center it.
         // This ensures it exactly matches the size of your real board without layout shift.
         <div
-            className="grid grid-cols-9 w-full rounded-lg max-w-[600px] aspect-square mx-auto bg-white dark:bg-gray-800 shadow-sm"
+            className="grid grid-cols-9 w-full border-white rounded-lg max-w-[600px] aspect-square mx-auto bg-white dark:bg-gray-800 shadow-sm"
             aria-label="Loading Sudoku board..."
             role="status"
         >
@@ -25,15 +25,15 @@ const BoardSkeleton: React.FC = () => {
                         key={index}
                         // FIX 2: Removed cell padding. Added `relative` positioning.
                         className={`
-                            relative w-full h-full border border-gray-200 dark:border-gray-700 p-1 sm:p-1
-                            ${isRightBoundary ? 'border-r-gray-300 dark:border-r-gray-600' : ''}
-                            ${isBottomBoundary ? 'border-b-gray-300 dark:border-b-gray-600' : ''}
+                            relative w-full h-full border border-white dark:border-gray-700 p-1 sm:p-1.5
+                            ${isRightBoundary ? 'border-r-white dark:border-r-gray-600' : ''}
+                            ${isBottomBoundary ? 'border-b-white dark:border-b-gray-600' : ''}
                         `}
                     >
                         {/* FIX 3: Removed rounded corners. Added `absolute inset-0`.
                             This makes the pulse fill the square seamlessly behind the borders. */}
                         <div
-                            className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse"
+                            className="absolute inset-0 bg-gray-100 dark:bg-gray-700 animate-pulse"
                             style={{ animationDelay: `${(row + col) * 75}ms` }}
                         />
                     </div>
