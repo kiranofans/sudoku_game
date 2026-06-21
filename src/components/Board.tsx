@@ -1,5 +1,5 @@
 import React from 'react'
-import BoardSkeleton from './boardSkeletonUI';
+import BoardSkeleton from './BoardSkeletonUI';
 
 interface BoardProps {
   isLoading: boolean,
