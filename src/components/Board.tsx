@@ -1,6 +1,8 @@
 import React from 'react'
+import BoardSkeleton from './boardSkeletonUI';
 
 interface BoardProps {
+  isLoading: boolean,
   board: (number | null)[][];
   initialBoard: (number | null)[][];
   notes: Set<number>[][];
@@ -12,7 +14,7 @@ interface BoardProps {
   fixedCells: Set<string>;
 }
 
-const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell, onCellClick,
+const Board: React.FC<BoardProps> = ({ isLoading, board, initialBoard, notes, selectedCell, onCellClick,
   solution,
   crossHighlight,
   highlightedNumber,
@@ -85,8 +87,10 @@ const Board: React.FC<BoardProps> = ({ board, initialBoard, notes, selectedCell,
     return classes;
   };
 
-
-
+  // Early return if loading
+  if (isLoading) {
+    return <BoardSkeleton />;
+  }
   return (
     <div className="sudoku-board">
       {board.map((row, rowIndex) => (

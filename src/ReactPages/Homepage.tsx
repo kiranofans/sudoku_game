@@ -518,6 +518,7 @@ function Homepage() {
                                 </div>
                             </div>
                             <Board
+                                isLoading={isLoading}
                                 board={board}
                                 initialBoard={initialBoard}
                                 notes={notes}
