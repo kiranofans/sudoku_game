@@ -24,6 +24,15 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-06-22"
+                                version="1.0.0"
+                                title="Improvements & Features"
+                                items={[
+                                    <>Added social media handles for sharing template, and put them on the About page and the Game completion modal.</>,
+                                    // <>Changed the color of correctly inputted cells to gray for better distinguishing betwween crossing Highlighting and user-inputted numbers.</>
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-06-14"
                                 version="1.0.0"
                                 title="Bug Fix"

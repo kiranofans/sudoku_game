@@ -11,20 +11,40 @@ interface ShareBoxesProps {
 export default function ShareBoxes({ score, difficulty, timeUsed, isGameCompleted }: ShareBoxesProps) {
     const shareText = "🧩 Play relaxing Sudoku puzzles online at SudokuPlays (数独/數獨) — free, fast, and fun! " +
         "Challenge yourself with multiple difficulties! Fully responsive design for phones, tablets, and desktops." +
-        "#PuzzleTime #gameonline #UIDesign";
+        "#PuzzleTime #gameonline";
     const shareResultText = `🧩 I completed a ${difficulty} Sudoku puzzle on SudokuPlays! ` +
         `Score: ${score.toLocaleString()} | Time: ${timeUsed}. ` +
         `Come play and try beat my score!`;
+
+    const shareTitle = isGameCompleted ? "Share Result Via" : "If you like the game, help it grow by sharing Sudoku Plays with friends"
     const url = "https://sudokuplays.com";
 
     function openShare(link: string) {
         window.open(link, "_blank", "noonpener,noreferrer");
-
     }
+
     const showShareText = isGameCompleted ? shareResultText : shareText;
+
+    const handleNativeShare = async () => {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: 'Sudoku Plays',
+                    text: showShareText,
+                    url: url,
+                })
+            } catch (e) {
+                console.log("Error sharing", e);
+            }
+        } else {
+            // Fallback for browsers that don't support the native Web Share API
+            navigator.clipboard.writeText(url);
+            alert("Link copied to clipboard!");
+        }
+    };
     return (
         <div className='space-y-4 w-full overflow-x-auto'>
-            <div className='justify-start left-0 w-full font-bold dark:text-gray-300'><span>Share Result Via</span></div>
+            <div className='justify-start left-0 w-full dark:text-gray-300'><span>{shareTitle}</span></div>
             <div className="space-x-4 flex flex-row relative justify-center items-center">
                 <svg onClick={() => openShare(shareLinks.x(showShareText, url))}
                     className="cursor-pointer hover:opacity-[0.9]"
@@ -87,6 +107,7 @@ export default function ShareBoxes({ score, difficulty, timeUsed, isGameComplete
                         </clipPath>
                     </defs>
                 </svg>
+
             </div>
         </div>
     );

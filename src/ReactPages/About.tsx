@@ -1,5 +1,7 @@
 import Layout from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeContext.tsx';
+import ShareBoxes from '@/components/ShareBoxes';
+
 function About({ }) {
     return (
         <ThemeProvider>
@@ -53,6 +55,10 @@ function About({ }) {
                             We are actively enhancing the site with new features and better usability. Stay updated by visiting our <a href="https://sudokuplays.com/changeLog">What's New?</a> page,
                             or sharpen your skills with strategy guides on our <a href='https://sudokuplays.com/Tips'>Tips</a> page.
                         </p>
+                        <div className='p-4 mx-auto w-fit'>
+                            <ShareBoxes score={0} difficulty={''} timeUsed={''} isGameCompleted={false}
+                            />
+                        </div>
                     </div>
 
                     <div style={{ textAlign: 'center', marginTop: '2rem' }}>
