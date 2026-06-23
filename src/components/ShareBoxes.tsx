@@ -25,23 +25,6 @@ export default function ShareBoxes({ score, difficulty, timeUsed, isGameComplete
 
     const showShareText = isGameCompleted ? shareResultText : shareText;
 
-    const handleNativeShare = async () => {
-        if (navigator.share) {
-            try {
-                await navigator.share({
-                    title: 'Sudoku Plays',
-                    text: showShareText,
-                    url: url,
-                })
-            } catch (e) {
-                console.log("Error sharing", e);
-            }
-        } else {
-            // Fallback for browsers that don't support the native Web Share API
-            navigator.clipboard.writeText(url);
-            alert("Link copied to clipboard!");
-        }
-    };
     return (
         <div className='space-y-4 w-full overflow-x-auto'>
             <div className='justify-start left-0 w-full dark:text-gray-300'><span>{shareTitle}</span></div>
