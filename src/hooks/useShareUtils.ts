@@ -12,7 +12,7 @@ export const shareLinks = {
         `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
 
     linkedin: (text: string, url: string) =>
-        `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+        `https://www.linkedin.com/sharing/share-offsite/?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
 
     telegram: (text: string, url: string) =>
         `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`
