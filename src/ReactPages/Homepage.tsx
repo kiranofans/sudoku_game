@@ -559,7 +559,7 @@ function Homepage() {
 
                                             } else {
                                                 // show ad logic
-                                                // setShowAdModal(true);
+                                                //setShowAdModal(true);
                                                 alert("The ads are currenly disabled for technical reason. \nPlease check back later.");
                                             }
                                         }}

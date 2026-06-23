@@ -112,7 +112,7 @@
   --cell-correct-text: #bbbbbb;
   --cell-wrong-text: #ff6b6b;
   --cell-note-text: #999999;
-  --cell-fixed: rgba(180, 140, 0, 1);
+  --cell-fixed: rgb(78, 78, 78);
 
   --score-bg: rgba(255, 255, 255, 0.05);
   --score-border: rgba(255, 255, 255, 0.1);
