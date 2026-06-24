@@ -162,9 +162,11 @@ function KnownIssuesBox({
             <div className=" max-w-[800px] mx-auto " style={{ width: '100%', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                 <ExpandableBox
                     title={
-                        <span className="flex items-center font-bold text-yellow-900 dark:text-yellow-900">
+                        <span className="flex items-center space-around font-bold text-yellow-900 dark:text-yellow-900">
                             <span className="mr-1">⚠️</span>
                             <span className="line-clamp-1">Known Issues</span>
+
+
                         </span>
                     }
                     isOpen={isOpen}
@@ -175,6 +177,16 @@ function KnownIssuesBox({
                         {items.map((item, idx) => (
                             <li key={idx}>{item}</li>
                         ))}
+                        {isOnHomePage && (
+                            <>
+                                {/* <span className="mx-2">|</span> */}
+
+                                <span className="my-2 text-xs line-clamp-1">
+                                    For more website updates, please go to:{' '}
+                                    <a href="/changeLog">What's New?</a>
+                                </span>
+                            </>
+                        )}
                     </ol>
                 </ExpandableBox>
             </div>
