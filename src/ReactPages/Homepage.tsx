@@ -388,7 +388,7 @@ function Homepage() {
                                 setDifficulty(newDifficulty);
                             }}
                         />
-                        <Tooltip text="How to play">
+                        <Tooltip text="Quick Play Guide">
                             <button onClick={() => {
                                 setShowInstructions(true);
                             }}
