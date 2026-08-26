@@ -125,9 +125,9 @@ export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void 
                     aria-hidden="true"
                 >
                     <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                     />
                 </svg>
             </a>
@@ -142,21 +142,41 @@ export const InstructionsDropdown: React.FC<{ isOpen: boolean; onClose: () => vo
         className="absolute top-[120%] right-0 z-[10010]"
     >
         <div
-            className="w-[min(92vw,520px)] max-h-[80vh] overflow-y-auto p-5 text-left"
+            className="w-[min(92vw,400px)] max-h-[60vh] overflow-y-auto p-5 text-left text-sm"
             onClick={(e) => e.stopPropagation()}
         >
             {/* Header */}
             <div className="mb-4 flex items-center justify-between">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                    Quick Play Guide
+                <h3 className="text-md font-bold text-gray-900 dark:text-white">
+                    Quick Guide
                 </h3>
+                <div className="">
+                    <a
+                        href="/how-sudokuplays-works"
+                        className="inline-flex items-center font-medium text-blue-600 transition hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300"
+                    >
+                        Learn how SudokuPlays works
+                        <svg
+                            className="ml-1 h-4 w-4"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    </a>
+                </div>
             </div>
             <div className="w-full space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed mt-4 mb-4">
                 <div className="rounded-lg border border-blue-200 bg-blue-50 p-2 dark:border-blue-900/50 dark:bg-blue-950/30">
-                    <h3 className="text-center mb-1 font-semibold text-blue-900 dark:text-blue-200 mx-w-500">
+                    <h3 className="text-md text-center font-semibold text-blue-900 dark:text-blue-200 mx-w-500">
                         Objective
                     </h3>
-                    <p className='text-center'>
+                    <p className='text-center text-sm'>
                         To win, fill every <a href="">domain</a> (row, column, and 3×3 box) with the numbers
                         <strong>1–9</strong>, using each number only once.
                     </p>
@@ -234,26 +254,6 @@ export const InstructionsDropdown: React.FC<{ isOpen: boolean; onClose: () => vo
                 </li>
             </ol>
 
-            <div className="mt-6 border-t border-gray-200 pt-4 dark:border-gray-700">
-                <a
-                    href="/how-sudokuplays-works"
-                    className="inline-flex items-center font-medium text-blue-600 transition hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300"
-                >
-                    Learn how SudokuPlays works
-                    <svg
-                        className="ml-1 h-4 w-4"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z"
-                            clip-rule="evenodd"
-                        />
-                    </svg>
-                </a>
-            </div>
         </div>
     </Dropdown >
 );
