@@ -4,7 +4,7 @@ import { generateSudoku, Difficulty } from '@/lib/generatesSudoku.ts';
 
 import '@/App.css';
 import Board from "@/components/Board";
-import { InstructionsModal, AdModal, PauseModal, InstructionsDropdown } from '@/components/Modals';
+import { AdModal, PauseModal, InstructionsDropdown } from '@/components/Modals';
 import GameStatusModal from '@/components/GameStatusModal.tsx';
 import DifficultySelector from '@/components/DifficultySelector.tsx';
 import Tooltip from '@/components/Tooltip.tsx';
