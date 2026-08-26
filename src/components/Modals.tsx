@@ -17,7 +17,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, closeab
 
     return (
         <div className="instructions-overlay" onClick={handleBackdropClick}>
-            <div className="instructions-content" onClick={(e) => e.stopPropagation()}>
+            <div className="instructions-content space-y-2 max-w-400" onClick={(e) => e.stopPropagation()}>
                 {closeable && <button className="instruct-close-btn" onClick={onClose} aria-label="Close modal"></button>}
                 <h3 className="content-title">{title}</h3>
                 {children}
@@ -27,77 +27,110 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, closeab
 };
 
 export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
-    <Modal isOpen={isOpen} onClose={onClose} title={<b className="text-2xl">How to Play</b>}>
-        <div className="space-y-6 text-gray-700 dark:text-gray-300 text-sm leading-relaxed text-left">
-            <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-1 border-b border-gray-200 dark:border-gray-700 pb-1">The Objective</h4>
-                <p>To win, every Row (left to right), every Column (up and down), and every 3x3 Square must have the numbers 1, 2, 3, 4, 5, 6, 7, 8, and 9.<br />
-                    <b className='pl-6'>Tip:</b> A number cannot appear more than once in any row, column, or 3×3 box.</p>
+    <Modal isOpen={isOpen} onClose={onClose} title={<b className="text-2xl">Quick Play Guide</b>}>
+        <div className="w-full space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed mt-4 mb-4">
+            <div className="rounded-lg border border-blue-200 bg-blue-50 p-2 dark:border-blue-900/50 dark:bg-blue-950/30">
+                <h3 className="mb-1 font-semibold text-blue-900 dark:text-blue-200 mx-w-500">
+                    Objective
+                </h3>
+                <p className='text-center'>
+                    To win, fill every <a href="">domain</a> (row, column, and 3×3 box) with the numbers
+                    <strong>1–9</strong>, using each number only once.
+                </p>
             </div>
+        </div>
 
-            <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-2 border-b border-gray-200 dark:border-gray-700 pb-1">Quick Sudoku Guide</h4>
-                <ol className="list-decimal pl-5 space-y-1">
-                    <li><b>Selecting a Cell: </b> Click/tap any cell to select it. The game will <b className="text-gray-900 dark:text-gray-100">highlight</b> the row, column, and 3x3 box to help finding out where numbers are missing.</li>
-                    <li><b>Match Tracking:</b> Click/tap on any existing number, including completed/fixed numbers/cells, to instantly highlight all matching digits across the board.</li>
-                    <li><b>Placing a Number: </b>Once an empty cell is selected, type a number from 1 to 9 using the physical keyboard, buttons on mobile devies, or click/tap the corresponding digit on the on-screen number pad to lock in the answer.
-                        Incorrect input(s) can also be replaced with another number.
-                        <p>Be aware that if a <b className="text-gray-900 dark:text-gray-100">domain</b> (row, col, or 3x3 box) was completed, it won't be able to place a number but to select.</p>
-                    </li>
-                    <li><b className=""> Using Pencil Mode:</b> Click/tap on <b className="text-gray-900 dark:text-gray-100">Pencil Mode</b> action button to make notes for possible numbers inside a single cell if players are not sure yet.</li>
-                    <li><b>Using the Eraser: </b>
-                        If inccorect number(s) inputted, click/tap on <b className="text-gray-900 dark:text-gray-100">Eraser</b> to delete.
-                        And the <b>Eraser</b> can be used to delete those <b className="text-gray-900 dark:text-gray-100">Pencil</b>  notes.
-                        if a <b className='text-gray-900 dark:text-gray-100'>domain</b> was completed, the eraser will not work on those cells.
-                    </li>
-                    <li>
-                        <b>Using the Reset Button: </b>
-                        By clicking/tapping on the <b className="text-gray-900 dark:text-gray-100">Reset Button</b>, the system will reset the entire board/game, including the <b className="text-gray-900 dark:text-gray-100">Pencil</b> notes and <b className="text-gray-900 dark:text-gray-100">Hints</b> used.
-                    </li>
-                    <li>
-                        <b>Stuck?</b> Use up to <b className='text-[1rem] text-gray-900 dark:text-gray-100'>3</b> hints per game to get the correct number for tricky cell(s).
-                        The hints will replace the incorrect inputs and/or the <b>Pencil</b> notes.
-                        <br />Out of hints? Earn extra ones by watching a quick <b className="text-gray-900 dark:text-gray-100">Ad</b>.
-                    </li>
-                    <li><b>Winning and Losing: </b>
-                        The game is won when all the empty cells are filled and no red number shows.
-                        <br />Be careful—making <b className='text-[1rem] text-gray-900 dark:text-gray-100'>10</b> mistakes will end the game early.</li>
-                </ol>
-            </div>
+        <ol className="space-y-3 ml-6 mr-6 text-left list-decimal">
+            <li>
+                <p className="mb-1 font-semibold text-gray-900 dark:text-white">
+                    Select a cell
+                </p>
+                <p>
+                    Click or tap an empty cell. SudokuPlays highlights its row, column,
+                    and 3×3 box to help you find possible numbers.
+                </p>
+            </li>
 
-            <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-1 border-b border-gray-200 dark:border-gray-700 pb-1">About the Number Pad</h4>
-                <p>The <b className="text-gray-900 dark:text-gray-100">blue buttons</b> are for input.</p>
-                <p className="mt-1">Each button also shows the <b className="text-gray-900 dark:text-gray-100">remaining count</b> of that number in the bottom-right corner, or below each number on the portrait mobile screens.</p>
-                <p>If a domain was completed, the number pad will not work on those cells.</p>
-            </div>
+            <li>
+                <p className="mb-1 font-semibold text-gray-900 dark:text-white">
+                    Enter a number
+                </p>
+                <p>
+                    Use the keyboard or the on-screen number pad to enter a number from
+                    <strong>1–9</strong>.
+                </p>
+            </li>
 
-            <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-1 border-b 
-                border-gray-200 dark:border-gray-700 pb-1">About the Keyboard</h4>
-                <p>The up, down, left, and right arrow keys <b className="text-gray-900 dark:text-gray-100"> (↑, ↓, ←, →) </b> can be used to navigate through the cells.</p>
-                <p className="">Numbers <b className='text-gray-900 dark:text-gray-100'>1-9</b> from the keyboard can be used to input numbers into the selected cell.</p>
-                <p>If a domain was completed and fixed, the keyboard also won't work on those cells.</p>
-            </div>
+            <li>
+                <p className="mb-1 font-semibold text-gray-900 dark:text-white">
+                    Use Pencil Mode
+                </p>
+                <p>
+                    Not sure which number fits? Turn on
+                    <strong>Pencil Mode</strong> to add possible numbers to a cell.
+                </p>
+            </li>
 
-            <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-base mb-2 border-b border-gray-200 dark:border-gray-700 pb-1">About the Scoring System</h4>
-                <p className="mb-2">The score is calculated in <b className="text-gray-900 dark:text-gray-100">real time</b>. The final score is calculated using the total time after the game ends:</p>
-                <ol className="list-decimal pl-5 space-y-1">
-                    <li>Initially, the score shows <b className="text-gray-900 dark:text-gray-100">- - - -</b> until inputting a number.</li>
-                    <li>Earn <b className="text-gray-900 dark:text-gray-100">Bonus Points</b> for every correct number placed.</li>
-                    <li>Higher <b className="text-gray-900 dark:text-gray-100">difficulty levels</b> provide a much larger <b className="text-gray-900 dark:text-gray-100">Score Multiplier</b>.</li>
-                    <li>Making a <b className="text-gray-900 dark:text-gray-100">Mistake</b> or taking too much <b className="text-gray-900 dark:text-gray-100">Time</b> will reduce the final score.</li>
-                    <li>After <b className="text-gray-900 dark:text-gray-100">10 Mistakes</b> the game will end.</li>
-                </ol>
-            </div>
-            <div className="pt-2 text-center" style={{ fontSize: "0.8rem" }}>
-                <span className='font-bold text-gray-700 dark:text-gray-400'> For more professional & detailed skill development, visit the <a href="/sudokuTips">Tips</a> page, or
-                    <a href="https://www.sudokuwiki.org/" target="_blank" rel="noopener noreferrer"> Sudoku Wiki</a>.
-                    <p>The instruction is subject to change or update.</p></span>
-            </div>
-        </div >
+            <li>
+                <p className="mb-1 font-semibold text-gray-900 dark:text-white">
+                    Made a mistake?
+                </p>
+                <p>
+                    Use the <strong>Eraser</strong> to remove an entered number or
+                    pencil note.
+                </p>
+            </li>
 
+            <li>
+                <p className="mb-1 font-semibold text-gray-900 dark:text-white">
+                    Stuck?
+                </p>
+                <p>
+                    You can use up to <strong>3 hints</strong> per game to help solve
+                    tricky cells.
+                </p>
+            </li>
+
+            <li>
+                <p className="mb-1 font-semibold text-gray-900 dark:text-white">
+                    Watch your mistakes
+                </p>
+                <p>
+                    The game ends after <strong>10 mistakes</strong>.
+                </p>
+            </li>
+
+            <li>
+                <p className="mb-1 font-semibold text-gray-900 dark:text-white">
+                    Win the game
+                </p>
+                <p>
+                    Fill all empty cells correctly and complete the puzzle without any
+                    red numbers showing.
+                </p>
+            </li>
+        </ol>
+
+        <div className="mt-6 border-t border-gray-200 pt-4 dark:border-gray-700">
+            <a
+                href="/how-sudokuplays-works"
+                className="inline-flex items-center font-medium text-blue-600 transition hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300"
+            >
+                Learn how SudokuPlays works
+                <svg
+                    className="ml-1 h-4 w-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z"
+                        clip-rule="evenodd"
+                    />
+                </svg>
+            </a>
+        </div>
     </Modal >
 );
 
