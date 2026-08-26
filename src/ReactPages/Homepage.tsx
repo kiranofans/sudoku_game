@@ -390,9 +390,11 @@ function Homepage() {
                         />
                         <div className="relative">
                             <Tooltip text="Quick Play Guide">
-                                <button onClick={() => {
-                                    setShowInstructions(true);
-                                }}
+                                <button 
+                                    onMouseDown={(e) => e.nativeEvent.stopImmediatePropagation()}
+                                    onClick={() => {
+                                        setShowInstructions(prev => !prev);
+                                    }}
                                     className="how-to-play-btn"
                                     aria-label="How to play"
                                     title="Quick Play Guide"
