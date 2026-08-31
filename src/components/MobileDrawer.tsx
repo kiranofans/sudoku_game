@@ -52,13 +52,6 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
             Tips
           </a>
           <a
-            href="/faq"
-            className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
-            onClick={onClose}
-          >
-            FAQ
-          </a>
-          <a
             href="/about"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
             onClick={onClose}
@@ -72,7 +65,13 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
           >
             Contact
           </a>
-
+          <a
+            href="/faq"
+            className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200"
+            onClick={onClose}
+          >
+            FAQ
+          </a>
           <a
             href="/changeLog"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 
@@ -81,6 +80,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
           >
             What's New?
           </a>
+
         </nav>
 
         <div className="mt-auto pt-8 border-t dark:border-gray-800 text-sm text-gray-500 text-center">

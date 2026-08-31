@@ -7,9 +7,10 @@ interface LayoutProps {
   children: React.ReactNode;
   headerContent?: React.ReactNode;
   mobileScore?: React.ReactNode;
+  isPaused?: boolean;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore }) => {
+const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, isPaused }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false); // Add this
   const currentYear = new Date().getFullYear();
@@ -38,7 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
       <div className="wrapper min-h-screen flex flex-col">
         <MobileDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
 
-        <header className="menu-bar">
+        <header className={`menu-bar ${isPaused ? 'relative' : ''}`} style={isPaused ? { zIndex: 10010 } : undefined}>
           <div className="logo-title-container">
             <div className="relative flex items-center">
               <a
@@ -65,8 +66,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
           <div className='controls-row'>
             <a href="/sudokuTips" className="header-nav-item desktop-only-nav">Tips</a>
             <span className="header-nav-separator desktop-only-nav">|</span>
-            <a href="/faq" className='header-nav-item desktop-only-nav'>FAQ</a>
-            <span className="header-nav-separator desktop-only-nav">|</span>
+
             <a href="/about" className="header-nav-item desktop-only-nav">About</a>
             <span className="header-nav-separator desktop-only-nav">|</span>
             <a href="/contact" className="header-nav-item desktop-only-nav">Contact</a>
@@ -80,8 +80,8 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
 
         {children}
 
-        <footer className="site-footer z-[100] bg-white border-t border-gray-200 
-       [transform:translateZ(0)]">
+        <footer className={`site-footer bg-white border-t border-gray-200 [transform:translateZ(0)] ${isPaused ? 'relative' : ''}`}
+          style={{ zIndex: isPaused ? 10010 : 100 }}>
           <div className="footer-copyright">
             <span>&copy; {currentYear} sudokuplays.com v{packageJson.version} | All rights reserved.</span>
           </div>
@@ -89,8 +89,10 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore })
             <a href="/privacyPolicy" className="footer-btn">Privacy Policy</a>
 
             <a href="/termsAndConditions" className="footer-btn">Terms & conditions</a>
+            <a href="/faq" className="footer-btn" style={{ textDecoration: 'none' }}>FAQ</a>
             <a href="/changeLog" className="footer-btn hidden md:inline-flex"
               style={{ textDecoration: 'none' }}>What's New?</a>
+
 
           </div>
           <div className="social-links">

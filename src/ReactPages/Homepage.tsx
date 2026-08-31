@@ -375,6 +375,7 @@ function Homepage() {
     return (
         <ThemeProvider>
             <Layout
+                isPaused={!timer.isRunning && !isGameOver && !isLoading}
                 mobileScore={
                     <div className="mobile-score-column flex flex-row items-center justify-center gap-3">
                         <ScoreSystem score={score} history={history} isMobile />
@@ -390,7 +391,7 @@ function Homepage() {
                         />
                         <div className="relative">
                             <Tooltip text="Quick Play Guide">
-                                <button 
+                                <button
                                     onMouseDown={(e) => e.nativeEvent.stopImmediatePropagation()}
                                     onClick={() => {
                                         setShowInstructions(prev => !prev);
