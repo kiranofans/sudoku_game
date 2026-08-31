@@ -11,7 +11,6 @@ const issues = getLatestKnownIssues();
 function ChangeLog({ }) {
     return (
         <ThemeProvider>
-
             <>
                 <meta name="description" content="It's the change log" />
                 <Layout>
@@ -23,6 +22,26 @@ function ChangeLog({ }) {
                         <KnownIssuesBox
                             items={issues} />
                         <Timeline>
+                            <ChangelogEntry
+                                date="2026-08-30"
+                                version="v1.0.0" title="Improvements & Features"
+                                items={[
+                                    <>Moved FAQ menu item to the footer</>,
+                                    <>Added How SudokuPlays Works Guide Page and put "Under Construction" Notice.</>,
+                                    <>Brought footer to front when the Sudoku game pauses, so that users can still interact with the footer.</>,
+                                ]}
+                            />
+
+                            <ChangelogEntry
+                                date="2026-08-25"
+                                version="v1.0.0" title="Improvements & Features"
+                                items={[
+                                    <>Fixed the help icon button clicking/tapping problem.</>, ,
+                                    <>Simplified How To modal and made it a dropdown.</>,
+                                    <>Resized the site title to make it smaller.</>,
+                                    <>Fixed the top menu priority when game is paused.</>
+                                ]}
+                            />
                             <ChangelogEntry
                                 date="2026-06-22"
                                 version="1.0.0"
