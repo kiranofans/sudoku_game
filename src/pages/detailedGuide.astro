@@ -1,5 +1,120 @@
 ---
-
+import AstroLayout from "../layouts/Layout.astro";
+import DetailedGuide from "../ReactPages/DetailedGuide";
 ---
 
-<h1>How SudokuPlays Works</h1>
+<AstroLayout title="How SudokuPlays Works | SudokuPlays">
+    <h1 class="sr-only">How SudokuPlays Works</h1>
+
+    <div class="">
+        <p class="text-xl text-center justify-center items-center">
+            Under Construction
+        </p>
+        <img
+            class="w-200 h-140"
+            src="/images/png/under-construction.png"
+            alt="Under Construction"
+        />
+    </div>
+</AstroLayout>
+
+<DetailedGuide client:load />
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "HowTo",
+                "@id": "https://sudokuplays.com/detailedGuide/#webpage",
+                "url": "https://sudokuplays.com/detailedGuide/",
+                "name": "How SudokuPlays Works | SudokuPlays",
+                "description": "Find guides on using SudokuPlays site, how to master Sudoku, and the features.",
+                "breadcrumb": {
+                    "@id": "https://sudokuplays.com/detailedGuide/#breadcrumb"
+                },
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://sudokuplays.com/#website",
+                    "name": "Sudoku Plays",
+                    "url": "https://sudokuplays.com/"
+                },
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Sudoku?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sudoku is a logic-based, number-placement puzzle. The objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids contains all of the digits from 1 to 9."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is sudokuplays.com free to use?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the site is completely free to use without downloads or accounts."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do I need an account to play?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No sign up or login is required. You can start playing instantly."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What difficulty levels are available?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We offer multiple difficulty levels from easy to hard for all players."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does this site work on mobile?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the site is fully responsive and works on all devices including iOS and Android."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I play Sudoku on this site?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Navigate to the home page, select a difficulty, and start filling in the grid. You can find a detailed 'How to Play' guide by clicking the question mark icon in the top right corner."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://sudokuplays.com/faq/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://sudokuplays.com/",
+                            "url": "https://sudokuplays.com/",
+                            "name": "Home"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://sudokuplays.com/faq/",
+                            "name": "FAQ"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+</script>

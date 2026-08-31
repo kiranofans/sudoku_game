@@ -114,7 +114,7 @@ export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void 
 
         <div className="mt-6 border-t border-gray-200 pt-4 dark:border-gray-700">
             <a
-                href="/how-sudokuplays-works"
+                href="/detailedGuide"
                 className="inline-flex items-center font-medium text-blue-600 transition hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300"
             >
                 Learn how SudokuPlays works
@@ -152,7 +152,7 @@ export const InstructionsDropdown: React.FC<{ isOpen: boolean; onClose: () => vo
                 </h3>
                 <div className="">
                     <a
-                        href="/how-sudokuplays-works"
+                        href="/detailedGuide"
                         className="inline-flex items-center font-medium text-blue-600 transition hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300"
                     >
                         Learn how SudokuPlays works
