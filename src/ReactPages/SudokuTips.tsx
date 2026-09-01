@@ -71,11 +71,15 @@ function SudokuTips() {
                     </div>
 
                     <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
-                        For more deep explanations and other logic strategies, checkout this site: <a href="https://www.sudokuwiki.org/">Sudoku Wiki</a>
+                        For more deep explanations and other professional Sudoku strategies,
+                        checkout
+                        <a href="https://www.sudokuwiki.org/"> Sudoku Wiki</a>
                         <br />
-                        Ready to put these strategies to the test?
+                        Still feeling lost? Check out our <a href="/detailedGuide">How SudokuPlays Works</a> guide for more help using the site and playing Sudoku.
+
+                        <p className='mt-[1rem] text-sm md:text-md'>Ready to put these strategies to the test?</p>
                     </div>
-                    <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                         <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
                             Play Sudoku
                         </a>
