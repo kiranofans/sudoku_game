@@ -855,7 +855,7 @@ body {
     box-shadow: none;
 }
 
-/* 已完成数字的按钮 */
+/* Number pad button - completed buttons */
 .number-pad button.completed {
     opacity: 0.5;
     text-decoration: line-through;
@@ -1686,7 +1686,8 @@ button {
         }
 
         /* Surface Duo portrait specific adjustments: one straight row */
-        @media (width: 540px) and (height: 720px), (width: 672px) and (height: 800px) {
+        @media (width: 540px) and (height: 720px),
+        (width: 672px) and (height: 800px) {
             .number-pad {
                 display: grid !important;
                 grid-template-columns: repeat(9, 1fr) !important;
