@@ -142,7 +142,7 @@ function KnownIssuesBox({
     items,
     isOnHomePage: initialIsOnHomePage = false,
     defaultOpen = false,
-    bgColor = "bg-yellow-50 dark:bg-yellow-200"
+    bgColor = "bg-yellow-50 dark:bg-[rgba(245,158,11,0.06)]"
 }: KnownIssuesBoxProps) {
     const [isOnHomePage, setIsOnHomePage] = React.useState(initialIsOnHomePage);
     const [isOpen, setIsOpen] = React.useState(defaultOpen);
@@ -162,16 +162,14 @@ function KnownIssuesBox({
             <div className=" max-w-[800px] mx-auto " style={{ width: '100%', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
                 <ExpandableBox
                     title={
-                        <span className="flex items-center space-around font-bold text-yellow-900 dark:text-yellow-900">
+                        <span className="flex items-center space-around font-bold text-yellow-900 dark:text-[#fbbf24]">
                             <span className="mr-1">⚠️</span>
                             <span className="line-clamp-1">Known Issues</span>
-
-
                         </span>
                     }
                     isOpen={isOpen}
                     onToggle={() => setIsOpen(!isOpen)}
-                    bgColor={`${bgColor} border-yellow-200 dark:border-yellow-900/50`}
+                    bgColor={`${bgColor} border-yellow-200 dark:border-[rgba(245,158,11,0.3)]`}
                 >
                     <ol className="pl-0 space-y-1 text-yellow-900 dark:text-yellow-100">
                         {items.map((item, idx) => (
