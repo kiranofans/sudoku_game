@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout';
+import ShareBoxes from '@/components/ShareBoxes';
 import { ThemeProvider } from '@/components/ThemeContext';
-import { Children, useState } from "react";
+import { useState } from "react";
 
 const sections = [
     {
@@ -53,68 +54,73 @@ const sections = [
         content: null,
     },
 ];
-function SudokuMiniGrid() {
-    const grid = [
-        [5, 3, 0, 0, 7, 0, 0, 0, 0],
-        [6, 0, 0, 1, 9, 5, 0, 0, 0],
-        [0, 9, 8, 0, 0, 0, 0, 6, 0],
-        [8, 0, 0, 0, 6, 0, 0, 0, 3],
-        [4, 0, 0, 8, 0, 3, 0, 0, 1],
-        [7, 0, 0, 0, 2, 0, 0, 0, 6],
-        [0, 6, 0, 0, 0, 0, 2, 8, 0],
-        [0, 0, 0, 4, 1, 9, 0, 0, 5],
-        [0, 0, 0, 0, 8, 0, 0, 7, 9],
-    ];
-    const [selected, setSelected] = useState<[number, number] | null>([1, 4]);
+// const [board, setBoard] = useState<(number | null)[][]>([]);
+// const [initialBoard, setInitialBoard] = useState<(number | null)[][]>([]);
+// const [notes, setNotes] = useState<CellNotes[][]>([]);
+// const [selectedCell, setSelectedCell] = useState<[number, number] | null>(null);
+// const [isLoading, setIsLoading] = useState(false);
+// const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
 
-    const isHighlighted = (r: number, c: number) => {
-        if (!selected) return false;
-        const [sr, sc] = selected;
-        return r === sr || c === sc || (Math.floor(r / 3) === Math.floor(sr / 3) && Math.floor(c / 3) === Math.floor(sc / 3));
-    };
+{/* Sudoku Mini Grid */ }
+// function SudokuMiniGrid() {
+//     const grid = [
+//         [5, 3, 0, 0, 7, 0, 0, 0, 0],
+//         [6, 0, 0, 1, 9, 5, 0, 0, 0],
+//         [0, 9, 8, 0, 0, 0, 0, 6, 0],
+//         [8, 0, 0, 0, 6, 0, 0, 0, 3],
+//         [4, 0, 0, 8, 0, 3, 0, 0, 1],
+//         [7, 0, 0, 0, 2, 0, 0, 0, 6],
+//         [0, 6, 0, 0, 0, 0, 2, 8, 0],
+//         [0, 0, 0, 4, 1, 9, 0, 0, 5],
+//         [0, 0, 0, 0, 8, 0, 0, 7, 9],
+//     ];
+//     const [selected, setSelected] = useState<[number, number] | null>([1, 4]);
 
-    const isSelected = (r: number, c: number) => selected && selected[0] === r && selected[1] === c;
+//     const isHighlighted = (r: number, c: number) => {
+//         if (!selected) return false;
+//         const [sr, sc] = selected;
+//         return r === sr || c === sc || (Math.floor(r / 3) === Math.floor(sr / 3) && Math.floor(c / 3) === Math.floor(sc / 3));
+//     };
 
-    return (
-        <div className="inline-grid gap-0" style={{ display: "grid", gridTemplateColumns: "repeat(9, 1fr)", gap: 0 }}>
-            {grid.map((row, r) =>
-                row.map((val, c) => {
-                    const borderRight = (c + 1) % 3 === 0 && c !== 8 ? "2px solid #3b82f6" : "1px solid #2d3748";
-                    const borderBottom = (r + 1) % 3 === 0 && r !== 8 ? "2px solid #3b82f6" : "1px solid #2d3748";
-                    const isDark = false;
-                    const bgLight = isSelected(r, c) ? "#b8d3feff" : isHighlighted(r, c) ? "#b8d3feff" : "#fff";
-                    const bgDark = isSelected(r, c) // dark mode
-                        ? "#3498db"
-                        : isHighlighted(r, c)
-                            ? "rgba(59,130,246,0.12)"
-                            : "#161b22";
+//     const isSelected = (r: number, c: number) => selected && selected[0] === r && selected[1] === c;
 
-                    return (
-                        <div
-                            key={`${r}-${c}`}
-                            onClick={() => setSelected([r, c])}
-                            className={`w-7 h-7 flex items-center justify-center font-['JetBrains_Mono',_monospace] text-[12px] sm:text-sm md:text-md 
-                                xs:text-xs cursor-pointer transition-colors duration-[120ms]
-                                ${c === 0 ? "border-l border-[#2d3748]" : ""}
-                                ${r === 0 ? "border-t border-[#2d3748]" : ""}
-                                ${val ? "font-semibold" : "font-normal"}
-                                ${isSelected(r, c) ? "text-white" : val ? "text-gray-300" : "text-[#4a5568]"}
-                                ${bgLight}
-                                dark:${bgDark}`}
-                            style={{
-                                background: isDark ? bgLight : bgDark,
-                                borderRight,
-                                borderBottom,
-                            }}
-                        >
-                            {val || ""}
-                        </div>
-                    );
-                })
-            )}
-        </div>
-    );
-}
+//     return (
+//         <div className="inline-grid gap-0" style={{ display: "grid", gridTemplateColumns: "repeat(9, 1fr)", gap: 0 }}>
+//             {grid.map((row, r) =>
+//                 row.map((val, c) => {
+//                     const borderRight = (c + 1) % 3 === 0 && c !== 8 ? "2px solid #3b82f6" : "1px solid #2d3748";
+//                     const borderBottom = (r + 1) % 3 === 0 && r !== 8 ? "2px solid #3b82f6" : "1px solid #2d3748";
+//                     const bg = isSelected(r, c) // dark mode
+//                         ? "bg-[#b8d3feff] dark:bg-[#3498db]"
+//                         : isHighlighted(r, c)
+//                             ? "bg-[#b8d3feff] dark:bg-[rgba(59,130,246,0.12)]"
+//                             : "dark:bg-[#161b22]";
+
+//                     return (
+//                         <div
+//                             key={`${r}-${c}`}
+//                             onClick={() => setSelected([r, c])}
+//                             className={`w-7 h-7 flex items-center justify-center font-['JetBrains_Mono',_monospace] text-[12px] sm:text-sm md:text-md 
+//                                 xs:text-xs cursor-pointer transition-colors duration-[120ms]
+//                                 ${c === 0 ? "border-l border-[#2d3748]" : ""}
+//                                 ${r === 0 ? "border-t border-[#2d3748]" : ""}
+//                                 ${val ? "font-semibold" : "font-normal"}
+//                                 ${isSelected(r, c) ? "text-white" : val ? "text-gray-700 dark:text-gray-300" : "text-[#4a5568]"}
+//                                 ${bg}`}
+//                             style={{
+//                                 background: bg,
+//                                 borderRight,
+//                                 borderBottom,
+//                             }}
+//                         >
+//                             {val || ""}
+//                         </div>
+//                     );
+//                 })
+//             )}
+//         </div>
+//     );
+// }
 
 function Tag({ children, color = "blue" }: { children: React.ReactNode; color?: "blue" | "yellow" | "white" | "red" | "gray" | "black" | "green" }) {
     const colors = {
@@ -166,14 +172,14 @@ function SectionAnchor({ id }: { id: string }) {
 function ScoreRow({ label, value, color }: { label: string; value: string; color: string }) {
     return (
         <div className="flex items-center justify-between py-2.5 border-b border-[#2d3748] last:border-0">
-            <span className="dark:text-[#8b97a8] sm:text-sm md:text-md lg:text-lg">{label}</span>
-            <span className={`sm:text-sm md:text-md lg:text-lg font-semibold ${color}`}>{value}</span>
+            <span className="dark:text-[#8b97a8] sm:text-sm md:text-md">{label}</span>
+            <span className={`sm:text-sm md:text-md font-semibold ${color}`}>{value}</span>
         </div>
     );
 }
 
 function DetailedGuide() {
-    const [activeSection, setActiveSection] = useState("objective");
+    const [, setActiveSection] = useState("objective");
 
     return (
         <ThemeProvider>
@@ -181,44 +187,47 @@ function DetailedGuide() {
                 <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>                    {/* Hero */}
                     <div className="mb-14 grid lg:grid-cols-[1fr_auto] gap-10 items-center">
                         <div>
-                            <div className="flex items-center gap-2 mb-4">
-                                <Tag color="blue">How to Play</Tag>
+                            {/* <div className="flex items-center gap-2 mb-4">
+                                <Tag color="blue">How to play</Tag>
                                 <Tag color="white">v1.0.0</Tag>
-                            </div>
+                            </div> */}
                             <h1
-                                className="text-gray-600 dark:text-gray-200 text-2xl md:text-3xl sm:text-2xl lg:text-4xl font-extrabold tracking-tight leading-[1.1]"
+                                className="text-gray-600 dark:text-gray-200 text-2xl md:text-3xl sm:text-2xl lg:text-4xl font-bold text-center leading-[1.1]"
                                 style={{ fontFamily: "Outfit, sans-serif", color: "" }}
                             >
-                                How <span className=' '> SudokuPlays </span>
+                                How <span className=' '> SudokuPlays Works? </span>
 
-                                <span className=''>Works?</span>
                             </h1>
-                            <p className="dark:text-[#8b97a8] font-semibold text-gray-600 md:text-md xl:text-xl sx:text-sx sm:text-sm 
-                            lg:text-lg max-w-lg leading-relaxed mb-6 sx:mb-4">
+                            <p className="text-center dark:text-[#8b97a8] justify-center flexitems-center font-semibold text-gray-600 md:text-md xl:text-xl sx:text-sx sm:text-sm 
+                            lg:text-lg max-w-lg mx-auto leading-relaxed mb-6 mt-6 sx:mb-4">
                                 Fill every row, column, and 3×3 box with the digits 1–9. No repeats. Simple rules — deep strategy.
                             </p>
-                            <div className="flex flex-wrap gap-3">
+
+                            {/* Navigation to sections*/}
+                            <div className="flex flex-wrap gap-3 items-center justify-center">
                                 {sections.map((s) => (
                                     <a
                                         key={s.id}
                                         href={`#${s.id}`}
                                         onClick={() => setActiveSection(s.id)}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border dark:border-[#2d3748] 
-                                        dark:bg-[#161b22] dark:text-[#8b97a8] sm:text-sm md:text-md xs:text-xs dark:hover:border-[#3b82f6] dark:hover:text-[#60a5fa] transition-all"
+                                        className="flex items-center gap-1.5 px-3 py-1.5 md:rounded-md sm:rounded-sm lg:rounded-lg 
+                                        border-[1px] border-[#2980b9] dark:border-[#2d3748] dark:bg-[#161b22] text-red-800 dark:text-[#8b97a8] 
+                                        sm:text-sm md:text-md xs:text-xs hover:boder-blue-300 hover:bg-[#f9f9f9]
+                                        dark:hover:border-[#3b82f6] hover:border-[border-color] dark:hover:text-[#60a5fa] transition-all"
                                     >
-                                        <span className=" text-[10px] dark:text-[#4a5568]">{s.number}</span>
-                                        {s.title}
+                                        <span className="text-sm text-[#2980b9] dark:text-gray-400">{s.number}</span>
+                                        <span className='text-sm text-[#2980b9] dark:text-gray-400'>{s.title}</span>
                                     </a>
                                 ))}
                             </div>
                         </div>
-                        <div className="flex flex-col items-center gap-3">
-                            <p className="sm:text-sm md:text-md dark:text-[#4a5568] uppercase tracking-widest">Interactive Demo</p>
+                        {/* <div className="flex flex-col items-center gap-3">
+                            <p className="sm:text-sm md:text-md dark:text-[#4a5568] uppercase">Interactive Demo</p>
                             <div className="p-4 rounded-2xl border dark:border-[#2d3748] dark:bg-[#161b22]">
-                                <SudokuMiniGrid />
+                                
                             </div>
                             <p className="lg:text-lg sm:text-smmd:text-md xs:text-xs text-gray-600 dark:text-[#4a5568] text-center">Click any cell to see highlighting</p>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Section 01: Objective */}
@@ -248,7 +257,7 @@ function DetailedGuide() {
                         <div className="rounded-xl border border-yellow-300 dark:border-[rgba(245,158,11,0.3)] bg-yellow-100 dark:bg-[rgba(245,158,11,0.06)] p-4 flex gap-3">
                             <span className="dark:text-[#f59e0b] text-lg shrink-0">💡</span>
                             <p className="text-sm text-[#cbd5e0]">
-                                <strong className="text-yellow-500 dark:text-[#fbbf24]">Key rule: </strong>
+                                <strong className="text-yellow-600 dark:text-[#fbbf24]">Key rule: </strong>
                                 <span className='text-gray-500 dark:text-gray-300'>A digit cannot appear more than once in any row, column, or 3×3 box. Use elimination to narrow down which numbers can go where.
                                 </span>
                             </p>
@@ -353,7 +362,8 @@ function DetailedGuide() {
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                                 <h2 className="text-lg font-bold text-gray-600 dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Number Pad</h2>
                             </div>
-                            <div className="xl:rounded-xl border dark:border-[#2d3748] dark:bg-[#161b22] p-5">
+                            <div className="lg:rounded-lg md:rounded-md sm:rounded-smxl:rounded-xl 
+                            border dark:border-[#2d3748] dark:bg-[#161b22] p-5">
                                 {/* Mini numpad visual */}
                                 <div className="grid grid-cols-5 gap-2 mb-5">
                                     {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
@@ -539,7 +549,11 @@ function DetailedGuide() {
                             </div>
                         </div>
                     </section>
-                    <div className="" style={{ textAlign: 'center', marginTop: '0rem' }}>
+
+                    <div className='p-1 mx-auto w-fit'>
+                        <ShareBoxes score={0} difficulty={''} timeUsed={''} isGameCompleted={false} />
+                    </div>
+                    <div className="" style={{ textAlign: 'center', marginTop: '2rem' }}>
                         <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
                             Back to Game
                         </a>
