@@ -16,7 +16,7 @@ export default function ShareBoxes({ score, difficulty, timeUsed, isGameComplete
         `Score: ${score.toLocaleString()} | Time: ${timeUsed}. ` +
         `Come play and try beat my score!`;
 
-    const shareTitle = isGameCompleted ? "Share Result Via" : "If you like the game, help it grow by sharing Sudoku Plays with friends"
+    const shareTitle = isGameCompleted ? "Share Result Via" : "If you like the content, help it grow by sharing SudokuPlays with friends"
     const url = "https://sudokuplays.com";
 
     function openShare(link: string) {
