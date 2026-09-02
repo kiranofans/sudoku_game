@@ -23,6 +23,16 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-09-1"
+                                version="v1.0.0" title="Improvements & Bugs"
+                                items={[
+                                    <>Roughly finished the <a href="\detailedGuide">How SudokuPlays Works</a> page, and added share boxes to the page.</>,
+                                    <>Fixed the script type warning of astro and building errors.</>,
+                                    <>Modified Known Issues box colors in dark theme mod, and wording.</>,
+                                    <>Modified <a href="\sudokuTips">Tips</a> page's wording and internally linked to How SudokuPlays Works page.</>
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-08-30"
                                 version="v1.0.0" title="Improvements & Features"
                                 items={[
