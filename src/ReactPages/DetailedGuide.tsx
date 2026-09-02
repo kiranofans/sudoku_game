@@ -134,7 +134,7 @@ function Tag({ children, color = "blue" }: { children: React.ReactNode; color?: 
 
     }
     return (
-        <span className={`inline-flex items-center px-2 py-0.5 sm:rounded-sm md:rounded-md xs:text-xs 
+        <span className={`inline-flex items-center px-2 py-0.5 rounded-lg sm:rounded-sm md:rounded-md xs:text-xs 
         sm:text-sm md:text-md font-medium border ${colors[color]}`}>
             {children}
         </span>
@@ -210,7 +210,7 @@ function DetailedGuide() {
                                         key={s.id}
                                         href={`#${s.id}`}
                                         onClick={() => setActiveSection(s.id)}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 md:rounded-md sm:rounded-sm lg:rounded-lg 
+                                        className="flex items-center gap-1.5 px-3 py-1.5 md:rounded-md sm:rounded-sm rounded-lg 
                                         border-[1px] border-[#2980b9] dark:border-[#2d3748] dark:bg-[#161b22] text-red-800 dark:text-[#8b97a8] 
                                         sm:text-sm md:text-md xs:text-xs hover:boder-blue-300 hover:bg-[#f9f9f9]
                                         dark:hover:border-[#3b82f6] hover:border-[border-color] dark:hover:text-[#60a5fa] transition-all"
@@ -236,7 +236,7 @@ function DetailedGuide() {
                         <div className="flex items-center gap-3 mb-6">
                             <span className="xs:text-xs md:text-md lg:text-lg text-sm dark:text-[#4a5568]">01</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
-                            <h2 className="text-xl font-bold text-gray-600 dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>The Objective</h2>
+                            <h2 className="text-xl lg:text-lg md:text-md sm:text-sm font-bold text-gray-600 dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>The Objective</h2>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                         </div>
 
@@ -362,14 +362,14 @@ function DetailedGuide() {
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                                 <h2 className="text-lg font-bold text-gray-600 dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Number Pad</h2>
                             </div>
-                            <div className="lg:rounded-lg md:rounded-md sm:rounded-smxl:rounded-xl 
+                            <div className="rounded-lg md:rounded-md sm:rounded-sm xl:rounded-xl 
                             border dark:border-[#2d3748] dark:bg-[#161b22] p-5">
                                 {/* Mini numpad visual */}
                                 <div className="grid grid-cols-5 gap-2 mb-5">
                                     {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
                                         <div
                                             key={n}
-                                            className="relative sm:rounded-sm md:rounded-md xs:rouonded-xs lg:rounded-lg
+                                            className="relative xl:rounded-xl sm:rounded-sm md:rounded-md rounded-lg
                                              flex items-center justify-center font-semibold lg:text-lg md:text-md sm:text-sm aspect-square"
                                             style={{
                                                 /* Number pad buttons in how sudokuplays works*/
@@ -389,7 +389,7 @@ function DetailedGuide() {
                                         </div>
                                     ))}
                                     <div
-                                        className="sm:rounded-sm md:rounded-md xs:rouonded-xs lg:rounded-lg dark:text-[#8b97a8]
+                                        className="sm:rounded-sm md:rounded-md xs:rouonded-xs rounded-lg dark:text-[#8b97a8]
                                          border dark:border-[#2d3748] dark:bg-[#1e2530] flex items-center justify-center
                                          sm:text-sm md:text-md lg:text-lg xs:text-xs aspect-square"
                                     >
@@ -413,7 +413,7 @@ function DetailedGuide() {
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                                 <h2 className="md:text-md sm:text-sm xs:text-xs lg:text-lg font-bold dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Keyboard Navigation</h2>
                             </div>
-                            <div className="md:rounded-md sm:rounded-sm lg:rounded-lg xl:rounded-xl border dark:border-[#2d3748] dark:bg-[#161b22] p-5 h-[calc(100%-52px)]">
+                            <div className="md:rounded-md sm:rounded-sm rounded-lg xl:rounded-xl border dark:border-[#2d3748] dark:bg-[#161b22] p-5 h-[calc(100%-52px)]">
                                 <div className="space-y-3 mb-5">
                                     <div className="flex items-center justify-between">
                                         <span className="dark:text-[#8b97a8] md:text-md lg:text-lg sm:text-sm">Move between cells</span>
@@ -437,7 +437,7 @@ function DetailedGuide() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="md:rounded-md sm:rounded-sm lg:rounded-lg xl:rounded-xl bg-[#f8f9fa]
+                                <div className="md:rounded-md sm:rounded-sm rounded-lg xl:rounded-xl bg-[#f8f9fa]
                                  dark:bg-[#0d1117] border dark:border-[#2d3748] p-3">
                                     <p className="text-xs dark:text-[#4a5568] uppercase tracking-wider mb-2">Note</p>
                                     <p className="text-sm darK:text-[#8b97a8]">
@@ -525,7 +525,7 @@ function DetailedGuide() {
                         </div>
 
                         {/* Mistake tracker visual */}
-                        <div className="mt-5 xl:rounded-xl lg:rounded-lg md:rounded-md sm:rounded-sm border border-[#2d3748] bg-[#] dark:bg-[#161b22] p-5">
+                        <div className="mt-5 xl:rounded-xl rounded-lg md:rounded-md sm:rounded-sm border border-[#2d3748] bg-[#] dark:bg-[#161b22] p-5">
                             <div className="flex items-center justify-between mb-3">
                                 <span className="sm:text-sm md:text-md lg:text-lg dark:text-[#8b97a8]">Mistake counter</span>
                                 <Tag color="red">3 / 10</Tag>
