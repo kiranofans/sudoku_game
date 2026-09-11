@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import packageJson from '../../package.json';
 import ThemeSelector from './ThemeSelector';
 import MobileDrawer from './MobileDrawer';
+import { OutlinedButton } from './SmallUiWidgets';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -53,8 +54,17 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
             </div>
 
             <div className="title-score-wrapper">
-              <div className="title-tagline-container">
+              <div className="title-tagline-container flex">
                 <h2 className='game-title'>Sudoku</h2>
+                <div className='m-0.5 text-sm'>
+                  <OutlinedButton
+                    text="What's new?"
+                    href='/changeLog'
+                    borderColor=""
+                    bgColor=""
+                  />
+
+                </div>
               </div>
             </div>
           </div>
@@ -91,8 +101,8 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
             <a href="/termsAndConditions" className="footer-btn">Terms & conditions</a>
             <a href="/faq" className="footer-btn" style={{ textDecoration: 'none' }}>FAQ</a>
             <a href="/detailedGuide" className="footer-btn" style={{ textDecoration: "none" }}>How SudokuPlays Works?</a>
-            <a href="/changeLog" className="footer-btn hidden md:inline-flex"
-              style={{ textDecoration: 'none' }}>What's New?</a>
+            {/* <a href="/changeLog" className="footer-btn hidden md:inline-flex"
+              style={{ textDecoration: 'none' }}>What's New?</a> */}
 
           </div>
           <div className="social-links">

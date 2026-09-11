@@ -191,3 +191,25 @@ function KnownIssuesBox({
         </div>
     );
 }
+
+{/* Outlined Button */ }
+type OutlinedButtonProps = {
+    text: string;
+    borderColor: string;
+    bgColor?: string;
+    href?: string;
+}
+
+export function OutlinedButton({
+    text, borderColor, bgColor, href,
+}: OutlinedButtonProps) {
+    return (
+        <div>
+            <a href={href ?? ""}
+                className={`border ${borderColor} ${bgColor} rounded-sm sm:rounded-md xs:rounded-sm
+                hover:border-blue-400 dark:hover:border-blue-400 dark:hover:text-blue-400 m-2 py-1 px-1.5 p-1`}>
+                {text}
+            </a>
+        </div>
+    );
+}
