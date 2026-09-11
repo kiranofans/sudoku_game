@@ -23,6 +23,16 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-09-10"
+                                version="v1.0.0"
+                                title="Improvements & Features"
+                                items={[
+                                    <>Added What's New? beside site title</>,
+
+
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-09-1"
                                 version="v1.0.0" title="Improvements & Bugs"
                                 items={[
