@@ -100,7 +100,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
 
             <a href="/termsAndConditions" className="footer-btn">Terms & conditions</a>
             <a href="/faq" className="footer-btn" style={{ textDecoration: 'none' }}>FAQ</a>
-            <a href="/detailedGuide" className="footer-btn" style={{ textDecoration: "none" }}>How SudokuPlays Works?</a>
+            <a href="/howSiteWorks" className="footer-btn" style={{ textDecoration: "none" }}>How SudokuPlays Works?</a>
             {/* <a href="/changeLog" className="footer-btn hidden md:inline-flex"
               style={{ textDecoration: 'none' }}>What's New?</a> */}
 
