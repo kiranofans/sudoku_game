@@ -213,3 +213,34 @@ export function OutlinedButton({
         </div>
     );
 }
+/* outlined card*/
+export default function OutlinedCard({ icon, title, href, children }: { icon: string; title: string; href?: string, children: React.ReactNode }) {
+    return (
+        <div className="group rounded-md border dark:border-[#2d3748] dark:bg-[#161b22] p-5 dark:hover:border-[#3b82f6] transition-all duration-200  dark:hover:bg-[rgba(59,130,246,0.04)]">
+            <div className="flex items-start gap-3">
+                <div className="shrink-0 w-8 h-8 rounded-lg dark:bg-[rgba(59,130,246,0.12)] flex items-center justify-center dark:text-[#60a5fa] text-sm font-bold">
+                    {icon}
+                </div>
+                <div>
+                    {href ? (
+                        <a
+                            href={href}
+                            className="font-semibold dark:text-[#e2e8f0] hover:text-blue-600 dark:hover:text-[#60a5fa] text-sm mb-1 block transition-colors"
+                            style={{ fontFamily: "Outfit, sans-serif" }}
+                        >
+                            {title}
+                        </a>
+                    ) : (
+                        <p
+                            className="font-semibold dark:text-[#e2e8f0] text-sm mb-1"
+                            style={{ fontFamily: "Outfit, sans-serif" }}
+                        >
+                            {title}
+                        </p>
+                    )}
+                    <p className="dark:text-[#8b97a8] text-sm leading-relaxed">{children}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
