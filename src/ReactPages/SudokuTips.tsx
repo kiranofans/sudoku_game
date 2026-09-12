@@ -72,7 +72,7 @@ function SudokuTips() {
 
                     <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
 
-                        Still feeling lost? Check out our <a href="/howSiteWorks">How SudokuPlays Works</a> guide for more help using the site and playing Sudoku.
+                        Still feeling lost? Check out our <a href="/detailedGuide">How SudokuPlays Works</a> guide for more help using the site and playing Sudoku.
                         <br />
                         For more deep explanations and other professional Sudoku strategies,
                         checkout
