@@ -487,7 +487,7 @@ function Homepage() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                         >
-                                            <title id='svg-title'>Countdown timer control button</title>
+                                            <title className='sr-only' id='svg-title'>Countdown timer control button</title>
                                             <desc id="svg-description">Sudoku Play game timer control button: play/pause</desc>
                                             {/* outer circle outline */}
                                             <circle cx="24" cy="24" r="20" />

@@ -37,7 +37,7 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
         }
       }}
     >
-      <title id="svg-title">Score History icon button for mobile</title>
+      <title className="sr-only" id="svg-title">Score History icon button for mobile</title>
       <desc id="svg-descriptions">Score history icon button for mobile portrait screens</desc>
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
@@ -70,7 +70,7 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
             <div className="flex flex-col items-center justify-center py-16 px-5 text-gray-400">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-20 mb-4">
                 <circle cx="12" cy="12" r="10" aria-labelledby='svg-title svg-description' />
-                <title id='svg-title'>No games completed yet</title>
+                <title className="sr-only" id='svg-title'>No games completed yet</title>
                 <desc id='svg-description'>A clock icon</desc>
                 <polyline points="12 6 12 12 16 14" />
               </svg>
@@ -155,7 +155,7 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
           strokeLinecap="round" strokeLinejoin="round" className="text-[var(--num-pad-bg)] shrink-0" aria-labelledby='svg-title svg-description'>
           <circle cx="12" cy="12" r="10" />
-          <title id='svg-title'>History icon button for web/desktop</title>
+          <title className='sr-only' id='svg-title'>History icon button for web/desktop</title>
           <desc id='svg-description'>Score/game play history icon button for web/desktop</desc>
           <polyline points="12 6 12 12 16 14" />
         </svg>
