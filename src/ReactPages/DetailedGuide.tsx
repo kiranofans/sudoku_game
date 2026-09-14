@@ -12,115 +12,56 @@ const sections = [
         content: null,
     },
     {
-        id: "controls",
+        id: "difficulties",
         number: "02",
+        title: "Game Difficulties",
+        icon: "⭐",
+        content: null,
+    },
+    {
+        id: "controls",
+        number: "03",
         title: "Controls & Interaction",
         icon: "⌨",
         content: null,
     },
+
     {
         id: "tools",
-        number: "03",
+        number: "04",
         title: "Tools & Actions",
         icon: "✎",
         content: null,
     },
     {
         id: "numpad",
-        number: "04",
+        number: "05",
         title: "Number Pad",
         icon: "#",
         content: null,
     },
     {
         id: "keyboard",
-        number: "05",
+        number: "06",
         title: "Keyboard Navigation",
         icon: "↵",
         content: null,
     },
     {
         id: "scoring",
-        number: "06",
+        number: "07",
         title: "Scoring System",
         icon: "★",
         content: null,
     },
     {
         id: "winslose",
-        number: "07",
+        number: "08",
         title: "Winning & Losing",
         icon: "⚑",
         content: null,
     },
 ];
-// const [board, setBoard] = useState<(number | null)[][]>([]);
-// const [initialBoard, setInitialBoard] = useState<(number | null)[][]>([]);
-// const [notes, setNotes] = useState<CellNotes[][]>([]);
-// const [selectedCell, setSelectedCell] = useState<[number, number] | null>(null);
-// const [isLoading, setIsLoading] = useState(false);
-// const highlightedNumber = selectedCell ? board[selectedCell[0]][selectedCell[1]] : null;
-
-{/* Sudoku Mini Grid */ }
-// function SudokuMiniGrid() {
-//     const grid = [
-//         [5, 3, 0, 0, 7, 0, 0, 0, 0],
-//         [6, 0, 0, 1, 9, 5, 0, 0, 0],
-//         [0, 9, 8, 0, 0, 0, 0, 6, 0],
-//         [8, 0, 0, 0, 6, 0, 0, 0, 3],
-//         [4, 0, 0, 8, 0, 3, 0, 0, 1],
-//         [7, 0, 0, 0, 2, 0, 0, 0, 6],
-//         [0, 6, 0, 0, 0, 0, 2, 8, 0],
-//         [0, 0, 0, 4, 1, 9, 0, 0, 5],
-//         [0, 0, 0, 0, 8, 0, 0, 7, 9],
-//     ];
-//     const [selected, setSelected] = useState<[number, number] | null>([1, 4]);
-
-//     const isHighlighted = (r: number, c: number) => {
-//         if (!selected) return false;
-//         const [sr, sc] = selected;
-//         return r === sr || c === sc || (Math.floor(r / 3) === Math.floor(sr / 3) && Math.floor(c / 3) === Math.floor(sc / 3));
-//     };
-
-//     const isSelected = (r: number, c: number) => selected && selected[0] === r && selected[1] === c;
-
-//     return (
-//         <div className="inline-grid gap-0" style={{ display: "grid", gridTemplateColumns: "repeat(9, 1fr)", gap: 0 }}>
-//             {grid.map((row, r) =>
-//                 row.map((val, c) => {
-//                     const borderRight = (c + 1) % 3 === 0 && c !== 8 ? "2px solid #3b82f6" : "1px solid #2d3748";
-//                     const borderBottom = (r + 1) % 3 === 0 && r !== 8 ? "2px solid #3b82f6" : "1px solid #2d3748";
-//                     const bg = isSelected(r, c) // dark mode
-//                         ? "bg-[#b8d3feff] dark:bg-[#3498db]"
-//                         : isHighlighted(r, c)
-//                             ? "bg-[#b8d3feff] dark:bg-[rgba(59,130,246,0.12)]"
-//                             : "dark:bg-[#161b22]";
-
-//                     return (
-//                         <div
-//                             key={`${r}-${c}`}
-//                             onClick={() => setSelected([r, c])}
-//                             className={`w-7 h-7 flex items-center justify-center font-['JetBrains_Mono',_monospace] text-[12px] sm:text-sm md:text-md 
-//                                 xs:text-xs cursor-pointer transition-colors duration-[120ms]
-//                                 ${c === 0 ? "border-l border-[#2d3748]" : ""}
-//                                 ${r === 0 ? "border-t border-[#2d3748]" : ""}
-//                                 ${val ? "font-semibold" : "font-normal"}
-//                                 ${isSelected(r, c) ? "text-white" : val ? "text-gray-700 dark:text-gray-300" : "text-[#4a5568]"}
-//                                 ${bg}`}
-//                             style={{
-//                                 background: bg,
-//                                 borderRight,
-//                                 borderBottom,
-//                             }}
-//                         >
-//                             {val || ""}
-//                         </div>
-//                     );
-//                 })
-//             )}
-//         </div>
-//     );
-// }
 
 function Tag({ children, color = "blue" }: { children: React.ReactNode; color?: "blue" | "yellow" | "white" | "red" | "gray" | "black" | "green" }) {
     const colors = {
@@ -195,16 +136,18 @@ function DetailedGuide() {
                                 className="text-gray-600 dark:text-gray-200 text-2xl md:text-3xl sm:text-2xl lg:text-4xl font-bold text-center leading-[1.1]"
                                 style={{ fontFamily: "Outfit, sans-serif", color: "" }}
                             >
-                                How <span className=' '> SudokuPlays Works? </span>
+                                <span className=''> How SudokuPlays Works? </span>
 
                             </h1>
-                            <p className="text-center dark:text-[#8b97a8] justify-center flexitems-center font-semibold text-gray-600 md:text-md xl:text-xl sx:text-sx sm:text-sm 
-                            lg:text-lg max-w-lg mx-auto leading-relaxed mb-6 mt-6 sx:mb-4">
-                                Fill every row, column, and 3×3 box with the digits 1–9. No repeats. Simple rules — deep strategy.
+                            <p className="text-center max-w-3xl items-center w-full dark:text-[#8b97a8] text-gray-600 md:text-md xl:text-xl sx:text-sx sm:text-sm 
+                            lg:text-lg mx-auto leading-relaxed mb-6 mt-6 sx:mb-4">
+                                This guide walks you through everything you need to know to play Sudoku on SudokuPlays, from choosing a difficulty
+                                and using the controls to understanding scoring and finishing a puzzle.
                             </p>
 
                             {/* Navigation to sections*/}
-                            <div className="flex flex-wrap gap-3 items-center justify-center">
+                            <div className="flex grid grid-rows-2 grid-flow-col max-w-3xl flex-wrap gap-3 
+                            items-center justify-center">
                                 {sections.map((s) => (
                                     <a
                                         key={s.id}
@@ -221,13 +164,6 @@ function DetailedGuide() {
                                 ))}
                             </div>
                         </div>
-                        {/* <div className="flex flex-col items-center gap-3">
-                            <p className="sm:text-sm md:text-md dark:text-[#4a5568] uppercase">Interactive Demo</p>
-                            <div className="p-4 rounded-2xl border dark:border-[#2d3748] dark:bg-[#161b22]">
-                                
-                            </div>
-                            <p className="lg:text-lg sm:text-smmd:text-md xs:text-xs text-gray-600 dark:text-[#4a5568] text-center">Click any cell to see highlighting</p>
-                        </div> */}
                     </div>
 
                     {/* Section 01: Objective */}
@@ -239,6 +175,11 @@ function DetailedGuide() {
                             <h2 className="text-xl lg:text-lg md:text-md sm:text-sm font-bold text-gray-600 dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>The Objective</h2>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                         </div>
+
+                        <p className="text-center dark:text-[#8b97a8] justify-center flexitems-center text-gray-600 md:text-md xl:text-xl sx:text-sx sm:text-sm 
+                            lg:text-lg max-w-lg mx-auto leading-relaxed mb-6 mt-6 sx:mb-4">
+                            Fill every row, column, and 3×3 box with the digits 1 to 9. No repeats. Simple rules — deep strategy.
+                        </p>
 
                         <div className="grid sm:grid-cols-3 gap-4 mb-6">
                             {[
@@ -264,11 +205,51 @@ function DetailedGuide() {
                         </div>
                     </section>
 
+                    {/* Section 2: Game Difficulties */}
+                    <section className='mb-12'>
+                        <SectionAnchor id="difficulties" />
+                        <div className="flex items-center gap-3 mb-6">
+                            <span className="sm:text-sm xs:text-xs lg:text-lg md:text-md text-gray-600 dark:text-[#4a5568]">02</span>
+                            <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
+                            <h2 className="text-xl font-bold text-gray-600 dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Game Difficulties</h2>
+                            <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
+                        </div>
+                        <span className='text-center px-4 py-2 mb-6 flex flex-wrap items-center justify-center gap-1 text-gray-700 dark:text-gray-300'>
+                            In the top-right navigation menu on the
+                            <a href="/">homepage (game page)</a>,
+                            click or tap on the
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                className="theme-icon-img" aria-labelledby='svg-title svg-description'>
+                                <title className='sr-only' id='svg-title'>Change difficulty icon</title>
+                                <desc id='svg-description'>Clickable icon button for difficulty change</desc>
+                                <path d="M11.9999 3C10.0221 3.00003 8.0887 3.58653 6.44424 4.68535C4.79977 5.78416 3.51807 7.34594 2.7612 9.17318C2.00434 11.0004 1.8063 13.0111 2.19214 14.9509C2.57799 16.8907 3.53037 18.6725 4.92887 20.071L5.63587 20.778L8.05687 18.357L6.64287 16.943L5.67987 17.905C4.80055 16.7718 4.24206 15.4231 4.06287 14H5.99987V12H4.06287C4.24206 10.5769 4.80055 9.22817 5.67987 8.095L6.29287 8.707L6.79287 9.207L8.20687 7.793L7.09487 6.68C8.22804 5.80068 9.57678 5.24219 10.9999 5.063V6.5H12.9999V5.063C14.423 5.24219 15.7717 5.80068 16.9049 6.68L15.7929 7.793L17.2069 9.207L18.3199 8.095C19.1992 9.22817 19.7577 10.5769 19.9369 12H17.9999V14H19.9369C19.7576 15.4235 19.1987 16.7727 18.3189 17.906L17.3569 16.943L15.9429 18.357L18.3639 20.778L19.0709 20.071C20.4689 18.6723 21.4208 16.8905 21.8064 14.9509C22.192 13.0112 21.9938 11.0008 21.237 9.1738C20.4803 7.34675 19.1988 5.78508 17.5546 4.68619C15.9105 3.58729 13.9774 3.0005 11.9999 3Z" fill="currentColor" />
+                                <path d="M12.7066 13.7064C12.8888 13.5178 12.9895 13.2652 12.9873 13.003C12.985 12.7408 12.8798 12.49 12.6944 12.3046C12.509 12.1192 12.2582 12.014 11.996 12.0118C11.7338 12.0095 11.4812 12.1103 11.2926 12.2924L8.29259 15.2924C8.19708 15.3847 8.1209 15.495 8.06849 15.617C8.01608 15.739 7.9885 15.8703 7.98734 16.003C7.98619 16.1358 8.01149 16.2675 8.06177 16.3904C8.11205 16.5133 8.18631 16.6249 8.2802 16.7188C8.37409 16.8127 8.48574 16.887 8.60864 16.9373C8.73154 16.9875 8.86321 17.0128 8.99599 17.0117C9.12877 17.0105 9.25999 16.9829 9.382 16.9305C9.504 16.8781 9.61435 16.8019 9.70659 16.7064L12.7066 13.7064Z" fill="currentColor" />
+                            </svg> icon to change the game difficulty.
+                        </span>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            <RuleCard icon="🌱" title="Very Easy">
+                                This introductory level is designed for beginners to practice foundational Sudoku logic and skills.
+                            </RuleCard>
+                            <RuleCard icon="🎵" title="Easy">
+                                A gentle step up for casual players. Focuses on straightforward row and column scanning without the need for complex strategies.
+                            </RuleCard>
+                            <RuleCard icon="😗" title="Medium">
+                                It's the default level. A balanced challenge for intermediate players. Requires deeper deduction, cross-referencing, and spotting simple patterns like hidden singles to progress.                            </RuleCard>
+                            <RuleCard icon="🤔" title="Hard">
+                                Designed for experienced puzzle solvers. You will need to rely on advanced solving techniques, forward-thinking, and multi-step logic to complete the grid.                            </RuleCard>
+                            <RuleCard icon="🧐" title="Expert">
+                                The ultimate test for Sudoku masters. Features minimal starting numbers and demands complex, expert-level strategies to crack the puzzle.                            </RuleCard>
+                            <RuleCard icon="🥊" title="Leaderboard Tier">
+                                Available in Medium, Hard, and Expert. Your chosen difficulty scales your final score, with higher levels yielding greater leaderboard rewards.
+                            </RuleCard>
+                        </div>
+                    </section>
+
                     {/* Section 02: Controls */}
                     <section className="mb-12">
                         <SectionAnchor id="controls" />
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="sm:text-sm text-xs lg:text-lg md:text-md dark:text-[#4a5568]">02</span>
+                            <span className="sm:text-sm text-xs lg:text-lg md:text-md dark:text-[#4a5568]">03</span>
                             <div className="h-px flex-1 bg-gray-600  dark:bg-[#2d3748]" />
                             <h2 className="text-xl font-bold dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Controls & Interaction</h2>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -302,7 +283,7 @@ function DetailedGuide() {
                     <section className="mb-12">
                         <SectionAnchor id="tools" />
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="sm:text-sm xs:text-xs lg:text-lg md:text-md text-gray-600 dark:text-[#4a5568]">03</span>
+                            <span className="sm:text-sm xs:text-xs lg:text-lg md:text-md text-gray-600 dark:text-[#4a5568]">04</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                             <h2 className="text-xl font-bold text-gray-600 dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Tools & Actions</h2>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -358,7 +339,7 @@ function DetailedGuide() {
                         <section>
                             <SectionAnchor id="numpad" />
                             <div className="flex items-center gap-3 mb-5">
-                                <span className="sm:text-sm lg:text-lg xl:text-xl md:text-md xs:text-xs dark:text-[#4a5568]">04</span>
+                                <span className="sm:text-sm lg:text-lg xl:text-xl md:text-md xs:text-xs dark:text-[#4a5568]">05</span>
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                                 <h2 className="text-lg font-bold text-gray-600 dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Number Pad</h2>
                             </div>
@@ -409,7 +390,7 @@ function DetailedGuide() {
                         <section>
                             <SectionAnchor id="keyboard" />
                             <div className="flex items-center gap-3 mb-5">
-                                <span className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-600 dark:text-[#4a5568]">05</span>
+                                <span className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-600 dark:text-[#4a5568]">06</span>
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                                 <h2 className="md:text-md sm:text-sm xs:text-xs lg:text-lg font-bold dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Keyboard Navigation</h2>
                             </div>
@@ -452,7 +433,7 @@ function DetailedGuide() {
                     <section className="mb-12">
                         <SectionAnchor id="scoring" />
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-600 dark:text-[#4a5568]">06</span>
+                            <span className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-600 dark:text-[#4a5568]">07</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                             <h2 className="text-xl font-bold dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Scoring System</h2>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -497,7 +478,7 @@ function DetailedGuide() {
                     <section className="mb-12">
                         <SectionAnchor id="winslose" />
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="sm:text-sm md:text-md xs:text-xs lg:text-lg dark:text-[#4a5568]">07</span>
+                            <span className="sm:text-sm md:text-md xs:text-xs lg:text-lg dark:text-[#4a5568]">08</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                             <h2 className="text-xl font-bold dark:text-[#e2e8f0]" style={{ fontFamily: "Outfit, sans-serif" }}>Winning & Losing</h2>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
