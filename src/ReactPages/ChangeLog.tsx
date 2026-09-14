@@ -23,6 +23,15 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-09-13"
+                                version="v1.0.0"
+                                title="Improvements & Features"
+                                items={[
+                                    <>Added new Game Difficulties section to <a href="\detailedGuide">How SudokuPlays Works?</a> page</>,
+                                    <>Added brief & concise introduction below the help page title, and moved old sentence to the Objective section</>
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-09-10"
                                 version="v1.0.0"
                                 title="Improvements & Features"
