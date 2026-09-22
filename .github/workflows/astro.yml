@@ -26,7 +26,7 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.SUDOKUPLAYS_CLOUDFLARE_PAGE }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          accountId: ${{ secrets.SUDOKUPLAYS_CLOUDFLARE_ACC_ID }}
           projectName: 'sudokuplays-site' # Must match the project name you create in Cloudflare
           directory: 'dist' # Astro's default output folder
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
