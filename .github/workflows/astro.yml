@@ -23,10 +23,9 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.SUDOKUPLAYS_CLOUDFLARE_PAGE }}
           accountId: ${{ secrets.SUDOKUPLAYS_CLOUDFLARE_ACC_ID }}
-          projectName: 'sudokuplays-site' # Must match the project name you create in Cloudflare
-          directory: 'dist' # Astro's default output folder
+          command: pages deploy dist --project-name=sudokuplays-site
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
