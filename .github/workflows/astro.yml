@@ -1,49 +1,32 @@
-name: Deploy Astro site to Pages
+name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches:
+      - main # Or your default branch name
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write # Required for the Cloudflare action
+
     steps:
-      - name: Checkout your repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          check-latest: true
-          cache: 'npm'
-          # Add this line if your lock file is in a subfolder
-          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Install Dependencies
-        # This tells GitHub to run the command inside your folder
-        run: npm ci 
-          
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
-        with:
-          # This ensures it uses the correct directory
-          path: .
-          node-version: 24
+      - name: Build Astro site
+        run: npm run build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 'sudokuplays-site' # Must match the project name you create in Cloudflare
+          directory: 'dist' # Astro's default output folder
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
