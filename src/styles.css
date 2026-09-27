@@ -63,16 +63,16 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Theme variables */
-  --bg-color: #ffffff;
+  --bg-color: rgba(255, 255, 255, 0.6);
   --text-color: #213547;
-  --header-bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.6);
   --divider-color: #e4e4e4;
   --button-bg: #f9f9f9;
   --button-text: #213547;
   --button-border: #cccccc;
   --outlined-button-border: #2980b9;
 
-  --board-bg: #ffffff;
+  --board-bg: rgba(255, 255, 255, 0.6);
   --cell-border: #cccccc;
   --cell-initial-bg: #f0f0f0;
   --cell-selected-bg: rgba(135, 206, 250, 0.7);
@@ -90,7 +90,7 @@
   --num-pad-hover: #2980b9;
   --num-pad-disabled: #95a5a6;
 
-  --modal-bg: #ffffff;
+  --modal-bg: rgba(255, 255, 255, 0.6);
   --modal-overlay: rgba(0, 0, 0, 0.6);
   --theme-icon-filter: none;
 }
