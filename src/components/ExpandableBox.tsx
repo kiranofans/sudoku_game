@@ -6,6 +6,7 @@ interface ExpandableBoxProps {
     onToggle: () => void;
     children: React.ReactNode;
     bgColor?: string;
+    hideToggle?: boolean;
 }
 
 const ExpandableBox: React.FC<ExpandableBoxProps> = ({
@@ -14,27 +15,36 @@ const ExpandableBox: React.FC<ExpandableBoxProps> = ({
     onToggle,
     children,
     bgColor = "bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600",
+    hideToggle = false,
 }) => {
     return (
         /* The main container/box */
         <div className={`w-full border ${bgColor} rounded overflow-hidden transition-all duration-300`}>
 
             {/* Toggle bar */}
-            <button
-                onClick={onToggle}
-                className="w-full flex justify-between items-center px-4 py-2.5 
-               !border-none !rounded-none !bg-transparent
-               hover:bg-gray-50 dark:hover:bg-gray-600
-               transition-colors focus:outline-none"
-            >
-                <span className="text-[13px] text-gray-700 dark:text-gray-300 tracking-wider font-semibold text-left">
-                    {title}
-                </span>
+            {hideToggle ? (
+                <div className="w-full flex items-center px-4 py-2.5">
+                    <span className="text-[13px] text-gray-700 dark:text-gray-300 tracking-wider font-semibold text-left">
+                        {title}
+                    </span>
+                </div>
+            ) : (
+                <button
+                    onClick={onToggle}
+                    className="w-full flex justify-between items-center px-4 py-2.5 
+                   !border-none !rounded-none !bg-transparent
+                   hover:bg-gray-50 dark:hover:bg-gray-600
+                   transition-colors focus:outline-none"
+                >
+                    <span className="text-[13px] text-gray-700 dark:text-gray-300 tracking-wider font-semibold text-left">
+                        {title}
+                    </span>
 
-                <span className="text-gray-500 dark:text-gray-200 font-bold text-lg leading-none">
-                    {isOpen ? "−" : "+"}
-                </span>
-            </button>
+                    <span className="text-gray-500 dark:text-gray-200 font-bold text-lg leading-none">
+                        {isOpen ? "−" : "+"}
+                    </span>
+                </button>
+            )}
 
             {/* Expanded content */}
             {isOpen && (

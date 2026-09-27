@@ -214,9 +214,13 @@ export function OutlinedButton({
     );
 }
 /* outlined card*/
-export default function OutlinedCard({ icon, title, href, children }: { icon: string; title: string; href?: string, children: React.ReactNode }) {
+export default function OutlinedCard({ icon, title, href, children, bgColor }:
+    { icon?: string; title: string; href?: string, children: React.ReactNode, bgColor?: string }) {
+    const childArray = React.Children.toArray(children);
+    const body = childArray[0];
+    const callout = childArray.slice(1);
     return (
-        <div className="group rounded-md border dark:border-[#2d3748] dark:bg-[#161b22] p-5 dark:hover:border-[#3b82f6] transition-all duration-200  dark:hover:bg-[rgba(59,130,246,0.04)]">
+        <div className={`${bgColor} group rounded-md border dark:border-[#2d3748] dark:bg-[#161b22] p-5 dark:hover:border-[#3b82f6] transition-all duration-200  dark:hover:bg-[rgba(59,130,246,0.04)]`}>
             <div className="flex items-start gap-3">
                 <div className="shrink-0 w-8 h-8 rounded-lg dark:bg-[rgba(59,130,246,0.12)] flex items-center justify-center dark:text-[#60a5fa] text-sm font-bold">
                     {icon}
@@ -238,9 +242,42 @@ export default function OutlinedCard({ icon, title, href, children }: { icon: st
                             {title}
                         </p>
                     )}
-                    <p className="dark:text-[#8b97a8] text-sm leading-relaxed">{children}</p>
+                    <p className="dark:text-[#8b97a8] text-sm leading-relaxed">{body}</p>
+
+                    {/* Optional callout(s) */}
+                    {callout.length > 0 && (
+                        <div className="mt-4 rounded-md border border-blue-100 bg-blue-50/60 px-3 py-2.5 text-xs leading-relaxed text-gray-600 dark:border-blue-900/40 dark:bg-blue-950/20 dark:text-[#9aa6b8]">
+                            {callout}
+                        </div>
+                    )}
                 </div>
             </div>
+        </div>
+    );
+}
+
+// ─── Section Header ───────────────────────────────────────────────────────────
+
+interface SectionHeaderProps {
+    label: string;
+    heading: string;
+    subtext?: string;
+}
+
+export function SectionHeader({ label, heading, subtext }: SectionHeaderProps) {
+    return (
+        <div className="mb-9">
+            <p className=" text-[11px] font-semibold m-0 mb-[10px]">
+                {label}
+            </p>
+            <h2 className=" text-[clamp(22px,3vw,36px)] font-semibold leading-[1.2] m-0">
+                {heading}
+            </h2>
+            {subtext && (
+                <p className="leading-[1.6] text-ink-muted max-w-[560px] m-0 mt-2.5">
+                    {subtext}
+                </p>
+            )}
         </div>
     );
 }
