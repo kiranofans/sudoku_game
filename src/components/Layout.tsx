@@ -14,6 +14,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, isPaused }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false); // Add this
+  const [currentPath, setCurrentPath] = useState('');
   const currentYear = new Date().getFullYear();
 
   const handleLogoClick = (e: React.MouseEvent) => {
@@ -26,6 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
 
   useEffect(() => {
     setIsMounted(true); // Set to true only after the browser takes over
+    setCurrentPath(window.location.pathname);
   }, []);
 
   return (
@@ -74,12 +76,12 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
           </div>
 
           <div className='controls-row'>
-            <a href="/sudokuTips" className="header-nav-item desktop-only-nav">Tips</a>
+            <a href="/sudokuTips" className={`header-nav-item desktop-only-nav${currentPath === '/sudokuTips' ? ' active' : ''}`}>Tips</a>
             <span className="header-nav-separator desktop-only-nav">|</span>
 
-            <a href="/about" className="header-nav-item desktop-only-nav">About</a>
+            <a href="/about" className={`header-nav-item desktop-only-nav${currentPath === '/about' ? ' active' : ''}`}>About</a>
             <span className="header-nav-separator desktop-only-nav">|</span>
-            <a href="/contact" className="header-nav-item desktop-only-nav">Contact</a>
+            <a href="/contact" className={`header-nav-item desktop-only-nav${currentPath === '/contact' ? ' active' : ''}`}>Contact</a>
 
             {headerContent}
             <ThemeSelector />
