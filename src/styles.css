@@ -65,7 +65,7 @@
   /* Theme variables */
   --bg-color: rgba(255, 255, 255, 0.6);
   --text-color: #213547;
-  --header-bg: rgba(255, 255, 255, 0.6);
+  --header-bg: rgba(255, 255, 255, 255);
   --divider-color: #e4e4e4;
   --button-bg: #f9f9f9;
   --button-text: #213547;
