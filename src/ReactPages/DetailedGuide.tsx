@@ -1,7 +1,9 @@
 import Layout from '@/components/Layout';
 import ShareBoxes from '@/components/ShareBoxes';
+import { PageLevelNavMenu } from '@/components/SmallUiWidgets';
 import { ThemeProvider } from '@/components/ThemeContext';
-import { useState } from "react";
+import { useSectionNavigation } from '@/hooks/useGeneralUtils';
+import { useRef, useState } from "react";
 
 const sections = [
     {
@@ -106,10 +108,6 @@ function KeyCap({ children }: { children: React.ReactNode }) {
     );
 }
 
-function SectionAnchor({ id }: { id: string }) {
-    return <span id={id} style={{ scrollMarginTop: 80 }} />;
-}
-
 function ScoreRow({ label, value, color }: { label: string; value: string; color: string }) {
     return (
         <div className="flex items-center justify-between py-2.5 border-b border-[#2d3748] last:border-0">
@@ -120,7 +118,13 @@ function ScoreRow({ label, value, color }: { label: string; value: string; color
 }
 
 function DetailedGuide() {
-    const [, setActiveSection] = useState("objective");
+    // const [, setActiveSection] = useState("objective");
+    const [activeSection, setActiveSection] = useState("objective");
+    const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
+    const { handleNavClick } = useSectionNavigation(
+        sections, sectionRefs, activeSection, setActiveSection
+    );
 
     return (
         <ThemeProvider>
@@ -145,30 +149,17 @@ function DetailedGuide() {
                                 and using the controls to understanding scoring and finishing a puzzle.
                             </p>
 
-                            {/* Navigation to sections*/}
-                            <div className="flex grid grid-rows-2 grid-flow-col max-w-3xl flex-wrap gap-3 
-                            items-center justify-center">
-                                {sections.map((s) => (
-                                    <a
-                                        key={s.id}
-                                        href={`#${s.id}`}
-                                        onClick={() => setActiveSection(s.id)}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 md:rounded-md sm:rounded-sm rounded-lg 
-                                        border-[1px] border-[#2980b9] dark:border-[#2d3748] dark:bg-[#161b22] text-red-800 dark:text-[#8b97a8] 
-                                        sm:text-sm md:text-md xs:text-xs hover:boder-blue-300 hover:bg-[#f9f9f9]
-                                        dark:hover:border-[#3b82f6] hover:border-[border-color] dark:hover:text-[#60a5fa] transition-all"
-                                    >
-                                        <span className="text-sm text-[#2980b9] dark:text-gray-400">{s.number}</span>
-                                        <span className='text-sm text-[#2980b9] dark:text-gray-400'>{s.title}</span>
-                                    </a>
-                                ))}
-                            </div>
+                            {/* Sticky Navigation to sections */}
+                            <PageLevelNavMenu
+                                sections={sections}
+                                activeSlug={activeSection}
+                                onNavClick={handleNavClick}
+                            />
                         </div>
                     </div>
 
                     {/* Section 01: Objective */}
-                    <section className="mb-12">
-                        <SectionAnchor id="objective" />
+                    <section className="mb-12" id="Objective">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="xs:text-xs md:text-md lg:text-lg text-sm dark:text-[#4a5568]">01</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -206,8 +197,7 @@ function DetailedGuide() {
                     </section>
 
                     {/* Section 2: Game Difficulties */}
-                    <section className='mb-12'>
-                        <SectionAnchor id="difficulties" />
+                    <section className='mb-12' id="difficulties">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="sm:text-sm xs:text-xs lg:text-lg md:text-md text-gray-600 dark:text-[#4a5568]">02</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -246,8 +236,7 @@ function DetailedGuide() {
                     </section>
 
                     {/* Section 02: Controls */}
-                    <section className="mb-12">
-                        <SectionAnchor id="controls" />
+                    <section className="mb-12 " id="controls">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="sm:text-sm text-xs lg:text-lg md:text-md dark:text-[#4a5568]">03</span>
                             <div className="h-px flex-1 bg-gray-600  dark:bg-[#2d3748]" />
@@ -280,8 +269,7 @@ function DetailedGuide() {
                     </section>
 
                     {/* Section 03: Tools */}
-                    <section className="mb-12">
-                        <SectionAnchor id="tools" />
+                    <section className="mb-12" id="tools">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="sm:text-sm xs:text-xs lg:text-lg md:text-md text-gray-600 dark:text-[#4a5568]">04</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -336,8 +324,7 @@ function DetailedGuide() {
                     {/* Section 04 & 05: Number Pad & Keyboard side-by-side */}
                     <div className="grid lg:grid-cols-2 gap-6 mb-12">
                         {/* Number Pad */}
-                        <section>
-                            <SectionAnchor id="numpad" />
+                        <section id="numpad">
                             <div className="flex items-center gap-3 mb-5">
                                 <span className="sm:text-sm lg:text-lg xl:text-xl md:text-md xs:text-xs dark:text-[#4a5568]">05</span>
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -387,8 +374,7 @@ function DetailedGuide() {
                         </section>
 
                         {/* Keyboard */}
-                        <section>
-                            <SectionAnchor id="keyboard" />
+                        <section id="keyboard">
                             <div className="flex items-center gap-3 mb-5">
                                 <span className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-600 dark:text-[#4a5568]">06</span>
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -430,8 +416,7 @@ function DetailedGuide() {
                     </div>
 
                     {/* Section 06: Scoring */}
-                    <section className="mb-12">
-                        <SectionAnchor id="scoring" />
+                    <section className="mb-12" id="scoring">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-600 dark:text-[#4a5568]">07</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -475,8 +460,7 @@ function DetailedGuide() {
                     </section>
 
                     {/* Section 07: Winning & Losing */}
-                    <section className="mb-12">
-                        <SectionAnchor id="winslose" />
+                    <section className="mb-12" id="winslose">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="sm:text-sm md:text-md xs:text-xs lg:text-lg dark:text-[#4a5568]">08</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
