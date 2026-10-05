@@ -30,6 +30,18 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
     setCurrentPath(window.location.pathname);
   }, []);
 
+  const [isMobilePortrait, setIsMobilePortrait] = useState(false);
+
+  useEffect(() => {
+    const checkMobilePortrait = () => {
+      setIsMobilePortrait(window.innerWidth < 768 && window.innerHeight > window.innerWidth);
+    };
+
+    checkMobilePortrait();
+    window.addEventListener('resize', checkMobilePortrait);
+    return () => window.removeEventListener('resize', checkMobilePortrait);
+  }, []);
+
   return (
     <>
       {/* Only render the shield if we are on the client side */}
@@ -59,12 +71,39 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
               <div className="title-tagline-container flex">
                 <h2 className='game-title'>Sudoku</h2>
                 <div className='m-0.5 text-sm'>
-                  <OutlinedButton
-                    text="What's new?"
-                    href='/changeLog'
-                    borderColor=""
-                    bgColor=""
-                  />
+                  {/* What's New icon when screen is in portrait mode on mobile */}
+                  {isMobilePortrait ?
+                    <a
+                      href='/changeLog'
+                      className="p-0 m-0 border-0 cursor-pointer w-fit bg-transparent"
+                      aria-label="What's New"
+                    >
+                      <svg className="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.25 13.125L10.5 15L14.25 16.875L16.5 22.5L18.75 16.875L22.5 15L18.75 13.125L16.5 
+                        7.5L14.25 13.125ZM9 18C8.60218 18 8.22064 18.158 7.93934 18.4393C7.65804 18.7206 7.5 19.1022 
+                        7.5 19.5C7.5 19.8978 7.65804 20.2794 7.93934 20.5607C8.22064 20.842 8.60218 21 9 21C9.39782 
+                        21 9.77936 20.842 10.0607 20.5607C10.342 20.2794 10.5 19.8978 10.5 19.5C10.5 19.1022 10.342 
+                        18.7206 10.0607 18.4393C9.77936 18.158 9.39782 18 9 18ZM4.5 13.5C4.10218 13.5 3.72064 13.658 
+                        3.43934 13.9393C3.15804 14.2206 3 14.6022 3 15C3 15.3978 3.15804 15.7794 3.43934 16.0607C3.72064 
+                        16.342 4.10218 16.5 4.5 16.5C4.89782 16.5 5.27936 16.342 5.56066 16.0607C5.84196 15.7794 6 15.3978 
+                        6 15C6 14.6022 5.84196 14.2206 5.56066 13.9393C5.27936 13.658 4.89782 13.5 4.5 13.5ZM4.0965 4.962L1.5 
+                        6L4.0965 7.0365L5.25 10.5L6.405 7.0365L9 6L6.405 4.962L5.25 1.5L4.0965 4.962ZM19.5 3C19.1022 3 18.7206 
+                        3.15804 18.4393 3.43934C18.158 3.72064 18 4.10218 18 4.5C18 4.89782 18.158 5.27936 18.4393 5.56066C18.7206 
+                        5.84196 19.1022 6 19.5 6C19.8978 6 20.2794 5.84196 20.5607 5.56066C20.842 5.27936 21 4.89782 21 4.5C21 4.10218 
+                        20.842 3.72064 20.5607 3.43934C20.2794 3.15804 19.8978 3 19.5 3Z"
+                          fill="orange" />
+                      </svg>
+
+
+                    </a>
+                    :
+                    <OutlinedButton
+                      text="What's new?"
+                      href='/changeLog'
+                      borderColor=""
+                      bgColor=""
+                    />
+                  }
 
                 </div>
               </div>
