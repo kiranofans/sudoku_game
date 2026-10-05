@@ -149,8 +149,16 @@ function SudokuTips() {
         if (el) {
             const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-inner-height') || '50', 10);
             const navHeight = 50;
-            const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - navHeight - 12;
-            window.scrollTo({ top: y, behavior: 'smooth' });
+            const wrapper = document.querySelector('.wrapper');
+            if (wrapper) {
+                const wrapperTop = wrapper.getBoundingClientRect().top;
+                const elTop = el.getBoundingClientRect().top;
+                const y = elTop - wrapperTop + wrapper.scrollTop - headerHeight - navHeight - 12;
+                wrapper.scrollTo({ top: y, behavior: 'smooth' });
+            } else {
+                const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - navHeight - 12;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
         }
     };
 
@@ -175,11 +183,11 @@ function SudokuTips() {
                                 <a
                                     key={slug}
                                     href={`#${slug}`}
-                                    className={`py-4 text-[0.85rem] md:text-md sm:text-sm whitespace-nowrap relative transition-colors text-gray-600 dark:text-gray-300
+                                    className={`py-4 text-[0.85rem] md:text-md sm:text-sm whitespace-nowrap relative transition-colors
                                         duration-200 ease-[ease] after:content-[''] after:absolute after:bottom-[-1px] after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:bg-[var(--num-pad-bg)] 
-                                        after:transition-[width] after:duration-300 after:ease-[ease] hover:text-gray-800 hover:font-bold dark:hover:text-gray-200 no-underline ${activeSlug === slug
-                                            ? 'text-gray-900 dark:text-gray-100 font-bold after:w-full'
-                                            : 'text-gray-500 dark:text-gray-400 after:w-0'
+                                        after:transition-[width] after:duration-300 after:ease-[ease] hover:!text-gray-800 hover:!font-bold dark:hover:!text-gray-200 no-underline ${activeSlug === slug
+                                            ? '!text-gray-900 dark:!text-gray-100 !font-bold after:w-full'
+                                            : '!text-gray-500 dark:!text-gray-400 after:w-0'
                                         }`}
                                     onClick={(e) => handleNavClick(e, slug)}
                                 >
