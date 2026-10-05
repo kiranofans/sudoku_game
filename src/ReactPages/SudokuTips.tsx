@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Layout from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeContext';
 import OutlinedCard, { SectionHeader, PageLevelNavMenu } from '@/components/SmallUiWidgets';
-import { handleSectionNavClick } from '@/hooks/useGeneralUtils';
+import { useSectionNavigation } from '@/hooks/useGeneralUtils';
 
 const BEGINNER_TIPS = [
     {
@@ -80,37 +80,36 @@ function SudokuTips() {
     const [activeSlug, setActiveSlug] = useState('solving-mindset');
     const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
-    // Scroll-spy: track which section is currently in view
-    useEffect(() => {
-        const observers: IntersectionObserver[] = [];
-        const slugs = PAGE_SECTIONS.map(s => s.id);
+    // // Scroll-spy: track which section is currently in view
+    // useEffect(() => {
+    //     const observers: IntersectionObserver[] = [];
+    //     const slugs = PAGE_SECTIONS.map(s => s.id);
 
-        slugs.forEach((slug) => {
-            const el = sectionRefs.current[slug];
-            if (!el) return;
+    //     slugs.forEach((slug) => {
+    //         const el = sectionRefs.current[slug];
+    //         if (!el) return;
 
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        setActiveSlug(slug);
-                    }
-                },
-                {
-                    rootMargin: '-120px 0px -60% 0px',
-                    threshold: 0,
-                }
-            );
-            observer.observe(el);
-            observers.push(observer);
-        });
+    //         const observer = new IntersectionObserver(
+    //             ([entry]) => {
+    //                 if (entry.isIntersecting) {
+    //                     setActiveSlug(slug);
+    //                 }
+    //             },
+    //             {
+    //                 rootMargin: '-120px 0px -60% 0px',
+    //                 threshold: 0,
+    //             }
+    //         );
+    //         observer.observe(el);
+    //         observers.push(observer);
+    //     });
 
-        return () => observers.forEach(o => o.disconnect());
-    }, []);
+    //     return () => observers.forEach(o => o.disconnect());
+    // }, []);
 
-
-    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, slug: string) => {
-        handleSectionNavClick(e, slug, setActiveSlug, sectionRefs);
-    };
+    const { handleNavClick } = useSectionNavigation(
+        PAGE_SECTIONS, sectionRefs, activeSlug, setActiveSlug
+    );
 
     return (
         <ThemeProvider>
