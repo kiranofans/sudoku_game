@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Layout from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeContext';
-import OutlinedCard, { SectionHeader } from '@/components/SmallUiWidgets';
+import OutlinedCard, { SectionHeader, PageLevelNavMenu } from '@/components/SmallUiWidgets';
 
 // Define the type
 // type TipItem = {
@@ -174,28 +174,11 @@ function SudokuTips() {
                         <p className='text-center'>From the right solving mindset to advanced elimination techniques — a structured guide for players at every level.</p>
                     </div>
                     {/* Sticky section nav */}
-                    <nav className="sticky top-[var(--header-inner-height,48px)] z-[1000] w-full flex gap-3 sm:gap-8 border-b border-gray-200 
-                    dark:border-gray-700 bg-white dark:bg-[var(--bg-color)] mb-8 overflow-x-auto
-                     [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" style={{ WebkitOverflowScrolling: 'touch', WebkitBackdropFilter: 'blur(12px)' }}>
-                        {PAGE_SECTIONS.map((section) => {
-                            const slug = section.id;
-                            return (
-                                <a
-                                    key={slug}
-                                    href={`#${slug}`}
-                                    className={`py-4 text-[0.85rem] md:text-md sm:text-sm whitespace-nowrap relative transition-colors
-                                        duration-200 ease-[ease] after:content-[''] after:absolute after:bottom-[-1px] after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:bg-[var(--num-pad-bg)] 
-                                        after:transition-[width] after:duration-300 after:ease-[ease] hover:!text-gray-800 hover:!font-bold dark:hover:!text-gray-200 no-underline ${activeSlug === slug
-                                            ? '!text-gray-900 dark:!text-gray-100 !font-bold after:w-full'
-                                            : '!text-gray-500 dark:!text-gray-400 after:w-0'
-                                        }`}
-                                    onClick={(e) => handleNavClick(e, slug)}
-                                >
-                                    {section.label}
-                                </a>
-                            );
-                        })}
-                    </nav>
+                    <PageLevelNavMenu 
+                        sections={PAGE_SECTIONS}
+                        activeSlug={activeSlug}
+                        onNavClick={handleNavClick}
+                    />
 
                     <div className="w-full space-y-12 max-w-[800px] mx-auto">
 
