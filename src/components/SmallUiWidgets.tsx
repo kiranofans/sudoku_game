@@ -288,13 +288,16 @@ Page level navigation menu widget
 
 export interface PageSection {
     id: string;
-    label: string;
+    number?: string;
+    icon?: string,
+    content?: null,
+    title: string;
 }
 
 interface PageLevelNavMenuProps {
     sections: PageSection[];
     activeSlug: string;
-    onNavClick: (e: React.MouseEvent<HTMLAnchorElement>, slug: string) => void;
+    onNavClick?: (e: React.MouseEvent<HTMLAnchorElement>, slug: string) => void;
 }
 
 export function PageLevelNavMenu({ sections, activeSlug, onNavClick }: PageLevelNavMenuProps) {
@@ -314,9 +317,9 @@ export function PageLevelNavMenu({ sections, activeSlug, onNavClick }: PageLevel
                                 ? '!text-gray-900 dark:!text-gray-100 !font-bold after:w-full'
                                 : '!text-gray-500 dark:!text-gray-400 after:w-0'
                             }`}
-                        onClick={(e) => onNavClick(e, slug)}
+                        onClick={(e) => onNavClick?.(e, slug)}
                     >
-                        {section.label}
+                        {section.title}
                     </a>
                 );
             })}
