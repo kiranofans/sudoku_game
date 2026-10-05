@@ -1490,9 +1490,8 @@ button {
 
         /* 5. Force the container to actually scroll */
         display: block;
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        /* Force a new stacking context that isn't transparent */
+        /* NOTE: transform removed — it breaks position:fixed on the header.
+           isolation:isolate (above) already creates the stacking context. */
         isolation: isolate;
 
         /* One last Safari hack: force the background to be 'opaque' to the compositor */
