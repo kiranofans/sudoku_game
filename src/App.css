@@ -1362,7 +1362,7 @@ button {
         background-color: #fff;
 
         --vh: 100%;
-        --header-inner-height: 56px;
+        --header-inner-height: 3rem;
         --score-color: #2980b9;
         /* change to fit your design */
 
@@ -1927,6 +1927,9 @@ button {
 }
 
 @media (max-width: 410px) {
+    :root {
+        --header-inner-height: 2.4rem;
+    }
 
     .sudoku-app {
         padding-top: 3.2rem;
