@@ -175,7 +175,7 @@ function SudokuTips() {
                     </div>
                     {/* Sticky section nav */}
                     <nav className="sticky top-[var(--header-inner-height,48px)] z-[1000] w-full flex gap-3 sm:gap-8 border-b border-gray-200 
-                    dark:border-gray-700 bg-white dark:bg-gray-800 mb-8
+                    dark:border-gray-700 bg-white dark:bg-[var(--bg-color)] mb-8 overflow-x-auto
                      [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" style={{ WebkitOverflowScrolling: 'touch', WebkitBackdropFilter: 'blur(12px)' }}>
                         {PAGE_SECTIONS.map((section) => {
                             const slug = section.id;
