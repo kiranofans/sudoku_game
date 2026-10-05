@@ -23,6 +23,17 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-10-04"
+                                version="v1.0.0" title="Improvements & Features"
+                                items={[
+                                    <>Refined navigation tabs for How SudokuPlays Works page.</>,
+                                    <>Refined & improved Tips page navigation menu.</>,
+                                    <>Fixed the Tips page navigation clicking issue.</>,
+                                    <>Fixed the gap between page level navigation and the site level navigation for mobile portrait screens.</>,
+                                    <>Tried to fix Homepage UI glitch on mobile portrait screens.</>
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date="2026-09-13"
                                 version="v1.0.0"
                                 title="Improvements & Features"
