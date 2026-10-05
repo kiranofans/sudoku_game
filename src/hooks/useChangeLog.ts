@@ -11,7 +11,8 @@ export const changelog = [
         showKnownIssuesBox: true,
         knownIssues: [
             "1. Advertising is currently disabled due to technical updates.",
-            "2. iOS responsive UI may still have some issues."
+            "2. iOS responsive UI may still have some issues.",
+            "3. the navigation menu in How SudokuPlays Works page has problem with auto scrolling and pinning to top."
         ]
     }
 ];
