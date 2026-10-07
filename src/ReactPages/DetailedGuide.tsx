@@ -130,7 +130,7 @@ function DetailedGuide() {
         <ThemeProvider>
             <Layout>
                 <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>                    {/* Hero */}
-                    <div className="mb-14 grid lg:grid-cols-[1fr_auto] gap-10 items-center">
+                    <div className="grid lg:grid-cols-[1fr_auto] items-center">
                         <div>
                             {/* <div className="flex items-center gap-2 mb-4">
                                 <Tag color="blue">How to play</Tag>
