@@ -159,7 +159,10 @@ function DetailedGuide() {
                     />
 
                     {/* Section 01: Objective */}
-                    <section className="mb-12" id="Objective">
+                    <section className="mb-12" id="objective"
+                        ref={(el) => {
+                            sectionRefs.current["objective"] = el;
+                        }}>
                         <div className="flex items-center gap-3 mb-6">
                             <span className="xs:text-xs md:text-md lg:text-lg text-sm dark:text-[#4a5568]">01</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -197,7 +200,10 @@ function DetailedGuide() {
                     </section>
 
                     {/* Section 2: Game Difficulties */}
-                    <section className='mb-12' id="difficulties">
+                    <section className='mb-12' id="difficulties"
+                        ref={(el) => {
+                            sectionRefs.current["difficulties"] = el;
+                        }}>
                         <div className="flex items-center gap-3 mb-6">
                             <span className="sm:text-sm xs:text-xs lg:text-lg md:text-md text-gray-600 dark:text-[#4a5568]">02</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -236,7 +242,10 @@ function DetailedGuide() {
                     </section>
 
                     {/* Section 02: Controls */}
-                    <section className="mb-12 " id="controls">
+                    <section className="mb-12 " id="controls"
+                        ref={(el) => {
+                            sectionRefs.current["controls"] = el;
+                        }}>
                         <div className="flex items-center gap-3 mb-6">
                             <span className="sm:text-sm text-xs lg:text-lg md:text-md dark:text-[#4a5568]">03</span>
                             <div className="h-px flex-1 bg-gray-600  dark:bg-[#2d3748]" />
@@ -269,7 +278,10 @@ function DetailedGuide() {
                     </section>
 
                     {/* Section 03: Tools */}
-                    <section className="mb-12" id="tools">
+                    <section className="mb-12" id="tools"
+                        ref={(el) => {
+                            sectionRefs.current["tools"] = el;
+                        }}>
                         <div className="flex items-center gap-3 mb-6">
                             <span className="sm:text-sm xs:text-xs lg:text-lg md:text-md text-gray-600 dark:text-[#4a5568]">04</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -324,7 +336,10 @@ function DetailedGuide() {
                     {/* Section 04 & 05: Number Pad & Keyboard side-by-side */}
                     <div className="grid lg:grid-cols-2 gap-6 mb-12">
                         {/* Number Pad */}
-                        <section id="numpad">
+                        <section id="numpad"
+                            ref={(el) => {
+                                sectionRefs.current["numpad"] = el;
+                            }}>
                             <div className="flex items-center gap-3 mb-5">
                                 <span className="sm:text-sm lg:text-lg xl:text-xl md:text-md xs:text-xs dark:text-[#4a5568]">05</span>
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -374,7 +389,10 @@ function DetailedGuide() {
                         </section>
 
                         {/* Keyboard */}
-                        <section id="keyboard">
+                        <section id="keyboard"
+                            ref={(el) => {
+                                sectionRefs.current["keyboard"] = el;
+                            }}>
                             <div className="flex items-center gap-3 mb-5">
                                 <span className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-600 dark:text-[#4a5568]">06</span>
                                 <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -416,7 +434,10 @@ function DetailedGuide() {
                     </div>
 
                     {/* Section 06: Scoring */}
-                    <section className="mb-12" id="scoring">
+                    <section className="mb-12" id="scoring"
+                        ref={(el) => {
+                            sectionRefs.current["scoring"] = el;
+                        }}>
                         <div className="flex items-center gap-3 mb-6">
                             <span className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-600 dark:text-[#4a5568]">07</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
@@ -460,7 +481,10 @@ function DetailedGuide() {
                     </section>
 
                     {/* Section 07: Winning & Losing */}
-                    <section className="mb-12" id="winslose">
+                    <section className="mb-12" id="winslose"
+                        ref={(el) => {
+                            sectionRefs.current["winslose"] = el;
+                        }}>
                         <div className="flex items-center gap-3 mb-6">
                             <span className="sm:text-sm md:text-md xs:text-xs lg:text-lg dark:text-[#4a5568]">08</span>
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
