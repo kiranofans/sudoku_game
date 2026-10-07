@@ -23,6 +23,16 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date="2026-10-06"
+                                version="v1.0.0"
+                                title="Bug Fixed"
+                                items={
+                                    [
+                                        <>Fixed the issue of page level navigation menu of How SudokuPlays Works page.</>
+                                    ]
+                                }
+                            />
+                            <ChangelogEntry
                                 date="2026-10-04"
                                 version="v1.0.0" title="Improvements & Features"
                                 items={[

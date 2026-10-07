@@ -148,15 +148,15 @@ function DetailedGuide() {
                                 This guide walks you through everything you need to know to play Sudoku on SudokuPlays, from choosing a difficulty
                                 and using the controls to understanding scoring and finishing a puzzle.
                             </p>
-
-                            {/* Sticky Navigation to sections */}
-                            <PageLevelNavMenu
-                                sections={sections}
-                                activeSlug={activeSection}
-                                onNavClick={handleNavClick}
-                            />
                         </div>
                     </div>
+
+                    {/* Sticky Navigation to sections: put directly here in <main> tag instead of putting it in any <div> */}
+                    <PageLevelNavMenu
+                        sections={sections}
+                        activeSlug={activeSection}
+                        onNavClick={handleNavClick}
+                    />
 
                     {/* Section 01: Objective */}
                     <section className="mb-12" id="Objective">
