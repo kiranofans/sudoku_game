@@ -75,10 +75,12 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
                   {isMobilePortrait ?
                     <a
                       href='/changeLog'
-                      className="p-0 m-0 border-0 cursor-pointer w-fit bg-transparent"
-                      aria-label="What's New"
+                      className="touch-tooltip p-0 m-0 border-0 cursor-pointer w-fit bg-transparent"
+                      aria-label="What's New?" data-tooltip="What's New?"
                     >
-                      <svg className="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg className="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none"
+
+                        xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.25 13.125L10.5 15L14.25 16.875L16.5 22.5L18.75 16.875L22.5 15L18.75 13.125L16.5 
                         7.5L14.25 13.125ZM9 18C8.60218 18 8.22064 18.158 7.93934 18.4393C7.65804 18.7206 7.5 19.1022 
                         7.5 19.5C7.5 19.8978 7.65804 20.2794 7.93934 20.5607C8.22064 20.842 8.60218 21 9 21C9.39782 
@@ -93,8 +95,6 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
                         20.842 3.72064 20.5607 3.43934C20.2794 3.15804 19.8978 3 19.5 3Z"
                           fill="orange" />
                       </svg>
-
-
                     </a>
                     :
                     <OutlinedButton
