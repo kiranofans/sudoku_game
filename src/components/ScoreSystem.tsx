@@ -13,8 +13,8 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
 
   const historyIcon = (
     <svg
-      width="18"
-      height="18"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -116,7 +116,7 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
   if (isMobile) {
     return (
       <>
-        <div className="flex items-center gap-2 px-3 py-1 bg-black/5 dark:bg-white/10 rounded-full backdrop-blur-sm border border-white/5">
+        <div className="flex items-center gap-2 px-3 md:gap-1 sm:gap-0.5 px-2 md:px-2 sm:px-1 py-1 bg-black/5 dark:bg-white/10 rounded-full backdrop-blur-sm border border-white/5">
           <div className="flex items-center gap-1.5 border-r border-black/10 dark:border-white/10 pr-2">
             <span className="text-[0.6rem] font-bold text-[var(--score-label)] uppercase tracking-wider">Score</span>
             <span className="text-sm font-bold text-[var(--score-value)] font-mono leading-none">

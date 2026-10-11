@@ -98,7 +98,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
                     </a>
                     :
                     <OutlinedButton
-                      text="What's new?"
+                      text="What's New?"
                       href='/changeLog'
                       borderColor=""
                       bgColor=""
@@ -122,8 +122,10 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
             <span className="header-nav-separator desktop-only-nav">|</span>
             <a href="/contact" className={`header-nav-item desktop-only-nav${currentPath === '/contact' ? ' active' : ''}`}>Contact</a>
 
-            {headerContent}
-            <ThemeSelector />
+            <div className='flex items-center sx:gap-0.5 md:gap-1 sm:gap-1'>
+              {headerContent}
+              <ThemeSelector />
+            </div>
           </div>
         </header>
 
