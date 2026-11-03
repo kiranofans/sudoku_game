@@ -1,0 +1,4 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy-Report-Only: default-src 'self'
