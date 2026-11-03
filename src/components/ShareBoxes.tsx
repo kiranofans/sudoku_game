@@ -9,15 +9,16 @@ interface ShareBoxesProps {
 }
 
 export default function ShareBoxes({ score, difficulty, timeUsed, isGameCompleted }: ShareBoxesProps) {
-    const shareText = "🧩 Play relaxing Sudoku puzzles online at SudokuPlays (数独/數獨) — free, fast, and fun! " +
-        "Challenge yourself with multiple difficulties! Fully responsive design for phones, tablets, and desktops." +
-        "#PuzzleTime #gameonline";
+    const url = "https://sudokuplays.com";
+
+    const shareText = "🧩 Play relaxing Sudoku puzzles online at SudokuPlays (数独/數獨)" + url + " — free, fast, & fun! " +
+        "Challenge yourself with multiple difficulties! Fully responsive design for phones, tablets, & desktops." +
+        "#PuzzleGame #onlinegame #games #puzzle #BrainTeaser #cozygames #cozy #fun";
     const shareResultText = `🧩 I completed a ${difficulty} Sudoku puzzle on SudokuPlays! ` +
         `Score: ${score.toLocaleString()} | Time: ${timeUsed}. ` +
         `Come play and try beat my score!`;
 
     const shareTitle = isGameCompleted ? "Share Result Via" : "If you like the content, help it grow by sharing SudokuPlays with friends"
-    const url = "https://sudokuplays.com";
 
     function openShare(link: string) {
         window.open(link, "_blank", "noonpener,noreferrer");
@@ -29,7 +30,7 @@ export default function ShareBoxes({ score, difficulty, timeUsed, isGameComplete
         <div className='space-y-4 w-full overflow-x-auto'>
             <div className='justify-start left-0 w-full dark:text-gray-300'><span>{shareTitle}</span></div>
             <div className="space-x-4 flex flex-row relative justify-center items-center">
-                <svg onClick={() => openShare(shareLinks.x(showShareText, url))}
+                <svg onClick={() => openShare(shareLinks.x(showShareText, ""))}//remove the site url from the end of this share text
                     className="cursor-pointer hover:opacity-[0.9]"
                     width="46" height="46" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby='twitter/X logo'>
                     <mask id="mask0_1470_10074" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
