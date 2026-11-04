@@ -16,6 +16,7 @@ import ScoreSystem from '@/components/ScoreSystem.tsx';
 import { loadPersistedHints, savePersistedHints, loadGameHistory, saveGameToHistory, GameHistoryEntry } from '@/lib/persistenceStorage.ts';
 import { SmallUiWidgets, getLatestKnownIssues } from '@/components/SmallUiWidgets.tsx';
 import { useCompletedDomains } from '@/hooks/useCompletedDomains.ts';
+import HomeSideContent from '@/components/HomeSideContent.tsx';
 
 type CellNotes = Set<number>;
 
@@ -435,185 +436,192 @@ function Homepage() {
                     and timer control, all in a fast, mobile-friendly experience for iOS and Android.
                 </div>
 
-                <div className="sudoku-app" style={{ maxWidth: '720px' }}>
-                    {/* Wrap themain game container in scrollable div */}
-                    {isLoading && (
-                        <div className="loading-overlay">
-                            <div className="loading-bar"
-                                style={{ width: isLoading ? '100%' : '0%' }}>
-                                <div className="loading-progress"></div>
-                            </div>
-                        </div>
-                    )}
-
-
-                    {/* Modals */}
-                    <AdModal
-                        isOpen={showAdModal}
-                        onClose={() => setShowAdModal(false)}
-                        onAdComplete={handleEarnHint}
-                    />
-                    <PauseModal
-                        isOpen={!timer.isRunning && !isGameOver && !isLoading}
-                        onResume={() => timer.start()}
-                    />
-                    <div className={`game-container h-auto [contain:none] [will-change:auto] ${(!timer.isRunning && !isGameOver) ? 'blur-md pointer-events-none' : ''}`}>
-                        <div className="board-section">
-                            <div className="game-info">
-                                <div>
-                                    <div className="info-item">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                            aria-labelledby="svg-title svg-description"
-                                            xmlns="http://www.w3.org/2000/svg" className="timer-icon-svg">
-                                            <title id="svg-title">SudokuPlays timer icon</title>
-                                            <desc id="svg-description">Countdown timer during gameplay</desc>
-                                            <path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor" />
-                                        </svg>
-                                        <span>{formatTime(timer.timeLeft)}</span>
-
-                                        {/* Pause/Play timer countdown BUTTON */}
-                                        <svg
-                                            onClick={() =>
-                                                timer.isRunning ? timer.pause() : timer.start()
-                                            }
-                                            aria-labelledby="svg-title svg-description"
-                                            /* stroke-current removes the need for stroke="black" */
-                                            className="w-7 h-7 cursor-pointer transition-transform hover:scale-100 
-                        hover:stroke-blue-700 stroke-current text-black dark:text-gray-300 dark:gray-300
-                        dark:hover:stroke-gray-200"
-                                            viewBox="0 0 48 48"
-                                            fill="none"
-                                            strokeWidth="3"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        >
-                                            <title className='sr-only' id='svg-title'>Countdown timer control button</title>
-                                            <desc id="svg-description">Sudoku Play game timer control button: play/pause</desc>
-                                            {/* outer circle outline */}
-                                            <circle cx="24" cy="24" r="20" />
-
-                                            {/* icon */}
-                                            {timer.isRunning ? (
-                                                // pause icon (black lines)
-                                                <>
-                                                    <line x1="18" y1="16" x2="18" y2="32" />
-                                                    <line x1="30" y1="16" x2="30" y2="32" />
-                                                </>
-                                            ) : (
-                                                // play icon (triangle outline)
-                                                <polygon points="18,14 36,24 18,34" />
-                                            )}
-                                        </svg>
+                <div className="sudoku-app !max-w-7xl w-full mx-auto px-4 sm:px-6" style={{ maxWidth: '1240px' }}>
+                    <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 lg:gap-10 xl:gap-14 w-full">
+                        {/* Sudoku game: Board, controls and game information */}
+                        <div className="flex flex-col items-center w-full max-w-[720px]">
+                            {/* Wrap themain game container in scrollable div */}
+                            {isLoading && (
+                                <div className="loading-overlay">
+                                    <div className="loading-bar"
+                                        style={{ width: isLoading ? '100%' : '0%' }}>
+                                        <div className="loading-progress"></div>
                                     </div>
                                 </div>
+                            )}
 
-                                <div>
-                                    <div className="info-item">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            className="mistake-icon-svg" aria-labelledby='svg-title svg-description'>
-                                            <title id="svg-title">Mistakes icon</title>
-                                            <desc id="svg-description">Sudoku Play game mistakes icon</desc>
-                                            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                        <span>{mistakes}/10</span>
+                            {/* Modals */}
+                            <AdModal
+                                isOpen={showAdModal}
+                                onClose={() => setShowAdModal(false)}
+                                onAdComplete={handleEarnHint}
+                            />
+                            <PauseModal
+                                isOpen={!timer.isRunning && !isGameOver && !isLoading}
+                                onResume={() => timer.start()}
+                            />
+                            <div className={`game-container h-auto [contain:none] [will-change:auto] ${(!timer.isRunning && !isGameOver) ? 'blur-md pointer-events-none' : ''}`}>
+                                <div className="board-section">
+                                    <div className="game-info">
+                                        <div>
+                                            <div className="info-item">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    aria-labelledby="svg-title svg-description"
+                                                    xmlns="http://www.w3.org/2000/svg" className="timer-icon-svg">
+                                                    <title id="svg-title">SudokuPlays timer icon</title>
+                                                    <desc id="svg-description">Countdown timer during gameplay</desc>
+                                                    <path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor" />
+                                                </svg>
+                                                <span>{formatTime(timer.timeLeft)}</span>
+
+                                                {/* Pause/Play timer countdown BUTTON */}
+                                                <svg
+                                                    onClick={() =>
+                                                        timer.isRunning ? timer.pause() : timer.start()
+                                                    }
+                                                    aria-labelledby="svg-title svg-description"
+                                                    /* stroke-current removes the need for stroke="black" */
+                                                    className="w-7 h-7 cursor-pointer transition-transform hover:scale-100 
+                                hover:stroke-blue-700 stroke-current text-black dark:text-gray-300 dark:gray-300
+                                dark:hover:stroke-gray-200"
+                                                    viewBox="0 0 48 48"
+                                                    fill="none"
+                                                    strokeWidth="3"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                >
+                                                    <title className='sr-only' id='svg-title'>Countdown timer control button</title>
+                                                    <desc id="svg-description">Sudoku Play game timer control button: play/pause</desc>
+                                                    {/* outer circle outline */}
+                                                    <circle cx="24" cy="24" r="20" />
+
+                                                    {/* icon */}
+                                                    {timer.isRunning ? (
+                                                        // pause icon (black lines)
+                                                        <>
+                                                            <line x1="18" y1="16" x2="18" y2="32" />
+                                                            <line x1="30" y1="16" x2="30" y2="32" />
+                                                        </>
+                                                    ) : (
+                                                        // play icon (triangle outline)
+                                                        <polygon points="18,14 36,24 18,34" />
+                                                    )}
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div className="info-item">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                    className="mistake-icon-svg" aria-labelledby='svg-title svg-description'>
+                                                    <title id="svg-title">Mistakes icon</title>
+                                                    <desc id="svg-description">Sudoku Play game mistakes icon</desc>
+                                                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                                <span>{mistakes}/10</span>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <button className="new-game-btn" onClick={startNewGame}>New Game</button>
+                                        </div>
+                                    </div>
+                                    <Board
+                                        isLoading={isLoading}
+                                        board={board}
+                                        initialBoard={initialBoard}
+                                        notes={notes}
+                                        selectedCell={selectedCell}
+                                        onCellClick={handleCellClick}
+                                        solution={solution}
+                                        crossHighlight={crossHighlight}
+                                        highlightedNumber={highlightedNumber}
+                                        fixedCells={fixedCells}
+                                    />
+                                </div>
+
+                                <div className="counts-and-actionbtn">
+                                    <div className="control-panel">
+                                        <ScoreSystem score={score} history={history} />
+                                        <div className="action-buttons">
+                                            <Tooltip text="Pencil Mode">
+                                                <button
+                                                    className={isPencilMode ? 'active' : ''}
+                                                    onClick={() => setIsPencilMode(!isPencilMode)}
+                                                    aria-pressed={isPencilMode}
+                                                    aria-label="Toggle pencil mode">
+                                                    <div className="btn-pencil" title="Edit">
+                                                    </div>
+                                                </button>
+                                            </Tooltip>
+
+                                            <Tooltip text="Eraser">
+                                                <button onClick={handleEraser}>
+                                                    <div className='btn-eraser'></div>
+                                                </button>
+                                            </Tooltip>
+
+                                            <Tooltip text="Get Hint">
+                                                <button onClick={() => {
+                                                    if (hintsRemaining > 0) {
+                                                        handleHint();
+
+                                                    } else {
+                                                        // show ad logic
+                                                        //setShowAdModal(true);
+                                                        alert("The ads are currenly disabled for technical reason. \nPlease check back later.");
+                                                    }
+                                                }}
+                                                    className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
+                                                    aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
+                                                >
+                                                    <div className='btn-hint' ></div>
+
+                                                    {/* Unified badge for both hints count and Ad state */}
+                                                    <span className="hint-badge" role="status" aria-live="polite">
+                                                        {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
+                                                    </span>
+                                                </button>
+                                            </Tooltip>
+
+                                            <Tooltip text="Reset Game">
+                                                <button onClick={handleReset} aria-label="Reset">
+                                                    <div className="btn-reset"></div>
+                                                </button>
+                                            </Tooltip>
+                                        </div>
+                                        <div className="number-pad">
+                                            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
+                                                <button
+                                                    key={num}
+                                                    onClick={() => handleNumberInput(num)}
+                                                    disabled={isGameOver || numberCounts[num] <= 0}
+                                                    className={numberCounts[num] <= 0 ? 'completed' : ''}
+                                                    aria-labelledby=''
+
+                                                >
+                                                    <div className='number-pad-count-container items-center vertical-center align-center space-y-1'>
+                                                        <span className="number-value ">{num}</span>
+                                                        <span className="count-badge">{numberCounts[num]}</span>
+                                                    </div>
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div>
-                                    <button className="new-game-btn" onClick={startNewGame}>New Game</button>
-                                </div>
                             </div>
-                            <Board
-                                isLoading={isLoading}
-                                board={board}
-                                initialBoard={initialBoard}
-                                notes={notes}
-                                selectedCell={selectedCell}
-                                onCellClick={handleCellClick}
-                                solution={solution}
-                                crossHighlight={crossHighlight}
-                                highlightedNumber={highlightedNumber}
-                                fixedCells={fixedCells}
+                            {/* Divider above known issues box - adjusted width to match game board + panel */}
+                            <div className="w-full border-t border-gray-200 dark:border-gray-700 my-4 max-w-[660px] mx-auto opacity-60"></div>
+
+                            {/* known issues box */}
+                            <KnownIssuesBox
+                                items={issues}
                             />
                         </div>
 
-                        <div className="counts-and-actionbtn">
-                            <div className="control-panel">
-                                <ScoreSystem score={score} history={history} />
-                                <div className="action-buttons">
-                                    <Tooltip text="Pencil Mode">
-                                        <button
-                                            className={isPencilMode ? 'active' : ''}
-                                            onClick={() => setIsPencilMode(!isPencilMode)}
-                                            aria-pressed={isPencilMode}
-                                            aria-label="Toggle pencil mode">
-                                            <div className="btn-pencil" title="Edit">
-                                            </div>
-                                        </button>
-                                    </Tooltip>
-
-                                    <Tooltip text="Eraser">
-                                        <button onClick={handleEraser}>
-                                            <div className='btn-eraser'></div>
-                                        </button>
-                                    </Tooltip>
-
-                                    <Tooltip text="Get Hint">
-                                        <button onClick={() => {
-                                            if (hintsRemaining > 0) {
-                                                handleHint();
-
-                                            } else {
-                                                // show ad logic
-                                                //setShowAdModal(true);
-                                                alert("The ads are currenly disabled for technical reason. \nPlease check back later.");
-                                            }
-                                        }}
-                                            className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
-                                            aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
-                                        >
-                                            <div className='btn-hint' ></div>
-
-                                            {/* Unified badge for both hints count and Ad state */}
-                                            <span className="hint-badge" role="status" aria-live="polite">
-                                                {hintsRemaining > 0 ? `${hintsRemaining}` : "Ad"}
-                                            </span>
-                                        </button>
-                                    </Tooltip>
-
-                                    <Tooltip text="Reset Game">
-                                        <button onClick={handleReset} aria-label="Reset">
-                                            <div className="btn-reset"></div>
-                                        </button>
-                                    </Tooltip>
-                                </div>
-                                <div className="number-pad">
-                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                                        <button
-                                            key={num}
-                                            onClick={() => handleNumberInput(num)}
-                                            disabled={isGameOver || numberCounts[num] <= 0}
-                                            className={numberCounts[num] <= 0 ? 'completed' : ''}
-                                            aria-labelledby=''
-
-                                        >
-                                            <div className='number-pad-count-container items-center vertical-center align-center space-y-1'>
-                                                <span className="number-value ">{num}</span>
-                                                <span className="count-badge">{numberCounts[num]}</span>
-                                            </div>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                        {/* Side content: text blocks divided with thin gray lines */}
+                        <HomeSideContent />
                     </div>
-                    {/* Divider above known issues box - adjusted width to match game board + panel */}
-                    <div className="w-full border-t border-gray-200 dark:border-gray-700 my-4 max-w-[660px] mx-auto opacity-60"></div>
-
-                    {/* known issues box */}
-                    <KnownIssuesBox
-                        items={issues}
-                    />
                 </div>
                 {
                     <GameStatusModal
