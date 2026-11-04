@@ -4,12 +4,15 @@ import "../App.css"; // Make sure this path is correct
 import "../styles.css";
 
 const { title = "SudokuPlays" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL.href} />
     <script is:inline>
       // Inline script to prevent FOUC by applying the theme before the page renders
       (function () {
@@ -94,8 +97,7 @@ const { title = "SudokuPlays" } = Astro.props;
       name="twitter:image"
       content="https://sudokuplays.com/og-share-card.png"
     />
-  </head>
-  <body class="bg-white dark:bg-gray-900">
+  </head><body class="bg-white dark:bg-gray-900">
     <!-- The Loading Screen -->
     <div
       id="initial-loader"
