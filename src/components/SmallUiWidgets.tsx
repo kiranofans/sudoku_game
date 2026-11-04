@@ -326,3 +326,24 @@ export function PageLevelNavMenu({ sections, activeSlug, onNavClick }: PageLevel
         </nav>
     );
 }
+
+/* Arrow link button with arrow UI */
+export interface ArrowLinkButtonUIProps {
+    label: string;
+    href: string;
+}
+export function ArrowLinkButtonUI({ label, href, }: ArrowLinkButtonUIProps) {
+    return (
+        <div className="mt-4">
+            <a
+                href={href}
+                className="inline-flex items-center text-xs sm:text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline"
+            >
+                {label}
+                <svg className="ml-1 w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z" clipRule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    );
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowLinkButtonUI } from './SmallUiWidgets';
 
 export const HomeSideContent: React.FC = () => {
     return (
@@ -10,7 +11,7 @@ export const HomeSideContent: React.FC = () => {
                 {/* Block 1: About this Sudoku game */}
                 <section className="pb-6 lg:pt-1">
                     <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">
-                        About this Sudoku game
+                        About this SudokuPlays Game Site
                     </h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         Welcome to SudokuPlays, a free and clean online Sudoku experience designed for both casual solvers and daily logic puzzle enthusiasts.
@@ -23,31 +24,16 @@ export const HomeSideContent: React.FC = () => {
                 {/* Block 2: How to play */}
                 <section className="py-6">
                     <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">
-                        How to play
+                        How to Play
                     </h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-2.5">
-                        Fill each cell of the 9×9 grid so that every row, column, and 3×3 box contains numbers 1 through 9 without repeating.
-                    </p>
-                    <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
-                        <li className="flex items-start gap-1.5">
-                            <span className="text-gray-400 dark:text-gray-500 mt-0.5">•</span>
-                            <div>
-                                <strong className="font-semibold text-gray-900 dark:text-gray-100">Select & Input:</strong> Click any cell to select it, then tap a number or use keyboard keys 1–9.
-                            </div>
-                        </li>
-                        <li className="flex items-start gap-1.5">
-                            <span className="text-gray-400 dark:text-gray-500 mt-0.5">•</span>
-                            <div>
-                                <strong className="font-semibold text-gray-900 dark:text-gray-100">Pencil Mode:</strong> Jot down candidate possibilities in tricky cells to map out your moves.
-                            </div>
-                        </li>
-                        <li className="flex items-start gap-1.5">
-                            <span className="text-gray-400 dark:text-gray-500 mt-0.5">•</span>
-                            <div>
-                                <strong className="font-semibold text-gray-900 dark:text-gray-100">Mistakes & Hints:</strong> Stay alert — 10 mistakes ends the game. Use hints when you need a nudge.
-                            </div>
-                        </li>
-                    </ul>
+                        New to SudokuPlays? Open the <b>Quick Guide</b> dropdown on the top right corner for a quick overview,
+                        or explore <b>How SudokuPlays Works</b> for more details about the game rules, controls, hints, and scoring.                    </p>
+
+                    <ArrowLinkButtonUI
+                        label="Explore How SudokuPlays Works (the user guide)"
+                        href="/detailedGuide"
+                    />
                 </section>
 
                 {/* Block 3: Sudoku tips */}
@@ -58,17 +44,10 @@ export const HomeSideContent: React.FC = () => {
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-2.5">
                         Improve your Sudoku skills with practical tips and proven techniques, from beginner basics to more advanced strategies.
                     </p>
-                    <div className="mt-4">
-                        <a
-                            href="/sudokuTips"
-                            className="inline-flex items-center text-xs sm:text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline"
-                        >
-                            Explore all Sudoku tips & strategies
-                            <svg className="ml-1 w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z" clipRule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
+                    <ArrowLinkButtonUI
+                        label="Explore all Sudoku tips & strategies"
+                        href="/sudokuTips"
+                    />
                 </section>
             </div>
         </aside>
