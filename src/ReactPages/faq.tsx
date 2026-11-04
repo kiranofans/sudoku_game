@@ -69,7 +69,8 @@ function faq() {
                     <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">
                         FAQ
                     </h1>
-                    <h3 className='text-center justify-center px-4 pb-6 md:text-md lg:text-lg'>Have questions about SudokuPlays? Find answers about the game, difficulty levels, controls,
+                    <h3 className='text-center justify-center px-4 pb-6 md:text-md lg:text-lg'>
+                        Have questions about SudokuPlays? Find answers about the game, difficulty levels, controls,
                         mobile play, and tips to improve your Sudoku skills.</h3>
 
                     <div className="space-y-3 max-w-[800px] w-full mx-auto">

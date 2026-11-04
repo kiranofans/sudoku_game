@@ -27,7 +27,7 @@ export default function ShareBoxes({ score, difficulty, timeUsed, isGameComplete
     const showShareText = isGameCompleted ? shareResultText : shareText;
 
     return (
-        <div className='space-y-4 w-full overflow-x-auto'>
+        <div className='space-y-4 w-full overflow-x-auto text-gray-500'>
             <div className='justify-start left-0 w-full dark:text-gray-300'><span>{shareTitle}</span></div>
             <div className="space-x-4 flex flex-row relative justify-center items-center">
                 <svg onClick={() => openShare(shareLinks.x(showShareText, ""))}//remove the site url from the end of this share text

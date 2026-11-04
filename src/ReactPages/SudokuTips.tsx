@@ -3,6 +3,7 @@ import Layout from '@/components/Layout';
 import { ThemeProvider } from '@/components/ThemeContext';
 import OutlinedCard, { SectionHeader, PageLevelNavMenu } from '@/components/SmallUiWidgets';
 import { useSectionNavigation } from '@/hooks/useGeneralUtils';
+import ShareBoxes from '@/components/ShareBoxes';
 
 const BEGINNER_TIPS = [
     {
@@ -120,7 +121,9 @@ function SudokuTips() {
                         <h1 className="text-3xl font-bold text-center mt-6 mb-6 dark:text-white">
                             Tips & Strategies
                         </h1>
-                        <p className='text-center'>From the right solving mindset to advanced elimination techniques — a structured guide for players at every level.</p>
+                        <p className='text-center md:text-md lg:text-lg'>
+                            From the right solving mindset to advanced elimination techniques — a structured guide for players at every level.
+                        </p>
                     </div>
                     {/* Sticky section nav */}
                     <PageLevelNavMenu
@@ -230,16 +233,19 @@ function SudokuTips() {
 
                     </div>
 
-                    <div className="mt-16 text-center text-sm text-gray-500 dark:text-gray-400">
-
-                        Still feeling lost? Check out our <a href="/detailedGuide">How SudokuPlays Works</a> guide for more help using the site and playing Sudoku.
+                    <div className="mt-12 text-center text-md text-gray-500 dark:text-gray-400">
+                        Still feeling lost? Check out our <a href="/detailedGuide">
+                            How SudokuPlays Works</a> guide for more help using the site and playing Sudoku.
                         <br />
                         For more deep explanations and other professional Sudoku strategies,
                         checkout
-                        <a href="https://www.sudokuwiki.org/"> Sudoku Wiki</a>
-
-                        <p className='mt-[1rem] text-sm'>Ready to put these strategies to the test?</p>
+                        <a href="https://www.sudokuwiki.org/"> Sudoku Wiki</a>.
                     </div>
+                    <div className='mt-4 justify-center items-center'>
+                        <ShareBoxes score={0} difficulty={''} timeUsed={''} isGameCompleted={false} />
+                    </div>
+                    <p className='mt-[1.5rem] text-sm text-gray-500'>Ready to put these strategies to the test?</p>
+
                     <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                         <a href="/" className="new-game-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
                             Play Sudoku
