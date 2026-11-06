@@ -27,7 +27,8 @@ function ChangeLog({ }) {
                                 version={'v1.0.0'}
                                 title={'Improvement'}
                                 items={[
-                                    <>Updated & modified <a href="/PrivacyPolicy">Privacy Policy</a> and <a href="/TermsAndConditions">Terms and Conditions</a>.</>,
+                                    <>Updated & modified <a href="/PrivacyPolicy">Privacy Policy</a> and <a href="/TermsAndConditions">Terms & Conditions</a>.</>,
+                                    <>Making the in page navigation menu auto scrolling/jumping to remaining items and applied it to Privacy Policy & Terms & Conditions pages.</>,
                                 ]} />
                             <ChangelogEntry
                                 date={'2026-11-03'}
