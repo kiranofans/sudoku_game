@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout';
-import { ListUi } from '@/components/SmallUiWidgets';
+import { ListUi, PageLevelNavMenu } from '@/components/SmallUiWidgets';
 import { ThemeProvider } from '@/components/ThemeContext';
 
 function PrivacyPolicy() {
@@ -8,268 +8,353 @@ function PrivacyPolicy() {
 
             <Layout>
                 <main className="sudoku-app" style={{ width: '100%', padding: '6rem 2rem 6rem', maxWidth: '900px', textAlign: 'left', flex: '1 0 auto' }}>
-                    <h1 className="text-3xl font-bold text-center mt-6 mb-8 dark:text-white">Privacy Policy</h1>
-                    <div className="privacy-policy-content" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>
-                        <p><strong>Last updated: May 7, 2026</strong></p>
-                        <p>Please read these terms and conditions carefully before using Our Service.</p>
+                    <h1 className="text-3xl font-bold text-center mt-6 mb-6 dark:text-white">Privacy Policy</h1>
+                    <PageLevelNavMenu sections={[
 
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Interpretation and Definitions</h3>
-                        <h4>Interpretation</h4>
-                        <p>The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+                    ]} activeSlug={''} />
+                    <div className="privacy-policy-content space-y-0.5" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-color)', textAlign: 'left' }}>
+                        <p><strong>Last updated: November 5, 2026</strong></p>
+                        {/* <p>Please read these privacy policies carefully before using Our Service.</p> */}
 
-                        <h4>Definitions</h4>
-                        <p>For the purposes of these Terms and Conditions:</p>
-                        <ul className="list-disc" style={{ paddingLeft: '1.5rem' }}>
-                            <li style={{ marginBottom: '10px' }}><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Country</strong> refers to: British Columbia, Canada</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in these Terms and Conditions) refers to Sudoku.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Device</strong> means any device that can access the Service such as a computer, a cell phone or a digital tablet.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Service</strong> refers to the Website.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Terms and Conditions</strong> (also referred to as "Terms") means these Terms and Conditions, including any documents expressly incorporated by reference, which govern Your access to and use of the Service and form the entire agreement between You and the Company regarding the Service. These Terms and Conditions have been created with the help of the <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank" rel="noopener noreferrer">TermsFeed Terms and Conditions Generator</a>.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Third-Party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third party that is displayed, included, made available, or linked to through the Service.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Website</strong> refers to Sudoku, accessible from <a href="https://sudokuplays.com" target="_blank" rel="noopener noreferrer">sudokuplays.com</a></li>
-                            <li style={{ marginBottom: '10px' }}><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
-                        </ul>
+                        {/* <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Interpretation and Definitions</h3> */}
 
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Acknowledgment</h3>
-                        <p>These are the Terms and Conditions governing the use of this Service and the agreement between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.</p>
-                        <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.</p>
-                        <p>By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
-                        <p>You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.</p>
-                        <p>Your access to and use of the Service is also subject to Our Privacy Policy, which describes how We collect, use, and disclose personal information. Please read Our Privacy Policy carefully before using Our Service.</p>
+                        <p className='mt-2'>SudokuPlays ("SudokuPlays," "we," "us," or "our") operates sudokuplays.com (the "Website").
+                            This Privacy Policy explains what information may be collected when you visit or use the Website,
+                            why it is used, when it may be shared, and the choices and rights available to you.
+                        </p>
+                        <p>
+                            SudokuPlays is a browser-based Sudoku game. You can play without creating an account.
+                            This policy is written for the Website's current no-account design and the services identified below.
+                            If the Website's features or service providers change, this policy may need to be updated.
+                        </p>
 
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Regional Compliance</h3>
-                        <h4>
-                            <ListUi
-                                isOrdered={true}
-                                subSectionTitle='Canadian Privacy Compliance'
-                                supplementalText='Compliance with Canadian Privacy Standards'
-                                items={[
-
-                                ]}
-                            />
-                            <ol className='list-decimal'>
-                                <li style={{ marginBottom: '1rem' }}>
-                                    <strong className='text-sm'>
-                                        Canadian Privacy Compliance (BC PIPA & PIPEDA & Quebec Law 25)</strong>
-                                    <div><p className='mb-1 mt-2 text-sm'>
-                                        <b>Compliance with Canadian Privacy Standards</b></p>
-                                        <p>
-                                            This Service is governed by the laws of British Columbia and Canada. We also adhere to Quebec's
-                                            <b> Act respecting the protection of personal information in the private sector (Law 25). </b>
-                                            <ul className='md:list-disc ml-5 space-y-1 mt-2 text-sm'>
-                                                <li>
-                                                    <b>Designated Privacy Officer: </b>
-                                                    In compliance with Law 25 and BC PIPA, we have appointed a Privacy Officer.
-                                                    For all data inquiries or to exercise your rights, contact: <b>Privacy Officer</b> at <a href="mailto:sitehelp.chat@gmail.com">sitehelp.chat@gmail.com</a>.
-                                                </li>
-                                                <li>
-                                                    <b>
-                                                        Privacy By Default: </b>
-                                                    Our Service implements the highest level of confidentiality by default. In accordance with Quebec law,
-                                                    non-essential tracking, profiling, or advertising cookies are deactivated until you provide express,
-                                                    informed consent via our consent tool.
-                                                </li>
-                                                <li>
-                                                    <b>Analytics, Third-Party Advertising & Cookies: </b>
-                                                    <ol type="1" className='list-decimal space-y-2 ml-5 mt-1 text-sm'>
-                                                        <li>
-                                                            <b>Privacy-First Analytics (Current)</b>
-                                                            <p> To understand how our site is performing and improve your gameplay, we use <b>Umami Analytics</b>. Umami is a privacy-focused tool that collects anonymous technical data (such as general region and browser type).
-                                                                It <b>does not</b> collect personally identifiable information (PII), does not track you across other websites, and operates entirely <b> without the use of cookies</b>.</p>
-                                                        </li>
-                                                        <li>
-                                                            <b>Future Advertising and Third-Party Cookies</b>
-                                                            <p>
-                                                                Currently, SudokuPlays operates as an ad-free experience and does not deploy third-party advertising cookies. However, to support the ongoing maintenance and development of this free Service, we reserve the right to enable third-party advertising (such as Google AdSense) in the future.
-                                                            </p>
-                                                            <p className='mt-1'>
-                                                                When active, these third-party vendors use cookies to serve advertisements based on your prior visits to this or other websites. If and when these services are enabled,
-                                                                you may opt out of personalized advertising at any time by visiting <a href='https://www.google.com/search?q=https://www.google.com/settings/ads'>Google Ads Settings </a>
-                                                                or <a href="www.aboutads.info">www.aboutads.info</a>.
-                                                            </p>
-                                                        </li>
-                                                    </ol>
-                                                </li>
-                                                <li>
-                                                    <b>Data Portability & Erasure: </b>
-                                                    Residents of Quebec and Canada have the right to request a digital copy of their processed personal information in a structured,
-                                                    commonly used technological format. You may also request the deletion of your data;
-                                                    as we do not host user accounts, this is typically achieved by clearing your browser's LocalStorage and cache.                                            </li>
-                                            </ul>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li style={{ marginBottom: '1rem' }}>
-                                    <b className='text-sm'>
-                                        California Consumer Privacy Act (CCPA/CPRA) - "LA Law"
-                                    </b>
-                                    <div>
-                                        <p className='mb-1 mt-2 text-sm'>
-                                            <b>California Resident Notice at Collection and Privacy Rights</b>
-                                        </p>
-                                        Under the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA),
-                                        California residents have specific rights regarding their "Personal Information."
-
-                                        <ul className="md:list-disc ml-5 space-y-1 text-sm">
-                                            <li className='mb-1 mt-2 text-sm'>
-                                                <b className='text-sm'>Notice at Collection: </b>
-                                                We collect limited identifiers (such as anonymized IP addresses via Umami Analytics and device IDs via LocalStorage) to facilitate game rewards, prevent fraud, and analyze site traffic. We do not collect "Sensitive Personal Information" as defined by California law.</li>
-                                            <li className='mb-1 mt-2 text-sm'>
-                                                <b className='text-sm'>Right to Opt-Out of Sale or Sharing: </b>
-                                                Currently, sudokuplays.com does not sell or share your personal information for monetary compensation or cross-context behavioral advertising.
-                                                However, we reserve the right to enable third-party advertising networks (such as Google AdSense) in the future.
-                                                When enabled, this may be classified as<b> "Sharing" for cross-context behavioral advertising</b>.
-                                                You may opt out by visiting <a href="https://myadcenter.google.com/" className=''>Google's my Ad Center</a>.
-                                            </li>
-                                            <li className="mb-1 mt-2 text-sm">
-                                                <b>Mandatory GPC Recognition: </b>
-                                                In accordance with 2026 regulations, if your browser sends a GPC signal, we will treat it as a valid request to opt-out of future advertising sharing.
-                                                Since we do not use a local consent manager, honoring your GPC signal is handled by our commitment to serve only non-personalized ads to users with this signal enabled.
-                                            </li>
-                                            {/* For future use when google adsense is enabled*/}
-                                            {/* <li className="mb-1 mt-2 text-sm">
-                                                <b>Opt-Out Confirmation: </b> If you manually exercise your right to opt-out, we will provide a visible confirmation that your "Opt-Out Request has been Honored."
-                                            </li> */}
-                                            <li className="mb-1 mt-2 text-sm">
-                                                <b>Right to Know & Delete: </b>
-                                                You have the right to request access to the specific pieces of data we have collected about you since January 1, 2022, or request its deletion.
-                                            </li>
-                                            <li className='mb-1 mt-2 text-sm'>
-                                                <b>Non-Discrimination: </b>
-                                                We will not deny service, suggest different pricing,
-                                                or degrade your game experience if you choose to exercise your privacy rights.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li style={{ marginBottom: '1rem' }}>
-
-                                    <div>
-                                        <b>European Union & UK Compliance (GDPR)</b>
-                                        <p>
-                                            <b>General Data Protection Regulation (GDPR) Disclosure </b>
-                                        </p>
-                                        For users residing in the European Economic Area (EEA) or the United Kingdom,
-                                        the processing of your data is governed by the GDPR.
-                                        <ul className="md:list-disc ml-5 space-y-1 text-sm">
-                                            <li className='mb-1 mt-2 text-sm'>
-                                                <b>Legal Basis for Processing: </b>
-                                                We process data based on <b>Art. 6(1)(f) (Legitimate Interests)</b> for essential site security and non-invasive traffic analytics,
-                                                and <b>Art. 6(1)(b) (Contractual Necessity)</b> for using LocalStorage to maintain your game state and verify the delivery of hints following an advertisement.                                        </li>
-                                            <li className='mb-1 mt-2 text-sm'>
-                                                <b>Data Controller: </b>
-                                                <a href="/">sudokuplays.com</a> acts as the Data Controller.
-                                                Since we utilize a "static" frontend-only architecture,
-                                                we do not store your personal data on our own servers.
-                                            </li>
-                                            <li className='mb-1 mt-2 text-sm'>
-                                                <b>Ad Technology Partners: </b>
-                                                To support this free service, we reserve the right to utilize Google AdSense in the future.
-                                                <b> Currently, third-party advertising is disabled</b> for all users in the EEA and UK. When enabled,
-                                                we will provide a method for you to manage your preferences. In the meantime, you can control how Google uses your data
-                                                for ads across the web at <a href="https://myadcenter.google.com/" className=''>Google's my Ad Center</a>.
-                                                {/* You can manage these partners at any time via our <b>Privacy Settings/Consent Banner</b>. */}
-                                            </li>
-                                            <li>
-                                                <b>Data Subject Rights: </b>
-                                                You have the right to access, rectify, or erase your data.
-                                                Because your data is stored exclusively in your browser’s <b>LocalStorage</b>,
-                                                you can exercise your "Right to be Forgotten" immediately and independently by clearing your browser's cache and site data.
-                                            </li>
-                                            <li className='mb-1 mt-2 text-sm'>
-                                                <b>International Transfers: </b>
-                                                Technical data may be processed by our partners (like Google) in the United States.
-                                                We ensure these transfers are protected by Standard Contractual Clauses (SCCs) or other recognized adequacy frameworks.                                        </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div><b className='text-sm'>Specific Disclosure: LocalStorage & Privacy-First Analytics</b>
-                                        <ul className='md:list-disc ml-5 space-y-1 text-sm'>
-                                            <li>
-                                                <b>Web LocalStorage: </b>
-                                                We use LocalStorage (data stored only on your device) to maintain your current game state, track high scores, and store a 24-hour "Hint Memo" for ad-reward verification and "Score History". This data is functional, remains under your control, and is never transmitted to our servers.
-                                            </li>
-                                            <li>
-                                                <b>Cloudflare & Umami Analytics: </b>
-                                                We use these for privacy-first, non-invasive traffic analytics to monitor site performance and traffic trends.
-                                                Unlike traditional trackers, they do not collect personal identifiers, do not use cookies, and do not track your activity across other websites.
-                                            </li>
-                                            <li>
-                                                <b>No Server-Side Tracking: </b>
-                                                Since we do not use a backend database or server-side accounts, we do not store, sell, or rent your individual gameplay data.
-                                            </li>
-                                        </ul>
-                                        <p className='mb-1 mt-2 text-sm'>
-                                            To provide a seamless gaming experience without requiring user accounts, we utilize the following technologies:
-                                        </p>
-                                        This Service utilizes Web LocalStorage to maintain game state, high scores, and a 24-hour
-                                        "Hint Memo" for ad verification. Unlike traditional tracking cookies, this data is stored locally on your device and is not transmitted to our servers. We utilize Cloudflare Analytics for privacy-first, non-invasive traffic monitoring
-                                        which does not collect personal identifiers or track users across external websites.
-                                    </div>
-                                </li>
-                            </ol>
+                        <h4 className='font-semibold pt-1'>
+                            1. Information We Collect
                         </h4>
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Links to Other Websites</h3>
-                        <p>Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.</p>
-                        <p>The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such websites or services.</p>
-                        <p>We strongly advise You to read the terms and conditions and privacy policies of any third-party websites or services that You visit.</p>
+                        <h4 className='font-semibold px-4'>Information You Provide</h4>
+                        <p className='px-4'>You can browse and play Sudoku without giving us your name, email address, or other account information.
+                            We do not require you to register or create a player account.</p>
+                        <p className='px-4 pt-1'>
+                            If you contact us through the <a href="/contact">Contact page</a> or by email, we receive the information you choose to send.
+                            This may include your email address, name (if you provide it), the subject of your message, and the contents of your message or any attachment.
+                            Please do not send sensitive personal information unless it is necessary for your inquiry.
+                        </p>
 
-                        <h4>Links from a Third-Party Social Media Service</h4>
-                        <p>The Service may display, include, make available, or link to content or services provided by a Third-Party Social Media Service. A Third-Party Social Media Service is not owned or controlled by the Company, and the Company does not endorse or assume responsibility for any Third-Party Social Media Service.</p>
-                        <p>You acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with Your access to or use of any Third-Party Social Media Service, including any content, goods, or services made available through them. Your use of any Third-Party Social Media Service is governed by that Third-Party Social Media Service's terms and privacy policies.</p>
+                        <h4 className='font-semibold px-4 pt-1'>
+                            Gameplay Information Stored in Your Browser
+                        </h4>
 
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Termination</h3>
-                        <p>We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions.</p>
-                        <p>Upon termination, Your right to use the Service will cease immediately.</p>
+                        <p className='px-4'>
+                            SudokuPlays uses your browser's <b>LocalStorage</b> to support gameplay features.
+                            Depending on the features you use, this may include the current game state, scores,
+                            high scores, score history, and temporary hint- or reward-related information
+                            (including information maintained for a limited period, such as 24 hours).
+                        </p>
 
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Limitation of Liability</h3>
-                        <p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased anything through the Service.</p>
-                        <p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of these Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.</p>
-                        <p>Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law.</p>
+                        <p className='px-4 pt-1'>
+                            This information is stored in your browser on your device rather than in a
+                            SudokuPlays player account or central gameplay database.
+                            In the Website's current design, gameplay information stored this way is used
+                            by the game in your browser and is not routinely sent to SudokuPlays as part of normal gameplay.
+                            LocalStorage is different from a browser cookie, although both are forms of browser storage.
+                            You can remove this information by clearing the Website's site data or LocalStorage in your browser.
+                            Doing so may reset saved scores, history, or game state.
+                        </p>
 
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>"AS IS" and "AS AVAILABLE" Disclaimer</h3>
-                        <p>The Service is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected.</p>
-                        <p>Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components.</p>
-                        <p>Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law.</p>
+                        <h4 className='font-semibold px-4 pt-1'>Technical and Usage Information</h4>
+                        <p className='px-4'>
+                            When you visit the Website, the Website's hosting, content-delivery, security, and
+                            analytics providers may process technical information needed to deliver and protect
+                            the Website and understand its use. Depending on the service and configuration, this may include:
+                        </p>
 
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Governing Law</h3>
-                        <p>The laws of the Country, excluding its conflicts of law rules, shall govern these Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
-
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Disputes Resolution</h3>
-                        <p>If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company.</p>
-
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>For European Union (EU) Users</h3>
-                        <p>If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which You are resident.</p>
-
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>United States Legal Compliance</h3>
-                        <p>You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been designated by the United States government as a "terrorist supporting" country, and (ii) You are not listed on any United States government list of prohibited or restricted parties.</p>
-
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Severability and Waiver</h3>
-                        <h4>Severability</h4>
-                        <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>
-                        <h4>Waiver</h4>
-                        <p>Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not affect a party's ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach.</p>
-
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Translation Interpretation</h3>
-                        <p>These Terms and Conditions may have been translated if We have made them available to You on our Service. You agree that the original English text shall prevail in the case of a dispute.</p>
-
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Changes to These Terms and Conditions</h3>
-                        <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.</p>
-                        <p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the Service.</p>
-
-                        <h3 style={{ borderBottom: '1px solid var(--divider-color)', paddingBottom: '5px', marginTop: '1.5rem' }}>Contact Us</h3>
-                        <p>If you have any questions about these Terms and Conditions, You can contact us through <a href='/contact'>Contact</a> page,
-                            <br />or:</p>
-                        <ul style={{ paddingLeft: '1.5rem' }}>
-                            <li><strong>By email:</strong> <a href="mailto:sitehelp.chat@gmail.com">sitehelp.chat@gmail.com</a></li>
+                        <ul className='list-disc space-y-0.5' style={{ paddingLeft: '2.5rem' }}>
+                            <li>Internet Protocol (IP) address and approximate location derived from it;</li>
+                            <li>Browser type and version, device type, operating system, and language;</li>
+                            <li>Pages or URLs requested, referring page, and date and time of requests;</li>
+                            <li>General usage, page-view, performance, and security information; and</li>
+                            <li>Interactions or custom events recorded by the Website's analytics configuration.</li>
                         </ul>
+                        <p className='px-4 pt-1'>
+                            We use the analytics tools described in Section 3.
+                            We do not ask you to provide precise location information to play Sudoku.
+                        </p>
+                        <h4 className='font-semibold pt-1'>
+                            2. How We Use Information
+                        </h4>
+                        <p className='px-4 pt-1'>We may use information for the following purposes:</p>
+                        <ul className='list-disc space-y-0.5' style={{ paddingLeft: '2.5rem' }}>
+                            <li>To operate the Website and provide Sudoku gameplay and related features;</li>
+                            <li>To keep gameplay information, such as scores and hints, available in your browser;</li>
+                            <li>To respond to questions, feedback, and support requests;</li>
+                            <li>To understand Website traffic and usage, diagnose errors, and improve performance and content;</li>
+                            <li>To protect the Website, investigate abuse, prevent fraud, and maintain service security; and</li>
+                            <li>To display and measure advertising, where advertising services are enabled.</li>
+                        </ul>
+
+                        <p className='px-4'>
+                            We use information only for purposes that are appropriate to the way it was collected
+                            and as permitted or required by applicable law.
+                        </p>
+
+                        <h4 className='font-semibold pt-1'>3. Analytics and Website Providers</h4>
+                        <h4 className='font-semibold px-4'>Umami Analytics</h4>
+
+                        <p className='px-4'>
+                            We use Umami Analytics to understand how visitors use the Website and to improve it.
+                            Depending on the Website's tracker configuration, analytics may include page views, referring pages,
+                            browser and operating-system information, approximate location, and custom events enabled by the Website.
+                        </p>
+                        <p className='pt-1 px-4'>
+                            Umami's standard analytics does not use cookies for visitor tracking.
+                            By default, Umami generates a session identifier using the Website ID, a visitor's IP address,
+                            browser User-Agent information, and a rotating salt. The IP address is processed to generate
+                            that identifier but is not stored as a field in the standard analytics session record.
+                            The identifier is pseudonymous; this does not mean that an IP address is never processed
+                            by the systems involved in delivering an analytics request. The exact data collected may depend
+                            on whether Umami is self-hosted or cloud-hosted and on our configuration.
+                        </p>
+                        <p className='pt-1 px-4'>
+                            For more information, see <a href="https://docs.umami.is/docs/metric-definitions">Umami's metric</a> definitions and
+                            <a href='https://docs.umami.is/'> Umami's documentation</a>.
+                        </p>
+
+                        <h4 className='font-semibold px-4 pt-1'>Cloudflare</h4>
+
+                        <p className='px-4'>
+                            We use Cloudflare services to help host, deliver, and protect the Website.
+                            Cloudflare may process technical information such as IP addresses, request details,
+                            and browser information for content delivery, security, reliability, and troubleshooting.
+                        </p>
+
+                        <p className='px-4 pt-1'>
+                            We also use Cloudflare Web Analytics to understand general Website traffic. Cloudflare states
+                            that its Web Analytics product does not use cookies or LocalStorage for analytics and does not
+                            fingerprint individuals using IP addresses or browser User-Agent information for analytics.
+                            Cloudflare's separate hosting, content-delivery, and security services may nevertheless process
+                            technical request information for their operational purposes.
+                        </p>
+
+                        <p className='pt-1 px-4'>
+                            For more information, see <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's Privacy Policy</a> and
+                            <a href='https://www.cloudflare.com/web-analytics/'> Cloudflare Web Analytics</a>.
+                        </p>
+
+                        <h4 className='font-semibold pt-1'>
+                            4. Cookies, LocalStorage, and Similar Technologies
+                        </h4>
+                        <p className='px-4'>
+                            LocalStorage is used for gameplay functions described in Section 1.
+                            It is stored by your browser for the Website and is not the same as a cookie.
+                        </p>
+
+                        <p className='px-4 pt-1'>
+                            The standard analytics functions of Umami and Cloudflare Web Analytics described above do not rely on cookies.
+                            However, cookies or similar technologies may be used by hosting or security features, advertising providers,
+                            or other third-party services when those features are enabled. For example, Google advertising services may use cookies,
+                            web beacons, IP addresses, or other identifiers to deliver, measure, and personalize advertising.
+                        </p>
+
+                        <p className='px-4 pt-1'>
+                            You can manage or clear browser storage and cookies through your browser settings.
+                            Blocking or deleting storage may affect some Website features.
+                            Browser controls do not necessarily prevent all technical information from being processed
+                            when a website is requested.
+                        </p>
+
+                        <h4 className='font-semibold pt-1'>
+                            5. Advertising and Google AdSense
+                        </h4>
+                        <p className='px-4'>
+                            We may use Google AdSense or other advertising providers to display advertisements on the Website.
+                            When advertising services are active, Google and its advertising partners may use cookies and similar
+                            technologies to collect or receive information about your browser, device, IP address, the page being
+                            viewed, and your interaction with advertisements. This information may be used to deliver, limit, personalize,
+                            and measure advertisements, subject to the provider's settings, your choices, and applicable law.
+                        </p>
+
+                        <p className='px-4 pt-1'>
+                            Third-party vendors, including Google, may use cookies to serve ads based on a user's prior visits to this
+                            Website or other websites. Other advertising vendors or networks may also place or read cookies, use web beacons,
+                            or process IP addresses or other identifiers in connection with ad serving.
+                        </p>
+                        <p className='px-4 pt-1'>
+                            You can learn more about Google's practices at <a href='https://policies.google.com/technologies/partner-sites'>
+                                How Google uses information from sites or apps that use its services</a> and in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
+                            You can manage Google's personalized advertising settings through <a href='https://policies.google.com/privacy'>My Ad Center</a>.
+                            You may also find information about industry advertising choices at <a href='https://youradchoices.com/'>YourAdChoices</a>.
+                        </p>
+                        <p className='px-4 pt-1'>
+                            Changing personalized-ad settings does not necessarily stop all advertisements or all technical data processing.
+                            Where required, we will provide or use an appropriate consent or choice mechanism for advertising technologies.
+                            Visitors in the European Economic Area, the United Kingdom, and Switzerland may be subject to additional consent
+                            requirements for Google's advertising services.
+                        </p>
+
+                        <h4 className='font-semibold pt-1'>
+                            6. Contact Form and EmailJS
+                        </h4>
+                        <p className='px-4'>
+                            Our Contact page uses EmailJS to transmit messages submitted through the contact form to us.
+                            Information you enter into the form, such as your email address and message, is processed by EmailJS
+                            and may be handled by its infrastructure and service providers to deliver the message, maintain the service,
+                            and prevent abuse.
+                        </p>
+                        <p className='px-4 pt-1'>
+                            We use the information in your message to respond to you and handle your inquiry.
+                            We do not use contact-form details for unrelated purposes unless you agree or the law permits or requires it.
+                            EmailJS processes information under its own service terms and privacy practices. See the <a href='https://www.emailjs.com/legal/privacy-policy/'>EmailJS Privacy Policy</a>.
+                        </p>
+                        <p className='px-4 pt-1'>
+                            You can also contact us directly at <a href="mailto:sitehelp.chat@gmail.com">sitehelp.chat@gmail.com</a>.
+                        </p>
+
+                        <h4 className='font-semibold pt-1'>
+                            7. When We Share Information
+                        </h4>
+                        <p className='px-4'>
+                            We do not sell personal information for money. We may disclose or allow access to information
+                            in the following circumstances:
+                        </p>
+
+                        <ul className='list-disc space-y-0.5' style={{ paddingLeft: '2.5rem' }}>
+                            <li>
+                                <b>Service providers:</b> We use providers such as Cloudflare, Umami, EmailJS, and, when enabled,
+                                Google or other advertising providers to host, secure, analyze, support, or monetize the Website.
+                                They may process information on our behalf or for their own purposes as described in their privacy policies.
+                            </li>
+                            <li>
+                                <b>Legal and safety reasons:</b> We may disclose information when we reasonably believe disclosure is required by law,
+                                legal process, or a valid governmental request, or is necessary to protect the rights, safety,
+                                and security of the Website, its operator, visitors, or others.
+                            </li>
+                            <li>
+                                <b>Business changes:</b> Information may be transferred as part of a sale, reorganization, or transfer of the Website or its operation,
+                                subject to applicable privacy requirements.
+                            </li>
+                        </ul>
+                        <p className='px-4 pt-1'>
+                            Some privacy laws treat certain disclosures to advertising partners for personalized or cross-context advertising as "sharing,"
+                            even when no money is paid for the information. The treatment of advertising data depends on the services enabled and the
+                            law that applies to you. We will provide applicable choices or opt-outs where required by law.
+                        </p>
+
+                        <h4 className='font-semibold pt-1'>
+                            9. How Long We Keep Information
+                        </h4>
+                        <p className='px-4'>
+                            We keep information only for as long as reasonably necessary for the purposes described in this policy,
+                            unless a longer period is required or permitted by law.
+                        </p>
+                        <ul className='list-disc space-y-0.5' style={{ paddingLeft: '2.5rem' }}>
+                            <li>
+                                <b>Browser gameplay data:</b> LocalStorage information remains in your browser until it is overwritten,
+                                expires under the Website's feature logic, or you clear the Website's site data.
+                            </li>
+                            <li>
+                                <b>Contact messages:</b> We retain messages and related correspondence for as long as needed to respond, manage the inquiry,
+                                maintain appropriate business records, and address legal or security matters.
+                            </li>
+                            <li>
+                                <b>Analytics and technical:</b> Retention is determined by the relevant provider's settings, service terms,
+                                and operational or security requirements. We do not promise a single retention period for all provider logs or analytics records.
+                            </li>
+                        </ul>
+                        <h4 className='font-semibold pt-1'>
+                            10. Security
+                        </h4>
+                        <p className='px-4'>
+                            We use reasonable safeguards designed to protect information under our control against unauthorized access, use, alteration, or disclosure.
+                            These may include access controls, service-provider safeguards, and measures to protect the Website and its infrastructure. No website,
+                            internet transmission, or electronic storage method can be guaranteed to be completely secure.
+                            Information processed by a third-party provider is also subject to that provider's security practices and controls.
+                        </p>
+
+                        <h4 className='font-semibold pt-1'>
+                            11. Your CHoices and Privacy Rights
+                        </h4>
+                        <div className='px-4 space-y-1'>
+                            <p>
+                                You can clear SudokuPlays LocalStorage, cookies, and other site data using your browser settings. This may reset saved gameplay information or affect Website functionality. You may also choose not to submit information through the Contact page.
+                            </p>
+                            <p>
+                                Depending on the privacy law that applies to you, you may have the right to request access to personal information about you, request correction of inaccurate information, withdraw consent where processing is based on consent, request deletion, or raise a concern about how your information is handled. Some rights are subject to legal exceptions and may not apply to every type of information or processing.
+                            </p>
+                            <p>
+                                To make a privacy request, contact our Privacy Officer using the details in Section 15. We may need to verify your identity and clarify the request before responding. Clearing your browser's LocalStorage only removes data stored on your device; it does not delete a message you previously sent to us or records held by a third-party provider.
+                            </p>
+                        </div>
+
+                        <h4 className='font-semibold pt-1 px-4'>
+                            Additional Information for Canadian Visitors
+                        </h4>
+
+                        <div className='px-4 space-y-1'>
+                            <p>
+                                SudokuPlays is operated in British Columbia. The British Columbia Personal Information Protection Act (PIPA)
+                                is a key private-sector privacy law relevant to organizations operating in the province. The federal Personal
+                                Information Protection and Electronic Documents Act (PIPEDA) may also apply to particular activities,
+                                including certain interprovincial or international commercial data flows.
+                                The specific law applicable to a particular activity depends on the circumstances.
+                            </p>
+                            <p>
+                                If you have a concern about our handling of personal information, you may contact our Privacy Officer first.
+                                You may also contact the <a href='https://www.oipc.bc.ca/'>Office of the Information and Privacy Commissioner for British Columbia</a>.
+                                Information about PIPEDA is available from the <a href='https://www.priv.gc.ca/'>Office of the Privacy Commissioner of Canada</a>.
+                            </p>
+                        </div>
+                        <h4 className='font-semibold pt-1 px-4'>
+                            Visitors in Other Regions
+                        </h4>
+                        <p className='px-4'>
+                            Depending on where you live and whether the relevant law applies to our activities, you may have additional rights under privacy laws such
+                            as the GDPR, UK GDPR, or applicable US state privacy laws. This policy is intended to explain our practices; it does not claim that every
+                            privacy law applies to every visitor or that every right is available in every circumstance.
+                        </p>
+
+                        <h4 className='font-semibold pt-1'>
+                            12. Children's Privacy
+                        </h4>
+                        <p className='px-4'>
+                            The Website's Terms and Conditions state that the service is intended for individuals who are at least 18 years old.
+                            SudokuPlays does not knowingly seek to collect personal information from anyone under 18.
+                            If you believe someone under 18 has sent us personal information, please contact our Privacy Officer so that we can
+                            review the request and take appropriate steps.
+                        </p>
+                        <h4 className='font-semibold pt-1'>
+                            13. Third-Party Websites
+                        </h4>
+                        <p className='px-4'>
+                            The Website may contain links to third-party websites or services. We do not control those websites and are not responsible
+                            for their privacy practices. When you follow an external link, review the privacy policy of the third party before providing information to it.
+                        </p>
+                        <h4 className='font-semibold pt-1'>
+                            14. Changes to This Privacy Policy
+                        </h4>
+
+                        <p className='px-4'>
+                            We may update this Privacy Policy when our practices, services, or legal obligations change.
+                            The updated version will be posted on this page with a revised "Last updated" date.
+                            We encourage you to review this page periodically.
+                        </p>
+                        <h4 className='font-semibold pt-1'>
+                            15. Contact and Privacy Officer
+                        </h4>
+                        <p className='px-4'>
+                            For questions, privacy requests, or concerns about this Privacy Policy or our handling of personal information, contact:
+                        </p>
+                        <div className='px-4 pt-1'>
+                            <h4 className='font-semibold'>Privacy Officer</h4>
+                            <h4 className='font-semibold'>SudokuPlays</h4>
+                            <p>Email: <a href='mailto:sitehelp.chat@gmail.com'>sitehelp.chat@gmail.com</a>
+                                <br />
+                                Contact page: <a href='/contact'>https://sudokuplays.com/contact/</a>
+                            </p>
+                        </div>
                     </div>
                 </main>
             </Layout >
-        </ThemeProvider>
-
+        </ThemeProvider >
     )
 }
 export default PrivacyPolicy
