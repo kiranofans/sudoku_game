@@ -1,5 +1,5 @@
 import { changelog } from "@/hooks/useChangeLog";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import ExpandableBox from "./ExpandableBox";
 
@@ -301,15 +301,57 @@ interface PageLevelNavMenuProps {
 }
 
 export function PageLevelNavMenu({ sections, activeSlug, onNavClick }: PageLevelNavMenuProps) {
+    const navRef = useRef<HTMLElement | null>(null);
+    const tabRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+    const isFirstRender = useRef(true);
+
+    // Automatically scroll the horizontal navigation widget when the active section changes
+    useEffect(() => {
+        if (!activeSlug) return;
+        const activeTab = tabRefs.current[activeSlug];
+        const nav = navRef.current;
+        if (!activeTab || !nav) return;
+
+        const navRect = nav.getBoundingClientRect();
+        const tabRect = activeTab.getBoundingClientRect();
+
+        const tabCenter = tabRect.left + tabRect.width / 2;
+        const navCenter = navRect.left + navRect.width / 2;
+        const diff = tabCenter - navCenter;
+
+        // If the active item is not centered, smoothly scroll it into focus
+        if (Math.abs(diff) > 10 || isFirstRender.current) {
+            const targetLeft = nav.scrollLeft + diff;
+            const maxScrollLeft = nav.scrollWidth - nav.clientWidth;
+            const finalLeft = Math.max(0, Math.min(targetLeft, maxScrollLeft));
+
+            nav.scrollTo({
+                left: finalLeft,
+                behavior: isFirstRender.current ? 'auto' : 'smooth',
+            });
+        }
+
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+        }
+    }, [activeSlug]);
+
     return (
-        <nav className="sticky top-[var(--header-inner-height,48px)] z-[1000] w-full flex gap-3 sm:gap-8 border-b border-gray-200 
+        <nav
+            ref={navRef}
+            className="sticky top-[var(--header-inner-height,48px)] z-[1000] w-full flex gap-3 sm:gap-8 border-b border-gray-200 
             dark:border-gray-700 bg-white dark:bg-[var(--bg-color)] mb-8 overflow-x-auto
-            [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" style={{ WebkitOverflowScrolling: 'touch', WebkitBackdropFilter: 'blur(12px)' }}>
+            [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            style={{ WebkitOverflowScrolling: 'touch', WebkitBackdropFilter: 'blur(12px)' }}
+        >
             {sections.map((section) => {
                 const slug = section.id;
                 return (
                     <a
                         key={slug}
+                        ref={(el) => {
+                            tabRefs.current[slug] = el;
+                        }}
                         href={`#${slug}`}
                         className={`py-4 text-[0.85rem] md:text-md sm:text-sm whitespace-nowrap relative transition-colors
                             duration-200 ease-[ease] after:content-[''] after:absolute after:bottom-[-1px] after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:bg-[var(--num-pad-bg)] 
