@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout';
-import { ListUi, PageLevelNavMenu } from '@/components/SmallUiWidgets';
+import { PageLevelNavMenu } from '@/components/SmallUiWidgets';
 import { ThemeProvider } from '@/components/ThemeContext';
 
 function PrivacyPolicy() {

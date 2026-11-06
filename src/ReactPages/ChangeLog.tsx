@@ -23,6 +23,13 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date={'2026-11-05'}
+                                version={'v1.0.0'}
+                                title={'Improvement'}
+                                items={[
+                                    <>Updated & modified <a href="/PrivacyPolicy">Privacy Policy</a> and <a href="/TermsAndConditions">Terms and Conditions</a>.</>,
+                                ]} />
+                            <ChangelogEntry
                                 date={'2026-11-03'}
                                 version={'v1.0.0'}
                                 title={'Improvements'}
