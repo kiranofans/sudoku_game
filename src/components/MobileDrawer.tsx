@@ -16,7 +16,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
       />
 
       {/* Drawer Panel */}
-      <div className="absolute left-0 top-0 h-full w-64 bg-white dark:bg-gray-900 shadow-2xl flex flex-col p-6 animate-in slide-in-from-left duration-300">
+      <div className="absolute left-0 top-0 h-full w-64 bg-white dark:bg-gray-900 shadow-2xl flex flex-col p-6 overflow-y-auto animate-in slide-in-from-left duration-300">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-3">
             <img src="/images/png/logo_sudoku1.png" alt="Logo" className="w-8 h-8 rounded-lg" />
@@ -72,6 +72,13 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
           >
             FAQ
           </a>
+          <a href="/detailedGuide"
+            className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 
+            dark:text-gray-200"
+            onClick={onClose}>
+            How the Site Works?
+          </a>
+
           <a
             href="/changeLog"
             className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 
@@ -81,9 +88,29 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
             What's New?
           </a>
 
+          {/* Divider under What's New? */}
+          <div className="border-t border-gray-200 dark:border-gray-800 my-1" />
         </nav>
 
-        <div className="mt-auto pt-8 border-t dark:border-gray-800 text-sm text-gray-500 text-center">
+        {/* Bottom Nav: Privacy Policy & Terms and Conditions above footer */}
+        <nav aria-label="Legal navigation" className="mt-auto pt-4 flex flex-col gap-1 font-medium">
+          <a
+            href="/privacyPolicy"
+            className="p-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            onClick={onClose}
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/termsAndConditions"
+            className="p-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            onClick={onClose}
+          >
+            Terms & Conditions
+          </a>
+        </nav>
+
+        <div className="pt-4 mt-2 border-t border-gray-200 dark:border-gray-800 text-xs text-gray-400 dark:text-gray-500 text-center">
           &copy; {new Date().getFullYear()} sudokuplays.com
         </div>
       </div>
