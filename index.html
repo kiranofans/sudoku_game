@@ -1,61 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><!-- Canonical URL --><link rel="canonical" href="https://sudokuplays.com/"><script>
+      // Inline script to prevent FOUC by applying the theme before the page renders
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const systemDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const root = document.documentElement;
+        const isDark = saved === "dark" || (saved !== "light" && systemDark);
 
-<head>
-  <meta charset="UTF-8" />
+        root.classList.remove("light-theme", "dark-theme");
+        if (isDark) {
+          root.classList.add("dark-theme");
+          root.style.colorScheme = "dark";
+        } else {
+          root.classList.add("light-theme");
+          root.style.colorScheme = "light";
+        }
+      })();
+    </script><title>Sudoku Plays - Play Free Sudoku Game Online</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no"><meta name="description" content="Play Sudoku online for free~! Features a mobile-friendly design for both Android & iOS. Start your daily challenge today!"><meta name="msvalidate.01" content="C82111AE0E298F17FEE4E665BA3D7BD2"><!-- Analytics and Ads --><script defer src="https://cloud.umami.is/script.js" data-website-id="8611e60d-a15b-46e5-81cf-e99174cd0f74"></script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643" crossorigin="anonymous"></script><!-- Icons --><link rel="icon" type="image/png" sizes="32x32" href="/images/png/logo_sudoku1.png"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!-- NProgress --><link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css"><script src="https://unpkg.com/nprogress/nprogress.js"></script><!--Sharing Meta--><meta property="og:title" content="SudokuPlays"><meta property="og:description" content="Play free, fast, and fun Sudoku online! Challenge yourself and beat your high score."><meta property="og:image" content="https://sudokuplays.com/og-share-card.png"><meta property="og:url" content="https://sudokuplays.com"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="SudokuPlays - Free Online Sudoku"><meta name="twitter:description" content="Play free online Sudoku puzzles."><meta name="twitter:image" content="https://sudokuplays.com/og-share-card.png"><link rel="stylesheet" href="/assets/Layout.Din684pt.css"></head><body class="bg-white dark:bg-gray-900"> <!-- The Loading Screen --> <div id="initial-loader" class="fixed inset-0 flex items-center justify-center bg-white dark:bg-gray-900 text-black dark:text-white text-lg font-bold transition-opacity duration-300">
+Loading...
+</div> <!-- The <slot /> replaces your old <div id="root"></div> -->  <h1 class="sr-only">Sudoku Plays - Enjoy Daily Free Sudoku Puzzles</h1> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var C=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var l=(i,o,a)=>C(i,typeof o!="symbol"?o+"":o,a);var E=new Set(["__proto__","constructor","prototype"]);{let i={0:t=>y(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},o=t=>{let[h,e]=t;return h in i?i[h](e):void 0},a=t=>t.map(o),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([h,e])=>[h,o(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},p=this.querySelectorAll("template[data-astro-template]");for(let r of p){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let d;await this.hydrator(this)(this.Component,u,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[p,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(d.includes(".")){this.Component=p;for(let m of d.split(".")){if(E.has(m)||!this.Component||typeof this.Component!="object"&&typeof this.Component!="function"||!Object.hasOwn(this.Component,m))throw new Error(`Invalid component export path: ${d}`);this.Component=this.Component[m]}}else{if(E.has(d))throw new Error(`Invalid component export path: ${d}`);this.Component=p[d]}return this.hydrator=u,this.hydrate},e,this)}catch(n){console.error("[astro-island] Error hydrating %s",this.getAttribute("component-url"),n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="1qsxpA" prefix="r1" component-url="/assets/Homepage.BhNU5QYA.js" component-export="default" renderer-url="/assets/client.DYlJtT2g.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Homepage&quot;,&quot;value&quot;:true}" await-children><div class="wrapper min-h-screen flex flex-col"><header class="menu-bar "><div class="logo-title-container"><div class="relative flex items-center"><a href="/" class="logo-link flex items-center group" aria-label="Toggle menu on mobile or go to homepage"><img src="/images/png/logo_sudoku1.png" alt="Logo" class="logo transition-transform active:scale-10"/></a></div><div class="title-score-wrapper"><div class="title-tagline-container flex"><h2 class="game-title">Sudoku</h2><div class="m-0.5 text-sm"><div><a href="/changeLog" class="border   items-center rounded-sm sm:rounded-md xs:rounded-sm
+                hover:border-blue-400 dark:hover:border-blue-400 dark:hover:text-blue-400 m-2 py-1 px-1.5 p-1">What&#x27;s New?</a></div></div></div></div></div><div class="header-center-content"><div class="mobile-score-column flex flex-row items-center justify-center gap-3"><div class="flex items-center gap-2 px-3 md:gap-1 sm:gap-0.5 px-2 md:px-2 sm:px-1 py-1 bg-black/5 dark:bg-white/10 rounded-full backdrop-blur-sm border border-white/5"><div class="flex items-center gap-1.5 border-r border-black/10 dark:border-white/10 pr-2"><span class="text-[0.6rem] font-bold text-[var(--score-label)] uppercase tracking-wider">Score</span><span class="text-sm font-bold text-[var(--score-value)] font-mono leading-none">0</span></div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--num-pad-bg)] shrink-0 cursor-pointer transition-all duration-200 hover:text-[var(--score-value)] hover:scale-110 ml-1" aria-labelledby="svg-title svg-description" role="button" aria-label="Toggle score history" tabindex="0"><title class="sr-only" id="svg-title">Score History icon button for mobile</title><desc id="svg-descriptions">Score history icon button for mobile portrait screens</desc><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div></div></div><div class="controls-row"><a href="/sudokuTips" class="header-nav-item desktop-only-nav">Tips</a><span class="header-nav-separator desktop-only-nav">|</span><a href="/about" class="header-nav-item desktop-only-nav">About</a><span class="header-nav-separator desktop-only-nav">|</span><a href="/contact" class="header-nav-item desktop-only-nav">Contact</a><div class="flex items-center sx:gap-0.5 md:gap-1 sm:gap-1"><div class="theme-selector-container "><div class="dropdown-trigger"><div class="tooltip-container"><button class="theme-icon-button" aria-label="Change difficulty" title="Change difficulty"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="theme-icon-img" aria-labelledby="svg-title svg-description"><title class="sr-only" id="svg-title">Change difficulty icon</title><desc id="svg-description">Clickable icon button for difficulty change</desc><path d="M11.9999 3C10.0221 3.00003 8.0887 3.58653 6.44424 4.68535C4.79977 5.78416 3.51807 7.34594 2.7612 9.17318C2.00434 11.0004 1.8063 13.0111 2.19214 14.9509C2.57799 16.8907 3.53037 18.6725 4.92887 20.071L5.63587 20.778L8.05687 18.357L6.64287 16.943L5.67987 17.905C4.80055 16.7718 4.24206 15.4231 4.06287 14H5.99987V12H4.06287C4.24206 10.5769 4.80055 9.22817 5.67987 8.095L6.29287 8.707L6.79287 9.207L8.20687 7.793L7.09487 6.68C8.22804 5.80068 9.57678 5.24219 10.9999 5.063V6.5H12.9999V5.063C14.423 5.24219 15.7717 5.80068 16.9049 6.68L15.7929 7.793L17.2069 9.207L18.3199 8.095C19.1992 9.22817 19.7577 10.5769 19.9369 12H17.9999V14H19.9369C19.7576 15.4235 19.1987 16.7727 18.3189 17.906L17.3569 16.943L15.9429 18.357L18.3639 20.778L19.0709 20.071C20.4689 18.6723 21.4208 16.8905 21.8064 14.9509C22.192 13.0112 21.9938 11.0008 21.237 9.1738C20.4803 7.34675 19.1988 5.78508 17.5546 4.68619C15.9105 3.58729 13.9774 3.0005 11.9999 3Z" fill="currentColor"></path><path d="M12.7066 13.7064C12.8888 13.5178 12.9895 13.2652 12.9873 13.003C12.985 12.7408 12.8798 12.49 12.6944 12.3046C12.509 12.1192 12.2582 12.014 11.996 12.0118C11.7338 12.0095 11.4812 12.1103 11.2926 12.2924L8.29259 15.2924C8.19708 15.3847 8.1209 15.495 8.06849 15.617C8.01608 15.739 7.9885 15.8703 7.98734 16.003C7.98619 16.1358 8.01149 16.2675 8.06177 16.3904C8.11205 16.5133 8.18631 16.6249 8.2802 16.7188C8.37409 16.8127 8.48574 16.887 8.60864 16.9373C8.73154 16.9875 8.86321 17.0128 8.99599 17.0117C9.12877 17.0105 9.25999 16.9829 9.382 16.9305C9.504 16.8781 9.61435 16.8019 9.70659 16.7064L12.7066 13.7064Z" fill="currentColor"></path></svg></button></div></div></div><div class="relative"><div class="tooltip-container"><button class="how-to-play-btn" aria-label="How to play" title="Quick Play Guide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="how-to-icon-img" aria-labelledby="svg-title svg-description"><title id="svg-title">How-to-play icon</title><desc id="svg-description">Clickable quick guide icon for Sudoku instructions for beginners</desc><path d="M12.838 17.638C13.0793 17.396 13.2 17.1 13.2 16.75C13.2 16.4 13.0793 16.104 12.838 15.862C12.5967 15.62 12.3007 15.4993 11.95 15.5C11.5993 15.5007 11.3037 15.6217 11.063 15.863C10.8223 16.1043 10.7013 16.4 10.7 16.75C10.6987 17.1 10.8197 17.396 11.063 17.638C11.3063 17.88 11.602 18.0007 11.95 18C12.298 17.9993 12.594 17.8783 12.838 17.637M11.05 14.15H12.9C12.9 13.6 12.9627 13.1667 13.088 12.85C13.2133 12.5333 13.5673 12.1 14.15 11.55C14.5833 11.1167 14.925 10.704 15.175 10.312C15.425 9.92001 15.55 9.44934 15.55 8.9C15.55 7.96667 15.2083 7.25001 14.525 6.75001C13.8417 6.25001 13.0333 6.00001 12.1 6.00001C11.15 6.00001 10.3793 6.25001 9.788 6.75001C9.19667 7.25001 8.784 7.85001 8.55 8.55001L10.2 9.20001C10.2833 8.90001 10.471 8.57501 10.763 8.22501C11.055 7.87501 11.5007 7.70001 12.1 7.70001C12.6333 7.70001 13.0333 7.846 13.3 8.138C13.5667 8.43 13.7 8.75067 13.7 9.10001C13.7 9.43334 13.6 9.746 13.4 10.038C13.2 10.33 12.95 10.6007 12.65 10.85C11.9167 11.5 11.4667 11.9917 11.3 12.325C11.1333 12.6583 11.05 13.2667 11.05 14.15ZM12 22C10.6167 22 9.31667 21.7377 8.1 21.213C6.88334 20.6883 5.825 19.9757 4.925 19.075C4.025 18.1743 3.31267 17.116 2.788 15.9C2.26333 14.684 2.00067 13.384 2 12C1.99933 10.616 2.262 9.31601 2.788 8.10001C3.314 6.88401 4.02633 5.82567 4.925 4.92501C5.82367 4.02434 6.882 3.31201 8.1 2.78801C9.318 2.26401 10.618 2.00134 12 2.00001C13.382 1.99867 14.682 2.26134 15.9 2.78801C17.118 3.31467 18.1763 4.02701 19.075 4.92501C19.9737 5.82301 20.6863 6.88134 21.213 8.10001C21.7397 9.31867 22.002 10.6187 22 12C21.998 13.3813 21.7353 14.6813 21.212 15.9C20.6887 17.1187 19.9763 18.177 19.075 19.075C18.1737 19.973 17.1153 20.6857 15.9 21.213C14.6847 21.7403 13.3847 22.0027 12 22Z" fill="currentColor"></path></svg></button></div><div class="theme-selector-container absolute top-[120%] right-0 z-[10010]"></div></div><div class="theme-selector-container "><div class="dropdown-trigger"><div class="tooltip-container"><button class="theme-icon-button" aria-label="Change theme" title="Change theme"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="theme-icon-img" aria-labelledby="svg-title svg-description"><title class="sr-only" id="svg-title">Theme icon button (black for light theme)</title><desc id="svg-description">Light mode icon button for changing theme</desc><g><path d="M4.575 4.575L5.689 5.689M1.5 12H3.075M4.575 19.425L5.689 18.311M19.425 19.425L18.311 18.311M22.5 12H20.925M19.425 4.575L18.311 5.689M12 1.5V3.075" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 18C15.3135 18 18 15.3135 18 12C18 8.6865 15.3135 6 12 6C8.6865 6 6 8.6865 6 12C6 15.3135 8.6865 18 12 18Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M12 22.5008V20.9258" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button></div></div></div></div></div></header><hr class="divider"/><h2 class="sr-only">Free Online Sudoku Puzzles - Enjoy Daily Logic Games</h2><div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0">Play Sudoku online for free at SudokuPlays.com, with no login required! Just enjoy daily puzzles in multiple difficulty levels, clear beginner-friendly instructions, and separate pro tips to help improve your skill. Challenge yourself with a scoring system and timer control, all in a fast, mobile-friendly experience for iOS and Android.</div><div class="sudoku-app !max-w-7xl w-full mx-auto px-4 sm:px-6" style="max-width:1240px"><div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 lg:gap-10 xl:gap-14 w-full"><div class="flex flex-col items-center w-full max-w-[720px]"><div class="game-container h-auto [contain:none] [will-change:auto] "><div class="board-section"><div class="game-info"><div><div class="info-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-labelledby="svg-title svg-description" xmlns="http://www.w3.org/2000/svg" class="timer-icon-svg"><title id="svg-title">SudokuPlays timer icon</title><desc id="svg-description">Countdown timer during gameplay</desc><path d="M9 3V1H15V3H9ZM11 14H13V8H11V14ZM8.512 21.288C7.42067 20.8127 6.46667 20.1667 5.65 19.35C4.83333 18.5333 4.18767 17.579 3.713 16.487C3.23833 15.395 3.00067 14.2327 3 13C2.99933 11.7673 3.237 10.6047 3.713 9.512C4.189 8.41933 4.83467 7.46533 5.65 6.65C6.46533 5.83467 7.41967 5.189 8.513 4.713C9.60633 4.237 10.7687 3.99933 12 4C13.0333 4 14.025 4.16667 14.975 4.5C15.925 4.83333 16.8167 5.31667 17.65 5.95L19.05 4.55L20.45 5.95L19.05 7.35C19.6833 8.18333 20.1667 9.075 20.5 10.025C20.8333 10.975 21 11.9667 21 13C21 14.2333 20.7623 15.396 20.287 16.488C19.8117 17.58 19.166 18.534 18.35 19.35C17.534 20.166 16.5797 20.812 15.487 21.288C14.3943 21.764 13.232 22.0013 12 22C10.768 21.9987 9.60533 21.7613 8.512 21.288Z" fill="currentColor"></path></svg><span>0:00</span><svg aria-labelledby="svg-title svg-description" class="w-7 h-7 cursor-pointer transition-transform hover:scale-100 
+                                hover:stroke-blue-700 stroke-current text-black dark:text-gray-300 dark:gray-300
+                                dark:hover:stroke-gray-200" viewBox="0 0 48 48" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><title class="sr-only" id="svg-title">Countdown timer control button</title><desc id="svg-description">Sudoku Play game timer control button: play/pause</desc><circle cx="24" cy="24" r="20"></circle><line x1="18" y1="16" x2="18" y2="32"></line><line x1="30" y1="16" x2="30" y2="32"></line></svg></div></div><div><div class="info-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mistake-icon-svg" aria-labelledby="svg-title svg-description"><title id="svg-title">Mistakes icon</title><desc id="svg-description">Sudoku Play game mistakes icon</desc><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>0<!-- -->/10</span></div></div><div><button class="new-game-btn">New Game</button></div></div><div class="sudoku-board"></div></div><div class="counts-and-actionbtn"><div class="control-panel"><div class="score-widget desktop-only-score"><div class="score-main"><span class="score-label"><b class="text-sm">Score:</b></span><span class="score-value">- - - -</span></div><div class="score-refresh-notice"><span class="font-bold text-[0.55rem]">Score resets every 24 hours</span></div></div><button class="desktop-only-score w-full mt-2 p-[10px_15px] flex items-center justify-center gap-2 bg-[var(--score-bg)] border border-[var(--divider-color)] text-[var(--score-label)] rounded-lg cursor-pointer transition-all duration-200 shadow-[0_2px_4px_rgba(0,0,0,0.05)] hover:bg-[var(--button-bg)] hover:text-[var(--score-value)] hover:-translate-y-px hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] group" aria-label="Toggle score history"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--num-pad-bg)] shrink-0" aria-labelledby="svg-title svg-description"><circle cx="12" cy="12" r="10"></circle><title class="sr-only" id="svg-title">History icon button for web/desktop</title><desc id="svg-description">Score/game play history icon button for web/desktop</desc><polyline points="12 6 12 12 16 14"></polyline></svg><span class="text-sm font-bold uppercase tracking-wider">History</span></button><div class="action-buttons"><div class="tooltip-container"><button class="" aria-pressed="false" aria-label="Toggle pencil mode"><div class="btn-pencil" title="Edit"></div></button></div><div class="tooltip-container"><button><div class="btn-eraser"></div></button></div><div class="tooltip-container"><button class="hint-ad " aria-label="Hints remaining 3"><div class="btn-hint"></div><span class="hint-badge" role="status" aria-live="polite">3</span></button></div><div class="tooltip-container"><button aria-label="Reset"><div class="btn-reset"></div></button></div></div><div class="number-pad"><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">1</span><span class="count-badge">9</span></div></button><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">2</span><span class="count-badge">9</span></div></button><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">3</span><span class="count-badge">9</span></div></button><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">4</span><span class="count-badge">9</span></div></button><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">5</span><span class="count-badge">9</span></div></button><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">6</span><span class="count-badge">9</span></div></button><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">7</span><span class="count-badge">9</span></div></button><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">8</span><span class="count-badge">9</span></div></button><button class="" aria-labelledby=""><div class="number-pad-count-container items-center vertical-center align-center space-y-1"><span class="number-value ">9</span><span class="count-badge">9</span></div></button></div></div></div></div><div class="w-full border-t border-gray-200 dark:border-gray-700 my-4 max-w-[660px] mx-auto opacity-60"></div><div data-nosnippet="true" class=" w-full mx-auto px-2 pb-2 text-md text-gray-600 mt-4 mb-0.5 mx-2 known-issues-container"><div class=" max-w-[800px] mx-auto " style="width:100%;max-width:900px;text-align:left;flex:1 0 auto"><div class="w-full border bg-yellow-50 dark:bg-[rgba(245,158,11,0.06)] border-yellow-200 dark:border-[rgba(245,158,11,0.3)] rounded overflow-hidden transition-all duration-300"><button class="w-full flex justify-between items-center px-4 py-2.5 
+                   !border-none !rounded-none !bg-transparent
+                   hover:bg-gray-50 dark:hover:bg-gray-600
+                   transition-colors focus:outline-none"><span class="text-[13px] text-gray-700 dark:text-gray-300 tracking-wider font-semibold text-left"><span class="flex items-center space-around font-bold text-yellow-900 dark:text-[#fbbf24]"><span class="mr-1">⚠️</span><span class="line-clamp-1">Known Issues</span></span></span><span class="text-gray-500 dark:text-gray-200 font-bold text-lg leading-none">+</span></button></div></div></div></div><aside aria-label="Sudoku game information and guide" class="w-full max-w-[720px] lg:max-w-[340px] xl:max-w-[380px] flex-shrink-0 text-left px-2 sm:px-0"><div class="divide-y divide-gray-200 dark:divide-gray-700/80"><section class="pb-6 lg:pt-1"><h2 class="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">About this SudokuPlays Game Site</h2><p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Welcome to SudokuPlays, a free and clean online Sudoku experience designed for both casual solvers and daily logic puzzle enthusiasts.</p><p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mt-2">Enjoy seamless gameplay with no sign-up required, built-in timer and error tracking, intelligent hints, and responsive controls optimized for desktop and mobile play.</p></section><section class="py-6"><h2 class="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">How to Play</h2><p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-2.5">New to SudokuPlays? Open the <b>Quick Guide</b> dropdown on the top right corner for a quick overview, or explore <b>How SudokuPlays Works</b> for more details about the game rules, controls, hints, and scoring.                    </p><div class="mt-4"><a href="/detailedGuide" class="inline-flex items-center text-xs sm:text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline">Explore How SudokuPlays Works (the user guide)<svg class="ml-1 w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd"></path></svg></a></div></section><section class="pt-6"><h2 class="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">Sudoku Tips</h2><p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-2.5">Improve your Sudoku skills with practical tips and proven techniques, from beginner basics to more advanced strategies.</p><div class="mt-4"><a href="/sudokuTips" class="inline-flex items-center text-xs sm:text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline">Explore all Sudoku tips &amp; strategies<svg class="ml-1 w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd"></path></svg></a></div></section></div></aside></div></div><footer class="site-footer bg-white border-t border-gray-200 [transform:translateZ(0)] " style="z-index:100"><div class="footer-copyright"><span>© <!-- -->2026<!-- --> sudokuplays.com v<!-- -->1.0.0<!-- --> | All rights reserved.</span></div><div class="footer-links"><a href="/privacyPolicy" class="footer-btn">Privacy Policy</a><a href="/termsAndConditions" class="footer-btn">Terms &amp; conditions</a><a href="/faq" class="footer-btn" style="text-decoration:none">FAQ</a><a href="/detailedGuide" class="footer-btn" style="text-decoration:none">How SudokuPlays Works?</a><a href="/about" class="footer-btn" style="text-decoration:none">About</a><a href="/contact" class="footer-btn" style="text-decoration:none">Contact</a></div><div class="social-links"><a href="https://github.com/kiranofans" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-describedby="svg-title svg-description"><title class="sr-only" id="svg-title">Check out my other projects!</title><desc id="svg-description">Clickable Github social meida handle</desc><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.45-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></a></div></footer></div><!--astro:end--></astro-island>  <div id="loader" class="loader hidden"> <div class="spinner"></div> </div> <script>
+      // This runs on the client to hide the loader
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("initial-loader");
+        if (loader) {
+          loader.classList.add("opacity-0"); // Tailwind class for fade-out
+          setTimeout(() => {
+            loader.style.display = "none";
+          }, 300);
+        }
+      });
+    </script> </body> </html> <!--May use this code later , right now no need of cookie banner--> <!-- <div
+    id="cookie-banner"
+    class="hidden fixed bottom-5 left-5 right-5 md:left-auto md:max-w-md p-6 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md shadow-2xl z-50"
+>
+    <div class="flex flex-col gap-4">
+        <div class="text-white">
+            <h2 class="text-lg font-bold mb-1">Privacy Preferences</h2>
+            <p class="text-sm opacity-90 leading-relaxed">
+                We use cookies to improve your experience and show personalized
+                ads. Read our <a
+                    href="/privacy"
+                    class="underline hover:text-blue-300">Privacy Policy</a
+                >.
+            </p>
+        </div>
 
-  <title>Sudoku | Free Online Sudoku & Daily Puzzles</title>
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover user-scalable=no">
-  <meta name="description"
-    content="Play Sudoku online for free~! Features a mobile-friendly design for both Android & iOS. Start your daily challenge today!" />
+        <div class="flex gap-3">
+            <button
+                id="accept-cookies"
+                class="flex-1 px-4 py-2 bg-white text-black font-semibold rounded-lg hover:bg-opacity-90 transition-all active:scale-95"
+            >
+                Accept
+            </button>
+            <button
+                id="decline-cookies"
+                class="flex-1 px-4 py-2 bg-black/30 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all active:scale-95"
+            >
+                Decline
+            </button>
+        </div>
+    </div>
+</div>
 
-  <meta name="msvalidate.01" content="C82111AE0E298F17FEE4E665BA3D7BD2" />
+<style>
+    .hidden {
+        display: none;
+    }
 
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5203dad2-52c2-4c9a-8944-cd55a2d13cd7"></script>
+    #cookie-banner {
+        animation: slideUp 0.5s ease-out forwards;
+    }
 
-  <!-- Optional: for Apple devices -->
-  <link rel="apple-touch-icon" href="path/to/logo.png">
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/png/logo_sudoku1.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="path/to/logo-16.png">
+<script is:inline>
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const declineBtn = document.getElementById("decline-cookies");
 
-  <!-- Icon libarary -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    // Check if user has already made a choice
+    const consent = localStorage.getItem("cookie-consent");
 
-  <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
-  <script src="https://unpkg.com/nprogress/nprogress.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643"
-    crossorigin="anonymous"></script>
+    if (!consent) {
+        banner.classList.remove("hidden");
+    }
 
-  <script type="module" crossorigin src="/assets/index-BTUTtQJL.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CLcxhZc3.css">
-</head>
-
-<body class="bg-white dark:bg-gray-900">
-  <div id="initial-loader" class="fixed inset-0 flex items-center justify-center 
-  bg-white dark:bg-gray-900 text-black dark:text-white text-lg text-bold transition-opacity duration-300">
-    Loading...
-  </div>
-  <div id="root"></div>
-  <!-- Better not put anything in the root div for hydration error -->
-  <script>
-    // This will hide the loader as soon as the JS starts executing
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('initial-loader');
-      if (loader) loader.classList.add('fade-out');
-      setTimeout(() => {
-        loader.classList.add('fade-out');
-      }, 200);
+    acceptBtn.addEventListener("click", () => {
+        localStorage.setItem("cookie-consent", "accepted");
+        banner.classList.add("hidden");
+        window.location.reload(); // Reload to activate AdSense personalization
     });
-  </script>
 
-
-  <!-- Loader overlay -->
-  <div id="loader" class="loader hidden">
-    <div class="spinner"></div>
-  </div>
-
-</body>
-
-</html>
+    declineBtn.addEventListener("click", () => {
+        localStorage.setItem("cookie-consent", "declined");
+        banner.classList.add("hidden");
+        // Ads will stay non-personalized
+    });
+</script> --> <meta name="keywords" content="sudoku, sodoku, free sudoku"> <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://sudokuplays.com/#website",
+                "url": "https://sudokuplays.com/",
+                "name": "Sudoku Plays",
+                "description": "Play Sudoku online for free. Featuring a responsive, glassy UI, multiple difficulty levels, and daily challenges.",
+                "inLanguage": "en"
+            },
+            {
+                "@type": "VideoGame",
+                "@id": "https://sudokuplays.com/#game",
+                "name": "Sudoku Plays",
+                "url": "https://sudokuplays.com/",
+                "genre": "Puzzle Game",
+                "applicationCategory": "GameApplication",
+                "operatingSystem": "Web",
+                "description": "A modern, logic-based Sudoku puzzle game designed for a smooth and distraction-free experience."
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://sudokuplays.com/#software",
+                "name": "Sudoku Plays",
+                "alternateName": "Free Sudoku Game Online",
+                "applicationCategory": "GameApplication",
+                "operatingSystem": "Web",
+                "inLanguage": "en",
+                "description": "Play Sudoku online for free. Featuring a responsive, glassy UI, multiple difficulty levels, and daily challenges.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "keywords": [
+                    "Sudoku Plays",
+                    "Sudoku",
+                    "Free Sudoku",
+                    "Play Sudoku Online",
+                    "Online Sudoku Game",
+                    "Classic Sudoku",
+                    "Daily Sudoku Puzzle",
+                    "Easy Sudoku Online",
+                    "Beginner-Friendly Sudoku",
+                    "Sudoku with Timer",
+                    "Timer and Stats",
+                    "Score History",
+                    "Sudoku No Login",
+                    "Mobile Sudoku",
+                    "Free Sudoku for iPad",
+                    "Dark Mode",
+                    "Casual Puzzle Game",
+                    "Brain Training",
+                    "Logic Puzzle Game",
+                    "Mind Games"
+                ],
+                "featureList": [
+                    "Multiple Difficulty Levels",
+                    "Mobile Responsive Design",
+                    "No Signup Required",
+                    "Timer and Stats Tracking",
+                    "Score History",
+                    "Theme Switching (Dark/Light)",
+                    "Sudoku Tips and Strategies",
+                    "Daily Challenges",
+                    "Offline Support Capabilities"
+                ]
+            }
+        ]
+    }
+</script>

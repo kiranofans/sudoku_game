@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><!-- Canonical URL --><link rel="canonical" href="https://sudokuplays.com/contact/"><script>
+      // Inline script to prevent FOUC by applying the theme before the page renders
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const systemDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const root = document.documentElement;
+        const isDark = saved === "dark" || (saved !== "light" && systemDark);
+
+        root.classList.remove("light-theme", "dark-theme");
+        if (isDark) {
+          root.classList.add("dark-theme");
+          root.style.colorScheme = "dark";
+        } else {
+          root.classList.add("light-theme");
+          root.style.colorScheme = "light";
+        }
+      })();
+    </script><title>Contact | Sudoku Plays</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no"><meta name="description" content="Play Sudoku online for free~! Features a mobile-friendly design for both Android & iOS. Start your daily challenge today!"><meta name="msvalidate.01" content="C82111AE0E298F17FEE4E665BA3D7BD2"><!-- Analytics and Ads --><script defer src="https://cloud.umami.is/script.js" data-website-id="8611e60d-a15b-46e5-81cf-e99174cd0f74"></script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643" crossorigin="anonymous"></script><!-- Icons --><link rel="icon" type="image/png" sizes="32x32" href="/images/png/logo_sudoku1.png"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!-- NProgress --><link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css"><script src="https://unpkg.com/nprogress/nprogress.js"></script><!--Sharing Meta--><meta property="og:title" content="SudokuPlays"><meta property="og:description" content="Play free, fast, and fun Sudoku online! Challenge yourself and beat your high score."><meta property="og:image" content="https://sudokuplays.com/og-share-card.png"><meta property="og:url" content="https://sudokuplays.com"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="SudokuPlays - Free Online Sudoku"><meta name="twitter:description" content="Play free online Sudoku puzzles."><meta name="twitter:image" content="https://sudokuplays.com/og-share-card.png"><link rel="stylesheet" href="/assets/Layout.Din684pt.css"></head><body class="bg-white dark:bg-gray-900"> <!-- The Loading Screen --> <div id="initial-loader" class="fixed inset-0 flex items-center justify-center bg-white dark:bg-gray-900 text-black dark:text-white text-lg font-bold transition-opacity duration-300">
+Loading...
+</div> <!-- The <slot /> replaces your old <div id="root"></div> -->  <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var C=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var l=(i,o,a)=>C(i,typeof o!="symbol"?o+"":o,a);var E=new Set(["__proto__","constructor","prototype"]);{let i={0:t=>y(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},o=t=>{let[h,e]=t;return h in i?i[h](e):void 0},a=t=>t.map(o),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([h,e])=>[h,o(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},p=this.querySelectorAll("template[data-astro-template]");for(let r of p){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let d;await this.hydrator(this)(this.Component,u,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[p,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(d.includes(".")){this.Component=p;for(let m of d.split(".")){if(E.has(m)||!this.Component||typeof this.Component!="object"&&typeof this.Component!="function"||!Object.hasOwn(this.Component,m))throw new Error(`Invalid component export path: ${d}`);this.Component=this.Component[m]}}else{if(E.has(d))throw new Error(`Invalid component export path: ${d}`);this.Component=p[d]}return this.hydrator=u,this.hydrate},e,this)}catch(n){console.error("[astro-island] Error hydrating %s",this.getAttribute("component-url"),n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="aTgAU" prefix="r1" component-url="/assets/Contact.BB-RcyBV.js" component-export="default" renderer-url="/assets/client.DYlJtT2g.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ContactPage&quot;,&quot;value&quot;:true}" await-children><div class="wrapper min-h-screen flex flex-col"><header class="menu-bar "><div class="logo-title-container"><div class="relative flex items-center"><a href="/" class="logo-link flex items-center group" aria-label="Toggle menu on mobile or go to homepage"><img src="/images/png/logo_sudoku1.png" alt="Logo" class="logo transition-transform active:scale-10"/></a></div><div class="title-score-wrapper"><div class="title-tagline-container flex"><h2 class="game-title">Sudoku</h2><div class="m-0.5 text-sm"><div><a href="/changeLog" class="border   items-center rounded-sm sm:rounded-md xs:rounded-sm
+                hover:border-blue-400 dark:hover:border-blue-400 dark:hover:text-blue-400 m-2 py-1 px-1.5 p-1">What&#x27;s New?</a></div></div></div></div></div><div class="header-center-content"></div><div class="controls-row"><a href="/sudokuTips" class="header-nav-item desktop-only-nav">Tips</a><span class="header-nav-separator desktop-only-nav">|</span><a href="/about" class="header-nav-item desktop-only-nav">About</a><span class="header-nav-separator desktop-only-nav">|</span><a href="/contact" class="header-nav-item desktop-only-nav">Contact</a><div class="flex items-center sx:gap-0.5 md:gap-1 sm:gap-1"><div class="theme-selector-container "><div class="dropdown-trigger"><div class="tooltip-container"><button class="theme-icon-button" aria-label="Change theme" title="Change theme"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="theme-icon-img" aria-labelledby="svg-title svg-description"><title class="sr-only" id="svg-title">Theme icon button (black for light theme)</title><desc id="svg-description">Light mode icon button for changing theme</desc><g><path d="M4.575 4.575L5.689 5.689M1.5 12H3.075M4.575 19.425L5.689 18.311M19.425 19.425L18.311 18.311M22.5 12H20.925M19.425 4.575L18.311 5.689M12 1.5V3.075" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 18C15.3135 18 18 15.3135 18 12C18 8.6865 15.3135 6 12 6C8.6865 6 6 8.6865 6 12C6 15.3135 8.6865 18 12 18Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M12 22.5008V20.9258" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></button></div></div></div></div></div></header><hr class="divider"/><main class="sudoku-app" style="width:100%;padding:6rem 2rem 6rem;max-width:900px;text-align:left;flex:1 0 auto"><h1 class="text-3xl font-bold text-center mt-6 mb-6 dark:text-white">Contact</h1><p style="margin-top:0.5rem;margin-bottom:0.5rem;font-size:1rem" class="text-gray-500 dark:text-gray-400 text-center">We value your input and strive to respond to all inquiries as quickly as possible.</p><div style="text-align:center;padding:1.5rem 0;font-size:1.2rem;line-height:1.6" class="dark:text-gray-200 w-full max-w-xl mx-auto px-4"><form id="contact-form"><div class="flex flex-col"><div class="flex flex-col text-left" style="margin-bottom:1.5rem"><label for="email" style="margin-bottom:0.5rem"><h3>Your Email Address: </h3></label><input class="border-gray-400 md:w-full dark:bg-gray-800 dark:text-gray-300 
+                                    dark:border-gray-600 border-2 rounded-md p-2 h-10" type="email" id="email" placeholder="you@example.com" required="" name="email"/></div><div class="flex flex-col text-left" style="margin-bottom:1.5rem"><label for="subject" class="text-md">The Subject: </label><input type="subject" id="subject" style="margin-top:0.5rem" class="border-gray-400 dark:bg-gray-800 dark:text-gray-300  
+                                    dark:border-gray-700 border-2 rounded-md p-2 h-10" placeholder="What is this about?" name="subject"/></div><div class="flex flex-col text-left" style="margin-bottom:1rem"><label for="message" style="margin-bottom:0.5rem">Your Message</label><textarea class="border-gray-400 dark:bg-gray-800 dark:text-gray-300 
+                                dark:border-gray-700 border-2 rounded-md p-2 h-50" id="message" name="message" placeholder="What is your thought about in detail?" required=""></textarea></div><button type="submit" class="new-game-btn" style="text-decoration:none;display:inline-block;margin-top:1.5rem">Submit</button></div></form></div></main><footer class="site-footer bg-white border-t border-gray-200 [transform:translateZ(0)] " style="z-index:100"><div class="footer-copyright"><span>© <!-- -->2026<!-- --> sudokuplays.com v<!-- -->1.0.0<!-- --> | All rights reserved.</span></div><div class="footer-links"><a href="/privacyPolicy" class="footer-btn">Privacy Policy</a><a href="/termsAndConditions" class="footer-btn">Terms &amp; conditions</a><a href="/faq" class="footer-btn" style="text-decoration:none">FAQ</a><a href="/detailedGuide" class="footer-btn" style="text-decoration:none">How SudokuPlays Works?</a><a href="/about" class="footer-btn" style="text-decoration:none">About</a><a href="/contact" class="footer-btn" style="text-decoration:none">Contact</a></div><div class="social-links"><a href="https://github.com/kiranofans" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-describedby="svg-title svg-description"><title class="sr-only" id="svg-title">Check out my other projects!</title><desc id="svg-description">Clickable Github social meida handle</desc><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.45-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></a></div></footer></div><!--astro:end--></astro-island>  <div id="loader" class="loader hidden"> <div class="spinner"></div> </div> <script>
+      // This runs on the client to hide the loader
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("initial-loader");
+        if (loader) {
+          loader.classList.add("opacity-0"); // Tailwind class for fade-out
+          setTimeout(() => {
+            loader.style.display = "none";
+          }, 300);
+        }
+      });
+    </script> </body> </html> <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "ContactPage",
+                "@id": "https://sudokuplays.com/contact/#webpage",
+                "url": "https://sudokuplays.com/contact/",
+                "name": "Contact Us | Sudoku Plays",
+                "description": "Have questions or feedback about our Sudoku games? Reach out to the SudokuPlays team for support and suggestions.",
+                "breadcrumb": {
+                    "@id": "https://sudokuplays.com/contact/#breadcrumb"
+                },
+                "inLanguage": "en",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://sudokuplays.com/#website",
+                    "name": "Sudoku Plays",
+                    "url": "https://sudokuplays.com/"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://sudokuplays.com/contact/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://sudokuplays.com/",
+                            "url": "https://sudokuplays.com/",
+                            "name": "Home"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://sudokuplays.com/contact/",
+                            "name": "Contact"
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "Organization",
+                "name": "Sudoku Plays",
+                "url": "https://sudokuplays.com/",
+                "logo": "https://sudokuplays.com/images/png/logo_sudoku1.png",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "email": "site.help@gmail.com",
+                    "contactType": "customer service",
+                    "availableLanguage": "en"
+                }
+            }
+        ]
+    }
+</script>
