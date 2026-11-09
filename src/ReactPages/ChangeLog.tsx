@@ -273,7 +273,7 @@ function ChangeLog({ }) {
 
                                         Since this project is developed by a very small team (primarily a solo developer with occasional AI assistance), the changelog also serves as a transparent development log that shows continuous progress, even when updates are incremental or behind-the-scenes.
                                     </>,
-                                    <>Added <a href="/sudokuTips" className="underline hover:text-blue-500">Tips</a>, <a href="/sudokuTips" className="underline hover:text-blue-500">FAQ</a>, and <a href="/about" className="underline hover:text-blue-500">About</a> pages to help players learn Sudoku more easily, improve their skills over time, and learn more about this site. </>
+                                    <>Added <a href="/sudokuTips" className="underline hover:text-blue-500">Tips</a>, <a href="/faq" className="underline hover:text-blue-500">FAQ</a>, and <a href="/about" className="underline hover:text-blue-500">About</a> pages to help players learn Sudoku more easily, improve their skills over time, and learn more about this site. </>
                                 ]}
                             />
                         </Timeline >
