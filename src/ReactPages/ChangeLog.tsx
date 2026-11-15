@@ -23,6 +23,14 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date={'2026-11-15'}
+                                version={'v1.0.0'}
+                                title={'New Feature'}
+                                items={[
+                                    <>Added <a href='/' className=''>Diagonal Sudoku (X Sudoku)</a> board, another way to play Sudoku.</>,
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date={'2026-11-05'}
                                 version={'v1.0.0'}
                                 title={'Improvement'}
@@ -280,6 +288,6 @@ function ChangeLog({ }) {
                     </main>
                 </Layout>
             </>
-        </ThemeProvider>);
+        </ThemeProvider >);
 }
 export default ChangeLog;
