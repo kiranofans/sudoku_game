@@ -687,6 +687,39 @@ body {
     visibility: visible;
 }
 
+/* ───────────────────────────────────────────────
+   Diagonal / X-Sudoku Board
+   ─────────────────────────────────────────────── */
+
+/* Subtle tint for diagonal cells so the "X" is always visible */
+.diagonal-board .cell.diagonal-cell {
+    background-color: rgba(99, 102, 241, 0.08);
+}
+
+/* When a diagonal cell is also an initial (given) cell */
+.diagonal-board .cell.diagonal-cell.initial {
+    background-color: color-mix(in srgb, var(--cell-initial-bg) 85%, rgba(99, 102, 241, 0.25));
+}
+
+/* Keep the cross-highlight visible on diagonal cells */
+.diagonal-board .cell.diagonal-cell.cross-highlight {
+    background-color: var(--cell-highlight-bg);
+}
+
+/* Keep the selected style dominant */
+.diagonal-board .cell.diagonal-cell.selected:not(.cell-fixed) {
+    background-color: var(--cell-selected-bg) !important;
+}
+
+/* Dark theme adjustments */
+.dark-theme .diagonal-board .cell.diagonal-cell {
+    background-color: rgba(129, 140, 248, 0.12);
+}
+
+.dark-theme .diagonal-board .cell.diagonal-cell.initial {
+    background-color: color-mix(in srgb, var(--cell-initial-bg) 80%, rgba(129, 140, 248, 0.3));
+}
+
 /* Control panel */
 .control-panel {
     display: flex;

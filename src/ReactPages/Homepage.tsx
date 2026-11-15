@@ -4,6 +4,7 @@ import { generateSudoku, Difficulty } from '@/lib/generatesSudoku.ts';
 
 import '@/App.css';
 import Board from "@/components/Board";
+import DiagonalBoard from "@/components/DiagonalBoard";
 import { AdModal, PauseModal, InstructionsDropdown } from '@/components/Modals';
 import GameStatusModal from '@/components/GameStatusModal.tsx';
 import DifficultySelector from '@/components/DifficultySelector.tsx';
@@ -14,15 +15,26 @@ import { useScore } from '@/hooks/useScore.ts';
 import { useNumberInput } from '@/hooks/useNumberInput.ts';
 import ScoreSystem from '@/components/ScoreSystem.tsx';
 import { loadPersistedHints, savePersistedHints, loadGameHistory, saveGameToHistory, GameHistoryEntry } from '@/lib/persistenceStorage.ts';
-import { SmallUiWidgets, getLatestKnownIssues } from '@/components/SmallUiWidgets.tsx';
+import { SmallUiWidgets, getLatestKnownIssues, PageLevelNavMenu } from '@/components/SmallUiWidgets.tsx';
+import type { PageSection } from '@/components/SmallUiWidgets.tsx';
 import { useCompletedDomains } from '@/hooks/useCompletedDomains.ts';
 import HomeSideContent from '@/components/HomeSideContent.tsx';
+
+/** Game mode tabs for the in-page navigation menu */
+type GameMode = 'sudoku' | 'x-sudoku';
+
+const GAME_MODE_SECTIONS: PageSection[] = [
+    { id: 'sudoku', title: 'Sudoku' },
+    { id: 'x-sudoku', title: 'Diagonal Sudoku (X Sudoku)' },
+];
 
 type CellNotes = Set<number>;
 
 function Homepage() {
     const { KnownIssuesBox } = SmallUiWidgets;
     const issues = getLatestKnownIssues();
+
+    const [gameMode, setGameMode] = useState<GameMode>('sudoku');
 
     const [board, setBoard] = useState<(number | null)[][]>([]);
     const [solution, setSolution] = useState<number[][]>([]);
@@ -437,6 +449,18 @@ function Homepage() {
                 </div>
 
                 <div className="sudoku-app !max-w-7xl w-full mx-auto px-4 sm:px-6" style={{ maxWidth: '1240px' }}>
+                    {/* Game mode navigation tabs */}
+                    <div className="w-full mb-4 [&_nav]:!static [&_nav]:!mb-0">
+                        <PageLevelNavMenu
+                            sections={GAME_MODE_SECTIONS}
+                            activeSlug={gameMode}
+                            onNavClick={(e, slug) => {
+                                e.preventDefault();
+                                setGameMode(slug as GameMode);
+                            }}
+                        />
+                    </div>
+
                     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 lg:gap-10 xl:gap-14 w-full">
                         {/* Sudoku game: Board, controls and game information */}
                         <div className="flex flex-col items-center w-full max-w-[720px]">
@@ -526,18 +550,33 @@ function Homepage() {
                                             <button className="new-game-btn" onClick={startNewGame}>New Game</button>
                                         </div>
                                     </div>
-                                    <Board
-                                        isLoading={isLoading}
-                                        board={board}
-                                        initialBoard={initialBoard}
-                                        notes={notes}
-                                        selectedCell={selectedCell}
-                                        onCellClick={handleCellClick}
-                                        solution={solution}
-                                        crossHighlight={crossHighlight}
-                                        highlightedNumber={highlightedNumber}
-                                        fixedCells={fixedCells}
-                                    />
+                                    {gameMode === 'sudoku' ? (
+                                        <Board
+                                            isLoading={isLoading}
+                                            board={board}
+                                            initialBoard={initialBoard}
+                                            notes={notes}
+                                            selectedCell={selectedCell}
+                                            onCellClick={handleCellClick}
+                                            solution={solution}
+                                            crossHighlight={crossHighlight}
+                                            highlightedNumber={highlightedNumber}
+                                            fixedCells={fixedCells}
+                                        />
+                                    ) : (
+                                        <DiagonalBoard
+                                            isLoading={isLoading}
+                                            board={board}
+                                            initialBoard={initialBoard}
+                                            notes={notes}
+                                            selectedCell={selectedCell}
+                                            onCellClick={handleCellClick}
+                                            solution={solution}
+                                            crossHighlight={crossHighlight}
+                                            highlightedNumber={highlightedNumber}
+                                            fixedCells={fixedCells}
+                                        />
+                                    )}
                                 </div>
 
                                 <div className="counts-and-actionbtn">
