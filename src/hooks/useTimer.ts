@@ -17,13 +17,20 @@ export function useTimer(
         setIsRunning(true);
     }, [resetKey]);
 
+    const start = useCallback(() => setIsRunning(true), []);
+    const pause = useCallback(() => setIsRunning(false), []);
+    const reset = useCallback(() => {
+        setTimeLeft(0);
+        setIsRunning(true);
+    }, []);
+
     useEffect(() => {
         if (intervalRef.current) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
         }
 
-        if (!isRunning || isGameOver) return;
+        if (!isRunning || isGameOver || isLoading) return;
 
         intervalRef.current = setInterval(() => {
             setTimeLeft(prev => prev + 1);
@@ -35,10 +42,7 @@ export function useTimer(
                 intervalRef.current = null;
             }
         };
-    }, [isRunning, isGameOver]);
-
-    const start = useCallback(() => setIsRunning(true), []);
-    const pause = useCallback(() => setIsRunning(false), []);
+    }, [isRunning, isGameOver, isLoading]);
 
     // Auto-pause on inactivity (2 minutes)
     useEffect(() => {
@@ -75,5 +79,5 @@ export function useTimer(
         };
     }, [isRunning, isGameOver, pause]);
 
-    return { timeLeft, isRunning, start, pause };
+    return { timeLeft, isRunning, start, pause, reset };
 }

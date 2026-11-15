@@ -21,7 +21,7 @@ import { useCompletedDomains } from '@/hooks/useCompletedDomains.ts';
 import HomeSideContent from '@/components/HomeSideContent.tsx';
 
 /** Game mode tabs for the in-page navigation menu */
-type GameMode = 'sudoku' | 'x-sudoku';
+type GameMode = 'sudoku' | 'x-sudoku' | string;
 
 const GAME_MODE_SECTIONS: PageSection[] = [
     { id: 'sudoku', title: 'Sudoku' },
@@ -144,10 +144,10 @@ function Homepage() {
         };
     }, []);
 
-    // Initialize the game
+    // Initialize or reset the game when difficulty or game mode (board variant) changes
     useEffect(() => {
         startNewGame();
-    }, [difficulty]);
+    }, [difficulty, gameMode]);
 
 
 
@@ -181,6 +181,7 @@ function Homepage() {
 
     const startNewGame = useCallback(() => {
         setIsLoading(true);
+        setGameKey(prev => prev + 1);
         setTimeout(() => {
             const { puzzle, solution } = generateSudoku(difficulty);
             setBoard(puzzle);
@@ -189,7 +190,6 @@ function Homepage() {
             setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
             setSelectedCell(null);
             resetFixedCells();
-            setGameKey(prev => prev + 1);
             setMistakes(0);
             setHintsUsedInGame(0);
             resetScore();
@@ -341,11 +341,11 @@ function Homepage() {
 
     const handleReset = useCallback(() => {
         setIsLoading(true);
+        setGameKey(prev => prev + 1);
         setTimeout(() => {
             setBoard(initialBoard.map(row => [...row]));
             setNotes(Array(9).fill(null).map(() => Array(9).fill(null).map(() => new Set())));
             resetFixedCells();
-            setGameKey(prev => prev + 1);
             setMistakes(0);
             setIsGameOver(false);
             setCrossHighlight({ row: null, col: null });

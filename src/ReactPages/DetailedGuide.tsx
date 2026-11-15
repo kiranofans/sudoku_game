@@ -145,7 +145,7 @@ function DetailedGuide() {
                             </h1>
                             <p className="text-center max-w-3xl items-center w-full dark:text-[#8b97a8] text-gray-600 md:text-md xl:text-xl sx:text-sx sm:text-sm 
                             lg:text-lg mx-auto leading-relaxed mb-6 mt-6 sx:mb-4">
-                                This guide walks you through everything you need to know to play Sudoku on SudokuPlays, from choosing a difficulty
+                                This guide walks you through everything you need to know to play regular Sudoku, and other variants of Sudoku on SudokuPlays, from choosing a difficulty
                                 and using the controls to understanding scoring and finishing a puzzle.
                             </p>
                         </div>
@@ -211,7 +211,7 @@ function DetailedGuide() {
                             <div className="h-px flex-1 bg-gray-600 dark:bg-[#2d3748]" />
                         </div>
                         <span className='text-center px-4 py-2 mb-6 flex flex-wrap items-center justify-center gap-1 text-gray-700 dark:text-gray-300'>
-                            In the top-right navigation menu on the
+                            For all viriants of Sudoku, in the top-right navigation menu on the
                             <a href="/">homepage (game page)</a>,
                             click or tap on the
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
