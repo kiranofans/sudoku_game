@@ -327,18 +327,24 @@ export const AdModal: React.FC<{ isOpen: boolean; onClose: () => void; onAdCompl
     );
 };
 export const PauseModal: React.FC<{ isOpen: boolean; onResume: () => void }> = ({ isOpen, onResume }) => {
-    if (!isOpen) return null;
-
     return (
         <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm z-30 flex justify-center items-center p-4 rounded-2xl animate-[pauseOverlayFadeIn_0.25s_ease-out]"
+            className={`absolute inset-0 bg-black/50 backdrop-blur-sm z-30 flex justify-center items-center p-4 rounded-2xl transition-all duration-300 ease-out ${
+                isOpen
+                    ? "opacity-100 pointer-events-auto visible"
+                    : "opacity-0 pointer-events-none invisible"
+            }`}
             onClick={onResume}
             role="dialog"
             aria-modal="true"
             aria-label="Game Paused"
         >
             <div
-                className="bg-white/95 dark:bg-[#1a1a1a]/95 w-[90%] max-w-[340px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex flex-col items-center overflow-hidden animate-[pauseCardFadeIn_0.25s_cubic-bezier(0.16,1,0.3,1)] backdrop-blur-2xl border border-white/30 dark:border-white/10 p-6 sm:p-8 text-center"
+                className={`bg-white/95 dark:bg-[#1a1a1a]/95 w-[90%] max-w-[340px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex flex-col items-center overflow-hidden backdrop-blur-2xl border border-white/30 dark:border-white/10 p-6 sm:p-8 text-center transition-all duration-300 ease-out ${
+                    isOpen
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-95"
+                }`}
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="text-4xl mb-3 animate-pulse">⏸️</div>
