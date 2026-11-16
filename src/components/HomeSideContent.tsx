@@ -5,13 +5,13 @@ export const HomeSideContent: React.FC = () => {
     return (
         <aside
             aria-label="Sudoku game information and guide"
-            className="w-full max-w-[720px] lg:max-w-[340px] xl:max-w-[380px] flex-shrink-0 text-left px-2 sm:px-0"
+            className="w-full max-w-[720px] max-h-[600px] overflow-y-auto lg:max-w-[340px] xl:max-w-[380px] flex-shrink-0 text-left px-2 sm:px-0"
         >
             <div className="divide-y divide-gray-200 dark:divide-gray-700/80">
                 {/* Block 1: About this Sudoku game */}
-                <section className="pb-6 lg:pt-1">
+                <section className="pb-4 lg:pt-1">
                     <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">
-                        About this SudokuPlays Game Site
+                        About this Site
                     </h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         Welcome to SudokuPlays, a free and clean online Sudoku experience designed for both casual solvers and daily logic puzzle enthusiasts.
@@ -22,12 +22,23 @@ export const HomeSideContent: React.FC = () => {
                 </section>
 
                 {/* Block 2: How to play */}
-                <section className="py-6">
+                <section className="py-4">
+                    <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">
+                        Choose Your Game Mode
+                    </h2>
+                    <p className='text-sm text-gray-600 dark:text-gray-300 leading-relaxed mt-2'>
+                        SudokuPlays offers different ways to enjoy Sudoku. Each game mode introduces its own puzzle rules, challenges, or constraints.
+                        For quick understanding, you can check the Quick Guide dropdown on the top right <b>after selecting a game mode</b>.
+                    </p>
+                </section>
+
+                {/* Block 3: How to play */}
+                <section className="py-4">
                     <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">
                         How to Play
                     </h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-2.5">
-                        New to SudokuPlays? Open the <b>Quick Guide</b> dropdown on the top right corner for a quick overview,
+                        New to SudokuPlays? Open the <b>Quick Guide</b> dropdown on the top right corner for a quick overview for each Sudoku variant,
                         or explore <b>How SudokuPlays Works</b> for more details about the game rules, controls, hints, and scoring.                    </p>
 
                     <ArrowLinkButtonUI
@@ -36,8 +47,8 @@ export const HomeSideContent: React.FC = () => {
                     />
                 </section>
 
-                {/* Block 3: Sudoku tips */}
-                <section className="pt-6">
+                {/* Block 4: Sudoku tips */}
+                <section className="pt-4">
                     <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">
                         Sudoku Tips
                     </h2>
