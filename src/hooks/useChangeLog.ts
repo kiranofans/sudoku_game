@@ -11,7 +11,7 @@ export const changelog = [
         showKnownIssuesBox: true,
         knownIssues: [
             "1. Advertising is currently disabled due to technical updates.",
-            "2. iOS responsive UI may still have some issues.",
+            "2. Diagonal Sudoku rules is not completed properly.",
         ]
     }
 ];
