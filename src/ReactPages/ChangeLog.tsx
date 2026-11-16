@@ -30,6 +30,7 @@ function ChangeLog({ }) {
                                     <>Added <a href='/' className=''>Diagonal Sudoku (X Sudoku)</a> board, another way to play Sudoku.</>,
                                     <>When the user switches between Sudoku variants, the countdown timer resets.</>,
                                     <>Smoothed the resume modal's transition animation and scoped it to cover only the Sudoku game area instead of the entire page.</>,
+                                    <>Implemented Diagonal Sudoku completion rule, player has to also fill the two diagonals in the center with non-repeated 1 - 9.</>
                                 ]}
                             />
                             <ChangelogEntry
