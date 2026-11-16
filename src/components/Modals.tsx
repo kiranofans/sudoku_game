@@ -178,13 +178,19 @@ export const InstructionsDropdown: React.FC<{
             <div className="w-full space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed mt-4 mb-4">
                 <div className="rounded-lg border border-blue-200 bg-blue-50 p-2 dark:border-blue-900/50 dark:bg-blue-950/30">
                     <h3 className="text-md text-center font-semibold text-blue-900 dark:text-blue-200 mx-w-500">
-                        Objective
+                        {isDiagonalSudoku && isDiagonalSudoku ? (
+                            <>Diagonal Sudoku Objective </>
+                        ) : (
+                            <>Objective</>
+                        )}
                     </h3>
                     <p className='text-center text-sm'>
-                        To win, fill every <a href="">domain</a> (row, column, and 3×3 box) with the numbers
-                        <strong>1–9</strong>, using each number only once.
-                        {isDiagonalSudoku && (
-                            <> Both long diagonals must also contain <strong>1–9</strong> exactly once.</>
+
+                        {isDiagonalSudoku && isDiagonalSudoku ? (
+                            <>For Diagonal Sudoku (X Sudoku), the standard rules apply, and additionally, both long diagonals must also contain <strong>1–9</strong> exactly once.</>
+                        ) : (
+                            <>For classic Sudoku games, fill every <a href="">domain</a> (row, column, and 3×3 box) with the numbers
+                                <strong>1–9</strong>, using each number only once.</>
                         )}
                     </p>
                 </div>
@@ -336,22 +342,20 @@ export const AdModal: React.FC<{ isOpen: boolean; onClose: () => void; onAdCompl
 export const PauseModal: React.FC<{ isOpen: boolean; onResume: () => void }> = ({ isOpen, onResume }) => {
     return (
         <div
-            className={`absolute inset-0 bg-black/50 backdrop-blur-sm z-30 flex justify-center items-center p-4 rounded-2xl transition-all duration-300 ease-out ${
-                isOpen
-                    ? "opacity-100 pointer-events-auto visible"
-                    : "opacity-0 pointer-events-none invisible"
-            }`}
+            className={`absolute inset-0 bg-black/50 backdrop-blur-sm z-30 flex justify-center items-center p-4 rounded-2xl transition-all duration-300 ease-out ${isOpen
+                ? "opacity-100 pointer-events-auto visible"
+                : "opacity-0 pointer-events-none invisible"
+                }`}
             onClick={onResume}
             role="dialog"
             aria-modal="true"
             aria-label="Game Paused"
         >
             <div
-                className={`bg-white/95 dark:bg-[#1a1a1a]/95 w-[90%] max-w-[340px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex flex-col items-center overflow-hidden backdrop-blur-2xl border border-white/30 dark:border-white/10 p-6 sm:p-8 text-center transition-all duration-300 ease-out ${
-                    isOpen
-                        ? "opacity-100 scale-100"
-                        : "opacity-0 scale-95"
-                }`}
+                className={`bg-white/95 dark:bg-[#1a1a1a]/95 w-[90%] max-w-[340px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex flex-col items-center overflow-hidden backdrop-blur-2xl border border-white/30 dark:border-white/10 p-6 sm:p-8 text-center transition-all duration-300 ease-out ${isOpen
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-95"
+                    }`}
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="text-4xl mb-3 animate-pulse">⏸️</div>
