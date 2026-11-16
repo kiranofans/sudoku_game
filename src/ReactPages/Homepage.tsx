@@ -483,7 +483,7 @@ function Homepage() {
                             />
                             {/* Game area wrapper */}
                             <div className="relative w-full">
-                                <div className={`game-container h-auto [contain:none] [will-change:auto] transition-all duration-200 ${isPaused ? 'blur-sm pointer-events-none select-none' : ''}`}>
+                                <div className={`game-container h-auto [contain:none] [will-change:auto] transition-[filter] duration-300 ease-out ${isPaused ? 'blur-sm pointer-events-none select-none' : ''}`}>
                                     <div className="board-section">
                                         <div className="game-info">
                                             <div>
@@ -586,7 +586,6 @@ function Homepage() {
                                                     <button
                                                         className={isPencilMode ? 'active' : ''}
                                                         onClick={() => !isPaused && setIsPencilMode(!isPencilMode)}
-                                                        disabled={isPaused}
                                                         aria-pressed={isPencilMode}
                                                         aria-label="Toggle pencil mode">
                                                         <div className="btn-pencil" title="Edit">
@@ -595,7 +594,7 @@ function Homepage() {
                                                 </Tooltip>
 
                                                 <Tooltip text="Eraser">
-                                                    <button onClick={handleEraser} disabled={isPaused}>
+                                                    <button onClick={handleEraser}>
                                                         <div className='btn-eraser'></div>
                                                     </button>
                                                 </Tooltip>
@@ -612,7 +611,6 @@ function Homepage() {
                                                             alert("The ads are currenly disabled for technical reason. \nPlease check back later.");
                                                         }
                                                     }}
-                                                        disabled={isPaused}
                                                         className={`hint-ad ${hintsRemaining <= 0 ? 'ad-mode' : ''}`}
                                                         aria-label={hintsRemaining > 0 ? `Hints remaining ${hintsRemaining}` : 'Watch ad to earn 1 hint'}
                                                     >
@@ -626,7 +624,7 @@ function Homepage() {
                                                 </Tooltip>
 
                                                 <Tooltip text="Reset Game">
-                                                    <button onClick={handleReset} disabled={isPaused} aria-label="Reset">
+                                                    <button onClick={handleReset} aria-label="Reset">
                                                         <div className="btn-reset"></div>
                                                     </button>
                                                 </Tooltip>
@@ -636,7 +634,7 @@ function Homepage() {
                                                     <button
                                                         key={num}
                                                         onClick={() => handleNumberInput(num)}
-                                                        disabled={isGameOver || isPaused || numberCounts[num] <= 0}
+                                                        disabled={isGameOver || numberCounts[num] <= 0}
                                                         className={numberCounts[num] <= 0 ? 'completed' : ''}
                                                         aria-labelledby=''
 
