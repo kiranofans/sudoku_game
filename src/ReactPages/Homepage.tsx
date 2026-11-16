@@ -21,11 +21,12 @@ import { useCompletedDomains, type SudokuVariant } from '@/hooks/useCompletedDom
 import HomeSideContent from '@/components/HomeSideContent.tsx';
 
 /** Game mode tabs for the in-page navigation menu */
-type GameMode = 'sudoku' | 'x-sudoku' | string;
+type GameMode = 'sudoku' | 'x-sudoku' | 'jigsaw-sudoku' | string;
 
 const GAME_MODE_SECTIONS: PageSection[] = [
     { id: 'sudoku', title: 'Sudoku' },
     { id: 'x-sudoku', title: 'Diagonal Sudoku (X Sudoku)' },
+    // { id: 'jigsaw-sudoku', title: 'Jigsaw Sudoku' }
 ];
 
 type CellNotes = Set<number>;
