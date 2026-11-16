@@ -17,7 +17,7 @@ import ScoreSystem from '@/components/ScoreSystem.tsx';
 import { loadPersistedHints, savePersistedHints, loadGameHistory, saveGameToHistory, GameHistoryEntry } from '@/lib/persistenceStorage.ts';
 import { SmallUiWidgets, getLatestKnownIssues, PageLevelNavMenu } from '@/components/SmallUiWidgets.tsx';
 import type { PageSection } from '@/components/SmallUiWidgets.tsx';
-import { useCompletedDomains } from '@/hooks/useCompletedDomains.ts';
+import { useCompletedDomains, type SudokuVariant } from '@/hooks/useCompletedDomains.ts';
 import HomeSideContent from '@/components/HomeSideContent.tsx';
 
 /** Game mode tabs for the in-page navigation menu */
@@ -66,9 +66,10 @@ function Homepage() {
     const lastRecordedGameKey = useRef<number>(-1);
     const timer = useTimer(gameKey, isGameOver, isLoading, [board, notes, mistakes, hintsUsedInGame]);
     const isPaused = !timer.isRunning && !isGameOver && !isLoading;
+    const completionVariant: SudokuVariant = gameMode === 'x-sudoku' ? 'x-sudoku' : 'classic';
     const { fixedCells, newAnimations, resetFixedCells,
         clearAnimations } = useCompletedDomains(board, solution,
-            isLoading, isGameOver);
+            isLoading, isGameOver, completionVariant);
 
     /* loader */
     useEffect(() => {
@@ -184,7 +185,7 @@ function Homepage() {
         setIsLoading(true);
         setGameKey(prev => prev + 1);
         setTimeout(() => {
-            const { puzzle, solution } = generateSudoku(difficulty);
+            const { puzzle, solution } = generateSudoku(difficulty, gameMode === 'x-sudoku');
             setBoard(puzzle);
             setSolution(solution);
             setInitialBoard(puzzle.map(row => [...row]));
@@ -200,7 +201,7 @@ function Homepage() {
             updateNumberCounts(puzzle, solution);
             setIsLoading(false);
         }, 300);
-    }, [difficulty, updateNumberCounts]);
+    }, [difficulty, gameMode, updateNumberCounts]);
 
     const handleCellClick = (row: number, col: number) => {
         if (isGameOver || isPaused) return;
@@ -425,6 +426,7 @@ function Homepage() {
                             <InstructionsDropdown
                                 isOpen={showInstructions && !isLoading}
                                 onClose={() => setShowInstructions(false)}
+                                isDiagonalSudoku={gameMode === 'x-sudoku'}
                             />
                         </div>
                     </>

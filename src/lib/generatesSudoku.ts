@@ -1,6 +1,6 @@
 export type Difficulty = 'very-easy' | 'easy' | 'medium' | 'hard' | 'expert';
 
-export function generateSudoku(difficulty: Difficulty = 'medium') {
+export function generateSudoku(difficulty: Difficulty = 'medium', isDiagonalSudoku = false) {
   // Calibrated removal counts for clear separation
   const targetToRemove = {
     'very-easy': 30,  // ~51 clues
@@ -19,11 +19,11 @@ export function generateSudoku(difficulty: Difficulty = 'medium') {
 
   // Try multiple solved boards
   for (let boardRetry = 0; boardRetry < boardAttempts; boardRetry++) {
-    const solution = generateSolvedBoard();
+    const solution = generateSolvedBoard(isDiagonalSudoku);
     const flatSolution = solution.flat();
 
     for (let pathRetry = 0; pathRetry < pathsPerBoard; pathRetry++) {
-      const puzzle = removeNumbersOptimized(flatSolution, targetToRemove);
+      const puzzle = removeNumbersOptimized(flatSolution, targetToRemove, isDiagonalSudoku);
       const currentRemoved = puzzle.filter(x => x === null).length;
 
       if (currentRemoved > bestRemovedCount) {
@@ -44,15 +44,15 @@ export function generateSudoku(difficulty: Difficulty = 'medium') {
   return { puzzle: bestPuzzle, solution: finalSolution };
 }
 
-function generateSolvedBoard(): number[][] {
+function generateSolvedBoard(isDiagonalSudoku: boolean): number[][] {
   // Create empty board
   const board: number[][] = Array(9).fill(null).map(() => Array(9).fill(0));
 
-  // Fill diagonal 3x3 boxes
-  fillDiagonalBoxes(board);
+  // Classic Sudoku can seed the three diagonal boxes. X-Sudoku must solve from
+  // an empty grid so those seeded values cannot violate either long diagonal.
+  if (!isDiagonalSudoku) fillDiagonalBoxes(board);
 
-  // Solve the rest of the board
-  if (!solveSudoku(board)) {
+  if (!solveSudoku(board, isDiagonalSudoku)) {
     throw new Error('Failed to generate solved Sudoku board');
   }
 
@@ -75,7 +75,7 @@ function fillBox(board: number[][], row: number, col: number) {
   }
 }
 
-function solveSudoku(board: number[][]): boolean {
+function solveSudoku(board: number[][], isDiagonalSudoku = false): boolean {
   // Convert 2D board to flat Int8Array for optimized checking
   const flat = new Int8Array(81);
   for (let r = 0; r < 9; r++) {
@@ -84,21 +84,38 @@ function solveSudoku(board: number[][]): boolean {
     }
   }
 
-  // Find first empty cell (solved board gen can use simple index or MRV)
   let bestPos = -1;
-  for (let i = 0; i < 81; i++) {
-    if (flat[i] === 0) {
-      bestPos = i;
-      break;
+  let candidates: number[] = [];
+
+  if (isDiagonalSudoku) {
+    let minCandidates = 10;
+    for (let i = 0; i < 81; i++) {
+      if (flat[i] === 0) {
+        const cellCandidates = getCandidates(flat, i, true);
+        if (cellCandidates.length === 0) return false;
+        if (cellCandidates.length < minCandidates) {
+          bestPos = i;
+          candidates = cellCandidates;
+          minCandidates = cellCandidates.length;
+          if (minCandidates === 1) break;
+        }
+      }
+    }
+  } else {
+    for (let i = 0; i < 81; i++) {
+      if (flat[i] === 0) {
+        bestPos = i;
+        candidates = getCandidates(flat, bestPos);
+        break;
+      }
     }
   }
 
   if (bestPos === -1) return true;
 
-  const candidates = shuffle(getCandidates(flat, bestPos));
-  for (const num of candidates) {
+  for (const num of shuffle(candidates)) {
     board[Math.floor(bestPos / 9)][bestPos % 9] = num;
-    if (solveSudoku(board)) return true;
+    if (solveSudoku(board, isDiagonalSudoku)) return true;
     board[Math.floor(bestPos / 9)][bestPos % 9] = 0;
   }
   return false;
@@ -106,7 +123,11 @@ function solveSudoku(board: number[][]): boolean {
 
 // findEmptyCell and isValid replaced by optimized counterparts
 
-function removeNumbersOptimized(flatSolution: number[], targetToRemove: number): (number | null)[] {
+function removeNumbersOptimized(
+  flatSolution: number[],
+  targetToRemove: number,
+  isDiagonalSudoku: boolean
+): (number | null)[] {
   const puzzle: (number | null)[] = [...flatSolution];
   const positions = shuffle(Array.from({ length: 81 }, (_, i) => i));
 
@@ -123,7 +144,7 @@ function removeNumbersOptimized(flatSolution: number[], targetToRemove: number):
     puzzle[pos] = null;
     puzzle[symPos] = null;
 
-    if (hasUniqueSolutionOptimized(puzzle)) {
+    if (hasUniqueSolutionOptimized(puzzle, isDiagonalSudoku)) {
       removedCount += (pos === symPos ? 1 : 2);
     } else {
       puzzle[pos] = backupPos;
@@ -133,15 +154,15 @@ function removeNumbersOptimized(flatSolution: number[], targetToRemove: number):
   return puzzle;
 }
 
-function hasUniqueSolutionOptimized(puzzle: (number | null)[]): boolean {
+function hasUniqueSolutionOptimized(puzzle: (number | null)[], isDiagonalSudoku: boolean): boolean {
   const board = new Int8Array(81);
   for (let i = 0; i < 81; i++) {
     board[i] = puzzle[i] === null ? 0 : (puzzle[i] as number);
   }
-  return countSolutionsOptimized(board) === 1;
+  return countSolutionsOptimized(board, isDiagonalSudoku) === 1;
 }
 
-function countSolutionsOptimized(board: Int8Array): number {
+function countSolutionsOptimized(board: Int8Array, isDiagonalSudoku = false): number {
   let minCandidates = 10;
   let bestPos = -1;
   let bestCandidates: number[] = [];
@@ -149,7 +170,7 @@ function countSolutionsOptimized(board: Int8Array): number {
   // Find cell with minimum remaining values (MRV)
   for (let i = 0; i < 81; i++) {
     if (board[i] === 0) {
-      const candidates = getCandidates(board, i);
+      const candidates = getCandidates(board, i, isDiagonalSudoku);
       if (candidates.length === 0) return 0; // Unsolvable
       if (candidates.length < minCandidates) {
         minCandidates = candidates.length;
@@ -165,14 +186,14 @@ function countSolutionsOptimized(board: Int8Array): number {
   let count = 0;
   for (const num of bestCandidates) {
     board[bestPos] = num;
-    count += countSolutionsOptimized(board);
+    count += countSolutionsOptimized(board, isDiagonalSudoku);
     board[bestPos] = 0;
     if (count > 1) return count; // Optimization: stop if multiple solutions found
   }
   return count;
 }
 
-function getCandidates(board: Int8Array, pos: number): number[] {
+function getCandidates(board: Int8Array, pos: number, isDiagonalSudoku = false): number[] {
   const row = Math.floor(pos / 9);
   const col = pos % 9;
   const candidates = [];
@@ -191,6 +212,19 @@ function getCandidates(board: Int8Array, pos: number): number[] {
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
       used[board[(boxRow + i) * 9 + (boxCol + j)]] = 1;
+    }
+  }
+
+  //X-sudoku 2 diagonals
+  if (isDiagonalSudoku && row === col) {
+    for (let i = 0; i < 9; i++) {
+      used[board[i * 9 + i]] = 1;
+    }
+  }
+
+  if (isDiagonalSudoku && row + col === 8) {
+    for (let i = 0; i < 9; i++) {
+      used[board[i * 9 + (8 - i)]] = 1;
     }
   }
 

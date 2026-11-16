@@ -135,7 +135,11 @@ export const InstructionsModal: React.FC<{ isOpen: boolean; onClose: () => void 
     </Modal >
 );
 
-export const InstructionsDropdown: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => (
+export const InstructionsDropdown: React.FC<{
+    isOpen: boolean;
+    onClose: () => void;
+    isDiagonalSudoku?: boolean;
+}> = ({ isOpen, onClose, isDiagonalSudoku = false }) => (
     <Dropdown
         isOpen={isOpen}
         onClose={onClose}
@@ -179,6 +183,9 @@ export const InstructionsDropdown: React.FC<{ isOpen: boolean; onClose: () => vo
                     <p className='text-center text-sm'>
                         To win, fill every <a href="">domain</a> (row, column, and 3×3 box) with the numbers
                         <strong>1–9</strong>, using each number only once.
+                        {isDiagonalSudoku && (
+                            <> Both long diagonals must also contain <strong>1–9</strong> exactly once.</>
+                        )}
                     </p>
                 </div>
             </div>
