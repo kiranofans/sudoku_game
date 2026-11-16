@@ -11,8 +11,8 @@ interface ShareBoxesProps {
 export default function ShareBoxes({ score, difficulty, timeUsed, isGameCompleted }: ShareBoxesProps) {
     const url = "https://sudokuplays.com";
 
-    const shareText = "🧩 Play relaxing Sudoku puzzles online at SudokuPlays (数独/數獨)" + url + " — free, fast, & fun! " +
-        "Challenge yourself with multiple difficulties! Fully responsive design for phones, tablets, & desktops." +
+    const shareText = "🧩 One Sudoku (数独/數獨). Multiple ways to play at SudokuPlays" + url + " — online, free, fast, & fun! " +
+        "Challenge yourself with multiple modes, variations, & difficulties! Fully responsive design for phones, tablets, & desktops." +
         "#PuzzleGame #onlinegame #games #puzzle #BrainTeaser #cozygames #cozy #fun";
     const shareResultText = `🧩 I completed a ${difficulty} Sudoku puzzle on SudokuPlays! ` +
         `Score: ${score.toLocaleString()} | Time: ${timeUsed}. ` +

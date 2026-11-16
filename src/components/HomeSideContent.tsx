@@ -24,11 +24,11 @@ export const HomeSideContent: React.FC = () => {
                 {/* Block 2: How to play */}
                 <section className="py-4">
                     <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-2">
-                        Choose Your Game Mode
+                        Choose Your Sudoku Variation & Modes
                     </h2>
                     <p className='text-sm text-gray-600 dark:text-gray-300 leading-relaxed mt-2'>
-                        SudokuPlays offers different ways to enjoy Sudoku. Each game mode introduces its own puzzle rules, challenges, or constraints.
-                        For quick understanding, you can check the Quick Guide dropdown on the top right <b>after selecting a game mode</b>.
+                        SudokuPlays offers different variations and game modes to enjoy Sudoku. Each introduces its own puzzle rules, challenges, or constraints.
+                        For quick understanding, you can check the <b>Quick Guide</b> dropdown on the top right corner <b>after selecting a Sudoku variation</b>.
                     </p>
                 </section>
 
