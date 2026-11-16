@@ -25,9 +25,11 @@ function ChangeLog({ }) {
                             <ChangelogEntry
                                 date={'2026-11-15'}
                                 version={'v1.0.0'}
-                                title={'New Feature'}
+                                title={'Improvement & New Feature'}
                                 items={[
                                     <>Added <a href='/' className=''>Diagonal Sudoku (X Sudoku)</a> board, another way to play Sudoku.</>,
+                                    <>When the user switches between Sudoku variants, the countdown timer resets.</>,
+                                    <>Smoothed the resume modal's transition animation and scoped it to cover only the Sudoku game area instead of the entire page.</>,
                                 ]}
                             />
                             <ChangelogEntry
