@@ -330,19 +330,26 @@ export const PauseModal: React.FC<{ isOpen: boolean; onResume: () => void }> = (
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[10005] flex justify-center items-center p-6">
+        <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm z-30 flex justify-center items-center p-4 rounded-2xl animate-[fadeIn_0.2s_ease-out]"
+            onClick={onResume}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Game Paused"
+        >
             <div
-                className="bg-white/95 dark:bg-[#1a1a1a]/95 w-full max-w-[340px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col overflow-hidden animate-[slideUpFade_0.4s_cubic-bezier(0.16,1,0.3,1)] backdrop-blur-2xl border border-white/20 dark:border-white/10 p-8 text-center"
+                className="bg-white/95 dark:bg-[#1a1a1a]/95 w-[90%] max-w-[340px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex flex-col items-center overflow-hidden animate-[slideUpFade_0.3s_cubic-bezier(0.16,1,0.3,1)] backdrop-blur-2xl border border-white/30 dark:border-white/10 p-6 sm:p-8 text-center"
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="text-5xl mb-4 animate-pulse">⏸️</div>
-                <h3 className="text-xl font-black mb-4 text-black dark:text-white">Game Paused</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-8">
-                    The game is now paused. Click/Tap on Resume Game button whenever you’re ready to continue.                </p>
+                <div className="text-4xl mb-3 animate-pulse">⏸️</div>
+                <h3 className="text-xl font-black mb-2 text-black dark:text-white">Game Paused</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                    The game is now paused. Click or tap Resume Game whenever you’re ready to continue.
+                </p>
                 <button
                     onClick={onResume}
-                    className="new-game-btn"
-                    style={{ padding: '14px 24px', fontSize: '1.1rem' }}
+                    className="new-game-btn cursor-pointer"
+                    style={{ padding: '12px 28px', fontSize: '1.05rem' }}
                 >
                     Resume Game
                 </button>
