@@ -128,7 +128,8 @@ function TermsAndConditions() {
                                                                 <p className='mt-1'>
                                                                     When active, these third-party vendors use cookies to serve advertisements based on your prior visits to this or other websites. If and when these services are enabled,
                                                                     you may opt out of personalized advertising at any time by visiting <a href='https://www.google.com/search?q=https://www.google.com/settings/ads'>Google Ads Settings </a>
-                                                                    or <a href="www.aboutads.info">www.aboutads.info</a>.
+                                                                    or <a href="https://www.aboutads.info/choices/">
+                                                                        www.aboutads.info</a>.
                                                                 </p>
                                                             </li>
                                                         </ol>
