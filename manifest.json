@@ -1,0 +1,51 @@
+{
+  "background_color": "#ffffff",
+  "description": "Play free daily Sudoku puzzles online with multiple modes, Sudoku variants, difficulty levels, timer controls, hints, score tracking, and more.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "SudokuPlays - One Sudoku, Multiple Ways to Play.",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Sudoku Plays",
+  "start_url": "/",
+  "theme_color": "#0675AE",
+  "icons": [
+    {
+      "src": "/images/png/ic_logo_192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/png/ic_logo_512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/png/ic_logo_maskable_512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "/",
+  "lang": "en",
+  "shortcuts": [
+    {
+      "name": "Home",
+      "url": "/",
+      "description": "Homepage"
+    },
+    {
+      "name": "How SudokuPlays Works?",
+      "url": "/detailedGuide/",
+      "description": "Site user guide"
+    },
+    {
+      "name": "What's New?",
+      "url": "/changeLog/",
+      "description": "The site's updates and change log page"
+    }
+  ]
+}
