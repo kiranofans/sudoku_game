@@ -8,7 +8,7 @@
   "scope": "/",
   "short_name": "Sudoku Plays",
   "start_url": "/",
-  "theme_color": "#267ad6",
+  "theme_color": "#0675AE",
   "icons": [
     {
       "src": "/images/png/ic_logo_192.png",
@@ -24,11 +24,28 @@
     },
     {
       "src": "/images/png/ic_logo_maskable_512.png",
-      "type": "image/x-icon",
-      "size": "512x512",
+      "type": "image/png",
+      "sizes": "512x512",
       "purpose": "maskable"
     }
   ],
   "id": "/",
-  "lang": "en"
+  "lang": "en",
+  "shortcuts": [
+    {
+      "name": "Home",
+      "url": "/",
+      "description": "Homepage"
+    },
+    {
+      "name": "How SudokuPlays Works?",
+      "url": "/detailedGuide/",
+      "description": "Site user guide"
+    },
+    {
+      "name": "What's New?",
+      "url": "/changeLog/",
+      "description": "The site's updates and change log page"
+    }
+  ]
 }
