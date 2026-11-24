@@ -63,7 +63,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
                 onClick={handleLogoClick}
                 aria-label="Toggle menu on mobile or go to homepage"
               >
-                <img src="/images/png/logo_sudoku1.png" alt="Logo" className="logo transition-transform active:scale-10" />
+                <img src="/images/png/ic_logo.png" alt="Logo" className="logo transition-transform active:scale-10" />
               </a>
             </div>
 

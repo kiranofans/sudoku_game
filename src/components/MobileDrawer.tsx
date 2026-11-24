@@ -19,7 +19,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
       <div className="absolute left-0 top-0 h-full w-64 bg-white dark:bg-gray-900 shadow-2xl flex flex-col p-6 overflow-y-auto animate-in slide-in-from-left duration-300">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-3">
-            <img src="/images/png/logo_sudoku1.png" alt="Logo" className="w-8 h-8 rounded-lg" />
+            <img src="/images/png/ic_logo.png" alt="Logo" className="w-8 h-8 rounded-lg" />
             <span className="font-bold text-xl dark:text-white">Sudoku</span>
           </div>
           <button
