@@ -11,6 +11,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <link rel="manifest" href="/manifest.json" />
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL.href} />
     <script is:inline>
@@ -50,8 +52,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     final HTML rather than bundling it as a deferred module, which ensures PWABuilder's 
     scanner detects it immediately.-->
     <script is:inline>
-      if (typeof navigator.serviceWorker !== "undefined") {
-        navigator.serviceWorker.register("sw.js");
+      if ("serviceWorker" in navigator && location.hostname !== "localhost") {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js");
+        });
       }
     </script>
 
