@@ -44,24 +44,37 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     />
 
     <meta name="msvalidate.01" content="C82111AE0E298F17FEE4E665BA3D7BD2" />
+
+    <!--PWA Builder
+    is:inline: Telling Astro <script is:inline> keeps the snippet untouched in the 
+    final HTML rather than bundling it as a deferred module, which ensures PWABuilder's 
+    scanner detects it immediately.-->
+    <script is:inline>
+      if (typeof navigator.serviceWorker !== "undefined") {
+        navigator.serviceWorker.register("sw.js");
+      }
+    </script>
+
     <!-- Analytics and Ads -->
     <script
       is:inline
       defer
       src="https://cloud.umami.is/script.js"
-      data-website-id="8611e60d-a15b-46e5-81cf-e99174cd0f74"></script>
+      data-website-id="8611e60d-a15b-46e5-81cf-e99174cd0f74"
+    ></script>
     <script
       is:inline
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Icons -->
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="/images/png/logo_sudoku1.png"
+      href="/images/png/ic_logo_192.png"
     />
     <link
       rel="stylesheet"
@@ -97,7 +110,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       name="twitter:image"
       content="https://sudokuplays.com/og-share-card.png"
     />
-  </head><body class="bg-white dark:bg-gray-900">
+  </head>
+  <body class="bg-white dark:bg-gray-900">
     <!-- The Loading Screen -->
     <div
       id="initial-loader"
