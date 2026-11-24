@@ -47,5 +47,8 @@
       "url": "/changeLog/",
       "description": "The site's updates and change log page"
     }
+  ],
+  "categories": [
+    "games"
   ]
 }

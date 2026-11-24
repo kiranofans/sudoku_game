@@ -5,6 +5,10 @@ Disallow: /api/
 Allow: /
 Content-Signal: search=yes, ai-train=no
 
+#PWA Builder
+User-agent: PWABuilderHttpAgent
+Allow: /
+
 # OpenAI (ChatGPT & Bing AI Training)
 User-agent: GPTBot
 Disallow: /
