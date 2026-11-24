@@ -2,10 +2,12 @@
   "compilerOptions": {
     "jsxImportSource": "react",
     "target": "ES2020",
-    "baseUrl": "./src",
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
       ]
     },
     "esModuleInterop": true,
