@@ -52,10 +52,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     final HTML rather than bundling it as a deferred module, which ensures PWABuilder's 
     scanner detects it immediately.-->
     <script is:inline>
-      if ("serviceWorker" in navigator && location.hostname !== "localhost") {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js");
-        });
+      if ("serviceWorker" in navigator) {
+        if (location.hostname === "localhost") {
+          navigator.serviceWorker
+            .getRegistrations()
+            .then((registrations) =>
+              Promise.all(registrations.map((registration) => registration.unregister())),
+            )
+            .catch((error) =>
+              console.error("Failed to unregister the localhost service worker:", error),
+            );
+
+          if ("caches" in window) {
+            caches
+              .keys()
+              .then((cacheNames) =>
+                Promise.all(
+                  cacheNames
+                    .filter((cacheName) => cacheName.startsWith("sudokuplays-"))
+                    .map((cacheName) => caches.delete(cacheName)),
+                ),
+              )
+              .catch((error) =>
+                console.error("Failed to clear localhost service worker caches:", error),
+              );
+          }
+        } else {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker.register("/sw.js");
+          });
+        }
       }
     </script>
 
