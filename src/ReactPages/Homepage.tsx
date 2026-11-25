@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { ThemeProvider } from '@/components/ThemeContext.tsx';
 import { generateSudoku, Difficulty } from '@/lib/generatesSudoku.ts';
+import { trackGA4Event } from '@/lib/analytics';
 
 import '@/App.css';
 import Board from "@/components/Board";
@@ -206,6 +207,7 @@ function Homepage() {
 
     const handleCellClick = (row: number, col: number) => {
         if (isGameOver || isPaused) return;
+        trackGA4Event('game_board_cell_select', { game_mode: gameMode });
         // Update cross style selection
         setSelectedCell([row, col]);
         setCrossHighlight({ row, col });
@@ -410,6 +412,9 @@ function Homepage() {
                                 <button
                                     onMouseDown={(e) => e.nativeEvent.stopImmediatePropagation()}
                                     onClick={() => {
+                                        if (!showInstructions) {
+                                            trackGA4Event('quick_guide_open', { source: 'header' });
+                                        }
                                         setShowInstructions(prev => !prev);
                                     }}
                                     className="how-to-play-btn"

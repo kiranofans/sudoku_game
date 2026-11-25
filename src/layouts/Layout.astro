@@ -55,6 +55,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       function gtag() {
         window.dataLayer.push(arguments);
       }
+      window.gtag = gtag;
       gtag("js", new Date());
       gtag("config", "G-JXVR86257P");
     </script>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from './Dropdown';
+import { trackGA4Event } from '@/lib/analytics';
 
 interface ModalProps {
     isOpen: boolean;
@@ -157,6 +158,7 @@ export const InstructionsDropdown: React.FC<{
                 <div className="">
                     <a
                         href="/detailedGuide"
+                        onClick={() => trackGA4Event('help_link_click', { link_location: 'quick_guide' })}
                         className="inline-flex items-center font-medium text-blue-600 transition hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-300"
                     >
                         Learn how SudokuPlays works
