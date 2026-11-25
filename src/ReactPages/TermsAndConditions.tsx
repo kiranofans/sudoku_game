@@ -106,19 +106,16 @@ function TermsAndConditions() {
                                                         For all data inquiries or to exercise your rights, contact: <b>Privacy Officer</b> at <a href="mailto:sitehelp.chat@gmail.com">sitehelp.chat@gmail.com</a>.
                                                     </li>
                                                     <li>
-                                                        <b>
-                                                            Privacy By Default: </b>
-                                                        Our Service implements the highest level of confidentiality by default. In accordance with Quebec law,
-                                                        non-essential tracking, profiling, or advertising cookies are deactivated until you provide express,
-                                                        informed consent via our consent tool.
+                                                        <b>Analytics: </b>
+                                                        Google Analytics loads when you visit the Website and is not gated by an on-site consent prompt.
+                                                        It may use cookies or similar technologies as described in our Privacy Policy.
                                                     </li>
                                                     <li>
                                                         <b>Analytics, Third-Party Advertising & Cookies: </b>
                                                         <ol type="1" className='list-decimal space-y-2 ml-5 mt-1 text-sm'>
                                                             <li>
-                                                                <b>Privacy-First Analytics (Current)</b>
-                                                                <p> To understand how our site is performing and improve your gameplay, we use <b>Umami Analytics</b>. Umami is a privacy-focused tool that collects anonymous technical data (such as general region and browser type).
-                                                                    It <b>does not</b> collect personally identifiable information (PII), does not track you across other websites, and operates entirely <b> without the use of cookies</b>.</p>
+                                                                <b>Google Analytics (Current)</b>
+                                                                <p>We use Google Analytics to understand Website traffic and usage. Depending on our configuration, it may process page views, interactions, referring pages, browser and device information, and approximate location. It may use cookies or similar technologies. See our Privacy Policy for details.</p>
                                                             </li>
                                                             <li>
                                                                 <b>Future Advertising and Third-Party Cookies</b>
@@ -157,7 +154,7 @@ function TermsAndConditions() {
                                             <ul className="md:list-disc ml-5 space-y-1 text-sm">
                                                 <li className='mb-1 mt-2 text-sm'>
                                                     <b className='text-sm'>Notice at Collection: </b>
-                                                    We collect limited identifiers (such as anonymized IP addresses via Umami Analytics and device IDs via LocalStorage) to facilitate game rewards, prevent fraud, and analyze site traffic. We do not collect "Sensitive Personal Information" as defined by California law.</li>
+                                                    We process technical and usage information through Google Analytics, as described in our Privacy Policy, and store gameplay information in LocalStorage. We do not collect "Sensitive Personal Information" as defined by California law.</li>
                                                 <li className='mb-1 mt-2 text-sm'>
                                                     <b className='text-sm'>Right to Opt-Out of Sale or Sharing: </b>
                                                     Currently, sudokuplays.com does not sell or share your personal information for monetary compensation or cross-context behavioral advertising.
@@ -228,16 +225,17 @@ function TermsAndConditions() {
                                         </div>
                                     </li>
                                     <li>
-                                        <div><b className='text-sm'>Specific Disclosure: LocalStorage & Privacy-First Analytics</b>
+                                        <div><b className='text-sm'>Specific Disclosure: LocalStorage & Website Analytics</b>
                                             <ul className='md:list-disc ml-5 space-y-1 text-sm'>
                                                 <li>
                                                     <b>Web LocalStorage: </b>
                                                     We use LocalStorage (data stored only on your device) to maintain your current game state, track high scores, and store a 24-hour "Hint Memo" for ad-reward verification and "Score History". This data is functional, remains under your control, and is never transmitted to our servers.
                                                 </li>
                                                 <li>
-                                                    <b>Cloudflare & Umami Analytics: </b>
-                                                    We use these for privacy-first, non-invasive traffic analytics to monitor site performance and traffic trends.
-                                                    Unlike traditional trackers, they do not collect personal identifiers, do not use cookies, and do not track your activity across other websites.
+                                                    <b>Cloudflare Web Analytics and Google Analytics: </b>
+                                                    We use these services to understand Website traffic, performance, and usage.
+                                                    Google Analytics may use cookies or similar technologies and may process technical and usage information as described in our Privacy Policy.
+                                                    Cloudflare states that its Web Analytics product does not use cookies or LocalStorage for analytics.
                                                 </li>
                                                 <li>
                                                     <b>No Server-Side Tracking: </b>

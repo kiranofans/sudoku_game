@@ -11,7 +11,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <link rel="manifest" href="/manifest.json" />
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL.href} />
@@ -44,9 +43,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       name="description"
       content="Play Sudoku online for free~! Features a mobile-friendly design for both Android & iOS. Start your daily challenge today!"
     />
-
     <meta name="msvalidate.01" content="C82111AE0E298F17FEE4E665BA3D7BD2" />
-
+    <!-- Google Analytics -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-JXVR86257P"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-JXVR86257P");
+    </script>
     <!--PWA Builder
     is:inline: Telling Astro <script is:inline> keeps the snippet untouched in the 
     final HTML rather than bundling it as a deferred module, which ensures PWABuilder's 
@@ -57,10 +68,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           navigator.serviceWorker
             .getRegistrations()
             .then((registrations) =>
-              Promise.all(registrations.map((registration) => registration.unregister())),
+              Promise.all(
+                registrations.map((registration) => registration.unregister()),
+              ),
             )
             .catch((error) =>
-              console.error("Failed to unregister the localhost service worker:", error),
+              console.error(
+                "Failed to unregister the localhost service worker:",
+                error,
+              ),
             );
 
           if ("caches" in window) {
@@ -74,7 +90,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
                 ),
               )
               .catch((error) =>
-                console.error("Failed to clear localhost service worker caches:", error),
+                console.error(
+                  "Failed to clear localhost service worker caches:",
+                  error,
+                ),
               );
           }
         } else {
@@ -84,21 +103,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         }
       }
     </script>
-
-    <!-- Analytics and Ads -->
-    <script
-      is:inline
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="8611e60d-a15b-46e5-81cf-e99174cd0f74"
-    ></script>
+    <!-- Ads -->
     <script
       is:inline
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6867248544126643"
       crossorigin="anonymous"
     ></script>
-
     <!-- Icons -->
     <link
       rel="icon"
@@ -110,32 +121,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-
     <!-- NProgress -->
     <link rel="stylesheet" href="https://unpkg.com/nprogress/nprogress.css" />
     <script is:inline src="https://unpkg.com/nprogress/nprogress.js"></script>
-
     <!--Sharing Meta-->
     <meta property="og:title" content="SudokuPlays" />
     <meta
       property="og:description"
       content="Play free, fast, and fun Sudoku online! Challenge yourself and beat your high score."
     />
-
     <meta
       property="og:image"
       content="https://sudokuplays.com/og-share-card.png"
     />
     <meta property="og:url" content="https://sudokuplays.com" />
     <meta property="og:type" content="website" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SudokuPlays - Free Online Sudoku" />
     <meta
       name="twitter:description"
       content="Play free online Sudoku puzzles."
     />
-
     <meta
       name="twitter:image"
       content="https://sudokuplays.com/og-share-card.png"

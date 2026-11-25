@@ -159,24 +159,16 @@ function PrivacyPolicy() {
                             </h2>
 
                             <div className="space-y-2">
-                                <h3 className="font-semibold text-base text-gray-900 dark:text-gray-100">Umami Analytics</h3>
+                                <h3 className="font-semibold text-base text-gray-900 dark:text-gray-100">Google Analytics</h3>
                                 <p>
-                                    We use Umami Analytics to understand how visitors use the Website and to improve it.
-                                    Depending on the Website's tracker configuration, analytics may include page views, referring pages,
-                                    browser and operating-system information, approximate location, and custom events enabled by the Website.
+                                    We load Google Analytics when the Website is visited, without an on-site consent gate, to understand how visitors use the Website and to improve it.
+                                    Depending on our configuration, Google Analytics may collect page views, interactions,
+                                    referring pages, browser and device information, and approximate location.
+                                    Google Analytics may use cookies or similar technologies to distinguish browsers and sessions.
                                 </p>
                                 <p>
-                                    Umami's standard analytics does not use cookies for visitor tracking.
-                                    By default, Umami generates a session identifier using the Website ID, a visitor's IP address,
-                                    browser User-Agent information, and a rotating salt. The IP address is processed to generate
-                                    that identifier but is not stored as a field in the standard analytics session record.
-                                    The identifier is pseudonymous; this does not mean that an IP address is never processed
-                                    by the systems involved in delivering an analytics request. The exact data collected may depend
-                                    on whether Umami is self-hosted or cloud-hosted and on our configuration.
-                                </p>
-                                <p>
-                                    For more information, see <a href="https://docs.umami.is/docs/metric-definitions" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Umami's metric definitions</a> and{' '}
-                                    <a href="https://docs.umami.is/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Umami's documentation</a>.
+                                    For more information, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">How Google uses information from sites or apps that use its services</a> and{' '}
+                                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Google's Privacy Policy</a>.
                                 </p>
                             </div>
 
@@ -215,8 +207,9 @@ function PrivacyPolicy() {
                                 It is stored by your browser for the Website and is not the same as a cookie.
                             </p>
                             <p>
-                                The standard analytics functions of Umami and Cloudflare Web Analytics described above do not rely on cookies.
-                                However, cookies or similar technologies may be used by hosting or security features, advertising providers,
+                                Google Analytics may use cookies or similar technologies for analytics.
+                                Cloudflare Web Analytics, as described above, does not rely on cookies or LocalStorage according to Cloudflare.
+                                Cookies or similar technologies may also be used by hosting or security features, advertising providers,
                                 or other third-party services when those features are enabled. For example, Google advertising services may use cookies,
                                 web beacons, IP addresses, or other identifiers to deliver, measure, and personalize advertising.
                             </p>
@@ -321,7 +314,7 @@ function PrivacyPolicy() {
                             </p>
                             <ul className="list-disc space-y-2 pl-6">
                                 <li>
-                                    <b>Service providers:</b> We use providers such as Cloudflare, Umami, EmailJS, and, when enabled,
+                                    <b>Service providers:</b> We use providers such as Cloudflare, Google Analytics, EmailJS, and, when enabled,
                                     Google or other advertising providers to host, secure, analyze, support, or monetize the Website.
                                     They may process information on our behalf or for their own purposes as described in their privacy policies.
                                 </li>
