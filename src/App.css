@@ -2186,7 +2186,7 @@ button {
     display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
     .header-center-content {
         position: absolute;
@@ -2198,5 +2198,25 @@ button {
         justify-content: center;
         z-index: 10;
         width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-title-container {
+        width: auto;
+        flex: 0 0 auto;
+        gap: 0.35rem;
+        overflow: visible;
+    }
+
+    .header-center-content {
+        position: static;
+        flex: 0 0 auto;
+        margin-left: auto;
+        transform: none;
+    }
+
+    .controls-row {
+        flex: 0 0 auto;
     }
 }

@@ -69,7 +69,7 @@ const Layout: React.FC<LayoutProps> = ({ children, headerContent, mobileScore, i
 
             <div className="title-score-wrapper">
               <div className="title-tagline-container flex">
-                <h2 className='game-title'>Sudoku</h2>
+                <h2 className='game-title'>SudokuPlays</h2>
                 <div className='m-0.5 text-sm'>
                   {/* What's New icon when screen is in portrait mode on mobile */}
                   {isMobilePortrait ?

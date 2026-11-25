@@ -21,7 +21,7 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="text-[var(--num-pad-bg)] shrink-0 cursor-pointer transition-all duration-200 hover:text-[var(--score-value)] hover:scale-110 ml-1"
+      className="text-[var(--num-pad-bg)] shrink-0 cursor-pointer transition-all duration-200 hover:text-[var(--score-value)] hover:scale-110"
       aria-labelledby='svg-title svg-description'
       onClick={(e) => {
         e.stopPropagation();
@@ -116,9 +116,9 @@ export const ScoreSystem: React.FC<ScoreSystemProps> = ({ score, history = [], i
   if (isMobile) {
     return (
       <>
-        <div className="flex items-center gap-2 px-3 md:gap-1 sm:gap-0.5 px-2 md:px-2 sm:px-1 py-1 bg-black/5 dark:bg-white/10 rounded-full backdrop-blur-sm border border-white/5">
-          <div className="flex items-center gap-1.5 border-r border-black/10 dark:border-white/10 pr-2">
-            <span className="text-[0.6rem] font-bold text-[var(--score-label)] uppercase tracking-wider">Score</span>
+        <div className="flex items-center gap-1 px-1.5 py-0.5 bg-black/5 dark:bg-white/10 rounded-full backdrop-blur-sm border border-white/5">
+          <div className="flex items-center gap-1 border-r border-black/10 dark:border-white/10 pr-1">
+            <abbr title="Score" className="text-[0.6rem] font-bold text-[var(--score-label)] uppercase tracking-wider no-underline">Scr.</abbr>
             <span className="text-sm font-bold text-[var(--score-value)] font-mono leading-none">
               {score !== null ? score.toLocaleString() : "0"}
             </span>
