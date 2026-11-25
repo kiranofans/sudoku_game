@@ -11,7 +11,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="manifest" href="/manifest.json" />
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL.href} />
     <script is:inline>
@@ -59,51 +58,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       gtag("js", new Date());
       gtag("config", "G-JXVR86257P");
     </script>
-    <!--PWA Builder
-    is:inline: Telling Astro <script is:inline> keeps the snippet untouched in the 
-    final HTML rather than bundling it as a deferred module, which ensures PWABuilder's 
-    scanner detects it immediately.-->
-    <script is:inline>
-      if ("serviceWorker" in navigator) {
-        if (location.hostname === "localhost") {
-          navigator.serviceWorker
-            .getRegistrations()
-            .then((registrations) =>
-              Promise.all(
-                registrations.map((registration) => registration.unregister()),
-              ),
-            )
-            .catch((error) =>
-              console.error(
-                "Failed to unregister the localhost service worker:",
-                error,
-              ),
-            );
 
-          if ("caches" in window) {
-            caches
-              .keys()
-              .then((cacheNames) =>
-                Promise.all(
-                  cacheNames
-                    .filter((cacheName) => cacheName.startsWith("sudokuplays-"))
-                    .map((cacheName) => caches.delete(cacheName)),
-                ),
-              )
-              .catch((error) =>
-                console.error(
-                  "Failed to clear localhost service worker caches:",
-                  error,
-                ),
-              );
-          }
-        } else {
-          window.addEventListener("load", () => {
-            navigator.serviceWorker.register("/sw.js");
-          });
-        }
-      }
-    </script>
     <!-- Ads -->
     <script
       is:inline
