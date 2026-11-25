@@ -23,6 +23,16 @@ function ChangeLog({ }) {
                             items={issues} />
                         <Timeline>
                             <ChangelogEntry
+                                date={'2026-11-24'}
+                                version={'v1.0.1'}
+                                title={'Improvement & New Feature'}
+                                items={[
+                                    <>Tried to change the site's logo which may be subjected to change later.</>,
+                                    <>Removed Umami analytics, and replaced with Google Analytics.</>,
+                                    <>Roughly updated the <a href="/privacyPolicy">Privacy Policy</a> and <a href="/termsAndConditions">Terms And Conditions</a> pages.</>
+                                ]}
+                            />
+                            <ChangelogEntry
                                 date={'2026-11-15'}
                                 version={'v1.0.0'}
                                 title={'Improvement & New Feature'}
